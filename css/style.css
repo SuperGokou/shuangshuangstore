@@ -1,0 +1,112 @@
+/* --- style.css --- */
+
+/* 1. General Page Styling */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f4f6f8;
+    margin: 0;
+    padding: 40px 20px;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 40px;
+    font-size: 0.9rem;
+}
+
+/* 2. Grid Layout */
+.gallery {
+    display: grid;
+    /* Auto-fit: Creates as many columns as will fit, min width 300px */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* 3. Card Styling */
+.card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* 4. Image Container (Forces Square Shape) */
+.image-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 100%; /* 1:1 Aspect Ratio */
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #eee;
+}
+
+.image-wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Shows whole item without cropping */
+    padding: 15px;       /* Adds whitespace inside the frame */
+    box-sizing: border-box;
+}
+
+/* 5. Text & Data Styling */
+.info {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+h3 {
+    font-size: 1rem;
+    margin: 0 0 15px 0;
+    line-height: 1.5;
+    color: #2c3e50;
+}
+
+.price-tag {
+    color: #d63384; /* Pinkish red for visibility */
+    font-weight: bold;
+    font-size: 1.25rem;
+    margin-bottom: 15px;
+    display: block;
+}
+
+/* Inventory Data Table Styling */
+.stock-data {
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    padding: 10px;
+    font-size: 0.85rem;
+    color: #555;
+    display: grid;
+    grid-template-columns: 1fr auto; /* Label left, Number right */
+    gap: 5px;
+}
+
+.stock-row {
+    display: contents; /* Allows children to sit in the grid directly */
+}
+
+.stock-label { font-weight: 600; }
+.stock-value { text-align: right; }
