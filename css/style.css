@@ -104,6 +104,38 @@ h3 {
     gap: 5px;
 }
 
+/* --- Live Indicator (Green Pulsing Dot) --- */
+.live-dot {
+    height: 12px;
+    width: 12px;
+    background-color: #2ecc71; /* Bright Green */
+    border-radius: 50%;        /* Makes it a circle */
+    display: inline-block;
+    margin-right: 8px;         /* Space between dot and text */
+    
+    /* The Pulsing Animation */
+    box-shadow: 0 0 0 0 rgba(46, 204, 113, 1);
+    animation: pulse-green 2s infinite;
+    vertical-align: middle;
+}
+
+@keyframes pulse-green {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7);
+    }
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 6px rgba(46, 204, 113, 0);
+    }
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
+    }
+}
+
+
+
 .stock-row {
     display: contents; /* Allows children to sit in the grid directly */
 }
