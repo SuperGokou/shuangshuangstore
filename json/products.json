@@ -15,32 +15,42 @@
         "已发往国内": 0,
         "美国库存": 12
     },
-    {
+	
+	{
         "id": 3,
         "name": "LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler 40 OZ",
-        "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler  40 OZ.png",
-        "总库存": 10,
+        "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler 40 OZ",
+        "总库存": 1,
         "已发往国内": 0,
         "美国库存": 10
     },
+	
     {
         "id": 4,
-        "name": "LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 30 OZ",
-        "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler  30 OZ.png",
-        "总库存": 5,
+        "name": "LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler 40 OZ",
+        "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler  40 OZ.png",
+        "总库存": 6,
         "已发往国内": 0,
-        "美国库存": 5
+        "美国库存": 6
     },
     {
         "id": 5,
-        "name": "LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20 OZ",
-        "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20 OZ.png",
-        "总库存": 10,
+        "name": "LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 30 OZ",
+        "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler  30 OZ.png",
+        "总库存": 15,
         "已发往国内": 0,
-        "美国库存": 10
+        "美国库存": 15
     },
     {
         "id": 6,
+        "name": "LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20 OZ",
+        "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20 OZ.png",
+        "总库存": 22,
+        "已发往国内": 0,
+        "美国库存": 22
+    },
+    {
+        "id": 7,
         "name": "LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20 OZ",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20OZ.png",
         "总库存": 3,
