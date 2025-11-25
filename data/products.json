@@ -5,8 +5,8 @@
         "image": "img/Stanley 1913 x LoveShackFancy Holiday All Day Slim Bottle.png",
         "总库存": 2,
         "已发往国内": 0,
-        "美国已签收": 2,
-        "美国未签收": 0
+        "美国已签收": 0,
+        "美国未签收": 2
     },
     {
         "id": 2,
@@ -30,36 +30,73 @@
         "id": 4,
         "name": "LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler 40 OZ",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler  40 OZ.png",
-        "总库存": 6,
+        "总库存": 9,
         "已发往国内": 0,
         "美国已签收": 5,
+        "美国未签收": 4
+    },
+	{
+        "id": 5,
+        "name": "LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler 40 OZ",
+        "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler40 oz.png",
+        "总库存": 1,
+        "已发往国内": 0,
+        "美国已签收": 0,
         "美国未签收": 1
     },
-    {
-        "id": 5,
-        "name": "LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 30 OZ",
-        "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler  30 OZ.png",
-        "总库存": 15,
-        "已发往国内": 0,
-        "美国已签收": 4,
-        "美国未签收": 11
-    },
+	
     {
         "id": 6,
-        "name": "LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20 OZ",
-        "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20 OZ.png",
-        "总库存": 22,
+        "name": "LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 30 OZ",
+        "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler  30 OZ.png",
+        "总库存": 18,
         "已发往国内": 0,
-        "美国已签收": 9,
-        "美国未签收": 13
+        "美国已签收": 4,
+        "美国未签收": 14
     },
     {
         "id": 7,
+        "name": "LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20 OZ",
+        "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20 OZ.png",
+        "总库存": 28,
+        "已发往国内": 0,
+        "美国已签收": 9,
+        "美国未签收": 19
+    },
+    {
+        "id": 8,
         "name": "LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20 OZ",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20OZ.png",
         "总库存": 3,
         "已发往国内": 0,
         "美国已签收": 3,
         "美国未签收": 0
+    },
+	{
+        "id": 9,
+        "name": "The Café-To-Go Travel Mug 20 OZ",
+        "image": "img/The Café-To-Go Travel Mug 20 OZ.png",
+        "总库存": 1,
+        "已发往国内": 0,
+        "美国已签收": 0,
+        "美国未签收": 1
+    },
+    {
+        "id": 10,
+        "name": "LoveShackFancy Holiday Everyday Camp Mug Set",
+        "image": "img/Stanley 1913 x LoveShackFancy Holiday Everyday Camp Mug Set.png",
+        "总库存": 1,
+        "已发往国内": 0,
+        "美国已签收": 0,
+        "美国未签收": 1
+    },
+	{
+        "id": 11,
+        "name": "The Quencher ProTour Flip Straw Tumbler",
+        "image": "img/The Quencher ProTour Flip Straw Tumbler.png",
+        "总库存": 1,
+        "已发往国内": 0,
+        "美国已签收": 0,
+        "美国未签收": 1
     }
 ]
