@@ -161,8 +161,10 @@
             .catch(err => console.error("Shipping Error:", err));
 
         // --- HELPER: FETCH LIVE STATUS FROM JUNANEX ---
+		// --- HELPER: FETCH LIVE STATUS (Structure Based) ---
         async function fetchLiveStatus(targetUrl, cellId) {
-            // Use a CORS proxy to read the external site
+            // Using a different proxy 'corsproxy.io' which handles redirects better, 
+            // OR fallback to 'allorigins' if that fails.
             const proxyUrl = 'https://api.allorigins.win/get?url=' + encodeURIComponent(targetUrl);
             const cell = document.getElementById(cellId);
 
@@ -170,52 +172,44 @@
                 const response = await fetch(proxyUrl);
                 const data = await response.json();
                 
-                if (data.contents) {
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(data.contents, "text/html");
+                if (!data.contents) throw new Error("Empty proxy response");
 
-                    // --- FIND THE CORRECT TABLE ---
-                    // We look for any table header (th) containing "详细描述"
-                    const headers = Array.from(doc.querySelectorAll('th'));
-                    const targetHeader = headers.find(th => th.innerText.includes('详细描述'));
-                    
-                    if (targetHeader) {
-                        // Find the table that contains this header
-                        const table = targetHeader.closest('table');
-                        // Get the first row in the body (usually the latest status)
-                        // Note: Some tables use <thead> and <tbody>, some just <tr>. 
-                        // We try to find the first row that is NOT the header row.
-                        const rows = table.querySelectorAll('tr');
-                        
-                        // We start checking from the 2nd row (index 1) to skip the header
-                        let latestRow = rows[1]; 
-                        
-                        if (latestRow) {
-                            const cols = latestRow.querySelectorAll('td');
-                            // The description is usually in the 3rd column (index 2), based on your page structure
-                            // | Icon | Date | Description |
-                            if (cols.length >= 3) {
-                                const statusText = cols[2].innerText.trim();
-                                const dateText = cols[1].innerText.trim();
-                                
-                                cell.innerHTML = `
-                                    <div style="color:#27ae60; font-weight:bold;">${statusText}</div>
-                                    <div style="font-size:0.75em; color:#888;">${dateText}</div>
-                                `;
-                            } else {
-                                cell.innerHTML = `<span style="color:#e67e22">Format Mismatch</span>`;
-                            }
-                        } else {
-                            cell.innerHTML = `<span style="color:#7f8c8d">No History</span>`;
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(data.contents, "text/html");
+
+                // METHOD: Find the first row <tr> that has exactly 3 columns <td>
+                // The JunAn table structure is usually: [Icon] [Time] [Description]
+                const rows = Array.from(doc.querySelectorAll('tr'));
+                
+                let foundStatus = false;
+
+                for (let row of rows) {
+                    const cols = row.querySelectorAll('td');
+                    // We check if it has 3 columns AND the second column contains a year (2024/2025) to be safe
+                    if (cols.length === 3 && cols[1].innerText.includes('20')) {
+                        const statusText = cols[2].innerText.trim(); // The description
+                        const dateText = cols[1].innerText.trim();   // The date
+
+                        if (statusText) {
+                            cell.innerHTML = `
+                                <div style="color:#27ae60; font-weight:bold; font-size:0.9em;">${statusText}</div>
+                                <div style="font-size:0.7em; color:#888;">${dateText}</div>
+                            `;
+                            foundStatus = true;
+                            break; // Stop after finding the first (latest) valid row
                         }
-                    } else {
-                        // Fallback if table not found
-                        cell.innerHTML = `<a href="${targetUrl}" target="_blank">Check Link</a>`;
                     }
                 }
+
+                if (!foundStatus) {
+                    // Debug: Log what we actually got to the console
+                    console.log(`Failed to parse ${targetUrl}. Content length: ${data.contents.length}`);
+                    cell.innerHTML = `<a href="${targetUrl}" target="_blank" style="color:#e67e22">Check Manually</a>`;
+                }
+
             } catch (error) {
-                console.error("Live fetch failed:", error);
-                cell.innerText = "Load Failed";
+                console.error("Live fetch error:", error);
+                cell.innerHTML = `<a href="${targetUrl}" target="_blank" style="color:#c0392b">Network Fail</a>`;
             }
         }
 
