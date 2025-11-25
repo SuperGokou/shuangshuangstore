@@ -21,6 +21,24 @@
     </div>
 
     <div class="orders-section">
+        <h2>✈️ 君安快递追踪 (Jun An Shipping)</h2>
+        <div class="table-wrapper">
+            <table id="shipping-table">
+                <thead>
+                    <tr>
+                        <th>运单号 (Tracking #)</th>
+                        <th>收件人 (Recipient)</th>
+                        <th>状态 (Status)</th>
+                        <th>电话 (Phone)</th>
+                        <th>地址 (Address)</th>
+                    </tr>
+                </thead>
+                <tbody id="shipping-body"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="orders-section">
         <h2>🚚 采购订单追踪 (Incoming Orders)</h2>
         <div class="table-wrapper">
             <table id="order-table">
@@ -38,27 +56,9 @@
             </table>
         </div>
     </div>
-
-    <div class="orders-section">
-        <h2>✈️ 君安快递追踪 (Jun An Shipping)</h2>
-        <div class="table-wrapper">
-            <table id="shipping-table">
-                <thead>
-                    <tr>
-                        <th>运单号 (Tracking #)</th>
-                        <th>收件人 (Recipient)</th>
-                        <th>状态 (Status)</th>
-                        <th>电话 (Phone)</th>
-                        <th>地址 (Address)</th>
-                    </tr>
-                </thead>
-                <tbody id="shipping-body"></tbody>
-            </table>
-        </div>
-    </div>
     
     <script>
-        // --- 1. FETCH PRODUCTS (From 'data/' folder) ---
+        // --- 1. FETCH PRODUCTS ---
         fetch('data/products.json')
             .then(res => {
                 if (!res.ok) throw new Error("File not found");
@@ -73,7 +73,6 @@
                     card.className = 'card';
                     const safeImagePath = encodeURI(product.image);
 
-                    // Safe checks for data
                     const usSigned = product['美国已签收'] !== undefined ? product['美国已签收'] : 0;
                     const usUnsigned = product['美国未签收'] !== undefined ? product['美国未签收'] : 0;
                     const cnShipped = product['已发往国内'] || 0;
@@ -88,19 +87,19 @@
                             <h3>${product.name}</h3>
                             <div class="stock-data">
                                 <div class="stock-row">
-                                    <span class="stock-label">✅ 美国已签收:</span>
-                                    <span class="stock-value" style="color:#27ae60; font-weight:bold;">${usSigned}</span>
+                                    <span class="stock-label">✅ 签收:</span>
+                                    <span class="stock-value" style="color:#27ae60;">${usSigned}</span>
                                 </div>
                                 <div class="stock-row">
-                                    <span class="stock-label">⏳ 美国未签收:</span>
-                                    <span class="stock-value" style="color:#e67e22; font-weight:bold;">${usUnsigned}</span>
+                                    <span class="stock-label">⏳ 未签:</span>
+                                    <span class="stock-value" style="color:#e67e22;">${usUnsigned}</span>
                                 </div>
                                 <div class="stock-row">
-                                    <span class="stock-label">🇨🇳 已发往国内:</span>
+                                    <span class="stock-label">🇨🇳 发往:</span>
                                     <span class="stock-value">${cnShipped}</span>
                                 </div>
-                                <div style="border-top: 1px solid #ddd; margin-top:5px; padding-top:5px;" class="stock-row">
-                                    <span class="stock-label">📦 总库存:</span>
+                                <div style="border-top: 1px solid #ddd; margin-top:2px; padding-top:2px;" class="stock-row">
+                                    <span class="stock-label">📦 总数:</span>
                                     <span class="stock-value"><strong>${totalStock}</strong></span>
                                 </div>
                             </div>
@@ -111,11 +110,33 @@
             })
             .catch(err => {
                 console.error("Product Error:", err);
-                document.getElementById('inventory-container').innerHTML = 
-                '<p style="text-align:center; color:red;">⚠️ Error loading data/products.json</p>';
+                document.getElementById('inventory-container').innerHTML = '<p>⚠️ Error loading products</p>';
             });
 
-        // --- 2. FETCH ORDERS (From 'data/' folder) ---
+        // --- 2. FETCH SHIPPING (Jun An) ---
+        fetch('data/shipping.json')
+            .then(res => res.ok ? res.json() : [])
+            .then(items => {
+                const tbody = document.getElementById('shipping-body');
+                if(items.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="5" style="text-align:center">No shipping data found.</td></tr>';
+                    return;
+                }
+                items.forEach(item => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td class="tracking-code">${item.tracking_number}</td>
+                        <td>${item.recipient}</td>
+                        <td>${item.status}</td>
+                        <td>${item.phone}</td>
+                        <td>${item.address}</td>
+                    `;
+                    tbody.appendChild(row);
+                });
+            })
+            .catch(err => console.error("Shipping Error:", err));
+
+        // --- 3. FETCH ORDERS (Incoming) ---
         fetch('data/orders.json')
             .then(res => res.ok ? res.json() : [])
             .then(orders => {
@@ -149,29 +170,6 @@
                 });
             })
             .catch(err => console.error("Order Error:", err));
-
-        // --- 3. FETCH SHIPPING (New Section) ---
-        fetch('data/shipping.json')
-            .then(res => res.ok ? res.json() : [])
-            .then(items => {
-                const tbody = document.getElementById('shipping-body');
-                if(items.length === 0) {
-                    tbody.innerHTML = '<tr><td colspan="5" style="text-align:center">No shipping data found.</td></tr>';
-                    return;
-                }
-                items.forEach(item => {
-                    const row = document.createElement('tr');
-                    row.innerHTML = `
-                        <td class="tracking-code">${item.tracking_number}</td>
-                        <td>${item.recipient}</td>
-                        <td>${item.status}</td>
-                        <td>${item.phone}</td>
-                        <td>${item.address}</td>
-                    `;
-                    tbody.appendChild(row);
-                });
-            })
-            .catch(err => console.error("Shipping Error:", err));
     </script>
     
 </body>
