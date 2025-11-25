@@ -190,33 +190,56 @@ tbody tr:nth-of-type(even) {
 
 
 /* NEW: Login Button Styling */
-.top-nav {
-	position: absolute;
-	top: 20px;
-	right: 20px;
-	z-index: 1000;
-}
-.login-btn {
-	text-decoration: none;
-	background-color: #3498db;
-	color: white;
-	padding: 8px 16px;
-	border-radius: 20px;
-	font-weight: bold;
-	font-size: 0.9rem;
-	box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-	transition: background 0.2s;
-}
-        
-.login-btn:hover { 
-	background-color: #2980b9; 
-}
-        
-        /* Mobile adjustment */
-@media (max-width: 600px) {
-    .top-nav { top: 15px; right: 15px; }
-    .login-btn { padding: 6px 12px; font-size: 0.8rem; }
-	}
+	
+
+/* --- NEW HEADER LAYOUT --- */
+        .header-wrapper {
+            position: relative; /* Makes it the reference point for the button */
+            max-width: 1200px;  /* Matches your tables */
+            margin: 30px auto 10px; /* Centers the wrapper */
+            padding: 0 10px;
+            text-align: center; /* Keeps the H1 centered */
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        /* Button Positioning */
+        .login-btn {
+            position: absolute; /* Floats freely inside the wrapper */
+            right: 10px;        /* Sticks to the right edge */
+            top: 50%;           /* Moves down to the middle */
+            transform: translateY(-50%); /* Perfectly centers it vertically */
+            
+            /* Button Style */
+            text-decoration: none;
+            background-color: #3498db;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: background 0.2s;
+        }
+        .login-btn:hover { background-color: #2980b9; }
+
+        /* Mobile: Stack them so they don't overlap */
+        @media (max-width: 600px) {
+            .header-wrapper {
+                display: flex;
+                flex-direction: column; /* Stack items */
+                gap: 10px;
+            }
+            .login-btn {
+                position: static; /* Disable floating */
+                transform: none;
+                align-self: center; /* Center the button */
+            }
+        }
 		
 		
 /* --- Clients Form Styling --- */

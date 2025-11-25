@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Client</title>
+    
+    <link rel="stylesheet" href="../style/style.css">
+    
+    <style>
+        /* Local styles for the form container */
+        body { display: flex; justify-content: center; align-items: flex-start; padding-top: 50px; }
+        .container { 
+            background: white; padding: 40px; border-radius: 10px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); width: 100%; max-width: 500px; 
+        }
+        .home-link { display: block; text-align: center; margin-top: 20px; color: #95a5a6; text-decoration: none;}
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 style="text-align:center; margin-bottom:20px;">👤 Add Customer</h1>
+
+        <form id="clientForm">
+            <div style="margin-bottom:15px;">
+                <label style="font-weight:bold; display:block;">Name (姓名)</label>
+                <input type="text" id="name" required style="width:100%; padding:10px; margin-top:5px; border:1px solid #ddd; border-radius:5px;">
+            </div>
+
+            <div style="margin-bottom:15px;">
+                <label style="font-weight:bold; display:block;">Phone (电话)</label>
+                <input type="tel" id="phone" required style="width:100%; padding:10px; margin-top:5px; border:1px solid #ddd; border-radius:5px;">
+            </div>
+
+            <div style="margin-bottom:25px;">
+                <label style="font-weight:bold; display:block;">Address (地址)</label>
+                <input type="text" id="address" required style="width:100%; padding:10px; margin-top:5px; border:1px solid #ddd; border-radius:5px;">
+            </div>
+
+            <button type="submit" style="width:100%; padding:12px; background:#27ae60; color:white; border:none; border-radius:5px; font-weight:bold; cursor:pointer;">
+                Save Client
+            </button>
+        </form>
+
+        <a href="../index.html" class="home-link">← Back to Dashboard</a>
+    </div>
+
+    <script>
+        document.getElementById('clientForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Stop page from reloading
+            
+            const name = document.getElementById('name').value;
+            
+            // SIMULATION: Since we have no backend, we just alert the user.
+            alert("⚠️ NOTE: Since you are not using Flask/Python, this data cannot be saved to MongoDB yet.\n\nData Entered:\nName: " + name);
+            
+            // Optional: Clear form
+            e.target.reset();
+        });
+    </script>
+
+</body>
+</html>

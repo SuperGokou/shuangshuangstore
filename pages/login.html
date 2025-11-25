@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - 管理员登陆</title>
+    
+    <link rel="stylesheet" href="../style/style.css">
+    
+    <style>
+        /* Specific styles for the Login Box to center it nicely */
+        body { 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            background-color: #f4f6f8; 
+            margin: 0;
+        }
+        
+        .login-container {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            width: 90%;
+            max-width: 350px;
+            text-align: center;
+        }
+
+        h1 { color: #2c3e50; margin-bottom: 20px; font-size: 1.5rem; }
+        
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box; /* Keeps padding inside width */
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        button:hover { background-color: #2980b9; }
+
+        .back-link {
+            display: block;
+            margin-top: 15px;
+            color: #95a5a6;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h1>🔐 Admin Login</h1>
+        
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Name (姓名)" required>
+            
+            <input type="password" id="password" placeholder="Password (密码)" required>
+            
+            <button type="submit">Login / 登陆</button>
+        </form>
+
+        <a href="../index.html" class="back-link">← Back to Home</a>
+    </div>
+
+<script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Stop page from reloading
+            
+            // Get the values typed by the user
+            const name = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+
+            // Check against your specific credentials
+            if(name === 'shuangshuang' && pass === 'Xmz131366') {
+                // Success! Go to Clients Page
+                window.location.href = 'clients.html';
+            } else {
+                // Failure
+                alert("❌ Incorrect Username or Password.\n(用户名或密码错误)");
+                
+                // Optional: Clear the password field
+                document.getElementById('password').value = '';
+            }
+        });
+    </script>
+
+</body>
+</html>
