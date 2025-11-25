@@ -132,72 +132,90 @@
                 items.forEach((item, index) => {
                     const row = document.createElement('tr');
                     
-                    // Create a unique ID for the status cell so we can update it later
+                    // 1. Create a unique ID for the status cell
                     const statusCellId = `status-cell-${index}`;
 
-                    const details = item['内件明细'] || '-';
-                    const weight = item['实际重量'] || '-';
-                    
-                    // Construct the full Tracking URL
-                    // URL Format: https://www.junanex.com/tracking?code={tracking_number}&mobile={phone}
+                    // 2. Build the live URL
                     const liveUrl = `https://www.junanex.com/tracking?code=${item.tracking_number}&mobile=${item.phone}`;
 
-                    // --- LINK LOGIC ---
-                    let trackingDisplay = `<a href="${liveUrl}" target="_blank" style="text-decoration:none; color:#3498db; border-bottom:1px dotted #3498db;">${item.tracking_number}</a>`;
+                    // 3. Link Logic
+                    const trackingDisplay = `<a href="${liveUrl}" target="_blank" style="text-decoration:none; color:#3498db; border-bottom:1px dotted #3498db;">${item.tracking_number}</a>`;
 
                     row.innerHTML = `
                         <td class="tracking-code">${trackingDisplay}</td>
                         <td>${item.recipient}</td>
-                        <td style="color:#2980b9;">${details}</td>
-                        <td>${weight}</td>
+                        <td style="color:#2980b9;">${item['内件明细'] || '-'}</td>
+                        <td>${item['实际重量'] || '-'}</td>
                         <td id="${statusCellId}">
-                            ${item.status} <span style="font-size:0.8em; color:#999;">(Checking...)</span>
+                            ${item.status} <span style="font-size:0.8em; color:#999;">(Updating...)</span>
                         </td>
                         <td>${item.phone}</td>
                         <td style="font-size:0.8em; color:#666;">${item.address}</td>
                     `;
                     tbody.appendChild(row);
 
-                    // --- TRIGGER LIVE UPDATE ---
+                    // 4. Trigger Live Update
                     fetchLiveStatus(liveUrl, statusCellId);
                 });
             })
             .catch(err => console.error("Shipping Error:", err));
 
-        // --- HELPER: FETCH LIVE STATUS ---
+        // --- HELPER: FETCH LIVE STATUS FROM JUNANEX ---
         async function fetchLiveStatus(targetUrl, cellId) {
-            // We use 'allorigins' as a proxy to bypass CORS (Cross-Origin Resource Sharing) blocks
+            // Use a CORS proxy to read the external site
             const proxyUrl = 'https://api.allorigins.win/get?url=' + encodeURIComponent(targetUrl);
             const cell = document.getElementById(cellId);
 
             try {
                 const response = await fetch(proxyUrl);
-                const data = await response.json(); // The proxy returns JSON containing the HTML string
+                const data = await response.json();
                 
                 if (data.contents) {
-                    // Parse the HTML returned from JunAn
                     const parser = new DOMParser();
                     const doc = parser.parseFromString(data.contents, "text/html");
 
-                    // ⚠️ IMPORTANT: You must find the correct CSS selector on junanex.com
-                    // Right-click the status on their site, choose "Inspect", and find the class name.
-                    // This is a common guess for tracking sites:
-                    const statusElement = doc.querySelector('.track-list li:first-child') || 
-                                          doc.querySelector('.latest-status') ||
-                                          doc.querySelector('table tr:nth-child(2) td:last-child'); 
-
-                    if (statusElement) {
-                        // Clean up the text
-                        const cleanText = statusElement.innerText.replace(/\s+/g, ' ').trim();
-                        cell.innerHTML = `<span style="color:#27ae60; font-weight:bold;">${cleanText.substring(0, 20)}...</span>`;
+                    // --- FIND THE CORRECT TABLE ---
+                    // We look for any table header (th) containing "详细描述"
+                    const headers = Array.from(doc.querySelectorAll('th'));
+                    const targetHeader = headers.find(th => th.innerText.includes('详细描述'));
+                    
+                    if (targetHeader) {
+                        // Find the table that contains this header
+                        const table = targetHeader.closest('table');
+                        // Get the first row in the body (usually the latest status)
+                        // Note: Some tables use <thead> and <tbody>, some just <tr>. 
+                        // We try to find the first row that is NOT the header row.
+                        const rows = table.querySelectorAll('tr');
+                        
+                        // We start checking from the 2nd row (index 1) to skip the header
+                        let latestRow = rows[1]; 
+                        
+                        if (latestRow) {
+                            const cols = latestRow.querySelectorAll('td');
+                            // The description is usually in the 3rd column (index 2), based on your page structure
+                            // | Icon | Date | Description |
+                            if (cols.length >= 3) {
+                                const statusText = cols[2].innerText.trim();
+                                const dateText = cols[1].innerText.trim();
+                                
+                                cell.innerHTML = `
+                                    <div style="color:#27ae60; font-weight:bold;">${statusText}</div>
+                                    <div style="font-size:0.75em; color:#888;">${dateText}</div>
+                                `;
+                            } else {
+                                cell.innerHTML = `<span style="color:#e67e22">Format Mismatch</span>`;
+                            }
+                        } else {
+                            cell.innerHTML = `<span style="color:#7f8c8d">No History</span>`;
+                        }
                     } else {
-                        // If we can't find the element, just leave the link
-                        cell.innerHTML = `<a href="${targetUrl}" target="_blank">Click to Check</a>`;
+                        // Fallback if table not found
+                        cell.innerHTML = `<a href="${targetUrl}" target="_blank">Check Link</a>`;
                     }
                 }
             } catch (error) {
                 console.error("Live fetch failed:", error);
-                cell.innerText = "Update Failed";
+                cell.innerText = "Load Failed";
             }
         }
 
