@@ -119,7 +119,6 @@
             });
 
         // --- 2. FETCH SHIPPING (Jun An) ---
-// --- 2. FETCH SHIPPING (Jun An) with LIVE UPDATE ---
         fetch('data/shipping.json')
             .then(res => res.ok ? res.json() : [])
             .then(items => {
@@ -128,90 +127,31 @@
                     tbody.innerHTML = '<tr><td colspan="7" style="text-align:center">No shipping data found.</td></tr>';
                     return;
                 }
-                
-                items.forEach((item, index) => {
+                items.forEach(item => {
                     const row = document.createElement('tr');
                     
-                    // 1. Create a unique ID for the status cell
-                    const statusCellId = `status-cell-${index}`;
+                    const details = item['内件明细'] || '-';
+                    const weight = item['实际重量'] || '-';
 
-                    // 2. Build the live URL
-                    const liveUrl = `https://www.junanex.com/tracking?code=${item.tracking_number}&mobile=${item.phone}`;
-
-                    // 3. Link Logic
-                    const trackingDisplay = `<a href="${liveUrl}" target="_blank" style="text-decoration:none; color:#3498db; border-bottom:1px dotted #3498db;">${item.tracking_number}</a>`;
+                    // --- LINK LOGIC ---
+                    let trackingDisplay = item.tracking_number;
+                    if (item.tracking_url) {
+                        trackingDisplay = `<a href="${item.tracking_url}" target="_blank" style="text-decoration:none; color:#3498db; border-bottom:1px dotted #3498db;">${item.tracking_number}</a>`;
+                    }
 
                     row.innerHTML = `
                         <td class="tracking-code">${trackingDisplay}</td>
                         <td>${item.recipient}</td>
-                        <td style="color:#2980b9;">${item['内件明细'] || '-'}</td>
-                        <td>${item['实际重量'] || '-'}</td>
-                        <td id="${statusCellId}">
-                            ${item.status} <span style="font-size:0.8em; color:#999;">(Updating...)</span>
-                        </td>
+                        <td style="color:#2980b9;">${details}</td>
+                        <td>${weight}</td>
+                        <td>${item.status}</td>
                         <td>${item.phone}</td>
                         <td style="font-size:0.8em; color:#666;">${item.address}</td>
                     `;
                     tbody.appendChild(row);
-
-                    // 4. Trigger Live Update
-                    fetchLiveStatus(liveUrl, statusCellId);
                 });
             })
             .catch(err => console.error("Shipping Error:", err));
-
-        // --- HELPER: FETCH LIVE STATUS FROM JUNANEX ---
-		// --- HELPER: FETCH LIVE STATUS (Structure Based) ---
-        async function fetchLiveStatus(targetUrl, cellId) {
-            // Using a different proxy 'corsproxy.io' which handles redirects better, 
-            // OR fallback to 'allorigins' if that fails.
-            const proxyUrl = 'https://api.allorigins.win/get?url=' + encodeURIComponent(targetUrl);
-            const cell = document.getElementById(cellId);
-
-            try {
-                const response = await fetch(proxyUrl);
-                const data = await response.json();
-                
-                if (!data.contents) throw new Error("Empty proxy response");
-
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(data.contents, "text/html");
-
-                // METHOD: Find the first row <tr> that has exactly 3 columns <td>
-                // The JunAn table structure is usually: [Icon] [Time] [Description]
-                const rows = Array.from(doc.querySelectorAll('tr'));
-                
-                let foundStatus = false;
-
-                for (let row of rows) {
-                    const cols = row.querySelectorAll('td');
-                    // We check if it has 3 columns AND the second column contains a year (2024/2025) to be safe
-                    if (cols.length === 3 && cols[1].innerText.includes('20')) {
-                        const statusText = cols[2].innerText.trim(); // The description
-                        const dateText = cols[1].innerText.trim();   // The date
-
-                        if (statusText) {
-                            cell.innerHTML = `
-                                <div style="color:#27ae60; font-weight:bold; font-size:0.9em;">${statusText}</div>
-                                <div style="font-size:0.7em; color:#888;">${dateText}</div>
-                            `;
-                            foundStatus = true;
-                            break; // Stop after finding the first (latest) valid row
-                        }
-                    }
-                }
-
-                if (!foundStatus) {
-                    // Debug: Log what we actually got to the console
-                    console.log(`Failed to parse ${targetUrl}. Content length: ${data.contents.length}`);
-                    cell.innerHTML = `<a href="${targetUrl}" target="_blank" style="color:#e67e22">Check Manually</a>`;
-                }
-
-            } catch (error) {
-                console.error("Live fetch error:", error);
-                cell.innerHTML = `<a href="${targetUrl}" target="_blank" style="color:#c0392b">Network Fail</a>`;
-            }
-        }
 
         // --- 3. FETCH ORDERS (Incoming) ---
         fetch('data/orders.json')

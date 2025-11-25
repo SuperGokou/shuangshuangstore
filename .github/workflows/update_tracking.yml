@@ -1,0 +1,39 @@
+name: Update Tracking Status
+
+on:
+  schedule:
+    # Runs every 6 hours (adjust as needed)
+    - cron: '0 */6 * * *'
+  workflow_dispatch: # Allows you to run it manually from the Actions tab
+
+jobs:
+  scrape-and-update:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write  # Critical: allows the bot to commit changes
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run tracking script
+        run: |
+          python update_shipping.py
+
+      - name: Commit and Push if changed
+        run: |
+          git config --global user.name 'Ming Xia'
+          git config --global user.email 'githubming@hotmail.com'
+          git add data/shipping.json
+          # Only commit if there are changes
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update tracking status" && git push)
