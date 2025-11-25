@@ -16,8 +16,8 @@
     <div class="subtitle">
         <span class="live-dot"></span> Live Stock Status
     </div>    
-    <div id="inventory-container" class="gallery">
-        <p style="text-align:center; grid-column: 1/-1;">Loading products...</p>
+    <div id="inventory-container" class="gallery-scroll">
+        <p style="text-align:center; width:100%;">Loading products...</p>
     </div>
 
     <div class="orders-section">
@@ -34,15 +34,32 @@
                         <th>预计 (Est. Date)</th>
                     </tr>
                 </thead>
-                <tbody id="order-body">
-                    </tbody>
+                <tbody id="order-body"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="orders-section">
+        <h2>✈️ 君安快递追踪 (Jun An Shipping)</h2>
+        <div class="table-wrapper">
+            <table id="shipping-table">
+                <thead>
+                    <tr>
+                        <th>运单号 (Tracking #)</th>
+                        <th>收件人 (Recipient)</th>
+                        <th>状态 (Status)</th>
+                        <th>电话 (Phone)</th>
+                        <th>地址 (Address)</th>
+                    </tr>
+                </thead>
+                <tbody id="shipping-body"></tbody>
             </table>
         </div>
     </div>
     
-<script>
-        // --- 1. FETCH PRODUCTS ---
-        fetch('json/products.json')
+    <script>
+        // --- 1. FETCH PRODUCTS (From 'data/' folder) ---
+        fetch('data/products.json')
             .then(res => {
                 if (!res.ok) throw new Error("File not found");
                 return res.json();
@@ -94,40 +111,30 @@
             })
             .catch(err => {
                 console.error("Product Error:", err);
-                // Shows error on screen so you aren't stuck on "Loading..."
                 document.getElementById('inventory-container').innerHTML = 
-                '<p style="text-align:center; color:red;">⚠️ Error loading products.json (Check syntax)</p>';
+                '<p style="text-align:center; color:red;">⚠️ Error loading data/products.json</p>';
             });
 
-        // --- 2. FETCH ORDERS ---
-        fetch('json/orders.json')
+        // --- 2. FETCH ORDERS (From 'data/' folder) ---
+        fetch('data/orders.json')
             .then(res => res.ok ? res.json() : [])
             .then(orders => {
                 const tbody = document.getElementById('order-body');
-                
                 if(orders.length === 0) {
                     tbody.innerHTML = '<tr><td colspan="6" style="text-align:center">No orders found.</td></tr>';
                     return;
                 }
-
                 orders.forEach(order => {
                     const row = document.createElement('tr');
                     
-                    // --- NEW BADGE STYLE LOGIC ---
-                    // Base style for the badge
                     let badgeStyle = 'padding: 4px 8px; border-radius: 12px; font-size: 0.85em; font-weight: bold; display: inline-block;';
-                    
                     if (order.status === 'Fulfilled' || order.status === 'Shipped') {
-                        // Green Badge
                         badgeStyle += 'background-color: #d4edda; color: #155724;'; 
                     } else if (order.status === 'Partial') {
-                        // Blue Badge (Distinct!)
                         badgeStyle += 'background-color: #cce5ff; color: #004085;'; 
                     } else {
-                        // Orange/Yellow Badge (Awaiting)
                         badgeStyle += 'background-color: #fff3cd; color: #856404;';
                     }
-                    
                     const signedStyle = (order.signed && order.signed.includes('否')) ? 'color:#c0392b; font-weight:bold;' : 'color:#27ae60;';
 
                     row.innerHTML = `
@@ -142,6 +149,29 @@
                 });
             })
             .catch(err => console.error("Order Error:", err));
+
+        // --- 3. FETCH SHIPPING (New Section) ---
+        fetch('data/shipping.json')
+            .then(res => res.ok ? res.json() : [])
+            .then(items => {
+                const tbody = document.getElementById('shipping-body');
+                if(items.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="5" style="text-align:center">No shipping data found.</td></tr>';
+                    return;
+                }
+                items.forEach(item => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td class="tracking-code">${item.tracking_number}</td>
+                        <td>${item.recipient}</td>
+                        <td>${item.status}</td>
+                        <td>${item.phone}</td>
+                        <td>${item.address}</td>
+                    `;
+                    tbody.appendChild(row);
+                });
+            })
+            .catch(err => console.error("Shipping Error:", err));
     </script>
     
 </body>

@@ -1,4 +1,4 @@
-/* --- style.css (Clean Version) --- */
+/* --- style.css --- */
 
 /* 1. General Page Styling */
 body {
@@ -18,27 +18,30 @@ h1 {
 .subtitle {
     text-align: center;
     color: #666;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     font-size: 0.9rem;
-    
-    /* Center the flex items (dot and text) */
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/* 2. Grid Layout */
-.gallery {
-    display: grid;
-    /* Auto-fit: Creates as many columns as will fit, min width 300px */
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+/* 2. ONE LINE Horizontal Gallery */
+.gallery-scroll {
+    display: flex;
+    overflow-x: auto;      /* Enables horizontal scrolling */
     gap: 25px;
-    max-width: 1200px;
+    padding: 10px 5px 25px 5px; /* Bottom padding for scrollbar */
+    max-width: 1400px;
     margin: 0 auto;
+    
+    /* Smooth scrolling behavior */
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch; 
 }
 
-/* 3. Card Styling */
+/* 3. Card Styling (Fixed width for horizontal layout) */
 .card {
+    flex: 0 0 300px; /* Forces cards to stay 300px wide, won't shrink */
     background: white;
     border-radius: 10px;
     overflow: hidden;
@@ -89,14 +92,6 @@ h3 {
     color: #2c3e50;
 }
 
-.price-tag {
-    color: #d63384;
-    font-weight: bold;
-    font-size: 1.25rem;
-    margin-bottom: 15px;
-    display: block;
-}
-
 /* Inventory Data Table Styling */
 .stock-data {
     background-color: #f8f9fa;
@@ -105,51 +100,36 @@ h3 {
     font-size: 0.85rem;
     color: #555;
     display: grid;
-    grid-template-columns: 1fr auto; /* Label left, Number right */
+    grid-template-columns: 1fr auto; 
     gap: 5px;
 }
 
-.stock-row {
-    display: contents; 
-}
-
+.stock-row { display: contents; }
 .stock-label { font-weight: 600; }
 .stock-value { text-align: right; }
-
 
 /* --- Live Indicator (Green Pulsing Dot) --- */
 .live-dot {
     height: 12px;
     width: 12px;
-    background-color: #2ecc71; /* Bright Green */
+    background-color: #2ecc71;
     border-radius: 50%;
     display: inline-block;
     margin-right: 8px;
-    
-    /* The Pulsing Animation */
     box-shadow: 0 0 0 0 rgba(46, 204, 113, 1);
     animation: pulse-green 2s infinite;
 }
 
 @keyframes pulse-green {
-    0% {
-        transform: scale(0.95);
-        box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7);
-    }
-    70% {
-        transform: scale(1);
-        box-shadow: 0 0 0 6px rgba(46, 204, 113, 0);
-    }
-    100% {
-        transform: scale(0.95);
-        box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
-    }
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(46, 204, 113, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(46, 204, 113, 0); }
 }
 
-/* --- Order Tracking Section --- */
+/* --- SECTIONS (Orders & Shipping) --- */
 .orders-section {
     max-width: 1200px;
-    margin: 60px auto; /* Adds space above the table */
+    margin: 40px auto; 
     padding: 0 20px;
 }
 
@@ -158,12 +138,12 @@ h3 {
     color: #2c3e50;
     margin-bottom: 20px;
     font-size: 1.4rem;
-    border-top: 2px dashed #eee; /* Visual separator */
+    border-top: 2px dashed #eee; 
     padding-top: 40px;
 }
 
 .table-wrapper {
-    overflow-x: auto; /* Allows scrolling on mobile */
+    overflow-x: auto; 
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.06);
     border: 1px solid #eee;
@@ -187,12 +167,10 @@ th, td {
     border-bottom: 1px solid #eee;
 }
 
-/* Zebra Striping */
 tbody tr:nth-of-type(even) {
     background-color: #fafafa;
 }
 
-/* Tracking number font */
 .tracking-code {
     font-family: 'Courier New', Courier, monospace;
     color: #555;
