@@ -97,7 +97,7 @@
                                     <span class="stock-value" style="color:#e67e22;">${usUnsigned}</span>
                                 </div>
                                 <div class="stock-row">
-                                    <span class="stock-label">🇨🇳 发往:</span>
+                                    <span class="stock-label">🚚 发往:</span>
                                     <span class="stock-value">${cnShipped}</span>
                                 </div>
                                 <div style="border-top: 1px solid #ddd; margin-top:2px; padding-top:2px;" class="stock-row">
@@ -156,6 +156,7 @@
                 orders.forEach(order => {
                     const row = document.createElement('tr');
                     
+                    // Badge Styles
                     let badgeStyle = 'padding: 4px 8px; border-radius: 12px; font-size: 0.85em; font-weight: bold; display: inline-block;';
                     if (order.status === 'Fulfilled' || order.status === 'Shipped') {
                         badgeStyle += 'background-color: #d4edda; color: #155724;'; 
@@ -166,11 +167,18 @@
                     }
                     const signedStyle = (order.signed && order.signed.includes('否')) ? 'color:#c0392b; font-weight:bold;' : 'color:#27ae60;';
 
+                    // --- LINK LOGIC ---
+                    // If tracking_url exists, make it a link. Otherwise, just show text.
+                    let trackingDisplay = order.tracking;
+                    if (order.tracking_url && order.tracking !== '-') {
+                        trackingDisplay = `<a href="${order.tracking_url}" target="_blank" style="text-decoration:none; color:#3498db; border-bottom:1px dotted #3498db;">${order.tracking}</a>`;
+                    }
+
                     row.innerHTML = `
                         <td>${order.source}</td>
                         <td>${order.order_id}</td>
                         <td><span style="${badgeStyle}">${order.status}</span></td>
-                        <td class="tracking-code">${order.tracking}</td>
+                        <td class="tracking-code">${trackingDisplay}</td>
                         <td style="${signedStyle}">${order.signed}</td>
                         <td>${order.est_date}</td>
                     `;
