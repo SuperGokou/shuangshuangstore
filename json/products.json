@@ -5,7 +5,9 @@
         "image": "img/Stanley 1913 x LoveShackFancy Holiday All Day Slim Bottle.png",
         "总库存": 2,
         "已发往国内": 0,
-        "美国库存": 2
+        "美国已签收": 2,
+		"美国未签收": 0, 
+		
     },
     {
         "id": 2,
@@ -13,7 +15,8 @@
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher ProTour Ornament Set.png",
         "总库存": 12,
         "已发往国内": 0,
-        "美国库存": 12
+        "美国已签收": 3,
+		"美国未签收": 0, 
     },
 	
 	{
@@ -22,7 +25,8 @@
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler 40 OZ.png",
         "总库存": 1,
         "已发往国内": 0,
-        "美国库存": 1
+        "美国已签收": 0,
+		"美国未签收": 1, 
     },
 	
     {
@@ -31,7 +35,8 @@
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler  40 OZ.png",
         "总库存": 6,
         "已发往国内": 0,
-        "美国库存": 6
+        "美国已签收": 5,
+		"美国未签收": 1, 
     },
     {
         "id": 5,
@@ -39,7 +44,8 @@
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler  30 OZ.png",
         "总库存": 15,
         "已发往国内": 0,
-        "美国库存": 15
+        "美国已签收": 4,
+		"美国未签收": 11, 
     },
     {
         "id": 6,
@@ -47,7 +53,8 @@
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20 OZ.png",
         "总库存": 22,
         "已发往国内": 0,
-        "美国库存": 22
+        "美国已签收": 9,
+		"美国未签收": 13, 
     },
     {
         "id": 7,
@@ -55,6 +62,7 @@
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20OZ.png",
         "总库存": 3,
         "已发往国内": 0,
-        "美国库存": 3
+        "美国已签收": 3,
+		"美国未签收": 0, 
     }
 ]

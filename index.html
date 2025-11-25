@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>觉觉在北美</title>
+    <title>觉觉在北美</title>
     
     <link rel="icon" href="img/icon.png" type="image/png">    
     <link rel="stylesheet" href="css/style.css">
@@ -12,24 +12,38 @@
 <body>
 
     <h1>📦 觉觉在北美(amtfmz)</h1>
-	
-	<div class="subtitle">
+    
+    <div class="subtitle">
         <span class="live-dot"></span> Live Stock Status
     </div>    
     <div id="inventory-container" class="gallery">
         <p style="text-align:center; grid-column: 1/-1;">Loading products...</p>
     </div>
-	
-	<script>
-        const JSON_URL = 'json/products.json';
 
-        fetch(JSON_URL)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                return response.json();
-            })
+    <div class="orders-section">
+        <h2>🚚 采购订单追踪 (Incoming Orders)</h2>
+        <div class="table-wrapper">
+            <table id="order-table">
+                <thead>
+                    <tr>
+                        <th>来源 (Source)</th>
+                        <th>订单号 (Order #)</th>
+                        <th>状态 (Status)</th>
+                        <th>快递单号 (Tracking)</th>
+                        <th>签收? (Signed)</th>
+                        <th>预计 (Est. Date)</th>
+                    </tr>
+                </thead>
+                <tbody id="order-body">
+                    </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <script>
+        // --- 1. FETCH PRODUCTS ---
+        fetch('json/products.json')
+            .then(res => res.ok ? res.json() : [])
             .then(products => {
                 const container = document.getElementById('inventory-container');
                 container.innerHTML = ''; 
@@ -37,15 +51,11 @@
                 products.forEach(product => {
                     const card = document.createElement('div');
                     card.className = 'card';
-                    
                     const safeImagePath = encodeURI(product.image);
 
-                    // I REMOVED THE PRICE SECTION BELOW
                     card.innerHTML = `
                         <div class="image-wrapper">
-                            <img src="${safeImagePath}" 
-                                 alt="${product.name}" 
-                                 loading="lazy"
+                            <img src="${safeImagePath}" alt="${product.name}" loading="lazy"
                                  onerror="this.src='https://via.placeholder.com/300?text=No+Image'">
                         </div>
                         <div class="info">
@@ -53,15 +63,19 @@
                             
                             <div class="stock-data">
                                 <div class="stock-row">
-                                    <span class="stock-label">美国库存:</span>
-                                    <span class="stock-value">${product['美国库存']}</span>
+                                    <span class="stock-label">✅ 美国已签收:</span>
+                                    <span class="stock-value" style="color:green">${product['美国已签收']}</span>
                                 </div>
                                 <div class="stock-row">
-                                    <span class="stock-label">已发往国内:</span>
+                                    <span class="stock-label">⏳ 美国未签收:</span>
+                                    <span class="stock-value" style="color:orange">${product['美国未签收']}</span>
+                                </div>
+                                <div class="stock-row">
+                                    <span class="stock-label">🇨🇳 已发往国内:</span>
                                     <span class="stock-value">${product['已发往国内']}</span>
                                 </div>
                                 <div style="border-top: 1px solid #ddd; margin-top:5px; padding-top:5px;" class="stock-row">
-                                    <span class="stock-label">总库存:</span>
+                                    <span class="stock-label">📦 总库存:</span>
                                     <span class="stock-value"><strong>${product['总库存']}</strong></span>
                                 </div>
                             </div>
@@ -69,18 +83,42 @@
                     `;
                     container.appendChild(card);
                 });
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                const container = document.getElementById('inventory-container');
-                container.innerHTML = `
-                    <div style="grid-column: 1/-1; text-align: center; color: red; padding: 20px;">
-                        <h3>⚠️ Cannot Load Data Locally</h3>
-                        <p>Please upload to GitHub Pages to view.</p>
-                    </div>
-                `;
             });
+
+        // --- 2. FETCH ORDERS ---
+        fetch('json/orders.json')
+            .then(res => res.ok ? res.json() : [])
+            .then(orders => {
+                const tbody = document.getElementById('order-body');
+                
+                if(orders.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center">No orders found. Check json/orders.json</td></tr>';
+                    return;
+                }
+
+                orders.forEach(order => {
+                    const row = document.createElement('tr');
+                    
+                    // Style "Fulfilled" or "Shipped" as green
+                    const isActive = ['Fulfilled', 'Shipped', 'Partial'].includes(order.status);
+                    const statusStyle = isActive ? 'color:#27ae60; font-weight:bold;' : 'color:#e67e22;';
+                    
+                    // Highlight "No" in red for Signed column
+                    const signedStyle = order.signed.includes('否') ? 'color:red; font-weight:bold;' : 'color:green;';
+
+                    row.innerHTML = `
+                        <td>${order.source}</td>
+                        <td>${order.order_id}</td>
+                        <td style="${statusStyle}">${order.status}</td>
+                        <td class="tracking-code">${order.tracking}</td>
+                        <td style="${signedStyle}">${order.signed}</td>
+                        <td>${order.est_date}</td>
+                    `;
+                    tbody.appendChild(row);
+                });
+            })
+            .catch(err => console.error("Error loading orders:", err));
     </script>
-	
+    
 </body>
 </html>

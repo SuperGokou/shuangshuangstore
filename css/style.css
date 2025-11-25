@@ -145,3 +145,56 @@ h3 {
         box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
     }
 }
+
+/* --- Order Tracking Section --- */
+.orders-section {
+    max-width: 1200px;
+    margin: 60px auto; /* Adds space above the table */
+    padding: 0 20px;
+}
+
+.orders-section h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+    border-top: 2px dashed #eee; /* Visual separator */
+    padding-top: 40px;
+}
+
+.table-wrapper {
+    overflow-x: auto; /* Allows scrolling on mobile */
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    border: 1px solid #eee;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    font-size: 0.85rem;
+}
+
+thead {
+    background-color: #f1f2f6;
+    color: #333;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+/* Zebra Striping */
+tbody tr:nth-of-type(even) {
+    background-color: #fafafa;
+}
+
+/* Tracking number font */
+.tracking-code {
+    font-family: 'Courier New', Courier, monospace;
+    color: #555;
+    font-weight: 600;
+}
