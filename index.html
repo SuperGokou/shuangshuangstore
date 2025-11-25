@@ -40,7 +40,7 @@
         </div>
     </div>
     
-    <script>
+<script>
         // --- 1. FETCH PRODUCTS ---
         fetch('json/products.json')
             .then(res => {
@@ -56,7 +56,7 @@
                     card.className = 'card';
                     const safeImagePath = encodeURI(product.image);
 
-                    // We use || 0 to safely handle if data is missing, preventing 'undefined'
+                    // Safe checks for data
                     const usSigned = product['美国已签收'] !== undefined ? product['美国已签收'] : 0;
                     const usUnsigned = product['美国未签收'] !== undefined ? product['美国未签收'] : 0;
                     const cnShipped = product['已发往国内'] || 0;
@@ -69,7 +69,6 @@
                         </div>
                         <div class="info">
                             <h3>${product.name}</h3>
-                            
                             <div class="stock-data">
                                 <div class="stock-row">
                                     <span class="stock-label">✅ 美国已签收:</span>
@@ -93,7 +92,12 @@
                     container.appendChild(card);
                 });
             })
-            .catch(err => console.error("Product Error:", err));
+            .catch(err => {
+                console.error("Product Error:", err);
+                // Shows error on screen so you aren't stuck on "Loading..."
+                document.getElementById('inventory-container').innerHTML = 
+                '<p style="text-align:center; color:red;">⚠️ Error loading products.json (Check syntax)</p>';
+            });
 
         // --- 2. FETCH ORDERS ---
         fetch('json/orders.json')
@@ -102,29 +106,34 @@
                 const tbody = document.getElementById('order-body');
                 
                 if(orders.length === 0) {
-                    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center">No orders found. Check json/orders.json</td></tr>';
+                    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center">No orders found.</td></tr>';
                     return;
                 }
 
                 orders.forEach(order => {
                     const row = document.createElement('tr');
                     
-                    // --- COLOR LOGIC FOR STATUS ---
-                    let statusStyle = 'color:#e67e22;'; // Default Orange (Awaiting/Other)
+                    // --- NEW BADGE STYLE LOGIC ---
+                    // Base style for the badge
+                    let badgeStyle = 'padding: 4px 8px; border-radius: 12px; font-size: 0.85em; font-weight: bold; display: inline-block;';
                     
                     if (order.status === 'Fulfilled' || order.status === 'Shipped') {
-                        statusStyle = 'color:#27ae60; font-weight:bold;'; // Green
+                        // Green Badge
+                        badgeStyle += 'background-color: #d4edda; color: #155724;'; 
                     } else if (order.status === 'Partial') {
-                        statusStyle = 'color:#2980b9; font-weight:bold;'; // Blue (Distinct!)
+                        // Blue Badge (Distinct!)
+                        badgeStyle += 'background-color: #cce5ff; color: #004085;'; 
+                    } else {
+                        // Orange/Yellow Badge (Awaiting)
+                        badgeStyle += 'background-color: #fff3cd; color: #856404;';
                     }
                     
-                    // Highlight "No" in red for Signed column
                     const signedStyle = (order.signed && order.signed.includes('否')) ? 'color:#c0392b; font-weight:bold;' : 'color:#27ae60;';
 
                     row.innerHTML = `
                         <td>${order.source}</td>
                         <td>${order.order_id}</td>
-                        <td style="${statusStyle}">${order.status}</td>
+                        <td><span style="${badgeStyle}">${order.status}</span></td>
                         <td class="tracking-code">${order.tracking}</td>
                         <td style="${signedStyle}">${order.signed}</td>
                         <td>${order.est_date}</td>
