@@ -119,6 +119,7 @@
             });
 
         // --- 2. FETCH SHIPPING (Jun An) ---
+// --- 2. FETCH SHIPPING (Jun An) with LIVE UPDATE ---
         fetch('data/shipping.json')
             .then(res => res.ok ? res.json() : [])
             .then(items => {
@@ -127,31 +128,78 @@
                     tbody.innerHTML = '<tr><td colspan="7" style="text-align:center">No shipping data found.</td></tr>';
                     return;
                 }
-                items.forEach(item => {
+                
+                items.forEach((item, index) => {
                     const row = document.createElement('tr');
                     
+                    // Create a unique ID for the status cell so we can update it later
+                    const statusCellId = `status-cell-${index}`;
+
                     const details = item['内件明细'] || '-';
                     const weight = item['实际重量'] || '-';
+                    
+                    // Construct the full Tracking URL
+                    // URL Format: https://www.junanex.com/tracking?code={tracking_number}&mobile={phone}
+                    const liveUrl = `https://www.junanex.com/tracking?code=${item.tracking_number}&mobile=${item.phone}`;
 
                     // --- LINK LOGIC ---
-                    let trackingDisplay = item.tracking_number;
-                    if (item.tracking_url) {
-                        trackingDisplay = `<a href="${item.tracking_url}" target="_blank" style="text-decoration:none; color:#3498db; border-bottom:1px dotted #3498db;">${item.tracking_number}</a>`;
-                    }
+                    let trackingDisplay = `<a href="${liveUrl}" target="_blank" style="text-decoration:none; color:#3498db; border-bottom:1px dotted #3498db;">${item.tracking_number}</a>`;
 
                     row.innerHTML = `
                         <td class="tracking-code">${trackingDisplay}</td>
                         <td>${item.recipient}</td>
                         <td style="color:#2980b9;">${details}</td>
                         <td>${weight}</td>
-                        <td>${item.status}</td>
+                        <td id="${statusCellId}">
+                            ${item.status} <span style="font-size:0.8em; color:#999;">(Checking...)</span>
+                        </td>
                         <td>${item.phone}</td>
                         <td style="font-size:0.8em; color:#666;">${item.address}</td>
                     `;
                     tbody.appendChild(row);
+
+                    // --- TRIGGER LIVE UPDATE ---
+                    fetchLiveStatus(liveUrl, statusCellId);
                 });
             })
             .catch(err => console.error("Shipping Error:", err));
+
+        // --- HELPER: FETCH LIVE STATUS ---
+        async function fetchLiveStatus(targetUrl, cellId) {
+            // We use 'allorigins' as a proxy to bypass CORS (Cross-Origin Resource Sharing) blocks
+            const proxyUrl = 'https://api.allorigins.win/get?url=' + encodeURIComponent(targetUrl);
+            const cell = document.getElementById(cellId);
+
+            try {
+                const response = await fetch(proxyUrl);
+                const data = await response.json(); // The proxy returns JSON containing the HTML string
+                
+                if (data.contents) {
+                    // Parse the HTML returned from JunAn
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(data.contents, "text/html");
+
+                    // ⚠️ IMPORTANT: You must find the correct CSS selector on junanex.com
+                    // Right-click the status on their site, choose "Inspect", and find the class name.
+                    // This is a common guess for tracking sites:
+                    const statusElement = doc.querySelector('.track-list li:first-child') || 
+                                          doc.querySelector('.latest-status') ||
+                                          doc.querySelector('table tr:nth-child(2) td:last-child'); 
+
+                    if (statusElement) {
+                        // Clean up the text
+                        const cleanText = statusElement.innerText.replace(/\s+/g, ' ').trim();
+                        cell.innerHTML = `<span style="color:#27ae60; font-weight:bold;">${cleanText.substring(0, 20)}...</span>`;
+                    } else {
+                        // If we can't find the element, just leave the link
+                        cell.innerHTML = `<a href="${targetUrl}" target="_blank">Click to Check</a>`;
+                    }
+                }
+            } catch (error) {
+                console.error("Live fetch failed:", error);
+                cell.innerText = "Update Failed";
+            }
+        }
 
         // --- 3. FETCH ORDERS (Incoming) ---
         fetch('data/orders.json')
