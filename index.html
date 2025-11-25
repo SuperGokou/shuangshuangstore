@@ -43,7 +43,10 @@
     <script>
         // --- 1. FETCH PRODUCTS ---
         fetch('json/products.json')
-            .then(res => res.ok ? res.json() : [])
+            .then(res => {
+                if (!res.ok) throw new Error("File not found");
+                return res.json();
+            })
             .then(products => {
                 const container = document.getElementById('inventory-container');
                 container.innerHTML = ''; 
@@ -52,6 +55,12 @@
                     const card = document.createElement('div');
                     card.className = 'card';
                     const safeImagePath = encodeURI(product.image);
+
+                    // We use || 0 to safely handle if data is missing, preventing 'undefined'
+                    const usSigned = product['美国已签收'] !== undefined ? product['美国已签收'] : 0;
+                    const usUnsigned = product['美国未签收'] !== undefined ? product['美国未签收'] : 0;
+                    const cnShipped = product['已发往国内'] || 0;
+                    const totalStock = product['总库存'] || 0;
 
                     card.innerHTML = `
                         <div class="image-wrapper">
@@ -64,26 +73,27 @@
                             <div class="stock-data">
                                 <div class="stock-row">
                                     <span class="stock-label">✅ 美国已签收:</span>
-                                    <span class="stock-value" style="color:green">${product['美国已签收']}</span>
+                                    <span class="stock-value" style="color:#27ae60; font-weight:bold;">${usSigned}</span>
                                 </div>
                                 <div class="stock-row">
                                     <span class="stock-label">⏳ 美国未签收:</span>
-                                    <span class="stock-value" style="color:orange">${product['美国未签收']}</span>
+                                    <span class="stock-value" style="color:#e67e22; font-weight:bold;">${usUnsigned}</span>
                                 </div>
                                 <div class="stock-row">
                                     <span class="stock-label">🇨🇳 已发往国内:</span>
-                                    <span class="stock-value">${product['已发往国内']}</span>
+                                    <span class="stock-value">${cnShipped}</span>
                                 </div>
                                 <div style="border-top: 1px solid #ddd; margin-top:5px; padding-top:5px;" class="stock-row">
                                     <span class="stock-label">📦 总库存:</span>
-                                    <span class="stock-value"><strong>${product['总库存']}</strong></span>
+                                    <span class="stock-value"><strong>${totalStock}</strong></span>
                                 </div>
                             </div>
                         </div>
                     `;
                     container.appendChild(card);
                 });
-            });
+            })
+            .catch(err => console.error("Product Error:", err));
 
         // --- 2. FETCH ORDERS ---
         fetch('json/orders.json')
@@ -99,12 +109,17 @@
                 orders.forEach(order => {
                     const row = document.createElement('tr');
                     
-                    // Style "Fulfilled" or "Shipped" as green
-                    const isActive = ['Fulfilled', 'Shipped', 'Partial'].includes(order.status);
-                    const statusStyle = isActive ? 'color:#27ae60; font-weight:bold;' : 'color:#e67e22;';
+                    // --- COLOR LOGIC FOR STATUS ---
+                    let statusStyle = 'color:#e67e22;'; // Default Orange (Awaiting/Other)
+                    
+                    if (order.status === 'Fulfilled' || order.status === 'Shipped') {
+                        statusStyle = 'color:#27ae60; font-weight:bold;'; // Green
+                    } else if (order.status === 'Partial') {
+                        statusStyle = 'color:#2980b9; font-weight:bold;'; // Blue (Distinct!)
+                    }
                     
                     // Highlight "No" in red for Signed column
-                    const signedStyle = order.signed.includes('否') ? 'color:red; font-weight:bold;' : 'color:green;';
+                    const signedStyle = (order.signed && order.signed.includes('否')) ? 'color:#c0392b; font-weight:bold;' : 'color:#27ae60;';
 
                     row.innerHTML = `
                         <td>${order.source}</td>
@@ -117,7 +132,7 @@
                     tbody.appendChild(row);
                 });
             })
-            .catch(err => console.error("Error loading orders:", err));
+            .catch(err => console.error("Order Error:", err));
     </script>
     
 </body>
