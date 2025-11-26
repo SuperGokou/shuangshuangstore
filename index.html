@@ -80,10 +80,11 @@
                     const safeImagePath = encodeURI(product.image);
 
                     // UPDATED KEYS HERE
-                    const usSigned = product.us_signed || 0;
-                    const usUnsigned = product.us_unsigned || 0;
-                    const cnShipped = product.cn_shipped || 0;
-                    const totalStock = product.total_stock || 0;
+                    // match the keys exactly as they appear in products.json
+                    const usSigned = product['美国已签收'] !== undefined ? product['美国已签收'] : 0;
+                    const usUnsigned = product['美国未签收'] !== undefined ? product['美国未签收'] : 0;
+                    const cnShipped = product['已发往国内'] || 0;
+                    const totalStock = product['总库存'] || 0;
 
                     card.innerHTML = `
                         <div class="image-wrapper">
