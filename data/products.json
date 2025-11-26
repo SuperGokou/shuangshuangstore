@@ -65,8 +65,8 @@
     },
     {
         "id": 9,
-        "name": "LoveShackFancy Holiday All Day Slim Bottle",
-        "image": "img/Stanley 1913 x LoveShackFancy Holiday All Day Slim Bottle.png",
+        "name": "Stanley 1913 x LoveShackFancy Holiday Reserve All Day Wine Set",
+        "image": "img/Stanley 1913 x LoveShackFancy Holiday Reserve All Day Wine Set.png",
         "total_stock": 1,
         "us_signed": 0,
         "us_unsigned": 1
@@ -75,9 +75,9 @@
         "id": 10,
         "name": "LoveShackFancy Holiday Everyday Camp Mug Set",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Everyday Camp Mug Set.png",
-        "total_stock": 2,
+        "total_stock": 1,
         "us_signed": 0,
-        "us_unsigned": 2
+        "us_unsigned": 1
     },
     {
         "id": 11,
@@ -104,7 +104,7 @@
         "us_unsigned": 2
     },
     {
-        "id": 13,
+        "id": 14,
         "name": "All Day Slim Bottle | 34 OZ Cream",
         "image": "img/All Day Slim Bottle 34 OZ Cream.png",
         "total_stock": 2,
@@ -112,7 +112,7 @@
         "us_unsigned": 2
     },
     {
-        "id": 14,
+        "id": 15,
         "name": "All Day Slim Bottle | 34 OZ Rose Quartz",
         "image": "img/All Day Slim Bottle 34 OZ Rose Quartz.png",
         "total_stock": 2,
@@ -120,7 +120,7 @@
         "us_unsigned": 2
     },
     {
-        "id": 15,
+        "id": 16,
         "name": "The IceFlow™ Flip Straw Tumbler",
         "image": "img/The IceFlow™ Flip Straw Tumbler Ash.png",
         "total_stock": 1,
@@ -128,7 +128,7 @@
         "us_unsigned": 1
     },
     {
-        "id": 16,
+        "id": 17,
         "name": "The IceFlow™ Flip Straw Tumbler",
         "image": "img/The IceFlow™ Flip Straw Tumbler Frost.png",
         "total_stock": 2,
@@ -136,7 +136,7 @@
         "us_unsigned": 2
     },
     {
-        "id": 17,
+        "id": 18,
         "name": "The IceFlow™ Flip Straw Tumbler 30 OZ Frost",
         "image": "img/The Quencher H2.0 Flowstate™ Tumbler 30 OZ Frost.png",
         "total_stock": 1,
@@ -144,7 +144,7 @@
         "us_unsigned": 1
     },
     {
-        "id": 18,
+        "id": 19,
         "name": "The IceFlow™ Flip Straw Tumbler 30 OZ Rose Quartz",
         "image": "img/The Quencher H2.0 Flowstate™ Tumbler 30 OZ Rose Quartz.png",
         "total_stock": 1,
