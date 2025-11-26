@@ -1,27 +1,66 @@
-# update_shipping.py
 import json
 import requests
-from bs4 import BeautifulSoup
 import time
 import os
 
 # Define file path
 JSON_FILE = 'data/shipping.json'
 
+def scrape_junan_status(tracking_number, phone_number):
+    url = "https://www.junanex.com/tracking"
+    payload = {
+        't': 'query_code',
+        'code': tracking_number,
+        'mobile': phone_number
+    }
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+        'X-Requested-With': 'XMLHttpRequest'
+    }
+
+    try:
+        # Use POST to talk to the API
+        response = requests.post(url, data=payload, headers=headers, timeout=10)
+
+        if response.status_code == 200:
+            data = response.json()
+            # Check if the API returned success
+            if data.get('success'):
+                history_list = data.get('message', [])
+                if history_list:
+                    # Logic from your snippet: take the latest entry
+                    latest_entry = history_list[0]
+                    
+                    # Your logic: Get the last key (latest status)
+                    # Note: Depending on JunAn's structure, we might need the value or the key.
+                    # Assuming your snippet is correct and the status is the key.
+                    if isinstance(latest_entry, dict):
+                        keys = list(latest_entry.keys())
+                        if keys:
+                            return keys[-1] # Returns the status text
+                    
+                    # Fallback if entry is just a string or different format
+                    return str(latest_entry)
+
+            return "Check Website (No Data)"
+        return f"Connection Failed ({response.status_code})"
+    
+    except Exception as e:
+        print(f"Scraper Error for {tracking_number}: {e}")
+        return "Update Failed"
+
 def update_tracking():
     if not os.path.exists(JSON_FILE):
         print(f"Error: {JSON_FILE} not found.")
         return
 
+    # 1. Read the current JSON
     with open(JSON_FILE, 'r', encoding='utf-8') as f:
         data = json.load(f)
 
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
-    }
-
     print(f"Checking {len(data)} items...")
 
+    # 2. Loop through and update
     for item in data:
         tracking_code = item.get('tracking_number')
         phone = item.get('phone')
@@ -30,38 +69,22 @@ def update_tracking():
         if not tracking_code or not phone:
             continue
 
-        url = f"https://www.junanex.com/tracking?code={tracking_code}&mobile={phone}"
+        print(f"Checking {tracking_code}...")
         
-        try:
-            r = requests.get(url, headers=headers, timeout=10)
-            if r.status_code == 200:
-                soup = BeautifulSoup(r.content, 'html.parser')
-                rows = soup.find_all('tr')
-                
-                # Logic: Find the first row with 3 columns (Date | Status | Location/Details)
-                for row in rows:
-                    cols = row.find_all('td')
-                    if len(cols) == 3 and '20' in cols[1].get_text():
-                        # Found a valid history row
-                        status_text = cols[2].get_text(strip=True)
-                        date_text = cols[1].get_text(strip=True)
-                        
-                        # Update the JSON
-                        item['status'] = f"{status_text} ({date_text})"
-                        print(f"✅ Updated {tracking_code}: {status_text}")
-                        break
-            else:
-                print(f"⚠️ Connection failed for {tracking_code}: {r.status_code}")
-        except Exception as e:
-            print(f"❌ Error {tracking_code}: {e}")
+        # Call the new API scraper function
+        new_status = scrape_junan_status(tracking_code, phone)
+        
+        # Update the item status
+        item['status'] = new_status
+        print(f"  -> Status: {new_status}")
         
         # Sleep to be polite to the server
         time.sleep(1)
 
-    # Save back to file
+    # 3. Save back to file
     with open(JSON_FILE, 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
-    print("Done.")
+    print("Done. shipping.json updated.")
 
 if __name__ == "__main__":
     update_tracking()
