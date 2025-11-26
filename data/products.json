@@ -3,100 +3,88 @@
         "id": 1,
         "name": "LoveShackFancy Holiday All Day Slim Bottle",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday All Day Slim Bottle.png",
-        "总库存": 2,
-        "已发往国内": 0,
-        "美国已签收": 2,
-        "美国未签收": 0
+        "total_stock": 2,
+        "us_signed": 2,
+        "us_unsigned": 0
     },
     {
         "id": 2,
         "name": "LoveShackFancy Holiday Quencher ProTour Ornament Set",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher ProTour Ornament Set.png",
-        "总库存": 15,
-        "已发往国内": 0,
-        "美国已签收": 12,
-        "美国未签收": 3
+        "total_stock": 15,
+        "us_signed": 12,
+        "us_unsigned": 3
     },
     {
         "id": 3,
         "name": "LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler 40 OZ",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler 40 OZ.png",
-        "总库存": 1,
-        "已发往国内": 0,
-        "美国已签收": 0,
-        "美国未签收": 1
+        "total_stock": 1,
+        "us_signed": 0,
+        "us_unsigned": 1
     },
     {
         "id": 4,
-        "name": "LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler 40 OZ",
+        "name": "LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler 40 OZ (Type 2)",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler  40 OZ.png",
-        "总库存": 9,
-        "已发往国内": 0,
-        "美国已签收": 5,
-        "美国未签收": 4
+        "total_stock": 9,
+        "us_signed": 5,
+        "us_unsigned": 4
     },
-	{
+    {
         "id": 5,
-        "name": "LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler 40 OZ",
+        "name": "LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler 40 OZ (Type 3)",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler40 oz.png",
-        "总库存": 1,
-        "已发往国内": 0,
-        "美国已签收": 0,
-        "美国未签收": 1
+        "total_stock": 1,
+        "us_signed": 0,
+        "us_unsigned": 1
     },
-	
     {
         "id": 6,
         "name": "LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 30 OZ",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler  30 OZ.png",
-        "总库存": 18,
-        "已发往国内": 0,
-        "美国已签收": 7,
-        "美国未签收": 11
+        "total_stock": 18,
+        "us_signed": 7,
+        "us_unsigned": 11
     },
     {
         "id": 7,
         "name": "LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20 OZ",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20 OZ.png",
-        "总库存": 40,
-        "已发往国内": 0,
-        "美国已签收": 15,
-        "美国未签收": 25
+        "total_stock": 40,
+        "us_signed": 15,
+        "us_unsigned": 25
     },
     {
         "id": 8,
-        "name": "LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20 OZ",
+        "name": "LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20 OZ (Var)",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20OZ.png",
-        "总库存": 3,
-        "已发往国内": 0,
-        "美国已签收": 3,
-        "美国未签收": 0
+        "total_stock": 3,
+        "us_signed": 3,
+        "us_unsigned": 0
     },
-	{
+    {
         "id": 9,
         "name": "The Café-To-Go Travel Mug 20 OZ",
         "image": "img/The Café-To-Go Travel Mug 20 OZ.png",
-        "总库存": 1,
-        "已发往国内": 0,
-        "美国已签收": 0,
-        "美国未签收": 1
+        "total_stock": 1,
+        "us_signed": 0,
+        "us_unsigned": 1
     },
     {
         "id": 10,
         "name": "LoveShackFancy Holiday Everyday Camp Mug Set",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Everyday Camp Mug Set.png",
-        "总库存": 1,
-        "已发往国内": 0,
-        "美国已签收": 0,
-        "美国未签收": 1
+        "total_stock": 1,
+        "us_signed": 0,
+        "us_unsigned": 1
     },
-	{
+    {
         "id": 11,
         "name": "The Quencher ProTour Flip Straw Tumbler",
         "image": "img/The Quencher ProTour Flip Straw Tumbler.png",
-        "总库存": 1,
-        "已发往国内": 0,
-        "美国已签收": 0,
-        "美国未签收": 1
+        "total_stock": 1,
+        "us_signed": 0,
+        "us_unsigned": 1
     }
 ]

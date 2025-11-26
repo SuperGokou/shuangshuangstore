@@ -5,7 +5,7 @@
         "status": "Awaiting tracking",
         "tracking": "——",
         "tracking_url": "",
-        "signed": "否 (No)",
+        "signed": "No",
         "est_date": "——"
     },
     {
@@ -13,44 +13,44 @@
         "order_id": "#695924",
         "status": "Fulfilled",
         "tracking": "61290360427620726527",
-        "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427620726527&trkqual=20251124184200~61290360427620726527~FXSP",
-        "signed": "否 (No)",
-        "est_date": "1-Dec"
+        "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427620726527",
+        "signed": "No",
+        "est_date": "——"
     },
     {
         "source": "LoveShackFancy",
         "order_id": "#695924",
         "status": "Fulfilled",
         "tracking": "61290360427620726725",
-        "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427620726725&trkqual=20251124184600~61290360427620726725~FXSP",
-        "signed": "否 (No)",
-        "est_date": "1-Dec"
+        "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427620726725",
+        "signed": "No",
+        "est_date": "——"
     },
     {
         "source": "LoveShackFancy",
         "order_id": "#695924",
         "status": "Fulfilled",
         "tracking": "61290360427620726862",
-        "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427620726862&trkqual=20251124184800~61290360427620726862~FXSP",
-        "signed": "否 (No)",
-        "est_date": "1-Dec"
+        "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427620726862",
+        "signed": "No",
+        "est_date": "——"
     },
     {
         "source": "LoveShackFancy",
         "order_id": "#695006",
         "status": "Fulfilled",
         "tracking": "61290360427620714418",
-        "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427620714418&trkqual=20251121145200~61290360427620714418~FXSP",
-        "signed": "否 (No)",
+        "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427620714418",
+        "signed": "No",
         "est_date": "29-Nov"
     },
-	{
+    {
         "source": "Stanley1913",
         "order_id": "#11845870",
         "status": "Awaiting tracking",
         "tracking": "——",
         "tracking_url": "",
-        "signed": "否 (No)",
+        "signed": "No",
         "est_date": "——"
     },
     {
@@ -58,8 +58,8 @@
         "order_id": "#11624880",
         "status": "Partial",
         "tracking": "886087172262",
-        "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886087172262&trkqual=12029~886087172262~FDEG",
-        "signed": "是 (Yes)",
+        "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886087172262",
+        "signed": "Yes",
         "est_date": "——"
     },
     {
@@ -67,8 +67,8 @@
         "order_id": "#11624880",
         "status": "Partial",
         "tracking": "886087172273",
-        "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886087172273&trkqual=12029~886087172273~FDEG",
-        "signed": "是 (Yes)",
+        "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886087172273",
+        "signed": "Yes",
         "est_date": "——"
     },
     {
@@ -76,8 +76,8 @@
         "order_id": "#11632515",
         "status": "Partial",
         "tracking": "1ZC6039H0320978575",
-        "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0320978575&loc=en_US&requester=ST/trackdetails",
-        "signed": "是 (Yes)",
+        "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0320978575",
+        "signed": "Yes",
         "est_date": "1-Dec"
     },
     {
@@ -85,8 +85,8 @@
         "order_id": "#11632515",
         "status": "Partial",
         "tracking": "1ZC6039H0330179964",
-        "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0330179964&loc=en_US&requester=ST/trackdetails",
-        "signed": "是 (Yes)",
+        "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0330179964",
+        "signed": "Yes",
         "est_date": "1-Dec"
     },
     {
@@ -94,8 +94,8 @@
         "order_id": "#11723325",
         "status": "Fulfilled",
         "tracking": "886180424234",
-        "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886180424234&trkqual=12029~886180424234~FDEG",
-        "signed": "是 (Yes)",
+        "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886180424234",
+        "signed": "Yes",
         "est_date": "1-Dec"
     },
     {
@@ -103,8 +103,8 @@
         "order_id": "#11724935",
         "status": "Fulfilled",
         "tracking": "886253575513",
-        "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886253575513&trkqual=12029~886253575513~FDEG",
-        "signed": "是 (Yes)",
+        "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886253575513",
+        "signed": "Yes",
         "est_date": "——"
     },
     {
@@ -112,8 +112,8 @@
         "order_id": "#11724935",
         "status": "Fulfilled",
         "tracking": "886253575524",
-        "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886253575524&trkqual=12029~886253575524~FDEG",
-        "signed": "是 (Yes)",
+        "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886253575524",
+        "signed": "Yes",
         "est_date": "——"
     },
     {
@@ -121,8 +121,8 @@
         "order_id": "#11749863",
         "status": "Fulfilled",
         "tracking": "886218141707",
-        "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886218141707&trkqual=12029~886218141707~FDEG",
-        "signed": "是 (Yes)",
+        "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886218141707",
+        "signed": "Yes",
         "est_date": "——"
     },
     {
@@ -130,8 +130,8 @@
         "order_id": "#11768231",
         "status": "Fulfilled",
         "tracking": "886254718130",
-        "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886254718130&trkqual=12029~886254718130~FDEG",
-        "signed": "否 (No)",
+        "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886254718130",
+        "signed": "No",
         "est_date": "28-Nov"
     },
     {
@@ -139,8 +139,8 @@
         "order_id": "#11632402",
         "status": "Fulfilled",
         "tracking": "1ZC6039H0313300023",
-        "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0313300023&loc=en_US&requester=ST/trackdetails",
-        "signed": "是 (Yes)",
+        "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0313300023",
+        "signed": "Yes",
         "est_date": "——"
     },
     {
@@ -148,8 +148,8 @@
         "order_id": "#11632402",
         "status": "Fulfilled",
         "tracking": "1ZC6039H0312183804",
-        "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0312183804&loc=en_US&requester=ST/trackdetails",
-        "signed": "是 (Yes)",
+        "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0312183804",
+        "signed": "Yes",
         "est_date": "——"
     },
     {
@@ -157,8 +157,8 @@
         "order_id": "#11632402",
         "status": "Fulfilled",
         "tracking": "1ZC6039H0317617416",
-        "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0317617416&loc=en_US&requester=ST/trackdetails",
-        "signed": "是 (Yes)",
+        "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0317617416",
+        "signed": "Yes",
         "est_date": "——"
     },
     {
@@ -166,8 +166,8 @@
         "order_id": "#11686543",
         "status": "Fulfilled",
         "tracking": "886212349690",
-        "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886212349690&trkqual=12029~886212349690~FDEG",
-        "signed": "是 (Yes)",
+        "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886212349690",
+        "signed": "Yes",
         "est_date": "——"
     },
     {
@@ -175,17 +175,17 @@
         "order_id": "#11686543",
         "status": "Fulfilled",
         "tracking": "886212349680",
-        "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886212349680&trkqual=12029~886212349680~FDEG",
-        "signed": "是 (Yes)",
+        "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886212349680",
+        "signed": "Yes",
         "est_date": "——"
     },
-	{
+    {
         "source": "Stanley1913-CJ",
         "order_id": "#11814814",
         "status": "Awaiting tracking",
         "tracking": "——",
         "tracking_url": "",
-        "signed": "否 (No)",
+        "signed": "No",
         "est_date": "——"
     }
 ]
