@@ -78,7 +78,7 @@
                     card.className = 'card';
                     const safeImagePath = encodeURI(product.image);
 
-                    // --- KEY FIX: Check English keys first, then Chinese ---
+                    // Check English keys first, then Chinese
                     const usSigned = product.us_signed ?? product['美国已签收'] ?? 0;
                     const usUnsigned = product.us_unsigned ?? product['美国未签收'] ?? 0;
                     const cnShipped = product.cn_shipped ?? product['已发往国内'] ?? 0;
@@ -131,29 +131,30 @@
                 items.forEach(item => {
                     const row = document.createElement('tr');
                     
-                    // --- KEY FIX: Check English keys first ---
                     const details = item.details || item['内件明细'] || '——';
                     const weight = item.weight || item['实际重量'] || '——';
 
-                    // --- LINK LOGIC ---
+                    // Link Logic
                     let trackingDisplay = item.tracking_number;
                     if (item.tracking_url) {
                         trackingDisplay = `<a href="${item.tracking_url}" target="_blank" style="text-decoration:none; color:#3498db; border-bottom:1px dotted #3498db;">${item.tracking_number}</a>`;
                     }
 
-                    // --- ADDRESS TRUNCATION ---
+                    // Address Truncation
                     let fullAddress = item.address || '';
                     let displayAddress = fullAddress;
                     if (fullAddress.length > 25) {
                         displayAddress = fullAddress.substring(0, 9) + "......" + fullAddress.substring(fullAddress.length - 9);
                     }
 
-                    // --- STATUS: 8 WORDS LIMIT ---
+                    // --- STATUS TRUNCATION FIX ---
                     let fullStatus = item.status || 'Checking...';
                     let displayStatus = fullStatus;
-                    const words = fullStatus.split(' ');
-                    if (words.length > 8) {
-                        displayStatus = words.slice(0, 8).join(' ') + '...';
+                    
+                    // FIXED: Use character length (30 chars) instead of word count
+                    // This works for both Chinese and English
+                    if (fullStatus.length > 30) {
+                        displayStatus = fullStatus.substring(0, 30) + '...';
                     }
 
                     row.innerHTML = `
@@ -221,5 +222,6 @@
             })
             .catch(err => console.error("Order Error:", err));
     </script>
+
 </body>
 </html>
