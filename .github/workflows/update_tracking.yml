@@ -26,10 +26,16 @@ jobs:
         run: |
           pip install -r requirements.txt
 
-      - name: Run tracking script
+      - name: Export from MongoDB
+        run: |
+          pip install pymongo
+          python export_mongo.py
+
+      - name: Run Tracking Scraper (Update Status)
         run: |
           python update_shipping.py
-
+          
+          
       - name: Commit and Push if changed
         run: |
           git config --global user.name 'SuperGokou'

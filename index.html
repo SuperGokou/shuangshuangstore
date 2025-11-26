@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>觉觉在北美</title>
-    
     <link rel="icon" href="img/icon.png" type="image/png">    
     <link rel="stylesheet" href="css/style.css">
-    
 </head>
 <body>
 
@@ -18,7 +16,9 @@
     
     <div class="subtitle">
         <span class="live-dot"></span> Live Stock Status
+        <span id="last-updated" style="font-size:0.8em; color:#888; margin-left:10px;"></span>
     </div>    
+    
     <div id="inventory-container" class="gallery-scroll">
         <p style="text-align:center; width:100%;">Loading products...</p>
     </div>
@@ -64,6 +64,7 @@
     
     <script>
         // --- 1. FETCH PRODUCTS ---
+        // Now using English keys from MongoDB
         fetch('data/products.json')
             .then(res => {
                 if (!res.ok) throw new Error("File not found");
@@ -78,10 +79,11 @@
                     card.className = 'card';
                     const safeImagePath = encodeURI(product.image);
 
-                    const usSigned = product['美国已签收'] !== undefined ? product['美国已签收'] : 0;
-                    const usUnsigned = product['美国未签收'] !== undefined ? product['美国未签收'] : 0;
-                    const cnShipped = product['已发往国内'] || 0;
-                    const totalStock = product['总库存'] || 0;
+                    // UPDATED KEYS HERE
+                    const usSigned = product.us_signed || 0;
+                    const usUnsigned = product.us_unsigned || 0;
+                    const cnShipped = product.cn_shipped || 0;
+                    const totalStock = product.total_stock || 0;
 
                     card.innerHTML = `
                         <div class="image-wrapper">
@@ -118,7 +120,7 @@
                 document.getElementById('inventory-container').innerHTML = '<p>⚠️ Error loading products</p>';
             });
 
-        // --- 2. FETCH SHIPPING (Jun An) ---
+        // --- 2. FETCH SHIPPING (Outgoing) ---
         fetch('data/shipping.json')
             .then(res => res.ok ? res.json() : [])
             .then(items => {
@@ -130,8 +132,9 @@
                 items.forEach(item => {
                     const row = document.createElement('tr');
                     
-                    const details = item['内件明细'] || '-';
-                    const weight = item['实际重量'] || '-';
+                    // UPDATED KEYS: Using 'details' instead of '内件明细'
+                    const details = item.details || '-';
+                    const weight = item.weight || '-';
 
                     // --- LINK LOGIC ---
                     let trackingDisplay = item.tracking_number;
@@ -140,12 +143,11 @@
                     }
 
                     // --- BADGE LOGIC ---
-                    // Ensure there is text to display inside the badge
                     const statusText = item.status || 'Checking...';
 
                     row.innerHTML = `
                         <td class="tracking-code">${trackingDisplay}</td>
-                        <td>${item.recipient}</td>
+                        <td>${item.customer_name || item.recipient}</td>
                         <td style="color:#2980b9;">${details}</td>
                         <td>${weight}</td>
                         <td><span class="status-badge">${statusText}</span></td>
@@ -177,10 +179,18 @@
                     } else {
                         badgeStyle += 'background-color: #fff3cd; color: #856404;';
                     }
-                    const signedStyle = (order.signed && order.signed.includes('否')) ? 'color:#c0392b; font-weight:bold;' : 'color:#27ae60;';
+                    
+                    // Handling the Yes/No logic if it comes from DB or JSON
+                    let signedText = order.signed;
+                    let signedColor = 'color:#27ae60;'; // Green (Yes)
+                    
+                    // Check if it's "No" or "否"
+                    if (String(signedText).includes('No') || String(signedText).includes('否')) {
+                        signedColor = 'color:#c0392b; font-weight:bold;'; // Red
+                    }
 
                     let trackingDisplay = order.tracking;
-                    if (order.tracking_url && order.tracking !== '-') {
+                    if (order.tracking_url && order.tracking !== '——' && order.tracking !== '-') {
                         trackingDisplay = `<a href="${order.tracking_url}" target="_blank" style="text-decoration:none; color:#3498db; border-bottom:1px dotted #3498db;">${order.tracking}</a>`;
                     }
 
@@ -189,14 +199,13 @@
                         <td>${order.order_id}</td>
                         <td><span style="${badgeStyle}">${order.status}</span></td>
                         <td class="tracking-code">${trackingDisplay}</td>
-                        <td style="${signedStyle}">${order.signed}</td>
-                        <td>${order.est_date}</td>
+                        <td style="${signedColor}">${signedText}</td>
+                        <td>${order.est_date || '-'}</td>
                     `;
                     tbody.appendChild(row);
                 });
             })
             .catch(err => console.error("Order Error:", err));
     </script>
-    
 </body>
 </html>
