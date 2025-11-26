@@ -134,8 +134,8 @@
                     const row = document.createElement('tr');
                     
                     // UPDATED KEYS: Using 'details' instead of '内件明细'
-                    const details = item.details || '-';
-                    const weight = item.weight || '-';
+					const details = item['内件明细'] || '——'; 
+                    const weight = item['实际重量'] || '——';
 
                     // --- LINK LOGIC ---
                     let trackingDisplay = item.tracking_number;
@@ -191,7 +191,7 @@
                     }
 
                     let trackingDisplay = order.tracking;
-                    if (order.tracking_url && order.tracking !== '——' && order.tracking !== '-') {
+                    if (order.tracking_url && order.tracking !== '——' && order.tracking !== '——') {
                         trackingDisplay = `<a href="${order.tracking_url}" target="_blank" style="text-decoration:none; color:#3498db; border-bottom:1px dotted #3498db;">${order.tracking}</a>`;
                     }
 
@@ -201,7 +201,7 @@
                         <td><span style="${badgeStyle}">${order.status}</span></td>
                         <td class="tracking-code">${trackingDisplay}</td>
                         <td style="${signedColor}">${signedText}</td>
-                        <td>${order.est_date || '-'}</td>
+                        <td>${order.est_date || '——'}</td>
                     `;
                     tbody.appendChild(row);
                 });
