@@ -32,7 +32,7 @@ jobs:
 
       - name: Commit and Push if changed
         run: |
-          git config --global user.name 'Ming Xia'
+          git config --global user.name 'SuperGokou'
           git config --global user.email 'githubming@hotmail.com'
           git add data/shipping.json
           # Only commit if there are changes

@@ -6,12 +6,12 @@ import os
 # Define file path
 JSON_FILE = 'data/shipping.json'
 
-def scrape_junan_status(tracking_number, phone_number):
+def scrape_junan_status(tracking_number, phone): # Renamed for consistency
     url = "https://www.junanex.com/tracking"
     payload = {
         't': 'query_code',
         'code': tracking_number,
-        'mobile': phone_number
+        'mobile': phone  # Matches the argument above
     }
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',

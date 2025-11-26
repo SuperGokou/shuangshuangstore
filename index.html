@@ -139,12 +139,16 @@
                         trackingDisplay = `<a href="${item.tracking_url}" target="_blank" style="text-decoration:none; color:#3498db; border-bottom:1px dotted #3498db;">${item.tracking_number}</a>`;
                     }
 
+                    // --- BADGE LOGIC ---
+                    // Ensure there is text to display inside the badge
+                    const statusText = item.status || 'Checking...';
+
                     row.innerHTML = `
                         <td class="tracking-code">${trackingDisplay}</td>
                         <td>${item.recipient}</td>
                         <td style="color:#2980b9;">${details}</td>
                         <td>${weight}</td>
-                        <td>${item.status}</td>
+                        <td><span class="status-badge">${statusText}</span></td>
                         <td>${item.phone}</td>
                         <td style="font-size:0.8em; color:#666;">${item.address}</td>
                     `;
