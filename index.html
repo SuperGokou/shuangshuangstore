@@ -121,7 +121,7 @@
                 document.getElementById('inventory-container').innerHTML = '<p>⚠️ Error loading products</p>';
             });
 
-		// --- 2. FETCH SHIPPING (Outgoing) ---
+        // --- 2. FETCH SHIPPING (Outgoing) ---
         fetch('data/shipping.json')
             .then(res => res.ok ? res.json() : [])
             .then(items => {
@@ -133,8 +133,9 @@
                 items.forEach(item => {
                     const row = document.createElement('tr');
                     
-                    const details = item.details || item['内件明细'] || '——';
-                    const weight = item.weight || item['实际重量'] || '——';
+                    // UPDATED KEYS: Using 'details' instead of '内件明细'
+					const details = item['内件明细'] || '——'; 
+                    const weight = item['实际重量'] || '——';
 
                     // --- LINK LOGIC ---
                     let trackingDisplay = item.tracking_number;
@@ -142,42 +143,17 @@
                         trackingDisplay = `<a href="${item.tracking_url}" target="_blank" style="text-decoration:none; color:#3498db; border-bottom:1px dotted #3498db;">${item.tracking_number}</a>`;
                     }
 
-                    // --- ADDRESS TRUNCATION (Existing Logic) ---
-                    let fullAddress = item.address || '';
-                    let displayAddress = fullAddress;
-                    if (fullAddress.length > 25) {
-                        displayAddress = fullAddress.substring(0, 9) + "......" + fullAddress.substring(fullAddress.length - 9);
-                    }
-
-                    // --- STATUS: 8 WORDS LIMIT (NEW LOGIC) ---
-                    let fullStatus = item.status || 'Checking...';
-                    let displayStatus = fullStatus;
-                    
-                    // 1. Split text into words (using space as separator)
-                    const words = fullStatus.split(' ');
-                    
-                    // 2. Check if it's longer than 8 words
-                    if (words.length > 8) {
-                        // 3. Take first 8 words, join them, and add ...
-                        displayStatus = words.slice(0, 8).join(' ') + '...';
-                    }
+                    // --- BADGE LOGIC ---
+                    const statusText = item.status || 'Checking...';
 
                     row.innerHTML = `
                         <td class="tracking-code">${trackingDisplay}</td>
                         <td>${item.customer_name || item.recipient}</td>
                         <td style="color:#2980b9;">${details}</td>
                         <td>${weight}</td>
-                        
-                        <td>
-                            <span class="status-badge" title="${fullStatus}">
-                                ${displayStatus}
-                            </span>
-                        </td>
-                        
+                        <td><span class="status-badge">${statusText}</span></td>
                         <td>${item.phone}</td>
-                        <td style="font-size:0.8em; color:#666;" title="${fullAddress}">
-                            ${displayAddress}
-                        </td>
+                        <td style="font-size:0.8em; color:#666;">${item.address}</td>
                     `;
                     tbody.appendChild(row);
                 });
