@@ -121,7 +121,7 @@
                 document.getElementById('inventory-container').innerHTML = '<p>⚠️ Error loading products</p>';
             });
 
-       // --- 2. FETCH SHIPPING (Outgoing) ---
+		// --- 2. FETCH SHIPPING (Outgoing) ---
         fetch('data/shipping.json')
             .then(res => res.ok ? res.json() : [])
             .then(items => {
@@ -133,7 +133,6 @@
                 items.forEach(item => {
                     const row = document.createElement('tr');
                     
-                    // Handle Keys (Checking both English and Chinese keys for safety)
                     const details = item.details || item['内件明细'] || '——';
                     const weight = item.weight || item['实际重量'] || '——';
 
@@ -143,18 +142,22 @@
                         trackingDisplay = `<a href="${item.tracking_url}" target="_blank" style="text-decoration:none; color:#3498db; border-bottom:1px dotted #3498db;">${item.tracking_number}</a>`;
                     }
 
-                    // --- STATUS BADGE LOGIC ---
-                    const statusText = item.status || 'Checking...';
-
-                    // --- ADDRESS TRUNCATION LOGIC (JavaScript Version) ---
+                    // --- ADDRESS TRUNCATION ---
                     let fullAddress = item.address || '';
                     let displayAddress = fullAddress;
+                    if (fullAddress.length > 25) {
+                        displayAddress = fullAddress.substring(0, 9) + "......" + fullAddress.substring(fullAddress.length - 9);
+                    }
+
+                    // --- STATUS: 8 WORDS LIMIT ---
+                    let fullStatus = item.status || 'Checking...';
+                    let displayStatus = fullStatus;
                     
-                    // If address is longer than 8 characters, cut the middle
-                    if (fullAddress.length > 8) {
-                        const start = fullAddress.substring(0, 8);
-                        const end = fullAddress.substring(fullAddress.length - 8);
-                        displayAddress = `${start}......${end}`;
+                    // Split by space to count words
+                    const words = fullStatus.split(' ');
+                    if (words.length > 8) {
+                        // Join the first 8 words and add "..."
+                        displayStatus = words.slice(0, 8).join(' ') + '...';
                     }
 
                     row.innerHTML = `
@@ -162,9 +165,14 @@
                         <td>${item.customer_name || item.recipient}</td>
                         <td style="color:#2980b9;">${details}</td>
                         <td>${weight}</td>
-                        <td><span class="status-badge">${statusText}</span></td>
-                        <td>${item.phone}</td>
                         
+                        <td>
+                            <span class="status-badge" title="${fullStatus}">
+                                ${displayStatus}
+                            </span>
+                        </td>
+                        
+                        <td>${item.phone}</td>
                         <td style="font-size:0.8em; color:#666;" title="${fullAddress}">
                             ${displayAddress}
                         </td>
