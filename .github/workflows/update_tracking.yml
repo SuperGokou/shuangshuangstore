@@ -2,16 +2,14 @@ name: Update Tracking Status
 
 on:
   schedule:
-    # Runs every 6 hours (adjust as needed)
-    - cron: '0 */6 * * *'
-  workflow_dispatch: # Allows you to run it manually from the Actions tab
+    - cron: '0 */2 * * *'  # <--- CHANGED TO EVERY 2 HOURS
+  workflow_dispatch:       # Keeps the manual button enabled
 
 jobs:
   scrape-and-update:
     runs-on: ubuntu-latest
-    
     permissions:
-      contents: write  # Critical: allows the bot to commit changes
+      contents: write
 
     steps:
       - name: Checkout code
@@ -24,22 +22,21 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install -r requirements.txt
+          pip install pymongo requests
 
+      # Step 1: Get fresh data from MongoDB
       - name: Export from MongoDB
         run: |
-          pip install pymongo
           python export_mongo.py
 
-      - name: Run Tracking Scraper (Update Status)
+      # Step 2: Check JunAn for shipping updates
+      - name: Run Tracking Scraper
         run: |
           python update_shipping.py
-          
-          
-      - name: Commit and Push if changed
+
+      - name: Commit and Push
         run: |
-          git config --global user.name 'SuperGokou'
-          git config --global user.email 'githubming@hotmail.com'
-          git add data/shipping.json
-          # Only commit if there are changes
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update tracking status" && git push)
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+          git add data/*.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update every 2 hours" && git push)
