@@ -121,7 +121,7 @@
                 document.getElementById('inventory-container').innerHTML = '<p>⚠️ Error loading products</p>';
             });
 
-        // --- 2. FETCH SHIPPING (Outgoing) ---
+       // --- 2. FETCH SHIPPING (Outgoing) ---
         fetch('data/shipping.json')
             .then(res => res.ok ? res.json() : [])
             .then(items => {
@@ -133,9 +133,9 @@
                 items.forEach(item => {
                     const row = document.createElement('tr');
                     
-                    // UPDATED KEYS: Using 'details' instead of '内件明细'
-					const details = item['内件明细'] || '——'; 
-                    const weight = item['实际重量'] || '——';
+                    // Handle Keys (Checking both English and Chinese keys for safety)
+                    const details = item.details || item['内件明细'] || '——';
+                    const weight = item.weight || item['实际重量'] || '——';
 
                     // --- LINK LOGIC ---
                     let trackingDisplay = item.tracking_number;
@@ -143,8 +143,19 @@
                         trackingDisplay = `<a href="${item.tracking_url}" target="_blank" style="text-decoration:none; color:#3498db; border-bottom:1px dotted #3498db;">${item.tracking_number}</a>`;
                     }
 
-                    // --- BADGE LOGIC ---
+                    // --- STATUS BADGE LOGIC ---
                     const statusText = item.status || 'Checking...';
+
+                    // --- ADDRESS TRUNCATION LOGIC (JavaScript Version) ---
+                    let fullAddress = item.address || '';
+                    let displayAddress = fullAddress;
+                    
+                    // If address is longer than 25 characters, cut the middle
+                    if (fullAddress.length > 25) {
+                        const start = fullAddress.substring(0, 9);
+                        const end = fullAddress.substring(fullAddress.length - 9);
+                        displayAddress = `${start}......${end}`;
+                    }
 
                     row.innerHTML = `
                         <td class="tracking-code">${trackingDisplay}</td>
@@ -153,7 +164,10 @@
                         <td>${weight}</td>
                         <td><span class="status-badge">${statusText}</span></td>
                         <td>${item.phone}</td>
-                        <td style="font-size:0.8em; color:#666;">${item.address}</td>
+                        
+                        <td style="font-size:0.8em; color:#666;" title="${fullAddress}">
+                            ${displayAddress}
+                        </td>
                     `;
                     tbody.appendChild(row);
                 });
