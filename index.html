@@ -62,9 +62,8 @@
         </div>
     </div>
     
-    <script>
+<script>
         // --- 1. FETCH PRODUCTS ---
-        // Now using English keys from MongoDB
         fetch('data/products.json')
             .then(res => {
                 if (!res.ok) throw new Error("File not found");
@@ -79,11 +78,11 @@
                     card.className = 'card';
                     const safeImagePath = encodeURI(product.image);
 
-                    // UPDATED KEYS HERE
-                    const usSigned = product['美国已签收'] !== undefined ? product['美国已签收'] : 0;
-                    const usUnsigned = product['美国未签收'] !== undefined ? product['美国未签收'] : 0;
-                    const cnShipped = product['已发往国内'] || 0;
-                    const totalStock = product['总库存'] || 0;
+                    // --- KEY FIX: Check English keys first, then Chinese ---
+                    const usSigned = product.us_signed ?? product['美国已签收'] ?? 0;
+                    const usUnsigned = product.us_unsigned ?? product['美国未签收'] ?? 0;
+                    const cnShipped = product.cn_shipped ?? product['已发往国内'] ?? 0;
+                    const totalStock = product.total_stock ?? product['总库存'] ?? 0;
 
                     card.innerHTML = `
                         <div class="image-wrapper">
@@ -132,10 +131,9 @@
                 items.forEach(item => {
                     const row = document.createElement('tr');
                     
-                    // --- CORRECTED KEYS HERE ---
-                    // We must use bracket notation ['Key Name'] for Chinese keys
-                    const details = item['内件明细'] || '-'; 
-                    const weight = item['实际重量'] || '-';
+                    // --- KEY FIX: Check English keys first ---
+                    const details = item.details || item['内件明细'] || '——';
+                    const weight = item.weight || item['实际重量'] || '——';
 
                     // --- LINK LOGIC ---
                     let trackingDisplay = item.tracking_number;
@@ -143,16 +141,35 @@
                         trackingDisplay = `<a href="${item.tracking_url}" target="_blank" style="text-decoration:none; color:#3498db; border-bottom:1px dotted #3498db;">${item.tracking_number}</a>`;
                     }
 
-                    // --- BADGE LOGIC ---
-                    const statusText = item.status || 'Checking...';
+                    // --- ADDRESS TRUNCATION ---
+                    let fullAddress = item.address || '';
+                    let displayAddress = fullAddress;
+                    if (fullAddress.length > 25) {
+                        displayAddress = fullAddress.substring(0, 9) + "......" + fullAddress.substring(fullAddress.length - 9);
+                    }
+
+                    // --- STATUS: 8 WORDS LIMIT ---
+                    let fullStatus = item.status || 'Checking...';
+                    let displayStatus = fullStatus;
+                    const words = fullStatus.split(' ');
+                    if (words.length > 8) {
+                        displayStatus = words.slice(0, 8).join(' ') + '...';
+                    }
 
                     row.innerHTML = `
                         <td class="tracking-code">${trackingDisplay}</td>
-                        <td>${item.recipient}</td> <td style="color:#2980b9;">${details}</td>
+                        <td>${item.customer_name || item.recipient}</td>
+                        <td style="color:#2980b9;">${details}</td>
                         <td>${weight}</td>
-                        <td><span class="status-badge">${statusText}</span></td>
+                        <td>
+                            <span class="status-badge" title="${fullStatus}">
+                                ${displayStatus}
+                            </span>
+                        </td>
                         <td>${item.phone}</td>
-                        <td style="font-size:0.8em; color:#666;">${item.address}</td>
+                        <td style="font-size:0.8em; color:#666;" title="${fullAddress}">
+                            ${displayAddress}
+                        </td>
                     `;
                     tbody.appendChild(row);
                 });
@@ -180,13 +197,10 @@
                         badgeStyle += 'background-color: #fff3cd; color: #856404;';
                     }
                     
-                    // Handling the Yes/No logic if it comes from DB or JSON
                     let signedText = order.signed;
-                    let signedColor = 'color:#27ae60;'; // Green (Yes)
-                    
-                    // Check if it's "No" or "否"
+                    let signedColor = 'color:#27ae60;'; 
                     if (String(signedText).includes('No') || String(signedText).includes('否')) {
-                        signedColor = 'color:#c0392b; font-weight:bold;'; // Red
+                        signedColor = 'color:#c0392b; font-weight:bold;';
                     }
 
                     let trackingDisplay = order.tracking;
@@ -200,7 +214,7 @@
                         <td><span style="${badgeStyle}">${order.status}</span></td>
                         <td class="tracking-code">${trackingDisplay}</td>
                         <td style="${signedColor}">${signedText}</td>
-                        <td>${order.est_date || '-'}</td>
+                        <td>${order.est_date || '——'}</td>
                     `;
                     tbody.appendChild(row);
                 });
