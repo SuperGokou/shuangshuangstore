@@ -11,9 +11,9 @@
         "id": 2,
         "name": "LoveShackFancy Holiday Quencher ProTour Ornament Set",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher ProTour Ornament Set.png",
-        "total_stock": 15,
+        "total_stock": 21,
         "us_signed": 12,
-        "us_unsigned": 3
+        "us_unsigned": 9
     },
     {
         "id": 3,
@@ -35,25 +35,25 @@
         "id": 5,
         "name": "LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler 40 OZ (Type 3)",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler40 oz.png",
-        "total_stock": 1,
+        "total_stock": 4,
         "us_signed": 0,
-        "us_unsigned": 1
+        "us_unsigned": 4
     },
     {
         "id": 6,
         "name": "LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 30 OZ",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler  30 OZ.png",
-        "total_stock": 18,
+        "total_stock": 21,
         "us_signed": 7,
-        "us_unsigned": 11
+        "us_unsigned": 14
     },
     {
         "id": 7,
         "name": "LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20 OZ",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20 OZ.png",
-        "total_stock": 40,
+        "total_stock": 46,
         "us_signed": 15,
-        "us_unsigned": 25
+        "us_unsigned": 31
     },
     {
         "id": 8,
@@ -65,8 +65,8 @@
     },
     {
         "id": 9,
-        "name": "The Café-To-Go Travel Mug 20 OZ",
-        "image": "img/The Café-To-Go Travel Mug 20 OZ.png",
+        "name": "LoveShackFancy Holiday All Day Slim Bottle",
+        "image": "img/Stanley 1913 x LoveShackFancy Holiday All Day Slim Bottle.png",
         "total_stock": 1,
         "us_signed": 0,
         "us_unsigned": 1
@@ -75,14 +75,78 @@
         "id": 10,
         "name": "LoveShackFancy Holiday Everyday Camp Mug Set",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Everyday Camp Mug Set.png",
+        "total_stock": 2,
+        "us_signed": 0,
+        "us_unsigned": 2
+    },
+    {
+        "id": 11,
+        "name": "The Café-To-Go Travel Mug 20 OZ",
+        "image": "img/The Café-To-Go Travel Mug 20 OZ.png",
         "total_stock": 1,
         "us_signed": 0,
         "us_unsigned": 1
     },
     {
-        "id": 11,
+        "id": 12,
         "name": "The Quencher ProTour Flip Straw Tumbler",
         "image": "img/The Quencher ProTour Flip Straw Tumbler.png",
+        "total_stock": 2,
+        "us_signed": 0,
+        "us_unsigned": 2
+    },
+    {
+        "id": 13,
+        "name": "The Quencher H2.0 Flowstate™ Tumbler 30 OZ",
+        "image": "img/The Quencher H2.0 Flowstate™ Tumbler 30 OZ.png",
+        "total_stock": 2,
+        "us_signed": 0,
+        "us_unsigned": 2
+    },
+    {
+        "id": 13,
+        "name": "All Day Slim Bottle | 34 OZ Cream",
+        "image": "img/All Day Slim Bottle 34 OZ Cream.png",
+        "total_stock": 2,
+        "us_signed": 0,
+        "us_unsigned": 2
+    },
+    {
+        "id": 14,
+        "name": "All Day Slim Bottle | 34 OZ Rose Quartz",
+        "image": "img/All Day Slim Bottle 34 OZ Rose Quartz.png",
+        "total_stock": 2,
+        "us_signed": 0,
+        "us_unsigned": 2
+    },
+    {
+        "id": 15,
+        "name": "The IceFlow™ Flip Straw Tumbler",
+        "image": "img/The IceFlow™ Flip Straw Tumbler Ash.png",
+        "total_stock": 1,
+        "us_signed": 0,
+        "us_unsigned": 1
+    },
+    {
+        "id": 16,
+        "name": "The IceFlow™ Flip Straw Tumbler",
+        "image": "img/The IceFlow™ Flip Straw Tumbler Frost.png",
+        "total_stock": 2,
+        "us_signed": 0,
+        "us_unsigned": 2
+    },
+    {
+        "id": 17,
+        "name": "The IceFlow™ Flip Straw Tumbler 30 OZ Frost",
+        "image": "img/The Quencher H2.0 Flowstate™ Tumbler 30 OZ Frost.png",
+        "total_stock": 1,
+        "us_signed": 0,
+        "us_unsigned": 1
+    },
+    {
+        "id": 18,
+        "name": "The IceFlow™ Flip Straw Tumbler 30 OZ Rose Quartz",
+        "image": "img/The Quencher H2.0 Flowstate™ Tumbler 30 OZ Rose Quartz.png",
         "total_stock": 1,
         "us_signed": 0,
         "us_unsigned": 1
