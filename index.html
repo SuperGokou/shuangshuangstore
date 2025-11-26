@@ -150,10 +150,10 @@
                     let fullAddress = item.address || '';
                     let displayAddress = fullAddress;
                     
-                    // If address is longer than 25 characters, cut the middle
-                    if (fullAddress.length > 25) {
-                        const start = fullAddress.substring(0, 9);
-                        const end = fullAddress.substring(fullAddress.length - 9);
+                    // If address is longer than 8 characters, cut the middle
+                    if (fullAddress.length > 8) {
+                        const start = fullAddress.substring(0, 8);
+                        const end = fullAddress.substring(fullAddress.length - 8);
                         displayAddress = `${start}......${end}`;
                     }
 
