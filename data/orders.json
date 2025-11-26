@@ -15,7 +15,7 @@
         "tracking": "61290360427620726527",
         "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427620726527",
         "signed": "No",
-        "est_date": "——"
+        "est_date": "1-Dec"
     },
     {
         "source": "LoveShackFancy",
@@ -24,7 +24,7 @@
         "tracking": "61290360427620726725",
         "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427620726725",
         "signed": "No",
-        "est_date": "——"
+        "est_date": "1-Dec"
     },
     {
         "source": "LoveShackFancy",
@@ -33,7 +33,7 @@
         "tracking": "61290360427620726862",
         "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427620726862",
         "signed": "No",
-        "est_date": "——"
+        "est_date": "1-Dec"
     },
     {
         "source": "LoveShackFancy",
@@ -56,7 +56,7 @@
     {
         "source": "Stanley1913",
         "order_id": "#11624880",
-        "status": "Partial",
+        "status": "Fulfilled",
         "tracking": "886087172262",
         "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886087172262",
         "signed": "Yes",
@@ -65,7 +65,7 @@
     {
         "source": "Stanley1913",
         "order_id": "#11624880",
-        "status": "Partial",
+        "status": "Fulfilled",
         "tracking": "886087172273",
         "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886087172273",
         "signed": "Yes",
@@ -78,7 +78,7 @@
         "tracking": "1ZC6039H0320978575",
         "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0320978575",
         "signed": "Yes",
-        "est_date": "1-Dec"
+        "est_date": "——"
     },
     {
         "source": "Stanley1913",
@@ -87,7 +87,7 @@
         "tracking": "1ZC6039H0330179964",
         "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0330179964",
         "signed": "Yes",
-        "est_date": "1-Dec"
+        "est_date": "——"
     },
     {
         "source": "Stanley1913",
@@ -96,7 +96,7 @@
         "tracking": "886180424234",
         "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886180424234",
         "signed": "Yes",
-        "est_date": "1-Dec"
+        "est_date": "——"
     },
     {
         "source": "Stanley1913",
