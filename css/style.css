@@ -324,3 +324,14 @@ tbody tr:nth-of-type(even) {
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 .login-btn:hover { background-color: #2980b9; }
+
+.status-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;       /* This creates the round pill shape */
+    background-color: #d1e7dd; /* Light Green background */
+    color: #0f5132;            /* Dark Green text */
+    font-size: 0.85em;
+    font-weight: bold;
+    white-space: nowrap;       /* Prevents text from breaking */
+}
