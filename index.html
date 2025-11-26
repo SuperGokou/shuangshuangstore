@@ -80,7 +80,6 @@
                     const safeImagePath = encodeURI(product.image);
 
                     // UPDATED KEYS HERE
-                    // match the keys exactly as they appear in products.json
                     const usSigned = product['美国已签收'] !== undefined ? product['美国已签收'] : 0;
                     const usUnsigned = product['美国未签收'] !== undefined ? product['美国未签收'] : 0;
                     const cnShipped = product['已发往国内'] || 0;
@@ -133,9 +132,10 @@
                 items.forEach(item => {
                     const row = document.createElement('tr');
                     
-                    // UPDATED KEYS: Using 'details' instead of '内件明细'
-					const details = item['内件明细'] || '——'; 
-                    const weight = item['实际重量'] || '——';
+                    // --- CORRECTED KEYS HERE ---
+                    // We must use bracket notation ['Key Name'] for Chinese keys
+                    const details = item['内件明细'] || '-'; 
+                    const weight = item['实际重量'] || '-';
 
                     // --- LINK LOGIC ---
                     let trackingDisplay = item.tracking_number;
@@ -148,8 +148,7 @@
 
                     row.innerHTML = `
                         <td class="tracking-code">${trackingDisplay}</td>
-                        <td>${item.customer_name || item.recipient}</td>
-                        <td style="color:#2980b9;">${details}</td>
+                        <td>${item.recipient}</td> <td style="color:#2980b9;">${details}</td>
                         <td>${weight}</td>
                         <td><span class="status-badge">${statusText}</span></td>
                         <td>${item.phone}</td>
@@ -191,7 +190,7 @@
                     }
 
                     let trackingDisplay = order.tracking;
-                    if (order.tracking_url && order.tracking !== '——' && order.tracking !== '——') {
+                    if (order.tracking_url && order.tracking !== '——' && order.tracking !== '-') {
                         trackingDisplay = `<a href="${order.tracking_url}" target="_blank" style="text-decoration:none; color:#3498db; border-bottom:1px dotted #3498db;">${order.tracking}</a>`;
                     }
 
@@ -201,7 +200,7 @@
                         <td><span style="${badgeStyle}">${order.status}</span></td>
                         <td class="tracking-code">${trackingDisplay}</td>
                         <td style="${signedColor}">${signedText}</td>
-                        <td>${order.est_date || '——'}</td>
+                        <td>${order.est_date || '-'}</td>
                     `;
                     tbody.appendChild(row);
                 });
