@@ -1,43 +1,42 @@
 [
-  {
-    "tracking_number": "ZB899151946CA",
-    "tracking_url": "https://www.junanex.com/tracking?code=ZB899151946CA&mobile=17757227637",
-    "recipient": "陈文云",
-    "status": "处理中",
-    "内件明细": "(1x蓝40oz+3x蓝20oz+1x礼盒)带包装",
-    "实际重量": "打包中...",
-    "phone": "17757227637",
-    "address": "秀洲区龙湖春江华庭8号楼1804"
-  },
-  {
-    "tracking_number": "ZB899150368IA",
-    "tracking_url": "https://www.junanex.com/tracking?code=ZB899150368IA&mobile=13615826555",
-    "recipient": "徐双双",
-    "status": "处理中",
-    "内件明细": "4*蓝20oz+2*白20oz+2x礼盒包装",
-    "实际重量": "打包中...",
-    "phone": "13615826555",
-    "address": "秀洲区龙湖春江华庭8号楼1804"
-  },
-  {
-    "tracking_number": "ZB901146947IA",
-    "tracking_url": "https://www.junanex.com/tracking?code=ZB901146947IA&mobile=18620218340",
-    "recipient": "陈文韬",
-    "status": "处理中",
-    "内件明细": "1*蓝底20oz包装",
-    "实际重量": "打包中...",
-    "phone": "18620218340",
-    "address": "广东省广州市天河区凤凰街道柯木塱欧岗北街33号101房(广州汇丰实业发展)"
-  },
-  {
-    "tracking_number": "ZB901141456XA",
-    "tracking_url": "https://www.junanex.com/tracking?code=ZB901141456XA&mobile=18221208628",
-    "recipient": "朱欣悦",
-    "status": "处理中",
-    "内件明细": "1*蓝底20oz包装",
-    "实际重量": "打包中...",
-    "phone": "18221208628",
-    "address": "上海上海市闵行区七宝镇农南路66号上海市文来中学初中部60号侧门快递柜"
-  }
-  
+    {
+        "tracking_number": "ZB899151946CA",
+        "tracking_url": "https://www.junanex.com/tracking?code=ZB899151946CA&mobile=17757227637",
+        "recipient": "陈文云",
+        "status": "包裹已预报",
+        "内件明细": "(1x蓝40oz+3x蓝20oz+1x礼盒)带包装",
+        "实际重量": "打包中...",
+        "phone": "17757227637",
+        "address": "秀洲区龙湖春江华庭8号楼1804"
+    },
+    {
+        "tracking_number": "ZB899150368IA",
+        "tracking_url": "https://www.junanex.com/tracking?code=ZB899150368IA&mobile=13615826555",
+        "recipient": "徐双双",
+        "status": "包裹已预报",
+        "内件明细": "4*蓝20oz+2*白20oz+2x礼盒包装",
+        "实际重量": "打包中...",
+        "phone": "13615826555",
+        "address": "秀洲区龙湖春江华庭8号楼1804"
+    },
+    {
+        "tracking_number": "ZB901146947IA",
+        "tracking_url": "https://www.junanex.com/tracking?code=ZB901146947IA&mobile=18620218340",
+        "recipient": "陈文韬",
+        "status": "包裹已预报",
+        "内件明细": "1*蓝底20oz包装",
+        "实际重量": "打包中...",
+        "phone": "18620218340",
+        "address": "广东省广州市天河区凤凰街道柯木塱欧岗北街33号101房(广州汇丰实业发展)"
+    },
+    {
+        "tracking_number": "ZB901141456XA",
+        "tracking_url": "https://www.junanex.com/tracking?code=ZB901141456XA&mobile=18221208628",
+        "recipient": "朱欣悦",
+        "status": "包裹已预报",
+        "内件明细": "1*蓝底20oz包装",
+        "实际重量": "打包中...",
+        "phone": "18221208628",
+        "address": "上海上海市闵行区七宝镇农南路66号上海市文来中学初中部60号侧门快递柜"
+    }
 ]
