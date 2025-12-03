@@ -56,6 +56,12 @@ def export_data():
     with open('data/orders.json', 'w', encoding='utf-8') as f:
         json.dump(orders, f, ensure_ascii=False, indent=4)
     print(f"🚚 Exported {len(orders)} incoming orders")
+    
+    # 4. EXPORT STATS (Add this section)
+    stats = list(db.product_stats.find({}, {'_id': 0}))
+    with open('data/stats.json', 'w', encoding='utf-8') as f:
+        json.dump(stats, f, ensure_ascii=False, indent=4)
+    print(f"📊 Exported {len(stats)} stats to data/stats.json")
 
 if __name__ == "__main__":
     export_data()
