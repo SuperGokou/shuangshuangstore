@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "name": "LoveShackFancy Holiday All Day Slim Bottle",
+        "name": "All Day Slim Bottle",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday All Day Slim Bottle.png",
         "total_stock": 2,
         "us_signed": 2,
@@ -9,7 +9,7 @@
     },
     {
         "id": 2,
-        "name": "LoveShackFancy Holiday Quencher ProTour Ornament Set",
+        "name": "Quencher ProTour Ornament Set",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher ProTour Ornament Set.png",
         "total_stock": 21,
         "us_signed": 12,
@@ -17,7 +17,7 @@
     },
     {
         "id": 3,
-        "name": "LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler 40 OZ",
+        "name": "Quencher® H2.0 FlowState™ Tumbler 40 OZ",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler 40 OZ.png",
         "total_stock": 1,
         "us_signed": 0,
@@ -25,7 +25,7 @@
     },
     {
         "id": 4,
-        "name": "LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler 40 OZ (Type 2)",
+        "name": "Quencher® H2.0 FlowState™ Tumbler 40 OZ (Type 2)",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler  40 OZ.png",
         "total_stock": 9,
         "us_signed": 5,
@@ -33,7 +33,7 @@
     },
     {
         "id": 5,
-        "name": "LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler 40 OZ (Type 3)",
+        "name": "Quencher® H2.0 FlowState™ Tumbler 40 OZ (Type 3)",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler40 oz.png",
         "total_stock": 4,
         "us_signed": 0,
@@ -41,7 +41,7 @@
     },
     {
         "id": 6,
-        "name": "LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 30 OZ",
+        "name": "ProTour Flip Straw Tumbler 30 OZ",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler  30 OZ.png",
         "total_stock": 21,
         "us_signed": 7,
@@ -49,7 +49,7 @@
     },
     {
         "id": 7,
-        "name": "LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20 OZ",
+        "name": "Quencher® ProTour Flip Straw Tumbler 20 OZ",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20 OZ.png",
         "total_stock": 46,
         "us_signed": 15,
@@ -57,7 +57,7 @@
     },
     {
         "id": 8,
-        "name": "LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20 OZ (Var)",
+        "name": "Quencher® ProTour Flip Straw Tumbler 20 OZ (Var)",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20OZ.png",
         "total_stock": 3,
         "us_signed": 3,
@@ -65,7 +65,7 @@
     },
     {
         "id": 9,
-        "name": "Stanley 1913 x LoveShackFancy Holiday Reserve All Day Wine Set",
+        "name": "Holiday Reserve All Day Wine Set",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Reserve All Day Wine Set.png",
         "total_stock": 1,
         "us_signed": 0,
@@ -73,7 +73,7 @@
     },
     {
         "id": 10,
-        "name": "LoveShackFancy Holiday Everyday Camp Mug Set",
+        "name": "Everyday Camp Mug Set",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Everyday Camp Mug Set.png",
         "total_stock": 1,
         "us_signed": 0,
@@ -89,7 +89,7 @@
     },
     {
         "id": 12,
-        "name": "The Quencher ProTour Flip Straw Tumbler",
+        "name": "Quencher ProTour Flip Straw Tumbler",
         "image": "img/The Quencher ProTour Flip Straw Tumbler.png",
         "total_stock": 2,
         "us_signed": 0,
@@ -97,7 +97,7 @@
     },
     {
         "id": 13,
-        "name": "The Quencher H2.0 Flowstate™ Tumbler 30 OZ",
+        "name": "Quencher H2.0 Flowstate™ Tumbler 30 OZ",
         "image": "img/The Quencher H2.0 Flowstate™ Tumbler 30 OZ.png",
         "total_stock": 2,
         "us_signed": 0,
