@@ -63,5 +63,13 @@ def export_data():
         json.dump(stats, f, ensure_ascii=False, indent=4)
     print(f"📊 Exported {len(stats)} stats to data/stats.json")
 
+    # 5. EXPORT PURCHASE ORDERS (Add this new section)
+    # We sort by date (descending) so newest orders show first
+    purchase_orders = list(db.purchase_orders.find({}, {'_id': 0}).sort("date", -1))
+    
+    with open('data/purchase_orders.json', 'w', encoding='utf-8') as f:
+        json.dump(purchase_orders, f, ensure_ascii=False, indent=4)
+    print(f"🛍️ Exported {len(purchase_orders)} purchase orders to data/purchase_orders.json")
+    
 if __name__ == "__main__":
     export_data()

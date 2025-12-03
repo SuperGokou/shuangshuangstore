@@ -43,6 +43,24 @@
 				</table>
 			</div>
 		</div>
+		
+		<div class="orders-section">
+        <h2>🛍️ 采购订单记录 (My Purchase History)</h2>
+        <div class="table-wrapper">
+            <table id="purchase-table">
+                <thead>
+                    <tr>
+                        <th style="width: 15%;">日期 (Date)</th>
+                        <th style="width: 15%;">来源 (Source)</th>
+                        <th style="width: 50%;">产品明细 (Items)</th>
+                        <th style="width: 20%;">备注 (Note)</th>
+                    </tr>
+                </thead>
+                <tbody id="purchase-body"></tbody>
+            </table>
+        </div>
+    </div>
+	
 	
     <div class="orders-section">
         <h2>✈️ 君安快递追踪 (JunAn Express)</h2>
@@ -99,7 +117,7 @@
                     const row = document.createElement('tr');
                     const safeImg = encodeURI(item.image || ''); // Handle spaces in filename
                     
-                    row.innerHTML = `
+					row.innerHTML = `
                         <td>
                             <div class="image-wrapper" style="width: 50px; height: 50px;">
                                 <img src="${safeImg}" alt="img" style="width:100%; height:100%; object-fit:contain;"
@@ -108,10 +126,17 @@
                         </td>
                         <td style="font-weight:bold; color:#2c3e50;">${item['产品名称']}</td>
                         <td style="font-size:1.1em; font-weight:bold;">${item['已发总数']}</td>
-                        <div style="font-weight:bold; color:#27ae60;">${item['带包装']}</div>
-                        <div style="font-size:0.8em; color:#666; max-width:200px;">${item['带包装详情']}</div>
-                        <div style="font-weight:bold; color:#c0392b;">${item['不带包装']}</div>
-                        <div style="font-size:0.8em; color:#666; max-width:200px;">${item['不带包装详情']}</div>
+                        
+                        <td>
+                            <div style="font-weight:bold; color:#27ae60;">${item['带包装']}</div>
+                            <div style="font-size:0.8em; color:#666; max-width:200px;">${item['带包装详情']}</div>
+                        </td>
+                        
+                        <td>
+                            <div style="font-weight:bold; color:#c0392b;">${item['不带包装']}</div>
+                            <div style="font-size:0.8em; color:#666; max-width:200px;">${item['不带包装详情']}</div>
+                        </td>
+                        
                         <td>${item['总库存']}</td>
                     `;
                     tbody.appendChild(row);
@@ -277,6 +302,61 @@
                 });
             })
             .catch(err => console.error("Order Error:", err));
+			
+// --- 4. FETCH PURCHASE ORDERS (New) ---
+        fetch('data/purchase_orders.json')
+            .then(res => res.ok ? res.json() : [])
+            .then(orders => {
+                const tbody = document.getElementById('purchase-body');
+                if(orders.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="4" style="text-align:center">No purchase history found.</td></tr>';
+                    return;
+                }
+                
+                orders.forEach(order => {
+                    const row = document.createElement('tr');
+                    
+                    // 1. Build the Items List (Mini-Table inside the cell)
+                    let itemsHtml = '<div style="display:flex; flex-direction:column; gap:8px;">';
+                    
+                    if (order.items && order.items.length > 0) {
+                        order.items.forEach(item => {
+                            const safeImg = encodeURI(item.image || '');
+                            itemsHtml += `
+                                <div style="display:flex; align-items:center; gap:10px; border-bottom:1px dashed #eee; padding-bottom:4px;">
+                                    <div style="width:40px; height:40px; flex-shrink:0;">
+                                        <img src="${safeImg}" alt="img" style="width:100%; height:100%; object-fit:contain; border-radius:4px;"
+                                             onerror="this.src='https://via.placeholder.com/40?text=?'">
+                                    </div>
+                                    <div style="font-size:0.9em; line-height:1.2;">
+                                        <div style="font-weight:bold; color:#2c3e50;">${item.product}</div>
+                                        <div style="color:#7f8c8d;">Qty: <span style="color:#27ae60; font-weight:bold;">${item.qty}</span></div>
+                                    </div>
+                                </div>
+                            `;
+                        });
+                    }
+                    itemsHtml += '</div>';
+
+                    // 2. Note Styling (Green if shipped)
+                    let noteStyle = 'font-weight:bold; color:#e67e22;'; // Default Orange
+                    if (order.note && order.note.includes('已发货')) {
+                        noteStyle = 'font-weight:bold; color:#27ae60;'; // Green
+                    }
+
+                    row.innerHTML = `
+                        <td style="font-size:0.9em; color:#666;">${order.date}</td>
+                        <td>
+                            <div style="font-weight:bold;">${order.source}</div>
+                            <div style="font-size:0.8em; color:#999;">${order.order_id}</div>
+                        </td>
+                        <td>${itemsHtml}</td>
+                        <td style="${noteStyle}">${order.note || '-'}</td>
+                    `;
+                    tbody.appendChild(row);
+                });
+            })
+            .catch(err => console.error("Purchase History Error:", err));
 			
     </script>
 
