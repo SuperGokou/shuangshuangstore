@@ -91,7 +91,7 @@
     },
     {
         "id": 11,
-        "name": "The Café-To-Go Travel Mug 20 OZ",
+        "name": "The Cafe-To-Go Travel Mug 20 OZ",
         "image": "img/The Café-To-Go Travel Mug 20 OZ.png",
         "total_stock": 1,
         "shipped_cn": 0,
@@ -136,20 +136,20 @@
     },
     {
         "id": 16,
-        "name": "The IceFlow™ Flip Straw Tumbler",
+        "name": "The IceFlow™ Flip Straw Tumbler 20oz Ash",
         "image": "img/The IceFlow™ Flip Straw Tumbler Ash.png",
-        "total_stock": 0,
+        "total_stock": 1,
         "shipped_cn": 0,
-        "us_signed": 0,
+        "us_signed": 1,
         "us_unsigned": 0
     },
     {
         "id": 17,
-        "name": "The IceFlow™ Flip Straw Tumbler",
+        "name": "The IceFlow™ Flip Straw Tumbler 20oz Frost",
         "image": "img/The IceFlow™ Flip Straw Tumbler Frost.png",
-        "total_stock": 0,
+        "total_stock": 3,
         "shipped_cn": 0,
-        "us_signed": 0,
+        "us_signed": 3,
         "us_unsigned": 0
     },
     {
