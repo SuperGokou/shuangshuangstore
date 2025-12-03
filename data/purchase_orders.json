@@ -10,13 +10,14 @@
                 "qty": 20,
                 "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20 OZ.png"
             }
-        ]
+        ],
+        "shipments": []
     },
     {
         "source": "Stanley1913",
         "order_id": "#11880985",
         "date": "2025-11-27",
-        "note": "CJ-已发货and已签收",
+        "note": "CJ-已发货and未签收",
         "items": [
             {
                 "product": "ProTour Flip Straw Tumbler | 20 oz",
@@ -28,13 +29,21 @@
                 "qty": 1,
                 "image": "img/The Reserve Wine Tumbler Set 11 OZ.png"
             }
+        ],
+        "shipments": [
+            {
+                "tracking_number": "1ZY0G8680322975026",
+                "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZY0G8680322975026",
+                "status": "Fulfilled",
+                "carrier": "UPS"
+            }
         ]
     },
     {
         "source": "Stanley1913",
         "order_id": "#11866106",
         "date": "2025-11-27",
-        "note": "CJ-已发货and已签收",
+        "note": "CJ-已发货and未签收",
         "items": [
             {
                 "product": "蓝底 20oz",
@@ -46,13 +55,27 @@
                 "qty": 3,
                 "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20OZ.png"
             }
+        ],
+        "shipments": [
+            {
+                "tracking_number": "1ZC6039H0331394112",
+                "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0331394112",
+                "status": "Fulfilled",
+                "carrier": "UPS"
+            },
+            {
+                "tracking_number": "1ZC6039H0329367101",
+                "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0329367101",
+                "status": "Fulfilled",
+                "carrier": "UPS"
+            }
         ]
     },
     {
         "source": "Stanley1913",
         "order_id": "#11864905",
         "date": "2025-11-27",
-        "note": "CJ-已发货and已签收",
+        "note": "CJ-已发货and未签收",
         "items": [
             {
                 "product": "礼盒",
@@ -89,13 +112,33 @@
                 "qty": 1,
                 "image": "img/The IceFlow™ Flip Straw Tumbler Frost.png"
             }
+        ],
+        "shipments": [
+            {
+                "tracking_number": "1ZC6039H0337521857",
+                "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0337521857",
+                "status": "Fulfilled",
+                "carrier": "UPS"
+            },
+            {
+                "tracking_number": "1ZC6039H0323315632",
+                "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0323315632",
+                "status": "Fulfilled",
+                "carrier": "UPS"
+            },
+            {
+                "tracking_number": "1ZC6039H0322254441",
+                "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0322254441",
+                "status": "Fulfilled",
+                "carrier": "UPS"
+            }
         ]
     },
     {
         "source": "Stanley1913",
         "order_id": "#11850183",
         "date": "2025-11-26",
-        "note": "CJ-已发货and已签收",
+        "note": "CJ-已发货and未签收",
         "items": [
             {
                 "product": "白底 40oz",
@@ -112,6 +155,14 @@
                 "qty": 3,
                 "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher ProTour Ornament Set.png"
             }
+        ],
+        "shipments": [
+            {
+                "tracking_number": "1ZC6039H0303987749",
+                "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0303987749",
+                "status": "Fulfilled",
+                "carrier": "UPS"
+            }
         ]
     },
     {
@@ -124,6 +175,14 @@
                 "product": "蓝底 30oz",
                 "qty": 3,
                 "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler  30 OZ.png"
+            }
+        ],
+        "shipments": [
+            {
+                "tracking_number": "886412321822",
+                "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886412321822",
+                "status": "Fulfilled",
+                "carrier": "FedEx"
             }
         ]
     },
@@ -138,11 +197,19 @@
                 "qty": 9,
                 "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20 OZ.png"
             }
+        ],
+        "shipments": [
+            {
+                "tracking_number": "61290360427620771060",
+                "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427620771060",
+                "status": "Fulfilled",
+                "carrier": "FedEx"
+            }
         ]
     },
     {
         "source": "Stanley1913",
-        "order_id": "11837949",
+        "order_id": "#11837949",
         "date": "2025-11-25",
         "note": "CJ-已发货and已签收",
         "items": [
@@ -162,7 +229,7 @@
                 "image": "img/All Day Slim Bottle 34 OZ Rose Quartz.png"
             },
             {
-                "product": "The IceFlow™ Flip Straw Tumbler Ash",
+                "product": "The IceFlow™ Flip Straw Tumbler 20oz Ash",
                 "qty": 1,
                 "image": "img/The IceFlow™ Flip Straw Tumbler Ash.png"
             },
@@ -191,6 +258,26 @@
                 "qty": 3,
                 "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher ProTour Ornament Set.png"
             }
+        ],
+        "shipments": [
+            {
+                "tracking_number": "886413621621",
+                "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886413621621",
+                "status": "Fulfilled",
+                "carrier": "FedEx"
+            },
+            {
+                "tracking_number": "886413621632",
+                "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886413621632",
+                "status": "Fulfilled",
+                "carrier": "FedEx"
+            },
+            {
+                "tracking_number": "886413621643",
+                "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886413621643",
+                "status": "Fulfilled",
+                "carrier": "FedEx"
+            }
         ]
     },
     {
@@ -209,6 +296,20 @@
                 "qty": 1,
                 "image": "img/Stanley 1913 x LoveShackFancy Holiday Reserve All Day Wine Set.png"
             }
+        ],
+        "shipments": [
+            {
+                "tracking_number": "886409242832",
+                "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886409242832",
+                "status": "Fulfilled",
+                "carrier": "FedEx"
+            },
+            {
+                "tracking_number": "886409242843",
+                "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886409242843",
+                "status": "Fulfilled",
+                "carrier": "FedEx"
+            }
         ]
     },
     {
@@ -218,7 +319,7 @@
         "note": "CJ-已发货and已签收",
         "items": [
             {
-                "product": "The Café-To-Go Travel Mug 20 OZ",
+                "product": "The Cafe-To-Go Travel Mug 20 OZ",
                 "qty": 1,
                 "image": "img/The Café-To-Go Travel Mug 20 OZ.png"
             },
@@ -241,6 +342,20 @@
                 "product": "Quencher ProTour Flip Straw Tumbler",
                 "qty": 1,
                 "image": "img/The Quencher ProTour Flip Straw Tumbler.png"
+            }
+        ],
+        "shipments": [
+            {
+                "tracking_number": "1ZC6039H0313715200",
+                "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0313715200",
+                "status": "Fulfilled",
+                "carrier": "UPS"
+            },
+            {
+                "tracking_number": "1ZC6039H0317408811",
+                "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0317408811",
+                "status": "Fulfilled",
+                "carrier": "UPS"
             }
         ]
     },
@@ -270,6 +385,26 @@
                 "qty": 9,
                 "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20 OZ.png"
             }
+        ],
+        "shipments": [
+            {
+                "tracking_number": "61290360427620726527",
+                "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427620726527",
+                "status": "Fulfilled",
+                "carrier": "FedEx"
+            },
+            {
+                "tracking_number": "61290360427620726725",
+                "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427620726725",
+                "status": "Fulfilled",
+                "carrier": "FedEx"
+            },
+            {
+                "tracking_number": "61290360427620726862",
+                "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427620726862",
+                "status": "Fulfilled",
+                "carrier": "FedEx"
+            }
         ]
     },
     {
@@ -282,6 +417,14 @@
                 "product": "礼盒",
                 "qty": 3,
                 "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher ProTour Ornament Set.png"
+            }
+        ],
+        "shipments": [
+            {
+                "tracking_number": "886254718130",
+                "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886254718130",
+                "status": "Fulfilled",
+                "carrier": "FedEx"
             }
         ]
     },
@@ -301,6 +444,14 @@
                 "qty": 4,
                 "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20 OZ.png"
             }
+        ],
+        "shipments": [
+            {
+                "tracking_number": "61290360427620714418",
+                "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427620714418",
+                "status": "Fulfilled",
+                "carrier": "FedEx"
+            }
         ]
     },
     {
@@ -318,6 +469,14 @@
                 "product": "蓝底 30oz",
                 "qty": 3,
                 "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler  30 OZ.png"
+            }
+        ],
+        "shipments": [
+            {
+                "tracking_number": "886218141707",
+                "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886218141707",
+                "status": "Fulfilled",
+                "carrier": "FedEx"
             }
         ]
     },
@@ -342,6 +501,20 @@
                 "qty": 3,
                 "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher ProTour Ornament Set.png"
             }
+        ],
+        "shipments": [
+            {
+                "tracking_number": "886253575513",
+                "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886253575513",
+                "status": "Fulfilled",
+                "carrier": "FedEx"
+            },
+            {
+                "tracking_number": "886253575524",
+                "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886253575524",
+                "status": "Fulfilled",
+                "carrier": "FedEx"
+            }
         ]
     },
     {
@@ -359,6 +532,20 @@
                 "product": "礼盒",
                 "qty": 3,
                 "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher ProTour Ornament Set.png"
+            }
+        ],
+        "shipments": [
+            {
+                "tracking_number": "886212349690",
+                "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886212349690",
+                "status": "Fulfilled",
+                "carrier": "FedEx"
+            },
+            {
+                "tracking_number": "886212349680",
+                "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886212349680",
+                "status": "Fulfilled",
+                "carrier": "FedEx"
             }
         ]
     },
@@ -378,6 +565,14 @@
                 "qty": 3,
                 "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher ProTour Ornament Set.png"
             }
+        ],
+        "shipments": [
+            {
+                "tracking_number": "886180424234",
+                "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886180424234",
+                "status": "Fulfilled",
+                "carrier": "FedEx"
+            }
         ]
     },
     {
@@ -395,6 +590,20 @@
                 "product": "蓝底 30oz",
                 "qty": 3,
                 "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler  30 OZ.png"
+            }
+        ],
+        "shipments": [
+            {
+                "tracking_number": "1ZC6039H0320978575",
+                "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0320978575",
+                "status": "Partial",
+                "carrier": "UPS"
+            },
+            {
+                "tracking_number": "1ZC6039H0330179964",
+                "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0330179964",
+                "status": "Partial",
+                "carrier": "UPS"
             }
         ]
     },
@@ -419,6 +628,26 @@
                 "qty": 3,
                 "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler  40 OZ.png"
             }
+        ],
+        "shipments": [
+            {
+                "tracking_number": "1ZC6039H0313300023",
+                "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0313300023",
+                "status": "Fulfilled",
+                "carrier": "UPS"
+            },
+            {
+                "tracking_number": "1ZC6039H0312183804",
+                "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0312183804",
+                "status": "Fulfilled",
+                "carrier": "UPS"
+            },
+            {
+                "tracking_number": "1ZC6039H0317617416",
+                "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0317617416",
+                "status": "Fulfilled",
+                "carrier": "UPS"
+            }
         ]
     },
     {
@@ -436,6 +665,20 @@
                 "product": "蓝底 20oz",
                 "qty": 3,
                 "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20 OZ.png"
+            }
+        ],
+        "shipments": [
+            {
+                "tracking_number": "886087172262",
+                "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886087172262",
+                "status": "Fulfilled",
+                "carrier": "FedEx"
+            },
+            {
+                "tracking_number": "886087172273",
+                "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886087172273",
+                "status": "Fulfilled",
+                "carrier": "FedEx"
             }
         ]
     }
