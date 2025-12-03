@@ -377,10 +377,18 @@
                         }).join('');
                     }
 
-                    // 3. Note Styling
+					// 3. Note Styling
+                    // Default: Orange (#e67e22)
                     let noteStyle = 'font-weight:bold; color:#e67e22;'; 
-                    if (order.note && (order.note.includes('已发货') || order.note.includes('Fulfilled'))) {
+                    
+                    const noteText = order.note || '';
+
+                    if (noteText.includes('已发货') && noteText.includes('已签收')) {
+                        // Green: Shipped AND Signed
                         noteStyle = 'font-weight:bold; color:#27ae60;'; 
+                    } else if (noteText.includes('已发货') && noteText.includes('未签收')) {
+                        // Blue: Shipped AND Unsigned
+                        noteStyle = 'font-weight:bold; color:#2980b9;'; 
                     }
 
                     // 4. Render Row
@@ -391,7 +399,8 @@
                             <div style="font-size:0.8em; color:#999;">${order.order_id}</div>
                         </td>
                         <td>${itemsHtml}</td>
-                        <td>${trackingHtml}</td> <td style="${noteStyle}">${order.note || '-'}</td>
+                        <td>${trackingHtml}</td>
+                        <td style="${noteStyle}">${order.note || '-'}</td>
                     `;
                     tbody.appendChild(row);
                 });
