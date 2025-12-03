@@ -60,7 +60,7 @@
                 "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher ProTour Ornament Set.png"
             },
             {
-                "product": "白底 20oz",
+                "product": "白底 40oz",
                 "qty": 2,
                 "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20OZ.png"
             },
@@ -98,7 +98,7 @@
         "note": "已发货-CJ",
         "items": [
             {
-                "product": "白底 20oz",
+                "product": "白底 40oz",
                 "qty": 2,
                 "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20OZ.png"
             },
@@ -147,17 +147,17 @@
         "note": "已发货-CJ",
         "items": [
             {
-                "product": "蓝底 20oz",
-                "qty": 3,
-                "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20 OZ.png"
-            },
-            {
                 "product": "All Day Slim Bottle | 34 OZ Cream",
                 "qty": 2,
                 "image": "img/All Day Slim Bottle 34 OZ Cream.png"
             },
             {
-                "product": "All Day Slim Bottle | 34 OZ Rose Quartz",
+                "product": "蓝底 20oz",
+                "qty": 3,
+                "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20 OZ.png"
+            },
+            {
+                "product": "All Day Slim Bottle | 20 OZ Rose Quartz",
                 "qty": 2,
                 "image": "img/All Day Slim Bottle 34 OZ Rose Quartz.png"
             },
@@ -185,6 +185,11 @@
                 "product": "Quencher H2.0 Flowstate™ Tumbler 30 OZ",
                 "qty": 1,
                 "image": "img/The Quencher H2.0 Flowstate™ Tumbler 30 OZ.png"
+            },
+            {
+                "product": "礼盒",
+                "qty": 3,
+                "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher ProTour Ornament Set.png"
             }
         ]
     },
