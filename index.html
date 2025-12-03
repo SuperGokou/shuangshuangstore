@@ -23,19 +23,38 @@
         <p style="text-align:center; width:100%;">Loading products...</p>
     </div>
 
+	<div class="orders-section">
+			<h2>📊 产品发货统计 (Shipment Stats)</h2>
+			<div class="table-wrapper">
+				<table id="stats-table">
+					<thead>
+						<tr>
+							<th style="width: 50px;">图片</th>
+							<th>产品名称</th>
+							<th>已发总数</th>
+							<th>带包装 (明细)</th>
+							<th>不带包装 (明细)</th>
+							<th>总库存</th>
+						</tr>
+					</thead>
+					<tbody id="stats-body"></tbody>
+				</table>
+			</div>
+		</div>
+	
     <div class="orders-section">
         <h2>✈️ 君安快递追踪 (JunAn Express)</h2>
         <div class="table-wrapper">
             <table id="shipping-table">
                 <thead>
                     <tr>
-                        <th>运单号 (Tracking)</th>
-                        <th>收件人 (Name)</th>
-                        <th>内件明细 (Details)</th>
+                        <th>运单号</th>
+                        <th>收件人</th>
+                        <th>内件明细</th>
                         <th>重量 (Lb)</th>
-                        <th>状态 (Status)</th>
-                        <th>电话 (Phone)</th>
-                        <th>地址 (Address)</th>
+                        <th>状态</th>
+                        <th>电话</th>
+                        <th>地址</th>
                     </tr>
                 </thead>
                 <tbody id="shipping-body"></tbody>
@@ -51,9 +70,9 @@
                     <tr>
                         <th>来源 (Source)</th>
                         <th>订单号 (Order #)</th>
-                        <th>状态 (Status)</th>
-                        <th>快递单号 (Tracking)</th>
-                        <th>签收? (Signed)</th>
+                        <th>状态</th>
+                        <th>快递单号</th>
+                        <th>签收</th>
                         <th>预计 (Est. Date)</th>
                     </tr>
                 </thead>
@@ -63,6 +82,45 @@
     </div>
     
 <script>
+
+// --- 0. FETCH STATS ---
+        fetch('data/stats.json')
+            .then(res => res.ok ? res.json() : [])
+            .then(stats => {
+                const tbody = document.getElementById('stats-body');
+                if(stats.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="6">No stats available</td></tr>';
+                    return;
+                }
+                
+                stats.forEach(item => {
+                    const row = document.createElement('tr');
+                    const safeImg = encodeURI(item.image || ''); // Handle spaces in filename
+                    
+                    row.innerHTML = `
+                        <td>
+                            <div class="image-wrapper" style="width: 50px; height: 50px;">
+                                <img src="${safeImg}" alt="img" style="width:100%; height:100%; object-fit:contain;"
+                                     onerror="this.src='https://via.placeholder.com/50?text=?'">
+                            </div>
+                        </td>
+                        <td style="font-weight:bold; color:#2c3e50;">${item['产品名称']}</td>
+                        <td style="font-size:1.1em; font-weight:bold;">${item['已发总数']}</td>
+                        <td>
+                            <div style="font-weight:bold; color:#27ae60;">${item['带包装']}</div>
+                            <div style="font-size:0.8em; color:#666; max-width:200px;">${item['带包装详情']}</div>
+                        </td>
+                        <td>
+                            <div style="font-weight:bold; color:#c0392b;">${item['不带包装']}</div>
+                            <div style="font-size:0.8em; color:#666; max-width:200px;">${item['不带包装详情']}</div>
+                        </td>
+                        <td>${item['总库存']}</td>
+                    `;
+                    tbody.appendChild(row);
+                });
+            })
+            .catch(err => console.error("Stats Error:", err));
+			
         // --- 1. FETCH PRODUCTS ---
         fetch('data/products.json')
             .then(res => {
@@ -221,6 +279,7 @@
                 });
             })
             .catch(err => console.error("Order Error:", err));
+			
     </script>
 
 </body>
