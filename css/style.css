@@ -335,3 +335,12 @@ tbody tr:nth-of-type(even) {
     font-weight: bold;
     white-space: nowrap;       /* Prevents text from breaking */
 }
+
+/* Scrollable Table Wrapper */
+.scroll-table-wrapper {
+    overflow-x: auto;
+    white-space: nowrap; /* Prevents text wrapping */
+    -webkit-overflow-scrolling: touch; /* Smooth scroll on mobile */
+    border: 1px solid #eee; /* Optional: border */
+    border-radius: 8px;
+}

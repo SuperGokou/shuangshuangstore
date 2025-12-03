@@ -70,22 +70,22 @@
 
 	
 	<div class="orders-section">
-        <h2>🛍️ 采购订单记录 (My Purchase History)</h2>
-        <div class="table-wrapper">
-			<table id="purchase-table">
-                <thead>
-                    <tr>
-                        <th style="width: 12%;">日期 (Date)</th>
-                        <th style="width: 15%;">来源 (Source)</th>
-                        <th style="width: 35%;">产品明细 (Items)</th>
-                        <th style="width: 23%;">快递单号 (Tracking)</th> 
-						<th style="width: 15%;">备注 (Note)</th>
-                    </tr>
-                </thead>
-                <tbody id="purchase-body"></tbody>
-            </table>
-        </div>
-    </div>
+			<h2>🛍️ 采购订单记录 (My Purchase History)</h2>
+			<div class="scroll-table-wrapper">
+				<table id="purchase-table">
+					<thead>
+						<tr>
+							<th style="min-width: 100px;">日期 (Date)</th>
+							<th style="min-width: 120px;">来源 (Source)</th>
+							<th style="min-width: 300px;">产品明细 (Items)</th>
+							<th style="min-width: 180px;">快递单号 (Tracking)</th> 
+							<th style="min-width: 120px;">备注 (Note)</th>
+						</tr>
+					</thead>
+					<tbody id="purchase-body"></tbody>
+				</table>
+			</div>
+		</div>
 	
 	
     <div class="orders-section">
@@ -329,11 +329,11 @@
             .then(orders => {
                 const tbody = document.getElementById('purchase-body');
                 if(orders.length === 0) {
-                    tbody.innerHTML = '<tr><td colspan="5" style="text-align:center">No purchase history found.</td></tr>'; // Updated colspan to 5
+                    tbody.innerHTML = '<tr><td colspan="5" style="text-align:center">No purchase history found.</td></tr>';
                     return;
                 }
                 
-                orders.forEach(order => {
+                orders.forEach((order, index) => {
                     const row = document.createElement('tr');
                     
                     // 1. Build Items HTML
@@ -347,7 +347,7 @@
                                         <img src="${safeImg}" alt="img" style="width:100%; height:100%; object-fit:contain; border-radius:4px;"
                                              onerror="this.src='https://via.placeholder.com/40?text=?'">
                                     </div>
-                                    <div style="font-size:0.9em; line-height:1.2;">
+                                    <div style="font-size:0.9em; line-height:1.2; white-space: normal;">
                                         <div style="font-weight:bold; color:#2c3e50;">${item.product}</div>
                                         <div style="color:#7f8c8d;">Qty: <span style="color:#27ae60; font-weight:bold;">${item.qty}</span></div>
                                     </div>
@@ -357,37 +357,37 @@
                     }
                     itemsHtml += '</div>';
 
-                    // 2. Build Tracking HTML (Corrected Logic)
+                    // 2. Build Tracking HTML (Checkbox Only - No Text Swap)
                     let trackingHtml = '<span style="color:#ccc;">-</span>';
                     
                     if (order.shipments && order.shipments.length > 0) {
-                        trackingHtml = order.shipments.map(s => {
-                            // Show full tracking number if it's short, otherwise last 4 digits? 
-                            // Let's show last 4 digits with a tooltip for the full number.
-                            const displayNum = s.tracking_number.length > 15 ? "..." + s.tracking_number.slice(-4) : s.tracking_number;
+                        trackingHtml = order.shipments.map((s, i) => {
+                            // Always show short number, hover for full number
+                            const shortNum = "..." + s.tracking_number.slice(-4);
+                            const fullNum = s.tracking_number;
                             
                             return `
-                            <div style="margin-bottom:4px; white-space:nowrap;">
+                            <div style="margin-bottom:6px; display:flex; align-items:center; gap:5px;">
+                                <input type="checkbox" style="cursor:pointer; accent-color: #27ae60; width:16px; height:16px;" 
+                                       title="Mark as checked">
+                                
                                 <span style="font-size:0.8em; color:#999; font-weight:bold;">${s.carrier}:</span>
-                                <a href="${s.tracking_url}" target="_blank" title="${s.tracking_number}"
+                                
+                                <a href="${s.tracking_url}" target="_blank" title="${fullNum}"
                                    style="color:#3498db; text-decoration:none; border-bottom:1px dotted #3498db; font-family:monospace;">
-                                    ${displayNum}
+                                    ${shortNum}
                                 </a>
                             </div>`;
                         }).join('');
                     }
 
-					// 3. Note Styling
-                    // Default: Orange (#e67e22)
+                    // 3. Note Styling
                     let noteStyle = 'font-weight:bold; color:#e67e22;'; 
-                    
                     const noteText = order.note || '';
 
                     if (noteText.includes('已发货') && noteText.includes('已签收')) {
-                        // Green: Shipped AND Signed
                         noteStyle = 'font-weight:bold; color:#27ae60;'; 
                     } else if (noteText.includes('已发货') && noteText.includes('未签收')) {
-                        // Blue: Shipped AND Unsigned
                         noteStyle = 'font-weight:bold; color:#2980b9;'; 
                     }
 
