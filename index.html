@@ -172,11 +172,15 @@
                     card.className = 'card';
                     const safeImagePath = encodeURI(product.image);
 
-                    // Check English keys first, then Chinese
-                    const usSigned = product.us_signed ?? product['美国已签收'] ?? 0;
-                    const usUnsigned = product.us_unsigned ?? product['美国未签收'] ?? 0;
-                    const cnShipped = product.cn_shipped ?? product['已发往国内'] ?? 0;
-                    const totalStock = product.total_stock ?? product['总库存'] ?? 0;
+                    // --- DEFINITION SECTION ---
+                    // 1. Define the variables here first!
+                    const usSigned = product.us_signed || 0;
+                    const usUnsigned = product.us_unsigned || 0;
+                    
+                    // FIXED: Read the new 'shipped_cn' key from your JSON
+                    const shippedCn = product.shipped_cn || 0; 
+                    
+                    const totalStock = product.total_stock || 0;
 
                     card.innerHTML = `
                         <div class="image-wrapper">
@@ -194,10 +198,12 @@
                                     <span class="stock-label">⏳ 美国未签:</span>
                                     <span class="stock-value" style="color:#e67e22;">${usUnsigned}</span>
                                 </div>
+                                
                                 <div class="stock-row">
                                     <span class="stock-label">🚚 发往中国:</span>
-                                    <span class="stock-value">${shipped_cn}</span>
+                                    <span class="stock-value">${shippedCn}</span>
                                 </div>
+                                
                                 <div style="border-top: 1px solid #ddd; margin-top:2px; padding-top:2px;" class="stock-row">
                                     <span class="stock-label">📦 商品总数:</span>
                                     <span class="stock-value"><strong>${totalStock}</strong></span>
@@ -210,7 +216,7 @@
             })
             .catch(err => {
                 console.error("Product Error:", err);
-                document.getElementById('inventory-container').innerHTML = '<p>⚠️ Error loading products</p>';
+                document.getElementById('inventory-container').innerHTML = '<p>⚠️ Error loading products. Check console.</p>';
             });
 
         // --- 2. FETCH SHIPPING (Outgoing) ---
