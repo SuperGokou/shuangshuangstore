@@ -339,8 +339,22 @@ tbody tr:nth-of-type(even) {
 /* Scrollable Table Wrapper */
 .scroll-table-wrapper {
     overflow-x: auto;
-    white-space: nowrap; /* Prevents text wrapping */
-    -webkit-overflow-scrolling: touch; /* Smooth scroll on mobile */
-    border: 1px solid #eee; /* Optional: border */
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid #eee;
     border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+/* Force table to be wide enough to trigger scroll */
+.scroll-table-wrapper table {
+    width: 100%; 
+    min-width: 800px; /* Force a minimum width to ensure scrolling on small screens */
+    border-collapse: collapse;
+}
+
+/* IMPORTANT: Prevent text from wrapping so columns stay wide */
+.scroll-table-wrapper td, 
+.scroll-table-wrapper th {
+    white-space: nowrap; 
+    padding: 12px;
 }
