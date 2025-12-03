@@ -21,12 +21,12 @@
             {
                 "product": "ProTour Flip Straw Tumbler | 20 oz",
                 "qty": 1,
-                "image": "img/The Reserve Wine Tumbler Set 11 OZ.png"
+                "image": "img/ProTour Flip Straw Tumbler 20 OZ.png"
             },
             {
                 "product": "The Reserve Wine Tumbler Set | 11 oz",
                 "qty": 1,
-                "image": "img/The Reserve Wine Tumbler Set | 11 OZ.png"
+                "image": "img/The Reserve Wine Tumbler Set 11 OZ.png"
             }
         ]
     },
@@ -42,9 +42,9 @@
                 "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20 OZ.png"
             },
             {
-                "product": "白底 40oz",
+                "product": "白底 20oz",
                 "qty": 3,
-                "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler40 oz.png"
+                "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20OZ.png"
             }
         ]
     },
@@ -85,7 +85,7 @@
                 "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20 OZ.png"
             },
             {
-                "product": "The IceFlow™ Flip Straw Tumbler",
+                "product": "The IceFlow™ Flip Straw Tumbler 20oz Frost",
                 "qty": 1,
                 "image": "img/The IceFlow™ Flip Straw Tumbler Frost.png"
             }
@@ -162,22 +162,22 @@
                 "image": "img/All Day Slim Bottle 34 OZ Rose Quartz.png"
             },
             {
-                "product": "The IceFlow™ Flip Straw Tumbler",
+                "product": "The IceFlow™ Flip Straw Tumbler Ash",
                 "qty": 1,
                 "image": "img/The IceFlow™ Flip Straw Tumbler Ash.png"
             },
             {
-                "product": "The IceFlow™ Flip Straw Tumbler 30 OZ Frost",
+                "product": "The IceFlow™ Flip Straw Tumbler 30oz Frost",
                 "qty": 1,
                 "image": "img/The Quencher H2.0 Flowstate™ Tumbler 30 OZ Frost.png"
             },
             {
-                "product": "The IceFlow™ Flip Straw Tumbler",
+                "product": "The IceFlow™ Flip Straw Tumbler 20oz Frost",
                 "qty": 2,
                 "image": "img/The IceFlow™ Flip Straw Tumbler Frost.png"
             },
             {
-                "product": "The IceFlow™ Flip Straw Tumbler 30 OZ Rose Quartz",
+                "product": "The IceFlow™ Flip Straw Tumbler 30 oz Rose Quartz",
                 "qty": 1,
                 "image": "img/The Quencher H2.0 Flowstate™ Tumbler 30 OZ Rose Quartz.png"
             },
@@ -420,7 +420,7 @@
         "source": "Stanley1913",
         "order_id": "#11624880",
         "date": "2025-11-16",
-        "note": "gokou",
+        "note": "gokou-已发货",
         "items": [
             {
                 "product": "白底 20oz",

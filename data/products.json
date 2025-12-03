@@ -35,7 +35,7 @@
         "id": 5,
         "name": "白底 40oz",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler40 oz.png",
-        "total_stock": 4,
+        "total_stock": 1,
         "us_signed": 0,
         "us_unsigned": 0
     },
@@ -59,7 +59,7 @@
         "id": 8,
         "name": "白底 20oz",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20OZ.png",
-        "total_stock": 7,
+        "total_stock": 10,
         "us_signed": 0,
         "us_unsigned": 0
     },
@@ -123,7 +123,7 @@
         "id": 16,
         "name": "The IceFlow™ Flip Straw Tumbler",
         "image": "img/The IceFlow™ Flip Straw Tumbler Ash.png",
-        "total_stock": 4,
+        "total_stock": 0,
         "us_signed": 0,
         "us_unsigned": 0
     },
@@ -131,7 +131,7 @@
         "id": 17,
         "name": "The IceFlow™ Flip Straw Tumbler",
         "image": "img/The IceFlow™ Flip Straw Tumbler Frost.png",
-        "total_stock": 4,
+        "total_stock": 0,
         "us_signed": 0,
         "us_unsigned": 0
     },
@@ -139,7 +139,7 @@
         "id": 18,
         "name": "The IceFlow™ Flip Straw Tumbler 30 OZ Frost",
         "image": "img/The Quencher H2.0 Flowstate™ Tumbler 30 OZ Frost.png",
-        "total_stock": 1,
+        "total_stock": 0,
         "us_signed": 0,
         "us_unsigned": 0
     },
@@ -147,7 +147,7 @@
         "id": 19,
         "name": "The IceFlow™ Flip Straw Tumbler 30 OZ Rose Quartz",
         "image": "img/The Quencher H2.0 Flowstate™ Tumbler 30 OZ Rose Quartz.png",
-        "total_stock": 1,
+        "total_stock": 0,
         "us_signed": 0,
         "us_unsigned": 0
     },
