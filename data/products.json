@@ -4,6 +4,7 @@
         "name": "Slim Bottle",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday All Day Slim Bottle.png",
         "total_stock": 2,
+        "shipped_cn": 2,
         "us_signed": 0,
         "us_unsigned": 0
     },
@@ -12,6 +13,7 @@
         "name": "礼盒",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher ProTour Ornament Set.png",
         "total_stock": 27,
+        "shipped_cn": 9,
         "us_signed": 0,
         "us_unsigned": 0
     },
@@ -20,6 +22,7 @@
         "name": "粉底 40oz",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler 40 OZ.png",
         "total_stock": 1,
+        "shipped_cn": 0,
         "us_signed": 0,
         "us_unsigned": 0
     },
@@ -28,6 +31,7 @@
         "name": "蓝底 40oz",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler  40 OZ.png",
         "total_stock": 9,
+        "shipped_cn": 2,
         "us_signed": 0,
         "us_unsigned": 0
     },
@@ -36,6 +40,7 @@
         "name": "白底 40oz",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler40 oz.png",
         "total_stock": 8,
+        "shipped_cn": 0,
         "us_signed": 0,
         "us_unsigned": 0
     },
@@ -44,6 +49,7 @@
         "name": "蓝底 30oz",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler  30 OZ.png",
         "total_stock": 27,
+        "shipped_cn": 6,
         "us_signed": 0,
         "us_unsigned": 0
     },
@@ -52,6 +58,7 @@
         "name": "蓝底 20oz",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20 OZ.png",
         "total_stock": 66,
+        "shipped_cn": 18,
         "us_signed": 0,
         "us_unsigned": 0
     },
@@ -60,6 +67,7 @@
         "name": "白底 20oz",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20OZ.png",
         "total_stock": 3,
+        "shipped_cn": 3,
         "us_signed": 0,
         "us_unsigned": 0
     },
@@ -68,6 +76,7 @@
         "name": "Holiday Reserve All Day Wine Set",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Reserve All Day Wine Set.png",
         "total_stock": 1,
+        "shipped_cn": 0,
         "us_signed": 0,
         "us_unsigned": 0
     },
@@ -76,6 +85,7 @@
         "name": "Everyday Camp Mug Set",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Everyday Camp Mug Set.png",
         "total_stock": 1,
+        "shipped_cn": 0,
         "us_signed": 0,
         "us_unsigned": 0
     },
@@ -84,6 +94,7 @@
         "name": "The Café-To-Go Travel Mug 20 OZ",
         "image": "img/The Café-To-Go Travel Mug 20 OZ.png",
         "total_stock": 1,
+        "shipped_cn": 0,
         "us_signed": 0,
         "us_unsigned": 0
     },
@@ -92,6 +103,7 @@
         "name": "Quencher ProTour Flip Straw Tumbler",
         "image": "img/The Quencher ProTour Flip Straw Tumbler.png",
         "total_stock": 1,
+        "shipped_cn": 0,
         "us_signed": 0,
         "us_unsigned": 0
     },
@@ -100,6 +112,7 @@
         "name": "Quencher H2.0 Flowstate™ Tumbler 30 OZ",
         "image": "img/The Quencher H2.0 Flowstate™ Tumbler 30 OZ.png",
         "total_stock": 1,
+        "shipped_cn": 0,
         "us_signed": 0,
         "us_unsigned": 0
     },
@@ -108,6 +121,7 @@
         "name": "All Day Slim Bottle | 34 OZ Cream",
         "image": "img/All Day Slim Bottle 34 OZ Cream.png",
         "total_stock": 3,
+        "shipped_cn": 0,
         "us_signed": 0,
         "us_unsigned": 0
     },
@@ -116,6 +130,7 @@
         "name": "All Day Slim Bottle | 34 OZ Rose Quartz",
         "image": "img/All Day Slim Bottle 34 OZ Rose Quartz.png",
         "total_stock": 1,
+        "shipped_cn": 0,
         "us_signed": 0,
         "us_unsigned": 0
     },
@@ -124,6 +139,7 @@
         "name": "The IceFlow™ Flip Straw Tumbler",
         "image": "img/The IceFlow™ Flip Straw Tumbler Ash.png",
         "total_stock": 0,
+        "shipped_cn": 0,
         "us_signed": 0,
         "us_unsigned": 0
     },
@@ -132,6 +148,7 @@
         "name": "The IceFlow™ Flip Straw Tumbler",
         "image": "img/The IceFlow™ Flip Straw Tumbler Frost.png",
         "total_stock": 0,
+        "shipped_cn": 0,
         "us_signed": 0,
         "us_unsigned": 0
     },
@@ -140,6 +157,7 @@
         "name": "The IceFlow™ Flip Straw Tumbler 30 OZ Frost",
         "image": "img/The Quencher H2.0 Flowstate™ Tumbler 30 OZ Frost.png",
         "total_stock": 1,
+        "shipped_cn": 0,
         "us_signed": 0,
         "us_unsigned": 0
     },
@@ -148,6 +166,7 @@
         "name": "The IceFlow™ Flip Straw Tumbler 30 OZ Rose Quartz",
         "image": "img/The Quencher H2.0 Flowstate™ Tumbler 30 OZ Rose Quartz.png",
         "total_stock": 0,
+        "shipped_cn": 0,
         "us_signed": 0,
         "us_unsigned": 0
     },
@@ -156,6 +175,7 @@
         "name": "All Day Slim Bottle | 20 OZ Rose Quartz",
         "image": "img/All Day Slim Bottle 20 OZ Rose Quartz.png",
         "total_stock": 3,
+        "shipped_cn": 0,
         "us_signed": 0,
         "us_unsigned": 0
     },
@@ -164,6 +184,7 @@
         "name": "ProTour Flip Straw Tumbler | 20 oz",
         "image": "img/ProTour Flip Straw Tumbler 20 OZ.png",
         "total_stock": 1,
+        "shipped_cn": 0,
         "us_signed": 0,
         "us_unsigned": 0
     },
@@ -172,6 +193,7 @@
         "name": "The Reserve Wine Tumbler Set | 11 oz",
         "image": "img/The Reserve Wine Tumbler Set 11 OZ.png",
         "total_stock": 1,
+        "shipped_cn": 0,
         "us_signed": 0,
         "us_unsigned": 0
     }
