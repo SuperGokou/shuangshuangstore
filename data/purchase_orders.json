@@ -1,7 +1,21 @@
 [
     {
         "source": "LoveShackFancy",
-        "order_id": "Pending",
+        "order_id": "#718016",
+        "date": "2025-12-03",
+        "note": "未发货",
+        "items": [
+            {
+                "product": "蓝底 30oz",
+                "qty": 9,
+                "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler  30 OZ.png"
+            }
+        ],
+        "shipments": []
+    },
+    {
+        "source": "LoveShackFancy",
+        "order_id": "#707660",
         "date": "2025-11-29",
         "note": "未发货",
         "items": [
@@ -11,7 +25,14 @@
                 "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20 OZ.png"
             }
         ],
-        "shipments": []
+        "shipments": [
+            {
+                "tracking_number": "61290360427620771060",
+                "tracking_url": "——",
+                "status": "Awaiting tracking",
+                "carrier": "FedEx"
+            }
+        ]
     },
     {
         "source": "Stanley1913",
