@@ -17,7 +17,7 @@
         "source": "LoveShackFancy",
         "order_id": "#707660",
         "date": "2025-11-29",
-        "note": "未发货",
+        "note": "Gokou-已发货and未签收",
         "items": [
             {
                 "product": "蓝底 20oz",
@@ -25,7 +25,20 @@
                 "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20 OZ.png"
             }
         ],
-        "shipments": []
+        "shipments": [
+            {
+                "tracking_number": "61290360427620824599",
+                "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427620824599",
+                "status": "Fulfilled",
+                "carrier": "FedEx"
+            },
+            {
+                "tracking_number": "61290360427620824711",
+                "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427620824711",
+                "status": "Fulfilled",
+                "carrier": "FedEx"
+            }
+        ]
     },
     {
         "source": "Stanley1913",
