@@ -1,9 +1,23 @@
 [
     {
         "source": "LoveShackFancy",
-        "order_id": "Pending",
-        "date": "2025-11-29",
+        "order_id": "#718016",
+        "date": "2025-12-03",
         "note": "未发货",
+        "items": [
+            {
+                "product": "蓝底 30oz",
+                "qty": 9,
+                "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler  30 OZ.png"
+            }
+        ],
+        "shipments": []
+    },
+    {
+        "source": "LoveShackFancy",
+        "order_id": "#707660",
+        "date": "2025-11-29",
+        "note": "Gokou-已发货and未签收",
         "items": [
             {
                 "product": "蓝底 20oz",
@@ -11,7 +25,20 @@
                 "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20 OZ.png"
             }
         ],
-        "shipments": []
+        "shipments": [
+            {
+                "tracking_number": "61290360427620824599",
+                "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427620824599",
+                "status": "Fulfilled",
+                "carrier": "FedEx"
+            },
+            {
+                "tracking_number": "61290360427620824711",
+                "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427620824711",
+                "status": "Fulfilled",
+                "carrier": "FedEx"
+            }
+        ]
     },
     {
         "source": "Stanley1913",
@@ -53,7 +80,7 @@
             {
                 "product": "白底 40oz",
                 "qty": 3,
-                "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20OZ.png"
+                "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler40 oz.png"
             }
         ],
         "shipments": [
@@ -84,8 +111,8 @@
             },
             {
                 "product": "白底 40oz",
-                "qty": 2,
-                "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20OZ.png"
+                "qty": 3,
+                "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler40 oz.png"
             },
             {
                 "product": "All Day Slim Bottle | 34 OZ Cream",
@@ -143,7 +170,7 @@
             {
                 "product": "白底 40oz",
                 "qty": 2,
-                "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20OZ.png"
+                "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler40 oz.png"
             },
             {
                 "product": "蓝底 20oz",
@@ -190,7 +217,7 @@
         "source": "LoveShackFancy",
         "order_id": "#700705",
         "date": "2025-11-25",
-        "note": "Gokou-已发货and已签收",
+        "note": "Gokou-已发货and未签收",
         "items": [
             {
                 "product": "蓝底 20oz",
@@ -326,7 +353,7 @@
             {
                 "product": "白底 40oz",
                 "qty": 1,
-                "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20 OZ.png"
+                "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler40 oz.png"
             },
             {
                 "product": "礼盒",
