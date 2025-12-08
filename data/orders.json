@@ -11,11 +11,20 @@
     {
         "source": "LoveShackFancy",
         "order_id": "#718016",
-        "status": "Awaiting tracking",
-        "tracking": "——",
-        "tracking_url": "——",
+        "status": "Fulfilled",
+        "tracking": "61290360427620913699",
+        "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427620824599",
         "signed": "No",
-        "est_date": "——"
+        "est_date": "11-Dec"
+    },
+    {
+        "source": "LoveShackFancy",
+        "order_id": "#718016",
+        "status": "Fulfilled",
+        "tracking": "61290360427620913712",
+        "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427620913712",
+        "signed": "No",
+        "est_date": "11-Dec"
     },
     {
         "source": "LoveShackFancy",
@@ -322,6 +331,15 @@
         "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0322254441",
         "signed": "No",
         "est_date": "4-Dec"
+    },
+    {
+        "source": "Stanley1913-CJ",
+        "order_id": "#11864905",
+        "status": "Fulfilled",
+        "tracking": "886458425167",
+        "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886458425167",
+        "signed": "Yes",
+        "est_date": "——"
     },
     {
         "source": "Stanley1913-CJ",
