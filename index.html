@@ -273,45 +273,32 @@
         })
         .catch(err => console.error("Order Error:", err));
 
-    // =========================================================
-    // --- 4. FETCH PURCHASE ORDERS (With Local Persistence) ---
-    // =========================================================
-    
+// --- 4. FETCH PURCHASE ORDERS (With Database Sync) ---
     // Global storage
     let purchaseOrders = [];
 
-    // Function to handle click and save to Browser Memory (LocalStorage)
     function toggleSignStatus(orderIndex, shipmentIndex, isChecked) {
         const order = purchaseOrders[orderIndex];
         if (!order || !order.shipments) return;
         const shipment = order.shipments[shipmentIndex];
-        if (!shipment) return;
-
-        // 1. Update runtime variable
-        shipment.local_signed = isChecked ? 'yes' : 'no';
-        console.log(`Updated: ${order.order_id} - ${shipment.tracking_number} -> ${shipment.local_signed}`);
-
-        // 2. Save to Browser LocalStorage (Persistence)
+        
+        // Update local model
+        shipment.local_signed = isChecked ? 'Yes' : 'No';
+        console.log(`Updated: ${shipment.tracking_number} -> ${shipment.local_signed}`);
+        
+        // Save to LocalStorage (Optional: purely for user preference persistence if DB update isn't instant)
         const uniqueKey = `${order.order_id}_${shipment.tracking_number}`;
         const savedState = JSON.parse(localStorage.getItem('purchase_signed_state') || '{}');
-        
-        if (isChecked) {
-            savedState[uniqueKey] = 'yes';
-        } else {
-            delete savedState[uniqueKey]; // Remove if unchecked to keep clean
-        }
-        
+        if (isChecked) savedState[uniqueKey] = 'Yes';
+        else delete savedState[uniqueKey];
         localStorage.setItem('purchase_signed_state', JSON.stringify(savedState));
     }
 
     fetch('data/purchase_orders.json')
         .then(res => res.ok ? res.json() : [])
         .then(orders => {
-            purchaseOrders = orders; // Store globally
-            
-            // Load saved states from browser memory
+            purchaseOrders = orders;
             const savedState = JSON.parse(localStorage.getItem('purchase_signed_state') || '{}');
-
             const tbody = document.getElementById('purchase-body');
             tbody.innerHTML = ''; 
 
@@ -344,19 +331,22 @@
                 }
                 itemsHtml += '</div>';
 
-                // 2. Tracking HTML with Persistence
+                // 2. Tracking HTML (Database Linked Checkbox)
                 let trackingHtml = '<span style="color:#ccc;">-</span>';
                 if (order.shipments && order.shipments.length > 0) {
                     trackingHtml = order.shipments.map((s, shipmentIndex) => {
                         const fullNum = s.tracking_number;
-                        
-                        // Check if this specific tracking number was saved as "checked"
                         const uniqueKey = `${order.order_id}_${fullNum}`;
-                        const isSavedChecked = savedState[uniqueKey] === 'yes';
                         
-                        // Set local property for runtime
-                        s.local_signed = isSavedChecked ? 'yes' : 'no';
-                        const checkedAttr = isSavedChecked ? 'checked' : '';
+                        // Priority: 1. LocalStorage (User Override) -> 2. Database (Incoming Data) -> 3. Default No
+                        let isSigned = false;
+                        if (savedState[uniqueKey]) {
+                            isSigned = savedState[uniqueKey] === 'Yes';
+                        } else {
+                            isSigned = s.signed === 'Yes' || s.signed === '是';
+                        }
+                        
+                        const checkedAttr = isSigned ? 'checked' : '';
 
                         return `
                         <div style="margin-bottom:6px; display:flex; align-items:center; gap:8px;">
