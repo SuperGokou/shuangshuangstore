@@ -321,22 +321,53 @@
                     tbody.appendChild(row);
                 });
             })
-            .catch(err => console.error("Order Error:", err));
+         
+		 .catch(err => console.error("Order Error:", err));
+		 
+		 
+		 // Global storage for the fetched purchase orders (Needed for the checkbox logic)
+        let purchaseOrders = [];
+
+        /**
+         * Updates the local 'local_signed' status of a specific shipment.
+         * @param {number} orderIndex The index of the order in the purchaseOrders array.
+         * @param {number} shipmentIndex The index of the shipment within the order.
+         * @param {boolean} isChecked The new checked state (true/false).
+         */
+        function toggleSignStatus(orderIndex, shipmentIndex, isChecked) {
+            const order = purchaseOrders[orderIndex];
+            if (!order || !order.shipments) return;
+
+            const shipment = order.shipments[shipmentIndex];
+            if (!shipment) return;
+
+            // Update the data model: 'yes' for checked, 'no' for unchecked
+            shipment.local_signed = isChecked ? 'yes' : 'no';
+
+            // Optional: Log confirmation to the console
+            console.log(`Order ${order.order_id}, Shipment ${shipmentIndex} sign status updated to: ${shipment.local_signed}`);
+        }
+		
 			
 // --- 4. FETCH PURCHASE ORDERS (New) ---
-        fetch('data/purchase_orders.json')
+		fetch('data/purchase_orders.json')
             .then(res => res.ok ? res.json() : [])
             .then(orders => {
+                // Store orders globally for the toggleSignStatus function
+                purchaseOrders = orders; 
+                
                 const tbody = document.getElementById('purchase-body');
+                tbody.innerHTML = ''; 
+
                 if(orders.length === 0) {
                     tbody.innerHTML = '<tr><td colspan="5" style="text-align:center">No purchase history found.</td></tr>';
                     return;
                 }
                 
-                orders.forEach((order, index) => {
+                orders.forEach((order, orderIndex) => {
                     const row = document.createElement('tr');
                     
-                    // 1. Build Items HTML
+                    // 1. Build Items HTML (Unchanged)
                     let itemsHtml = '<div style="display:flex; flex-direction:column; gap:8px;">';
                     if (order.items && order.items.length > 0) {
                         order.items.forEach(item => {
@@ -357,18 +388,29 @@
                     }
                     itemsHtml += '</div>';
 
-                    // 2. Build Tracking HTML (FULL NUMBER + Checkbox)
+                    // 2. Build Tracking HTML (FULL NUMBER + Checkbox with Handler)
                     let trackingHtml = '<span style="color:#ccc;">-</span>';
                     
                     if (order.shipments && order.shipments.length > 0) {
-                        trackingHtml = order.shipments.map((s, i) => {
-                            // SHOW FULL NUMBER HERE (No .slice)
+                        trackingHtml = order.shipments.map((s, shipmentIndex) => {
                             const fullNum = s.tracking_number;
+
+                            // Initialize or retrieve the local signed status
+                            // Default to 'no' if not set
+                            if (typeof s.local_signed === 'undefined') {
+                                s.local_signed = 'no'; 
+                            }
                             
+                            // Determine checked state for the checkbox
+                            const isChecked = s.local_signed === 'yes' ? 'checked' : '';
+
                             return `
                             <div style="margin-bottom:6px; display:flex; align-items:center; gap:8px;">
-                                <input type="checkbox" style="cursor:pointer; accent-color: #27ae60; width:16px; height:16px;" 
-                                       title="Mark as received">
+                                <input type="checkbox" 
+                                       style="cursor:pointer; accent-color: #27ae60; width:16px; height:16px;" 
+                                       ${isChecked}
+                                       onchange="toggleSignStatus(${orderIndex}, ${shipmentIndex}, this.checked)"
+                                       title="Mark as signed">
                                 
                                 <span style="font-size:0.8em; color:#999; font-weight:bold;">${s.carrier}:</span>
                                 
@@ -380,7 +422,7 @@
                         }).join('');
                     }
 
-                    // 3. Note Styling
+                    // 3. Note Styling (Unchanged)
                     let noteStyle = 'font-weight:bold; color:#e67e22;'; 
                     const noteText = order.note || '';
 
@@ -390,7 +432,7 @@
                         noteStyle = 'font-weight:bold; color:#2980b9;'; 
                     }
 
-                    // 4. Render Row
+                    // 4. Render Row (Unchanged)
                     row.innerHTML = `
                         <td style="font-size:0.9em; color:#666;">${order.date}</td>
                         <td>
