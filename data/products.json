@@ -31,7 +31,7 @@
         "name": "蓝底 40oz",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler  40 OZ.png",
         "total_stock": 9,
-        "shipped_cn": 2,
+        "shipped_cn": 1,
         "us_signed": 9,
         "us_unsigned": 0
     },
@@ -58,7 +58,7 @@
         "name": "蓝底 20oz",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20 OZ.png",
         "total_stock": 69,
-        "shipped_cn": 19,
+        "shipped_cn": 18,
         "us_signed": 28,
         "us_unsigned": 41
     },
@@ -76,7 +76,7 @@
         "name": "Holiday Reserve All Day Wine Set",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Reserve All Day Wine Set.png",
         "total_stock": 2,
-        "shipped_cn": 0,
+        "shipped_cn": 1,
         "us_signed": 1,
         "us_unsigned": 1
     },
@@ -193,7 +193,7 @@
         "name": "The Reserve Wine Tumbler Set | 11 oz",
         "image": "img/The Reserve Wine Tumbler Set 11 OZ.png",
         "total_stock": 1,
-        "shipped_cn": 0,
+        "shipped_cn": 1,
         "us_signed": 0,
         "us_unsigned": 1
     }
