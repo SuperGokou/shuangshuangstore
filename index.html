@@ -107,348 +107,299 @@
         </div>
     </div>
     
-<script>
-
-// --- 0. FETCH STATS ---
-        fetch('data/stats.json')
-            .then(res => res.ok ? res.json() : [])
-            .then(stats => {
-                const tbody = document.getElementById('stats-body');
-                if(stats.length === 0) {
-                    tbody.innerHTML = '<tr><td colspan="8">No stats available</td></tr>'; // Updated colspan to 8
-                    return;
-                }
+	<script>
+    // --- 0. FETCH STATS (Unchanged) ---
+    fetch('data/stats.json')
+        .then(res => res.ok ? res.json() : [])
+        .then(stats => {
+            const tbody = document.getElementById('stats-body');
+            if(stats.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="8">No stats available</td></tr>';
+                return;
+            }
+            
+            stats.forEach(item => {
+                const row = document.createElement('tr');
+                const safeImg = encodeURI(item.image || '');
                 
-                stats.forEach(item => {
-                    const row = document.createElement('tr');
-                    const safeImg = encodeURI(item.image || '');
-                    
-                    row.innerHTML = `
-                        <td>
-                            <div class="image-wrapper" style="width: 50px; height: 50px;">
-                                <img src="${safeImg}" alt="img" style="width:100%; height:100%; object-fit:contain;"
-                                     onerror="this.src='https://via.placeholder.com/50?text=?'">
-                            </div>
-                        </td>
-                        
-                        <td style="font-weight:bold; color:#2c3e50;">${item['产品名称']}</td>
-                        
-                        <td style="font-size:1.1em; font-weight:bold;">${item['已发总数']}</td>
-                        
-                        <td style="font-weight:bold; color:#27ae60; text-align:center;">
-                            ${item['带包装']}
-                        </td>
-                        
-                        <td style="font-size:0.85em; color:#666; max-width:150px;">
-                            ${item['带包装详情']}
-                        </td>
-                        
-                        <td style="font-weight:bold; color:#c0392b; text-align:center;">
-                            ${item['不带包装']}
-                        </td>
-                        
-                        <td style="font-size:0.85em; color:#666; max-width:150px;">
-                            ${item['不带包装详情']}
-                        </td>
-                        
-                        <td style="font-weight:bold;">${item['总库存']}</td>
-                    `;
-                    tbody.appendChild(row);
-                });
-            })
-            .catch(err => console.error("Stats Error:", err));
-			
-        // --- 1. FETCH PRODUCTS ---
-        fetch('data/products.json')
-            .then(res => {
-                if (!res.ok) throw new Error("File not found");
-                return res.json();
-            })
-            .then(products => {
-                const container = document.getElementById('inventory-container');
-                container.innerHTML = ''; 
-
-                products.forEach(product => {
-                    const card = document.createElement('div');
-                    card.className = 'card';
-                    const safeImagePath = encodeURI(product.image);
-
-                    // --- DEFINITION SECTION ---
-                    // 1. Define the variables here first!
-                    const usSigned = product.us_signed || 0;
-                    const usUnsigned = product.us_unsigned || 0;
-                    
-                    // FIXED: Read the new 'shipped_cn' key from your JSON
-                    const shippedCn = product.shipped_cn || 0; 
-                    
-                    const totalStock = product.total_stock || 0;
-
-                    card.innerHTML = `
-                        <div class="image-wrapper">
-                            <img src="${safeImagePath}" alt="${product.name}" loading="lazy"
-                                 onerror="this.src='https://via.placeholder.com/300?text=No+Image'">
+                row.innerHTML = `
+                    <td>
+                        <div class="image-wrapper" style="width: 50px; height: 50px;">
+                            <img src="${safeImg}" alt="img" style="width:100%; height:100%; object-fit:contain;"
+                                 onerror="this.src='https://via.placeholder.com/50?text=?'">
                         </div>
-                        <div class="info">
-                            <h3 style="text-align: center;">${product.name}</h3>
-                            <div class="stock-data">
-                                <div class="stock-row">
-                                    <span class="stock-label">✅ 美国签收:</span>
-                                    <span class="stock-value" style="color:#27ae60;">${usSigned}</span>
-                                </div>
-                                <div class="stock-row">
-                                    <span class="stock-label">⏳ 美国未签:</span>
-                                    <span class="stock-value" style="color:#e67e22;">${usUnsigned}</span>
-                                </div>
-                                
-                                <div class="stock-row">
-                                    <span class="stock-label">🚚 发往中国:</span>
-                                    <span class="stock-value">${shippedCn}</span>
-                                </div>
-                                
-                                <div style="border-top: 1px solid #ddd; margin-top:2px; padding-top:2px;" class="stock-row">
-                                    <span class="stock-label">📦 商品总数:</span>
-                                    <span class="stock-value"><strong>${totalStock}</strong></span>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                    container.appendChild(card);
-                });
-            })
-            .catch(err => {
-                console.error("Product Error:", err);
-                document.getElementById('inventory-container').innerHTML = '<p>⚠️ Error loading products. Check console.</p>';
+                    </td>
+                    <td style="font-weight:bold; color:#2c3e50;">${item['产品名称']}</td>
+                    <td style="font-size:1.1em; font-weight:bold;">${item['已发总数']}</td>
+                    <td style="font-weight:bold; color:#27ae60; text-align:center;">${item['带包装']}</td>
+                    <td style="font-size:0.85em; color:#666; max-width:150px;">${item['带包装详情']}</td>
+                    <td style="font-weight:bold; color:#c0392b; text-align:center;">${item['不带包装']}</td>
+                    <td style="font-size:0.85em; color:#666; max-width:150px;">${item['不带包装详情']}</td>
+                    <td style="font-weight:bold;">${item['总库存']}</td>
+                `;
+                tbody.appendChild(row);
             });
+        })
+        .catch(err => console.error("Stats Error:", err));
 
-        // --- 2. FETCH SHIPPING (Outgoing) ---
-        fetch('data/shipping.json')
-            .then(res => res.ok ? res.json() : [])
-            .then(items => {
-                const tbody = document.getElementById('shipping-body');
-                if(items.length === 0) {
-                    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center">No shipping data found.</td></tr>';
-                    return;
+    // --- 1. FETCH PRODUCTS (Unchanged) ---
+    fetch('data/products.json')
+        .then(res => { if (!res.ok) throw new Error("File not found"); return res.json(); })
+        .then(products => {
+            const container = document.getElementById('inventory-container');
+            container.innerHTML = ''; 
+
+            products.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                const safeImagePath = encodeURI(product.image);
+                const usSigned = product.us_signed || 0;
+                const usUnsigned = product.us_unsigned || 0;
+                const shippedCn = product.shipped_cn || 0; 
+                const totalStock = product.total_stock || 0;
+
+                card.innerHTML = `
+                    <div class="image-wrapper">
+                        <img src="${safeImagePath}" alt="${product.name}" loading="lazy"
+                             onerror="this.src='https://via.placeholder.com/300?text=No+Image'">
+                    </div>
+                    <div class="info">
+                        <h3 style="text-align: center;">${product.name}</h3>
+                        <div class="stock-data">
+                            <div class="stock-row"><span class="stock-label">✅ 美国签收:</span><span class="stock-value" style="color:#27ae60;">${usSigned}</span></div>
+                            <div class="stock-row"><span class="stock-label">⏳ 美国未签:</span><span class="stock-value" style="color:#e67e22;">${usUnsigned}</span></div>
+                            <div class="stock-row"><span class="stock-label">🚚 发往中国:</span><span class="stock-value">${shippedCn}</span></div>
+                            <div style="border-top: 1px solid #ddd; margin-top:2px; padding-top:2px;" class="stock-row">
+                                <span class="stock-label">📦 商品总数:</span><span class="stock-value"><strong>${totalStock}</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        })
+        .catch(err => {
+            console.error("Product Error:", err);
+            document.getElementById('inventory-container').innerHTML = '<p>⚠️ Error loading products.</p>';
+        });
+
+    // --- 2. FETCH SHIPPING (Unchanged) ---
+    fetch('data/shipping.json')
+        .then(res => res.ok ? res.json() : [])
+        .then(items => {
+            const tbody = document.getElementById('shipping-body');
+            if(items.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="7" style="text-align:center">No shipping data found.</td></tr>';
+                return;
+            }
+            items.forEach(item => {
+                const row = document.createElement('tr');
+                const details = item.details || item['内件明细'] || '——';
+                const weight = item.weight || item['实际重量'] || '——';
+                let trackingDisplay = item.tracking_number;
+                if (item.tracking_url) {
+                    trackingDisplay = `<a href="${item.tracking_url}" target="_blank" style="text-decoration:none; color:#3498db; border-bottom:1px dotted #3498db;">${item.tracking_number}</a>`;
                 }
-                items.forEach(item => {
-                    const row = document.createElement('tr');
-                    
-                    const details = item.details || item['内件明细'] || '——';
-                    const weight = item.weight || item['实际重量'] || '——';
-
-                    // Link Logic
-                    let trackingDisplay = item.tracking_number;
-                    if (item.tracking_url) {
-                        trackingDisplay = `<a href="${item.tracking_url}" target="_blank" style="text-decoration:none; color:#3498db; border-bottom:1px dotted #3498db;">${item.tracking_number}</a>`;
-                    }
-
-                    // Address Truncation
-                    let fullAddress = item.address || '';
-                    let displayAddress = fullAddress;
-                    if (fullAddress.length > 25) {
-                        displayAddress = fullAddress.substring(0, 9) + "......" + fullAddress.substring(fullAddress.length - 9);
-                    }
-
-                    // --- STATUS TRUNCATION FIX ---
-                    let fullStatus = item.status || 'Checking...';
-                    let displayStatus = fullStatus;
-                    
-                    // FIXED: Use character length (16 chars) instead of word count
-                    // This works for both Chinese and English
-                    if (fullStatus.length > 16) {
-                        displayStatus = fullStatus.substring(0, 16) + '...';
-                    }
-
-                    row.innerHTML = `
-                        <td class="tracking-code">${trackingDisplay}</td>
-                        <td>${item.customer_name || item.recipient}</td>
-                        <td style="color:#2980b9;">${details}</td>
-                        <td>${weight}</td>
-                        <td>
-                            <span class="status-badge" title="${fullStatus}">
-                                ${displayStatus}
-                            </span>
-                        </td>
-                        <td>${item.phone}</td>
-                        <td style="font-size:0.8em; color:#666;" title="${fullAddress}">
-                            ${displayAddress}
-                        </td>
-                    `;
-                    tbody.appendChild(row);
-                });
-            })
-            .catch(err => console.error("Shipping Error:", err));
-
-        // --- 3. FETCH ORDERS (Incoming) ---
-        fetch('data/orders.json')
-            .then(res => res.ok ? res.json() : [])
-            .then(orders => {
-                const tbody = document.getElementById('order-body');
-                if(orders.length === 0) {
-                    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center">No orders found.</td></tr>';
-                    return;
+                
+                // Address Truncation
+                let fullAddress = item.address || '';
+                let displayAddress = fullAddress;
+                if (fullAddress.length > 25) {
+                    displayAddress = fullAddress.substring(0, 9) + "......" + fullAddress.substring(fullAddress.length - 9);
                 }
-                orders.forEach(order => {
-                    const row = document.createElement('tr');
-                    
-                    let badgeStyle = 'padding: 4px 8px; border-radius: 12px; font-size: 0.85em; font-weight: bold; display: inline-block;';
-                    if (order.status === 'Fulfilled' || order.status === 'Shipped') {
-                        badgeStyle += 'background-color: #d4edda; color: #155724;'; 
-                    } else if (order.status === 'Partial') {
-                        badgeStyle += 'background-color: #cce5ff; color: #004085;'; 
-                    } else {
-                        badgeStyle += 'background-color: #fff3cd; color: #856404;';
-                    }
-                    
-                    let signedText = order.signed;
-                    let signedColor = 'color:#27ae60;'; 
-                    if (String(signedText).includes('No') || String(signedText).includes('否')) {
-                        signedColor = 'color:#c0392b; font-weight:bold;';
-                    }
+                
+                // Status Truncation
+                let fullStatus = item.status || 'Checking...';
+                let displayStatus = fullStatus;
+                if (fullStatus.length > 16) {
+                    displayStatus = fullStatus.substring(0, 16) + '...';
+                }
 
-                    let trackingDisplay = order.tracking;
-                    if (order.tracking_url && order.tracking !== '——' && order.tracking !== '-') {
-                        trackingDisplay = `<a href="${order.tracking_url}" target="_blank" style="text-decoration:none; color:#3498db; border-bottom:1px dotted #3498db;">${order.tracking}</a>`;
-                    }
+                row.innerHTML = `
+                    <td class="tracking-code">${trackingDisplay}</td>
+                    <td>${item.customer_name || item.recipient}</td>
+                    <td style="color:#2980b9;">${details}</td>
+                    <td>${weight}</td>
+                    <td><span class="status-badge" title="${fullStatus}">${displayStatus}</span></td>
+                    <td>${item.phone}</td>
+                    <td style="font-size:0.8em; color:#666;" title="${fullAddress}">${displayAddress}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        })
+        .catch(err => console.error("Shipping Error:", err));
 
-                    row.innerHTML = `
-                        <td>${order.source}</td>
-                        <td>${order.order_id}</td>
-                        <td><span style="${badgeStyle}">${order.status}</span></td>
-                        <td class="tracking-code">${trackingDisplay}</td>
-                        <td style="${signedColor}">${signedText}</td>
-                        <td>${order.est_date || '——'}</td>
-                    `;
-                    tbody.appendChild(row);
-                });
-            })
-         
-		 .catch(err => console.error("Order Error:", err));
-		 
-		 
-		 // Global storage for the fetched purchase orders (Needed for the checkbox logic)
-        let purchaseOrders = [];
+    // --- 3. FETCH ORDERS (Unchanged) ---
+    fetch('data/orders.json')
+        .then(res => res.ok ? res.json() : [])
+        .then(orders => {
+            const tbody = document.getElementById('order-body');
+            if(orders.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" style="text-align:center">No orders found.</td></tr>';
+                return;
+            }
+            orders.forEach(order => {
+                const row = document.createElement('tr');
+                let badgeStyle = 'padding: 4px 8px; border-radius: 12px; font-size: 0.85em; font-weight: bold; display: inline-block;';
+                if (order.status === 'Fulfilled' || order.status === 'Shipped') {
+                    badgeStyle += 'background-color: #d4edda; color: #155724;'; 
+                } else if (order.status === 'Partial') {
+                    badgeStyle += 'background-color: #cce5ff; color: #004085;'; 
+                } else {
+                    badgeStyle += 'background-color: #fff3cd; color: #856404;';
+                }
+                
+                let signedText = order.signed;
+                let signedColor = 'color:#27ae60;'; 
+                if (String(signedText).includes('No') || String(signedText).includes('否')) {
+                    signedColor = 'color:#c0392b; font-weight:bold;';
+                }
 
-        /**
-         * Updates the local 'local_signed' status of a specific shipment.
-         * @param {number} orderIndex The index of the order in the purchaseOrders array.
-         * @param {number} shipmentIndex The index of the shipment within the order.
-         * @param {boolean} isChecked The new checked state (true/false).
-         */
-        function toggleSignStatus(orderIndex, shipmentIndex, isChecked) {
-            const order = purchaseOrders[orderIndex];
-            if (!order || !order.shipments) return;
+                let trackingDisplay = order.tracking;
+                if (order.tracking_url && order.tracking !== '——' && order.tracking !== '-') {
+                    trackingDisplay = `<a href="${order.tracking_url}" target="_blank" style="text-decoration:none; color:#3498db; border-bottom:1px dotted #3498db;">${order.tracking}</a>`;
+                }
 
-            const shipment = order.shipments[shipmentIndex];
-            if (!shipment) return;
+                row.innerHTML = `
+                    <td>${order.source}</td>
+                    <td>${order.order_id}</td>
+                    <td><span style="${badgeStyle}">${order.status}</span></td>
+                    <td class="tracking-code">${trackingDisplay}</td>
+                    <td style="${signedColor}">${signedText}</td>
+                    <td>${order.est_date || '——'}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        })
+        .catch(err => console.error("Order Error:", err));
 
-            // Update the data model: 'yes' for checked, 'no' for unchecked
-            shipment.local_signed = isChecked ? 'yes' : 'no';
+    // =========================================================
+    // --- 4. FETCH PURCHASE ORDERS (With Local Persistence) ---
+    // =========================================================
+    
+    // Global storage
+    let purchaseOrders = [];
 
-            // Optional: Log confirmation to the console
-            console.log(`Order ${order.order_id}, Shipment ${shipmentIndex} sign status updated to: ${shipment.local_signed}`);
+    // Function to handle click and save to Browser Memory (LocalStorage)
+    function toggleSignStatus(orderIndex, shipmentIndex, isChecked) {
+        const order = purchaseOrders[orderIndex];
+        if (!order || !order.shipments) return;
+        const shipment = order.shipments[shipmentIndex];
+        if (!shipment) return;
+
+        // 1. Update runtime variable
+        shipment.local_signed = isChecked ? 'yes' : 'no';
+        console.log(`Updated: ${order.order_id} - ${shipment.tracking_number} -> ${shipment.local_signed}`);
+
+        // 2. Save to Browser LocalStorage (Persistence)
+        const uniqueKey = `${order.order_id}_${shipment.tracking_number}`;
+        const savedState = JSON.parse(localStorage.getItem('purchase_signed_state') || '{}');
+        
+        if (isChecked) {
+            savedState[uniqueKey] = 'yes';
+        } else {
+            delete savedState[uniqueKey]; // Remove if unchecked to keep clean
         }
-		
-			
-// --- 4. FETCH PURCHASE ORDERS (New) ---
-		fetch('data/purchase_orders.json')
-            .then(res => res.ok ? res.json() : [])
-            .then(orders => {
-                // Store orders globally for the toggleSignStatus function
-                purchaseOrders = orders; 
-                
-                const tbody = document.getElementById('purchase-body');
-                tbody.innerHTML = ''; 
+        
+        localStorage.setItem('purchase_signed_state', JSON.stringify(savedState));
+    }
 
-                if(orders.length === 0) {
-                    tbody.innerHTML = '<tr><td colspan="5" style="text-align:center">No purchase history found.</td></tr>';
-                    return;
-                }
+    fetch('data/purchase_orders.json')
+        .then(res => res.ok ? res.json() : [])
+        .then(orders => {
+            purchaseOrders = orders; // Store globally
+            
+            // Load saved states from browser memory
+            const savedState = JSON.parse(localStorage.getItem('purchase_signed_state') || '{}');
+
+            const tbody = document.getElementById('purchase-body');
+            tbody.innerHTML = ''; 
+
+            if(orders.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" style="text-align:center">No purchase history found.</td></tr>';
+                return;
+            }
+            
+            orders.forEach((order, orderIndex) => {
+                const row = document.createElement('tr');
                 
-                orders.forEach((order, orderIndex) => {
-                    const row = document.createElement('tr');
-                    
-                    // 1. Build Items HTML (Unchanged)
-                    let itemsHtml = '<div style="display:flex; flex-direction:column; gap:8px;">';
-                    if (order.items && order.items.length > 0) {
-                        order.items.forEach(item => {
-                            const safeImg = encodeURI(item.image || '');
-                            itemsHtml += `
-                                <div style="display:flex; align-items:center; gap:10px; border-bottom:1px dashed #eee; padding-bottom:4px;">
-                                    <div style="width:40px; height:40px; flex-shrink:0;">
-                                        <img src="${safeImg}" alt="img" style="width:100%; height:100%; object-fit:contain; border-radius:4px;"
-                                             onerror="this.src='https://via.placeholder.com/40?text=?'">
-                                    </div>
-                                    <div style="font-size:0.9em; line-height:1.2; white-space: normal;">
-                                        <div style="font-weight:bold; color:#2c3e50;">${item.product}</div>
-                                        <div style="color:#7f8c8d;">Qty: <span style="color:#27ae60; font-weight:bold;">${item.qty}</span></div>
-                                    </div>
+                // 1. Items HTML
+                let itemsHtml = '<div style="display:flex; flex-direction:column; gap:8px;">';
+                if (order.items && order.items.length > 0) {
+                    order.items.forEach(item => {
+                        const safeImg = encodeURI(item.image || '');
+                        itemsHtml += `
+                            <div style="display:flex; align-items:center; gap:10px; border-bottom:1px dashed #eee; padding-bottom:4px;">
+                                <div style="width:40px; height:40px; flex-shrink:0;">
+                                    <img src="${safeImg}" alt="img" style="width:100%; height:100%; object-fit:contain; border-radius:4px;"
+                                         onerror="this.src='https://via.placeholder.com/40?text=?'">
                                 </div>
-                            `;
-                        });
-                    }
-                    itemsHtml += '</div>';
+                                <div style="font-size:0.9em; line-height:1.2; white-space: normal;">
+                                    <div style="font-weight:bold; color:#2c3e50;">${item.product}</div>
+                                    <div style="color:#7f8c8d;">Qty: <span style="color:#27ae60; font-weight:bold;">${item.qty}</span></div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                }
+                itemsHtml += '</div>';
 
-                    // 2. Build Tracking HTML (FULL NUMBER + Checkbox with Handler)
-                    let trackingHtml = '<span style="color:#ccc;">-</span>';
-                    
-                    if (order.shipments && order.shipments.length > 0) {
-                        trackingHtml = order.shipments.map((s, shipmentIndex) => {
-                            const fullNum = s.tracking_number;
+                // 2. Tracking HTML with Persistence
+                let trackingHtml = '<span style="color:#ccc;">-</span>';
+                if (order.shipments && order.shipments.length > 0) {
+                    trackingHtml = order.shipments.map((s, shipmentIndex) => {
+                        const fullNum = s.tracking_number;
+                        
+                        // Check if this specific tracking number was saved as "checked"
+                        const uniqueKey = `${order.order_id}_${fullNum}`;
+                        const isSavedChecked = savedState[uniqueKey] === 'yes';
+                        
+                        // Set local property for runtime
+                        s.local_signed = isSavedChecked ? 'yes' : 'no';
+                        const checkedAttr = isSavedChecked ? 'checked' : '';
 
-                            // Initialize or retrieve the local signed status
-                            // Default to 'no' if not set
-                            if (typeof s.local_signed === 'undefined') {
-                                s.local_signed = 'no'; 
-                            }
+                        return `
+                        <div style="margin-bottom:6px; display:flex; align-items:center; gap:8px;">
+                            <input type="checkbox" 
+                                   style="cursor:pointer; accent-color: #27ae60; width:16px; height:16px;" 
+                                   ${checkedAttr}
+                                   onchange="toggleSignStatus(${orderIndex}, ${shipmentIndex}, this.checked)"
+                                   title="Mark as signed">
                             
-                            // Determine checked state for the checkbox
-                            const isChecked = s.local_signed === 'yes' ? 'checked' : '';
+                            <span style="font-size:0.8em; color:#999; font-weight:bold;">${s.carrier}:</span>
+                            
+                            <a href="${s.tracking_url}" target="_blank" title="${fullNum}"
+                               style="color:#3498db; text-decoration:none; border-bottom:1px dotted #3498db; font-family:monospace; font-size:1.1em;">
+                                ${fullNum}
+                            </a>
+                        </div>`;
+                    }).join('');
+                }
 
-                            return `
-                            <div style="margin-bottom:6px; display:flex; align-items:center; gap:8px;">
-                                <input type="checkbox" 
-                                       style="cursor:pointer; accent-color: #27ae60; width:16px; height:16px;" 
-                                       ${isChecked}
-                                       onchange="toggleSignStatus(${orderIndex}, ${shipmentIndex}, this.checked)"
-                                       title="Mark as signed">
-                                
-                                <span style="font-size:0.8em; color:#999; font-weight:bold;">${s.carrier}:</span>
-                                
-                                <a href="${s.tracking_url}" target="_blank" 
-                                   style="color:#3498db; text-decoration:none; border-bottom:1px dotted #3498db; font-family:monospace; font-size:1.1em;">
-                                    ${fullNum}
-                                </a>
-                            </div>`;
-                        }).join('');
-                    }
+                // 3. Note Styling
+                let noteStyle = 'font-weight:bold; color:#e67e22;'; 
+                const noteText = order.note || '';
+                if (noteText.includes('已发货') && noteText.includes('已签收')) {
+                    noteStyle = 'font-weight:bold; color:#27ae60;'; 
+                } else if (noteText.includes('已发货') && noteText.includes('未签收')) {
+                    noteStyle = 'font-weight:bold; color:#2980b9;'; 
+                }
 
-                    // 3. Note Styling (Unchanged)
-                    let noteStyle = 'font-weight:bold; color:#e67e22;'; 
-                    const noteText = order.note || '';
-
-                    if (noteText.includes('已发货') && noteText.includes('已签收')) {
-                        noteStyle = 'font-weight:bold; color:#27ae60;'; 
-                    } else if (noteText.includes('已发货') && noteText.includes('未签收')) {
-                        noteStyle = 'font-weight:bold; color:#2980b9;'; 
-                    }
-
-                    // 4. Render Row (Unchanged)
-                    row.innerHTML = `
-                        <td style="font-size:0.9em; color:#666;">${order.date}</td>
-                        <td>
-                            <div style="font-weight:bold;">${order.source}</div>
-                            <div style="font-size:0.8em; color:#999;">${order.order_id}</div>
-                        </td>
-                        <td style="white-space: normal; min-width: 300px;">${itemsHtml}</td>
-                        <td>${trackingHtml}</td>
-                        <td style="${noteStyle}">${order.note || '-'}</td>
-                    `;
-                    tbody.appendChild(row);
-                });
-            })
-            .catch(err => console.error("Purchase History Error:", err));
-			
-    </script>
+                row.innerHTML = `
+                    <td style="font-size:0.9em; color:#666;">${order.date}</td>
+                    <td>
+                        <div style="font-weight:bold;">${order.source}</div>
+                        <div style="font-size:0.8em; color:#999;">${order.order_id}</div>
+                    </td>
+                    <td style="white-space: normal; min-width: 300px;">${itemsHtml}</td>
+                    <td>${trackingHtml}</td>
+                    <td style="${noteStyle}">${order.note || '-'}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        })
+        .catch(err => console.error("Purchase History Error:", err));
+</script>
 
 </body>
 </html>
