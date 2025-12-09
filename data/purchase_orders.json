@@ -3,7 +3,7 @@
         "source": "Stanley1913",
         "order_id": "#12115388",
         "date": "2025-12-28",
-        "note": "未发货",
+        "note": "Gokou-已发货and未签收",
         "items": [
             {
                 "product": "蓝底 20oz",
@@ -35,13 +35,15 @@
                 "tracking_number": "61290360427620913699",
                 "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427620824599",
                 "status": "Fulfilled",
-                "carrier": "FedEx"
+                "carrier": "FedEx",
+                "signed": "No"
             },
             {
                 "tracking_number": "61290360427620913712",
                 "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427620913712",
                 "status": "Fulfilled",
-                "carrier": "FedEx"
+                "carrier": "FedEx",
+                "signed": "No"
             }
         ]
     },
@@ -62,13 +64,15 @@
                 "tracking_number": "61290360427620824599",
                 "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427620824599",
                 "status": "Fulfilled",
-                "carrier": "FedEx"
+                "carrier": "FedEx",
+                "signed": "No"
             },
             {
                 "tracking_number": "61290360427620824711",
                 "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427620824711",
                 "status": "Fulfilled",
-                "carrier": "FedEx"
+                "carrier": "FedEx",
+                "signed": "No"
             }
         ]
     },
@@ -94,13 +98,15 @@
                 "tracking_number": "1ZC6039H0331394112",
                 "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0331394112",
                 "status": "Fulfilled",
-                "carrier": "UPS"
+                "carrier": "UPS",
+                "signed": "No"
             },
             {
                 "tracking_number": "1ZC6039H0329367101",
                 "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0329367101",
                 "status": "Fulfilled",
-                "carrier": "UPS"
+                "carrier": "UPS",
+                "signed": "No"
             }
         ]
     },
@@ -151,25 +157,29 @@
                 "tracking_number": "1ZC6039H0337521857",
                 "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0337521857",
                 "status": "Fulfilled",
-                "carrier": "UPS"
+                "carrier": "UPS",
+                "signed": "No"
             },
             {
                 "tracking_number": "1ZC6039H0323315632",
                 "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0323315632",
                 "status": "Fulfilled",
-                "carrier": "UPS"
+                "carrier": "UPS",
+                "signed": "No"
             },
             {
                 "tracking_number": "1ZC6039H0322254441",
                 "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0322254441",
                 "status": "Fulfilled",
-                "carrier": "UPS"
+                "carrier": "UPS",
+                "signed": "No"
             },
             {
                 "tracking_number": "886458425167",
                 "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886458425167",
                 "status": "Fulfilled",
-                "carrier": "FedEx"
+                "carrier": "FedEx",
+                "signed": "Yes"
             }
         ]
     },
@@ -195,7 +205,8 @@
                 "tracking_number": "1ZY0G8680322975026",
                 "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZY0G8680322975026",
                 "status": "Fulfilled",
-                "carrier": "UPS"
+                "carrier": "UPS",
+                "signed": "No"
             }
         ]
     },
@@ -226,7 +237,8 @@
                 "tracking_number": "1ZC6039H0303987749",
                 "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0303987749",
                 "status": "Fulfilled",
-                "carrier": "UPS"
+                "carrier": "UPS",
+                "signed": "No"
             }
         ]
     },
@@ -247,7 +259,8 @@
                 "tracking_number": "886412321822",
                 "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886412321822",
                 "status": "Fulfilled",
-                "carrier": "FedEx"
+                "carrier": "FedEx",
+                "signed": "Yes"
             }
         ]
     },
@@ -268,7 +281,8 @@
                 "tracking_number": "61290360427620771060",
                 "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427620771060",
                 "status": "Fulfilled",
-                "carrier": "FedEx"
+                "carrier": "FedEx",
+                "signed": "No"
             }
         ]
     },
@@ -329,19 +343,22 @@
                 "tracking_number": "886413621621",
                 "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886413621621",
                 "status": "Fulfilled",
-                "carrier": "FedEx"
+                "carrier": "FedEx",
+                "signed": "Yes"
             },
             {
                 "tracking_number": "886413621632",
                 "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886413621632",
                 "status": "Fulfilled",
-                "carrier": "FedEx"
+                "carrier": "FedEx",
+                "signed": "Yes"
             },
             {
                 "tracking_number": "886413621643",
                 "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886413621643",
                 "status": "Fulfilled",
-                "carrier": "FedEx"
+                "carrier": "FedEx",
+                "signed": "Yes"
             }
         ]
     },
@@ -367,13 +384,15 @@
                 "tracking_number": "886409242832",
                 "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886409242832",
                 "status": "Fulfilled",
-                "carrier": "FedEx"
+                "carrier": "FedEx",
+                "signed": "Yes"
             },
             {
                 "tracking_number": "886409242843",
                 "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886409242843",
                 "status": "Fulfilled",
-                "carrier": "FedEx"
+                "carrier": "FedEx",
+                "signed": "Yes"
             }
         ]
     },
@@ -414,13 +433,15 @@
                 "tracking_number": "1ZC6039H0313715200",
                 "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0313715200",
                 "status": "Fulfilled",
-                "carrier": "UPS"
+                "carrier": "UPS",
+                "signed": "No"
             },
             {
                 "tracking_number": "1ZC6039H0317408811",
                 "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0317408811",
                 "status": "Fulfilled",
-                "carrier": "UPS"
+                "carrier": "UPS",
+                "signed": "No"
             }
         ]
     },
@@ -456,19 +477,22 @@
                 "tracking_number": "61290360427620726527",
                 "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427620726527",
                 "status": "Fulfilled",
-                "carrier": "FedEx"
+                "carrier": "FedEx",
+                "signed": "Yes"
             },
             {
                 "tracking_number": "61290360427620726725",
                 "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427620726725",
                 "status": "Fulfilled",
-                "carrier": "FedEx"
+                "carrier": "FedEx",
+                "signed": "Yes"
             },
             {
                 "tracking_number": "61290360427620726862",
                 "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427620726862",
                 "status": "Fulfilled",
-                "carrier": "FedEx"
+                "carrier": "FedEx",
+                "signed": "Yes"
             }
         ]
     },
@@ -489,7 +513,8 @@
                 "tracking_number": "886254718130",
                 "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886254718130",
                 "status": "Fulfilled",
-                "carrier": "FedEx"
+                "carrier": "FedEx",
+                "signed": "Yes"
             }
         ]
     },
@@ -515,7 +540,8 @@
                 "tracking_number": "61290360427620714418",
                 "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427620714418",
                 "status": "Fulfilled",
-                "carrier": "FedEx"
+                "carrier": "FedEx",
+                "signed": "Yes"
             }
         ]
     },
@@ -541,7 +567,8 @@
                 "tracking_number": "886218141707",
                 "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886218141707",
                 "status": "Fulfilled",
-                "carrier": "FedEx"
+                "carrier": "FedEx",
+                "signed": "Yes"
             }
         ]
     },
@@ -567,7 +594,8 @@
                 "tracking_number": "886180424234",
                 "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886180424234",
                 "status": "Fulfilled",
-                "carrier": "FedEx"
+                "carrier": "FedEx",
+                "signed": "Yes"
             }
         ]
     },
@@ -593,13 +621,15 @@
                 "tracking_number": "886212349690",
                 "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886212349690",
                 "status": "Fulfilled",
-                "carrier": "FedEx"
+                "carrier": "FedEx",
+                "signed": "Yes"
             },
             {
                 "tracking_number": "886212349680",
                 "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886212349680",
                 "status": "Fulfilled",
-                "carrier": "FedEx"
+                "carrier": "FedEx",
+                "signed": "Yes"
             }
         ]
     },
@@ -630,13 +660,15 @@
                 "tracking_number": "886253575513",
                 "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886253575513",
                 "status": "Fulfilled",
-                "carrier": "FedEx"
+                "carrier": "FedEx",
+                "signed": "Yes"
             },
             {
                 "tracking_number": "886253575524",
                 "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886253575524",
                 "status": "Fulfilled",
-                "carrier": "FedEx"
+                "carrier": "FedEx",
+                "signed": "Yes"
             }
         ]
     },
@@ -662,13 +694,15 @@
                 "tracking_number": "1ZC6039H0320978575",
                 "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0320978575",
                 "status": "Partial",
-                "carrier": "UPS"
+                "carrier": "UPS",
+                "signed": "Yes"
             },
             {
                 "tracking_number": "1ZC6039H0330179964",
                 "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0330179964",
                 "status": "Partial",
-                "carrier": "UPS"
+                "carrier": "UPS",
+                "signed": "Yes"
             }
         ]
     },
@@ -699,19 +733,22 @@
                 "tracking_number": "1ZC6039H0313300023",
                 "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0313300023",
                 "status": "Fulfilled",
-                "carrier": "UPS"
+                "carrier": "UPS",
+                "signed": "Yes"
             },
             {
                 "tracking_number": "1ZC6039H0312183804",
                 "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0312183804",
                 "status": "Fulfilled",
-                "carrier": "UPS"
+                "carrier": "UPS",
+                "signed": "Yes"
             },
             {
                 "tracking_number": "1ZC6039H0317617416",
                 "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0317617416",
                 "status": "Fulfilled",
-                "carrier": "UPS"
+                "carrier": "UPS",
+                "signed": "Yes"
             }
         ]
     },
@@ -737,13 +774,15 @@
                 "tracking_number": "886087172262",
                 "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886087172262",
                 "status": "Fulfilled",
-                "carrier": "FedEx"
+                "carrier": "FedEx",
+                "signed": "Yes"
             },
             {
                 "tracking_number": "886087172273",
                 "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886087172273",
                 "status": "Fulfilled",
-                "carrier": "FedEx"
+                "carrier": "FedEx",
+                "signed": "Yes"
             }
         ]
     }
