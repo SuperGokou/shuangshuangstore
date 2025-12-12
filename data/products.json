@@ -31,7 +31,7 @@
         "name": "蓝底 40oz",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler  40 OZ.png",
         "total_stock": 9,
-        "shipped_cn": 8,
+        "shipped_cn": 5,
         "us_signed": 9,
         "us_unsigned": 0
     },
@@ -49,7 +49,7 @@
         "name": "蓝底 30oz",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler  30 OZ.png",
         "total_stock": 36,
-        "shipped_cn": 32,
+        "shipped_cn": 35,
         "us_signed": 27,
         "us_unsigned": 9
     },
@@ -58,7 +58,7 @@
         "name": "蓝底 20oz",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20 OZ.png",
         "total_stock": 69,
-        "shipped_cn": 52,
+        "shipped_cn": 53,
         "us_signed": 28,
         "us_unsigned": 41
     },
