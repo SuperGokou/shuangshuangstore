@@ -42,7 +42,7 @@
         "tracking": "61290360427620824599",
         "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427620824599",
         "signed": "No",
-        "est_date": "8-Dec"
+        "est_date": "——"
     },
     {
         "source": "LoveShackFancy",
@@ -51,7 +51,7 @@
         "tracking": "61290360427620824711",
         "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427620824711",
         "signed": "No",
-        "est_date": "8-Dec"
+        "est_date": "——"
     },
     {
         "source": "LoveShackFancy",
@@ -60,7 +60,7 @@
         "tracking": "61290360427620771060",
         "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427620771060",
         "signed": "No",
-        "est_date": "8-Dec"
+        "est_date": "——"
     },
     {
         "source": "LoveShackFancy",
@@ -69,7 +69,7 @@
         "tracking": "61290360427620726527",
         "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427620726527",
         "signed": "Yes",
-        "est_date": "1-Dec"
+        "est_date": "——"
     },
     {
         "source": "LoveShackFancy",
@@ -78,7 +78,7 @@
         "tracking": "61290360427620726725",
         "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427620726725",
         "signed": "Yes",
-        "est_date": "1-Dec"
+        "est_date": "——"
     },
     {
         "source": "LoveShackFancy",
@@ -87,7 +87,7 @@
         "tracking": "61290360427620726862",
         "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427620726862",
         "signed": "Yes",
-        "est_date": "1-Dec"
+        "est_date": "——"
     },
     {
         "source": "LoveShackFancy",
@@ -96,7 +96,7 @@
         "tracking": "61290360427620714418",
         "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427620714418",
         "signed": "Yes",
-        "est_date": "29-Nov"
+        "est_date": "——"
     },
     {
         "source": "Stanley1913",
@@ -128,7 +128,7 @@
     {
         "source": "Stanley1913",
         "order_id": "#11632515",
-        "status": "Partial",
+        "status": "Fulfilled",
         "tracking": "1ZC6039H0320978575",
         "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0320978575",
         "signed": "Yes",
@@ -137,7 +137,7 @@
     {
         "source": "Stanley1913",
         "order_id": "#11632515",
-        "status": "Partial",
+        "status": "Fulfilled",
         "tracking": "1ZC6039H0330179964",
         "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0330179964",
         "signed": "Yes",
@@ -187,6 +187,33 @@
         "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=886254718130",
         "signed": "Yes",
         "est_date": "——"
+    },
+    {
+        "source": "Stanley1913",
+        "order_id": "#12155073",
+        "status": "Fulfilled",
+        "tracking": "1ZC1F5450317999159",
+        "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC1F5450317999159",
+        "signed": "No",
+        "est_date": "17-Dec"
+    },
+    {
+        "source": "Stanley1914",
+        "order_id": "#12155073",
+        "status": "Fulfilled",
+        "tracking": "1ZC1F5450310892544",
+        "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC1F5450310892544",
+        "signed": "No",
+        "est_date": "17-Dec"
+    },
+    {
+        "source": "Stanley1913",
+        "order_id": "#12160306",
+        "status": "Fulfilled",
+        "tracking": "1ZC1F5450316129359",
+        "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0313300022",
+        "signed": "No",
+        "est_date": "16-Dec"
     },
     {
         "source": "Stanley1913-CJ",
@@ -240,7 +267,7 @@
         "tracking": "1ZC6039H0313715200",
         "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0313715200",
         "signed": "No",
-        "est_date": "3-Dec"
+        "est_date": "——"
     },
     {
         "source": "Stanley1913-CJ",
@@ -249,7 +276,7 @@
         "tracking": "1ZC6039H0317408811",
         "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0317408811",
         "signed": "No",
-        "est_date": "3-Dec"
+        "est_date": "——"
     },
     {
         "source": "Stanley1913-CJ",
@@ -303,7 +330,7 @@
         "tracking": "1ZC6039H0303987749",
         "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0303987749",
         "signed": "No",
-        "est_date": "8-Dec"
+        "est_date": "——"
     },
     {
         "source": "Stanley1913-CJ",
@@ -312,7 +339,7 @@
         "tracking": "1ZY0G8680322975026",
         "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZY0G8680322975026",
         "signed": "No",
-        "est_date": "9-Dec"
+        "est_date": "——"
     },
     {
         "source": "Stanley1913-CJ",
@@ -321,7 +348,7 @@
         "tracking": "1ZC6039H0337521857",
         "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0337521857",
         "signed": "No",
-        "est_date": "4-Dec"
+        "est_date": "——"
     },
     {
         "source": "Stanley1913-CJ",
@@ -330,7 +357,7 @@
         "tracking": "1ZC6039H0323315632",
         "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0323315632",
         "signed": "No",
-        "est_date": "4-Dec"
+        "est_date": "——"
     },
     {
         "source": "Stanley1913-CJ",
@@ -339,7 +366,7 @@
         "tracking": "1ZC6039H0322254441",
         "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0322254441",
         "signed": "No",
-        "est_date": "4-Dec"
+        "est_date": "——"
     },
     {
         "source": "Stanley1913-CJ",
@@ -357,7 +384,7 @@
         "tracking": "1ZC6039H0331394112",
         "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0331394112",
         "signed": "No",
-        "est_date": "5-Dec"
+        "est_date": "——"
     },
     {
         "source": "Stanley1913-CJ",
@@ -366,6 +393,6 @@
         "tracking": "1ZC6039H0329367101",
         "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0329367101",
         "signed": "No",
-        "est_date": "5-Dec"
+        "est_date": "——"
     }
 ]
