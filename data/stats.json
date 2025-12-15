@@ -1,14 +1,58 @@
 [
     {
+        "产品名称": "蓝底 20oz",
+        "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20 OZ.png",
+        "已发总数": 78,
+        "带包装": 12,
+        "带包装详情": "陈文云(3), 陈文韬(1), 孙琳晨(1), 周婉茹(1), 费梦雨(2), 叶志康(2), 吴悦嘉(1), 陈晨(1)",
+        "不带包装": 66,
+        "不带包装详情": "徐双双(4), 朱欣悦(7), 陈月冬(8), 王晶(2), 费梦雨(1), 束健(4), 张琦(8), 王宜萌(6), 陈文韬(6), 郁雯曦(6), 聂超(8), 沈熙宸(6)",
+        "总库存": 72,
+        "类型": "product"
+    },
+    {
         "产品名称": "礼盒",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher ProTour Ornament Set.png",
-        "已发总数": 18,
-        "带包装": 14,
-        "带包装详情": "陈文云(1), 徐双双(2), 陈月冬(2), 王晶(2), 费梦雨(3), 束健(4)",
+        "已发总数": 22,
+        "带包装": 18,
+        "带包装详情": "陈文云(1), 徐双双(2), 陈月冬(3), 王晶(2), 费梦雨(3), 束健(3), 朱欣悦(1), 王宜萌(1), 陈文韬(1), 郁雯曦(1)",
         "不带包装": 4,
         "不带包装详情": "费梦雨(4)",
         "总库存": 33,
         "类型": "accessory"
+    },
+    {
+        "产品名称": "蓝底 30oz",
+        "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler  30 OZ.png",
+        "已发总数": 15,
+        "带包装": 9,
+        "带包装详情": "孙琳晨(1), 方嬴(1), 束健(3), 张敏(3), 叶志康(1)",
+        "不带包装": 6,
+        "不带包装详情": "陈月冬(2), 王晶(2), 费梦雨(2)",
+        "总库存": 36,
+        "类型": "product"
+    },
+    {
+        "产品名称": "蓝底 40oz",
+        "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler  40 OZ.png",
+        "已发总数": 9,
+        "带包装": 5,
+        "带包装详情": "陈文云(1), 陈月冬(1), 费梦雨(2), 束健(1)",
+        "不带包装": 4,
+        "不带包装详情": "徐双双(4)",
+        "总库存": 9,
+        "类型": "product"
+    },
+    {
+        "产品名称": "白底 40oz",
+        "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler40 oz.png",
+        "已发总数": 5,
+        "带包装": 1,
+        "带包装详情": "储畅言(1)",
+        "不带包装": 4,
+        "不带包装详情": "夏铭(4)",
+        "总库存": 9,
+        "类型": "product"
     },
     {
         "产品名称": "白底 20oz",
@@ -22,6 +66,17 @@
         "类型": "product"
     },
     {
+        "产品名称": "Slim Bottle",
+        "image": "img/Stanley 1913 x LoveShackFancy Holiday All Day Slim Bottle.png",
+        "已发总数": 2,
+        "带包装": 0,
+        "带包装详情": "——",
+        "不带包装": 2,
+        "不带包装详情": "王晶(2)",
+        "总库存": 2,
+        "类型": "product"
+    },
+    {
         "产品名称": "Holiday Reserve All Day Wine Set",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Reserve All Day Wine Set.png",
         "已发总数": 1,
@@ -30,17 +85,6 @@
         "不带包装": 0,
         "不带包装详情": "——",
         "总库存": 4,
-        "类型": "product"
-    },
-    {
-        "产品名称": "蓝底 20oz",
-        "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20 OZ.png",
-        "已发总数": 54,
-        "带包装": 10,
-        "带包装详情": "陈文云(3), 陈文韬(1), 孙琳晨(1), 周婉茹(1), 费梦雨(2), 吴悦嘉(1), 陈晨(1)",
-        "不带包装": 44,
-        "不带包装详情": "徐双双(4), 朱欣悦(1), 陈月冬(2), 王晶(2), 费梦雨(1), 束健(4), 郁雯曦(6), 聂超(6), 张敏(6), 田亚红(6), 叶志康(6)",
-        "总库存": 72,
         "类型": "product"
     },
     {
@@ -64,49 +108,5 @@
         "不带包装详情": "——",
         "总库存": "N/A",
         "类型": "packaging"
-    },
-    {
-        "产品名称": "蓝底 30oz",
-        "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler  30 OZ.png",
-        "已发总数": 35,
-        "带包装": 5,
-        "带包装详情": "孙琳晨(1), 方嬴(1), 束健(3)",
-        "不带包装": 30,
-        "不带包装详情": "陈月冬(2), 王晶(2), 费梦雨(2), 朱欣悦(6), 张琦(6), 王宜萌(6), 陈文韬(6)",
-        "总库存": 36,
-        "类型": "product"
-    },
-    {
-        "产品名称": "蓝底 40oz",
-        "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler  40 OZ.png",
-        "已发总数": 5,
-        "带包装": 5,
-        "带包装详情": "陈文云(1), 陈月冬(1), 费梦雨(2), 束健(1)",
-        "不带包装": 0,
-        "不带包装详情": "——",
-        "总库存": 9,
-        "类型": "product"
-    },
-    {
-        "产品名称": "Slim Bottle",
-        "image": "img/Stanley 1913 x LoveShackFancy Holiday All Day Slim Bottle.png",
-        "已发总数": 2,
-        "带包装": 0,
-        "带包装详情": "——",
-        "不带包装": 2,
-        "不带包装详情": "王晶(2)",
-        "总库存": 2,
-        "类型": "product"
-    },
-    {
-        "产品名称": "白底 40oz",
-        "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler40 oz.png",
-        "已发总数": 1,
-        "带包装": 1,
-        "带包装详情": "储畅言(1)",
-        "不带包装": 0,
-        "不带包装详情": "——",
-        "总库存": 9,
-        "类型": "product"
     }
 ]
