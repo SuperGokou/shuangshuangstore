@@ -12,10 +12,10 @@
         "id": 2,
         "name": "礼盒",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher ProTour Ornament Set.png",
-        "total_stock": 27,
+        "total_stock": 33,
         "shipped_cn": 18,
         "us_signed": 21,
-        "us_unsigned": 6
+        "us_unsigned": 12
     },
     {
         "id": 3,
@@ -31,7 +31,7 @@
         "name": "蓝底 20oz",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20 OZ.png",
         "total_stock": 72,
-        "shipped_cn": 53,
+        "shipped_cn": 54,
         "us_signed": 28,
         "us_unsigned": 44
     },
@@ -84,19 +84,19 @@
         "id": 10,
         "name": "Holiday Reserve All Day Wine Set",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Reserve All Day Wine Set.png",
-        "total_stock": 2,
+        "total_stock": 4,
         "shipped_cn": 1,
         "us_signed": 1,
-        "us_unsigned": 1
+        "us_unsigned": 3
     },
     {
         "id": 11,
         "name": "Everyday Camp Mug Set",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Everyday Camp Mug Set.png",
-        "total_stock": 1,
+        "total_stock": 4,
         "shipped_cn": 0,
         "us_signed": 1,
-        "us_unsigned": 0
+        "us_unsigned": 3
     },
     {
         "id": 12,
@@ -201,9 +201,27 @@
         "id": 23,
         "name": "The Reserve Wine Tumbler Set | 11 oz",
         "image": "img/The Reserve Wine Tumbler Set 11 OZ.png",
-        "total_stock": 1,
+        "total_stock": 5,
         "shipped_cn": 1,
         "us_signed": 0,
+        "us_unsigned": 5
+    },
+    {
+        "id": 24,
+        "name": "Holiday Reserve Wine Tumbler",
+        "image": "img/Holiday Reserve Wine Tumbler 11 OZ.png",
+        "total_stock": 1,
+        "shipped_cn": 0,
+        "us_signed": 0,
         "us_unsigned": 1
+    },
+    {
+        "id": 25,
+        "name": "Holiday The Quencher Details ProTour Tumbler Set",
+        "image": "img/Holiday The Quencher Details ProTour Tumbler Set  2-pack.png",
+        "total_stock": 3,
+        "shipped_cn": 0,
+        "us_signed": 0,
+        "us_unsigned": 3
     }
 ]
