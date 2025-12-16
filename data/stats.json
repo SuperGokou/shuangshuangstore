@@ -11,6 +11,28 @@
         "类型": "product"
     },
     {
+        "产品名称": "蓝底 40oz",
+        "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler  40 OZ.png",
+        "已发总数": 9,
+        "带包装": 5,
+        "带包装详情": "陈文云(1), 陈月冬(1), 费梦雨(2), 束健(1)",
+        "不带包装": 4,
+        "不带包装详情": "徐双双(4)",
+        "总库存": 9,
+        "类型": "product"
+    },
+    {
+        "产品名称": "白底 20oz",
+        "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20OZ.png",
+        "已发总数": 3,
+        "带包装": 0,
+        "带包装详情": "——",
+        "不带包装": 3,
+        "不带包装详情": "徐双双(2), 费梦雨(1)",
+        "总库存": 6,
+        "类型": "product"
+    },
+    {
         "产品名称": "蓝底 30oz",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler  30 OZ.png",
         "已发总数": 28,
@@ -20,6 +42,28 @@
         "不带包装详情": "陈月冬(2), 王晶(2), 费梦雨(2), 田亚红(6), 沈熙宸(6)",
         "总库存": 36,
         "类型": "product"
+    },
+    {
+        "产品名称": "The Reserve Wine Tumbler Set | 11 oz",
+        "image": "img/The Reserve Wine Tumbler Set 11 OZ.png",
+        "已发总数": 1,
+        "带包装": 1,
+        "带包装详情": "周海云(1)",
+        "不带包装": 0,
+        "不带包装详情": "——",
+        "总库存": 5,
+        "类型": "product"
+    },
+    {
+        "产品名称": "压扁包装",
+        "image": "img/s-l1600.png",
+        "已发总数": 1,
+        "带包装": 1,
+        "带包装详情": "束健(1)",
+        "不带包装": 0,
+        "不带包装详情": "——",
+        "总库存": "N/A",
+        "类型": "packaging"
     },
     {
         "产品名称": "礼盒",
@@ -33,17 +77,6 @@
         "类型": "accessory"
     },
     {
-        "产品名称": "蓝底 40oz",
-        "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler  40 OZ.png",
-        "已发总数": 9,
-        "带包装": 5,
-        "带包装详情": "陈文云(1), 陈月冬(1), 费梦雨(2), 束健(1)",
-        "不带包装": 4,
-        "不带包装详情": "徐双双(4)",
-        "总库存": 9,
-        "类型": "product"
-    },
-    {
         "产品名称": "白底 40oz",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler40 oz.png",
         "已发总数": 5,
@@ -52,17 +85,6 @@
         "不带包装": 4,
         "不带包装详情": "夏铭(4)",
         "总库存": 9,
-        "类型": "product"
-    },
-    {
-        "产品名称": "白底 20oz",
-        "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20OZ.png",
-        "已发总数": 3,
-        "带包装": 0,
-        "带包装详情": "——",
-        "不带包装": 3,
-        "不带包装详情": "徐双双(2), 费梦雨(1)",
-        "总库存": 6,
         "类型": "product"
     },
     {
@@ -88,17 +110,6 @@
         "类型": "product"
     },
     {
-        "产品名称": "The Reserve Wine Tumbler Set | 11 oz",
-        "image": "img/The Reserve Wine Tumbler Set 11 OZ.png",
-        "已发总数": 1,
-        "带包装": 1,
-        "带包装详情": "周海云(1)",
-        "不带包装": 0,
-        "不带包装详情": "——",
-        "总库存": 5,
-        "类型": "product"
-    },
-    {
         "产品名称": "粉底 20oz",
         "image": "img/ProTour Flip Straw Tumbler 20 OZ.png",
         "已发总数": 1,
@@ -108,16 +119,5 @@
         "不带包装详情": "——",
         "总库存": 1,
         "类型": "product"
-    },
-    {
-        "产品名称": "压扁包装",
-        "image": "img/s-l1600.png",
-        "已发总数": 1,
-        "带包装": 1,
-        "带包装详情": "束健(1)",
-        "不带包装": 0,
-        "不带包装详情": "——",
-        "总库存": "N/A",
-        "类型": "packaging"
     }
 ]
