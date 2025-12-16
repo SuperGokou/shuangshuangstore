@@ -39,18 +39,25 @@ def export_data():
     export_shipments = []
 
     for s in shipments:
-        # If we need customer details that aren't in the shipment document
+        # Join with 'customers' only to fill MISSING data
         if 'customer_id' in s:
             customer = db.customers.find_one({'_id': s['customer_id']})
             if customer:
-                s['phone'] = customer.get('phone')
-                s['address'] = customer.get('address')
-                s['recipient'] = customer.get('name')
-
-        # Clean up ObjectId (Manual cleanup is fine, but json_serial handles leftovers)
+                # Only use customer profile data if shipment data is missing
+                if 'phone' not in s or not s['phone']:
+                    s['phone'] = customer.get('phone')
+                
+                # CRITICAL FIX: Do NOT overwrite the shipment address if it already exists
+                if 'address' not in s or not s['address']:
+                    s['address'] = customer.get('address')
+                
+                if 'recipient' not in s or not s['recipient']:
+                    s['recipient'] = customer.get('name')
+        
+        # Clean up ObjectId
         s['_id'] = str(s['_id'])
         if 'customer_id' in s: s['customer_id'] = str(s['customer_id'])
-
+        
         export_shipments.append(s)
 
     with open('data/shipping.json', 'w', encoding='utf-8') as f:
