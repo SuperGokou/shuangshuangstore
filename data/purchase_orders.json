@@ -3,7 +3,7 @@
         "source": "Stanley1913",
         "order_id": "#12272640",
         "date": "2025-12-15",
-        "note": "Gokou-未发货and未签收",
+        "note": "Gokou-已发货and未签收",
         "items": [
             {
                 "product": "礼盒",
@@ -11,13 +11,21 @@
                 "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher ProTour Ornament Set.png"
             }
         ],
-        "shipments": []
+        "shipments": [
+            {
+                "tracking_number": "1ZC1F5450318449134",
+                "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC1F5450318449134",
+                "status": "Fulfilled",
+                "carrier": "UPS",
+                "signed": "No"
+            }
+        ]
     },
     {
         "source": "Stanley1913",
         "order_id": "#12272586",
         "date": "2025-12-15",
-        "note": "Gokou-未发货and未签收",
+        "note": "Gokou-已发货and未签收",
         "items": [
             {
                 "product": "礼盒",
@@ -25,13 +33,21 @@
                 "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher ProTour Ornament Set.png"
             }
         ],
-        "shipments": []
+        "shipments": [
+            {
+                "tracking_number": "1ZC1F5450303705910",
+                "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC1F5450303705910",
+                "status": "Fulfilled",
+                "carrier": "UPS",
+                "signed": "No"
+            }
+        ]
     },
     {
         "source": "Stanley1913",
         "order_id": "#12272506",
         "date": "2025-12-15",
-        "note": "Gokou-未发货and未签收",
+        "note": "Gokou-已发货and未签收",
         "items": [
             {
                 "product": "Everyday Camp Mug Set",
@@ -49,7 +65,22 @@
                 "image": "img/Stanley 1913 x LoveShackFancy Holiday Reserve All Day Wine Set.png"
             }
         ],
-        "shipments": []
+        "shipments": [
+            {
+                "tracking_number": "1ZC1F5450306506184",
+                "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC1F5450306506184",
+                "status": "Fulfilled",
+                "carrier": "UPS",
+                "signed": "No"
+            },
+            {
+                "tracking_number": "1ZC1F5450307249595",
+                "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC1F5450307249595",
+                "status": "Fulfilled",
+                "carrier": "UPS",
+                "signed": "No"
+            }
+        ]
     },
     {
         "source": "Stanley1913",
@@ -98,7 +129,7 @@
                 "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0313300022",
                 "status": "Fulfilled",
                 "carrier": "UPS",
-                "signed": "No"
+                "signed": "Yes"
             }
         ]
     },
@@ -106,7 +137,7 @@
         "source": "Stanley1913",
         "order_id": "#12155073",
         "date": "2025-12-10",
-        "note": "Gokou-已发货and未签收",
+        "note": "Gokou-已发货and已签收",
         "items": [
             {
                 "product": "蓝底 20oz",
@@ -125,14 +156,14 @@
                 "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC1F5450317999159",
                 "status": "Fulfilled",
                 "carrier": "UPS",
-                "signed": "No"
+                "signed": "Yes"
             },
             {
                 "tracking_number": "1ZC1F5450310892544",
                 "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC1F5450310892544",
                 "status": "Fulfilled",
                 "carrier": "UPS",
-                "signed": "No"
+                "signed": "Yes"
             }
         ]
     },
@@ -140,7 +171,7 @@
         "source": "Stanley1913",
         "order_id": "#12115388",
         "date": "2025-12-08",
-        "note": "Gokou-已发货and未签收",
+        "note": "Gokou-已发货and已签收",
         "items": [
             {
                 "product": "蓝底 20oz",
@@ -159,14 +190,14 @@
                 "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC1F5450310905931",
                 "status": "Fulfilled",
                 "carrier": "UPS",
-                "signed": "No"
+                "signed": "Yes"
             },
             {
                 "tracking_number": "1ZC1F5450319619341",
                 "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC1F5450319619341",
                 "status": "Fulfilled",
                 "carrier": "UPS",
-                "signed": "No"
+                "signed": "Yes"
             }
         ]
     },
@@ -174,7 +205,7 @@
         "source": "LoveShackFancy",
         "order_id": "#718016",
         "date": "2025-12-03",
-        "note": "Gokou-已发货and未签收",
+        "note": "Gokou-已发货and已签收",
         "items": [
             {
                 "product": "蓝底 30oz",
@@ -188,14 +219,14 @@
                 "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427620824599",
                 "status": "Fulfilled",
                 "carrier": "FedEx",
-                "signed": "No"
+                "signed": "Yes"
             },
             {
                 "tracking_number": "61290360427620913712",
                 "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427620913712",
                 "status": "Fulfilled",
                 "carrier": "FedEx",
-                "signed": "No"
+                "signed": "Yes"
             }
         ]
     },
@@ -203,7 +234,7 @@
         "source": "LoveShackFancy",
         "order_id": "#707660",
         "date": "2025-11-29",
-        "note": "Gokou-已发货and未签收",
+        "note": "Gokou-已发货and已签收",
         "items": [
             {
                 "product": "蓝底 20oz",
@@ -217,14 +248,14 @@
                 "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427620824599",
                 "status": "Fulfilled",
                 "carrier": "FedEx",
-                "signed": "No"
+                "signed": "Yes"
             },
             {
                 "tracking_number": "61290360427620824711",
                 "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427620824711",
                 "status": "Fulfilled",
                 "carrier": "FedEx",
-                "signed": "No"
+                "signed": "Yes"
             }
         ]
     },
@@ -232,7 +263,7 @@
         "source": "Stanley1913",
         "order_id": "#11864905",
         "date": "2025-11-27",
-        "note": "CJ-已发货and未签收",
+        "note": "CJ-已发货and已签收",
         "items": [
             {
                 "product": "礼盒",
@@ -276,21 +307,21 @@
                 "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0337521857",
                 "status": "Fulfilled",
                 "carrier": "UPS",
-                "signed": "No"
+                "signed": "Yes"
             },
             {
                 "tracking_number": "1ZC6039H0323315632",
                 "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0323315632",
                 "status": "Fulfilled",
                 "carrier": "UPS",
-                "signed": "No"
+                "signed": "Yes"
             },
             {
                 "tracking_number": "1ZC6039H0322254441",
                 "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0322254441",
                 "status": "Fulfilled",
                 "carrier": "UPS",
-                "signed": "No"
+                "signed": "Yes"
             },
             {
                 "tracking_number": "886458425167",
@@ -305,7 +336,7 @@
         "source": "Stanley1913",
         "order_id": "#11866106",
         "date": "2025-11-27",
-        "note": "CJ-已发货and未签收",
+        "note": "CJ-已发货and已签收",
         "items": [
             {
                 "product": "蓝底 20oz",
@@ -324,14 +355,14 @@
                 "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0331394112",
                 "status": "Fulfilled",
                 "carrier": "UPS",
-                "signed": "No"
+                "signed": "Yes"
             },
             {
                 "tracking_number": "1ZC6039H0329367101",
                 "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0329367101",
                 "status": "Fulfilled",
                 "carrier": "UPS",
-                "signed": "No"
+                "signed": "Yes"
             }
         ]
     },
@@ -339,7 +370,7 @@
         "source": "Stanley1913",
         "order_id": "#11880985",
         "date": "2025-11-27",
-        "note": "CJ-已发货and未签收",
+        "note": "CJ-已发货and已签收",
         "items": [
             {
                 "product": "粉底 20oz",
@@ -358,7 +389,7 @@
                 "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZY0G8680322975026",
                 "status": "Fulfilled",
                 "carrier": "UPS",
-                "signed": "No"
+                "signed": "Yes"
             }
         ]
     },
@@ -366,7 +397,7 @@
         "source": "Stanley1913",
         "order_id": "#11850183",
         "date": "2025-11-26",
-        "note": "CJ-已发货and未签收",
+        "note": "CJ-已发货and已签收",
         "items": [
             {
                 "product": "白底 40oz",
@@ -390,7 +421,7 @@
                 "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0303987749",
                 "status": "Fulfilled",
                 "carrier": "UPS",
-                "signed": "No"
+                "signed": "Yes"
             }
         ]
     },
@@ -398,7 +429,7 @@
         "source": "LoveShackFancy",
         "order_id": "#700705",
         "date": "2025-11-25",
-        "note": "Gokou-已发货and未签收",
+        "note": "Gokou-已发货and已签收",
         "items": [
             {
                 "product": "蓝底 20oz",
@@ -412,7 +443,7 @@
                 "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427620771060",
                 "status": "Fulfilled",
                 "carrier": "FedEx",
-                "signed": "No"
+                "signed": "Yes"
             }
         ]
     },
@@ -586,14 +617,14 @@
                 "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0313715200",
                 "status": "Fulfilled",
                 "carrier": "UPS",
-                "signed": "No"
+                "signed": "Yes"
             },
             {
                 "tracking_number": "1ZC6039H0317408811",
                 "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0317408811",
                 "status": "Fulfilled",
                 "carrier": "UPS",
-                "signed": "No"
+                "signed": "Yes"
             }
         ]
     },

@@ -1,30 +1,12 @@
 [
     {
-        "source": "Stanley1913",
-        "order_id": "#12115388",
-        "status": "Fulfilled",
-        "tracking": "1ZC1F5450310905931",
-        "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC1F5450310905931",
-        "signed": "No",
-        "est_date": "11-Dec"
-    },
-    {
-        "source": "Stanley1913",
-        "order_id": "#12115388",
-        "status": "Fulfilled",
-        "tracking": "1ZC1F5450319619341",
-        "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC1F5450319619341",
-        "signed": "No",
-        "est_date": "11-Dec"
-    },
-    {
         "source": "LoveShackFancy",
         "order_id": "#718016",
         "status": "Fulfilled",
         "tracking": "61290360427620913699",
         "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427620824599",
-        "signed": "No",
-        "est_date": "11-Dec"
+        "signed": "Yes",
+        "est_date": "——"
     },
     {
         "source": "LoveShackFancy",
@@ -32,8 +14,8 @@
         "status": "Fulfilled",
         "tracking": "61290360427620913712",
         "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427620913712",
-        "signed": "No",
-        "est_date": "11-Dec"
+        "signed": "Yes",
+        "est_date": "——"
     },
     {
         "source": "LoveShackFancy",
@@ -41,7 +23,7 @@
         "status": "Fulfilled",
         "tracking": "61290360427620824599",
         "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427620824599",
-        "signed": "No",
+        "signed": "Yes",
         "est_date": "——"
     },
     {
@@ -50,7 +32,7 @@
         "status": "Fulfilled",
         "tracking": "61290360427620824711",
         "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427620824711",
-        "signed": "No",
+        "signed": "Yes",
         "est_date": "——"
     },
     {
@@ -59,7 +41,7 @@
         "status": "Fulfilled",
         "tracking": "61290360427620771060",
         "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427620771060",
-        "signed": "No",
+        "signed": "Yes",
         "est_date": "——"
     },
     {
@@ -95,6 +77,69 @@
         "status": "Fulfilled",
         "tracking": "61290360427620714418",
         "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427620714418",
+        "signed": "Yes",
+        "est_date": "——"
+    },
+    {
+        "source": "Stanley1913",
+        "order_id": "#12272640",
+        "status": "Fulfilled",
+        "tracking": "1ZC1F5450318449134",
+        "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC1F5450318449134",
+        "signed": "No",
+        "est_date": "2025-12-19"
+    },
+    {
+        "source": "Stanley1913",
+        "order_id": "#12272586",
+        "status": "Fulfilled",
+        "tracking": "1ZC1F5450303705910",
+        "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC1F5450303705910",
+        "signed": "No",
+        "est_date": "2025-12-19"
+    },
+    {
+        "source": "Stanley1913",
+        "order_id": "#12272506",
+        "status": "Fulfilled",
+        "tracking": "1ZC1F5450306506184",
+        "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC1F5450306506184",
+        "signed": "No",
+        "est_date": "2025-12-19"
+    },
+    {
+        "source": "Stanley1913",
+        "order_id": "#12272506",
+        "status": "Fulfilled",
+        "tracking": "1ZC1F5450307249595",
+        "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC1F5450307249595",
+        "signed": "No",
+        "est_date": "2025-12-19"
+    },
+    {
+        "source": "Stanley1913",
+        "order_id": "#12268322",
+        "status": "Unfulfilled",
+        "tracking": "",
+        "tracking_url": "",
+        "signed": "No",
+        "est_date": ""
+    },
+    {
+        "source": "Stanley1913",
+        "order_id": "#12115388",
+        "status": "Fulfilled",
+        "tracking": "1ZC1F5450310905931",
+        "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC1F5450310905931",
+        "signed": "Yes",
+        "est_date": "——"
+    },
+    {
+        "source": "Stanley1913",
+        "order_id": "#12115388",
+        "status": "Fulfilled",
+        "tracking": "1ZC1F5450319619341",
+        "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC1F5450319619341",
         "signed": "Yes",
         "est_date": "——"
     },
@@ -194,8 +239,8 @@
         "status": "Fulfilled",
         "tracking": "1ZC1F5450317999159",
         "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC1F5450317999159",
-        "signed": "No",
-        "est_date": "17-Dec"
+        "signed": "Yes",
+        "est_date": "——"
     },
     {
         "source": "Stanley1914",
@@ -203,8 +248,8 @@
         "status": "Fulfilled",
         "tracking": "1ZC1F5450310892544",
         "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC1F5450310892544",
-        "signed": "No",
-        "est_date": "17-Dec"
+        "signed": "Yes",
+        "est_date": "——"
     },
     {
         "source": "Stanley1913",
@@ -212,8 +257,8 @@
         "status": "Fulfilled",
         "tracking": "1ZC1F5450316129359",
         "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0313300022",
-        "signed": "No",
-        "est_date": "16-Dec"
+        "signed": "Yes",
+        "est_date": "——"
     },
     {
         "source": "Stanley1913-CJ",
@@ -266,7 +311,7 @@
         "status": "Fulfilled",
         "tracking": "1ZC6039H0313715200",
         "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0313715200",
-        "signed": "No",
+        "signed": "Yes",
         "est_date": "——"
     },
     {
@@ -275,7 +320,7 @@
         "status": "Fulfilled",
         "tracking": "1ZC6039H0317408811",
         "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0317408811",
-        "signed": "No",
+        "signed": "Yes",
         "est_date": "——"
     },
     {
@@ -329,7 +374,7 @@
         "status": "Fulfilled",
         "tracking": "1ZC6039H0303987749",
         "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0303987749",
-        "signed": "No",
+        "signed": "Yes",
         "est_date": "——"
     },
     {
@@ -338,7 +383,7 @@
         "status": "Fulfilled",
         "tracking": "1ZY0G8680322975026",
         "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZY0G8680322975026",
-        "signed": "No",
+        "signed": "Yes",
         "est_date": "——"
     },
     {
@@ -347,7 +392,7 @@
         "status": "Fulfilled",
         "tracking": "1ZC6039H0337521857",
         "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0337521857",
-        "signed": "No",
+        "signed": "Yes",
         "est_date": "——"
     },
     {
@@ -356,7 +401,7 @@
         "status": "Fulfilled",
         "tracking": "1ZC6039H0323315632",
         "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0323315632",
-        "signed": "No",
+        "signed": "Yes",
         "est_date": "——"
     },
     {
@@ -365,7 +410,7 @@
         "status": "Fulfilled",
         "tracking": "1ZC6039H0322254441",
         "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0322254441",
-        "signed": "No",
+        "signed": "Yes",
         "est_date": "——"
     },
     {
@@ -383,7 +428,7 @@
         "status": "Fulfilled",
         "tracking": "1ZC6039H0331394112",
         "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0331394112",
-        "signed": "No",
+        "signed": "Yes",
         "est_date": "——"
     },
     {
@@ -392,7 +437,7 @@
         "status": "Fulfilled",
         "tracking": "1ZC6039H0329367101",
         "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0329367101",
-        "signed": "No",
+        "signed": "Yes",
         "est_date": "——"
     }
 ]
