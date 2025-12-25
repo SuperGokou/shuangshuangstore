@@ -14,8 +14,8 @@
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher ProTour Ornament Set.png",
         "total_stock": 33,
         "shipped_cn": 27,
-        "us_signed": 27,
-        "us_unsigned": 6
+        "us_signed": 33,
+        "us_unsigned": 0
     },
     {
         "id": 3,
@@ -68,8 +68,8 @@
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20OZ.png",
         "total_stock": 6,
         "shipped_cn": 5,
-        "us_signed": 3,
-        "us_unsigned": 3
+        "us_signed": 6,
+        "us_unsigned": 0
     },
     {
         "id": 9,
@@ -95,8 +95,8 @@
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Reserve All Day Wine Set.png",
         "total_stock": 4,
         "shipped_cn": 3,
-        "us_signed": 2,
-        "us_unsigned": 2
+        "us_signed": 4,
+        "us_unsigned": 0
     },
     {
         "id": 12,
@@ -104,8 +104,8 @@
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Everyday Camp Mug Set.png",
         "total_stock": 4,
         "shipped_cn": 0,
-        "us_signed": 1,
-        "us_unsigned": 3
+        "us_signed": 2,
+        "us_unsigned": 2
     },
     {
         "id": 13,
@@ -203,8 +203,8 @@
         "image": "img/The Reserve Wine Tumbler Set 11 OZ.png",
         "total_stock": 5,
         "shipped_cn": 2,
-        "us_signed": 1,
-        "us_unsigned": 4
+        "us_signed": 2,
+        "us_unsigned": 3
     },
     {
         "id": 24,
