@@ -39,18 +39,18 @@
         "id": 5,
         "name": "蓝底 20oz",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20 OZ.png",
-        "total_stock": 72,
+        "total_stock": 78,
         "shipped_cn": 79,
-        "us_signed": 72,
+        "us_signed": 78,
         "us_unsigned": 0
     },
     {
         "id": 6,
         "name": "蓝底 30oz",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler  30 OZ.png",
-        "total_stock": 36,
+        "total_stock": 30,
         "shipped_cn": 29,
-        "us_signed": 36,
+        "us_signed": 30,
         "us_unsigned": 0
     },
     {
