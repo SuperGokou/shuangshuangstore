@@ -17,7 +17,7 @@
                 "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC1F5450318449134",
                 "status": "Fulfilled",
                 "carrier": "UPS",
-                "signed": "No"
+                "signed": "Yes"
             }
         ]
     },
@@ -39,7 +39,7 @@
                 "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC1F5450303705910",
                 "status": "Fulfilled",
                 "carrier": "UPS",
-                "signed": "No"
+                "signed": "Yes"
             }
         ]
     },
@@ -71,14 +71,14 @@
                 "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC1F5450306506184",
                 "status": "Fulfilled",
                 "carrier": "UPS",
-                "signed": "No"
+                "signed": "Yes"
             },
             {
                 "tracking_number": "1ZC1F5450307249595",
                 "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC1F5450307249595",
                 "status": "Fulfilled",
                 "carrier": "UPS",
-                "signed": "No"
+                "signed": "Yes"
             }
         ]
     },
