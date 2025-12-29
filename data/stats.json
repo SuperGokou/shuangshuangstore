@@ -66,6 +66,17 @@
         "类型": "product"
     },
     {
+        "产品名称": "The Reserve Wine Tumbler Set | 11 oz",
+        "image": "img/The Reserve Wine Tumbler Set 11 OZ.png",
+        "已发总数": 4,
+        "带包装": 1,
+        "带包装详情": "周海云(1)",
+        "不带包装": 3,
+        "不带包装详情": "陈月冬(1), 徐双双(2)",
+        "总库存": 5,
+        "类型": "product"
+    },
+    {
         "产品名称": "Holiday Reserve All Day Wine Set",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Reserve All Day Wine Set.png",
         "已发总数": 3,
@@ -73,6 +84,17 @@
         "带包装详情": "方嬴(1), 孙燕菁(1)",
         "不带包装": 1,
         "不带包装详情": "陈月冬(1)",
+        "总库存": 4,
+        "类型": "product"
+    },
+    {
+        "产品名称": "Everyday Camp Mug Set",
+        "image": "img/Stanley 1913 x LoveShackFancy Holiday Everyday Camp Mug Set.png",
+        "已发总数": 3,
+        "带包装": 0,
+        "带包装详情": "——",
+        "不带包装": 3,
+        "不带包装详情": "陈月冬(2), 徐双双(1)",
         "总库存": 4,
         "类型": "product"
     },
@@ -88,28 +110,6 @@
         "类型": "product"
     },
     {
-        "产品名称": "The Reserve Wine Tumbler Set | 11 oz",
-        "image": "img/The Reserve Wine Tumbler Set 11 OZ.png",
-        "已发总数": 2,
-        "带包装": 1,
-        "带包装详情": "周海云(1)",
-        "不带包装": 1,
-        "不带包装详情": "陈月冬(1)",
-        "总库存": 5,
-        "类型": "product"
-    },
-    {
-        "产品名称": "Everyday Camp Mug Set",
-        "image": "img/Stanley 1913 x LoveShackFancy Holiday Everyday Camp Mug Set.png",
-        "已发总数": 2,
-        "带包装": 0,
-        "带包装详情": "——",
-        "不带包装": 2,
-        "不带包装详情": "陈月冬(2)",
-        "总库存": 4,
-        "类型": "product"
-    },
-    {
         "产品名称": "粉底 20oz",
         "image": "img/ProTour Flip Straw Tumbler 20 OZ.png",
         "已发总数": 1,
@@ -117,6 +117,17 @@
         "带包装详情": "叶志康(1)",
         "不带包装": 0,
         "不带包装详情": "——",
+        "总库存": 1,
+        "类型": "product"
+    },
+    {
+        "产品名称": "粉底 40oz",
+        "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler 40 OZ.png",
+        "已发总数": 1,
+        "带包装": 0,
+        "带包装详情": "——",
+        "不带包装": 1,
+        "不带包装详情": "徐双双(1)",
         "总库存": 1,
         "类型": "product"
     },
