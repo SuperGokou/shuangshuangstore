@@ -12,10 +12,10 @@
         "id": 2,
         "name": "礼盒",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher ProTour Ornament Set.png",
-        "total_stock": 33,
+        "total_stock": 27,
         "shipped_cn": 27,
         "us_signed": 33,
-        "us_unsigned": 0
+        "us_unsigned": -6
     },
     {
         "id": 3,
@@ -75,10 +75,10 @@
         "id": 9,
         "name": "白底 30oz",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 30 oz.png",
-        "total_stock": 3,
+        "total_stock": 0,
         "shipped_cn": 0,
         "us_signed": 3,
-        "us_unsigned": 0
+        "us_unsigned": -3
     },
     {
         "id": 10,
@@ -102,10 +102,10 @@
         "id": 12,
         "name": "Everyday Camp Mug Set",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Everyday Camp Mug Set.png",
-        "total_stock": 4,
+        "total_stock": 3,
         "shipped_cn": 3,
         "us_signed": 2,
-        "us_unsigned": 2
+        "us_unsigned": 1
     },
     {
         "id": 13,
@@ -201,26 +201,26 @@
         "id": 23,
         "name": "The Reserve Wine Tumbler Set | 11 oz",
         "image": "img/The Reserve Wine Tumbler Set 11 OZ.png",
-        "total_stock": 5,
+        "total_stock": 4,
         "shipped_cn": 4,
         "us_signed": 2,
-        "us_unsigned": 3
+        "us_unsigned": 2
     },
     {
         "id": 24,
         "name": "Holiday Reserve Wine Tumbler",
         "image": "img/Holiday Reserve Wine Tumbler 11 OZ.png",
-        "total_stock": 1,
+        "total_stock": 0,
         "shipped_cn": 0,
         "us_signed": 0,
-        "us_unsigned": 1
+        "us_unsigned": 0
     },
     {
         "id": 25,
         "name": "Holiday The Quencher Details ProTour Tumbler Set",
         "image": "img/Holiday The Quencher Details ProTour Tumbler Set  2-pack.png",
         "total_stock": 3,
-        "shipped_cn": 0,
+        "shipped_cn": 3,
         "us_signed": 0,
         "us_unsigned": 3
     }

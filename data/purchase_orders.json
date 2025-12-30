@@ -4,7 +4,33 @@
         "order_id": "",
         "date": "2025-12-29",
         "note": "退货",
-        "items": [],
+        "items": [
+            {
+                "product": "礼盒",
+                "qty": -6,
+                "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher ProTour Ornament Set.png"
+            },
+            {
+                "product": "Holiday Reserve Wine Tumbler",
+                "qty": -1,
+                "image": "img/Holiday Reserve Wine Tumbler 11 OZ.png"
+            },
+            {
+                "product": "Everyday Camp Mug Set",
+                "qty": -1,
+                "image": "img/Stanley 1913 x LoveShackFancy Holiday Everyday Camp Mug Set.png"
+            },
+            {
+                "product": "The Reserve Wine Tumbler Set | 11 oz",
+                "qty": -1,
+                "image": "img/The Reserve Wine Tumbler Set 11 OZ.png"
+            },
+            {
+                "product": "白底 30oz",
+                "qty": -3,
+                "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 30 oz.png"
+            }
+        ],
         "shipments": []
     },
     {
