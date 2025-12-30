@@ -29,6 +29,11 @@
                 "product": "白底 30oz",
                 "qty": -3,
                 "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 30 oz.png"
+            },
+            {
+                "product": "Holiday Reserve All Day Wine Set",
+                "qty": 2,
+                "image": "img/Stanley 1913 x LoveShackFancy Holiday Reserve All Day Wine Set.png"
             }
         ],
         "shipments": [
