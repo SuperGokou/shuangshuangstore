@@ -369,7 +369,7 @@
                 // 3. Note Styling
                 let noteStyle = 'font-weight:bold; color:#e67e22;'; 
                 const noteText = order.note || '';
-                if (noteText.includes('已发货') && noteText.includes('已签收')) {
+                if (noteText.includes('已发货') && noteText.includes('已签收')&& noteText.includes('退货')) {
                     noteStyle = 'font-weight:bold; color:#27ae60;'; 
                 } else if (noteText.includes('已发货') && noteText.includes('未签收')) {
                     noteStyle = 'font-weight:bold; color:#2980b9;'; 
