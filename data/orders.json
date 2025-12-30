@@ -484,5 +484,59 @@
         "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0329367101",
         "signed": "Yes",
         "est_date": "——"
+    },
+    {
+        "source": "Stanley1913",
+        "order_id": "#RETURN",
+        "status": "Fulfilled",
+        "tracking": "1ZK9H4119037897734",
+        "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZK9H4119037897734",
+        "signed": "Yes",
+        "est_date": "——"
+    },
+    {
+        "source": "Stanley1914",
+        "order_id": "#RETURN",
+        "status": "Fulfilled",
+        "tracking": "1ZK9H4119005604396",
+        "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZK9H4119005604396",
+        "signed": "Yes",
+        "est_date": "——"
+    },
+    {
+        "source": "Stanley1915",
+        "order_id": "#RETURN",
+        "status": "Fulfilled",
+        "tracking": "1ZK9H4119003537212",
+        "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZK9H4119003537212",
+        "signed": "Yes",
+        "est_date": "——"
+    },
+    {
+        "source": "Stanley1916",
+        "order_id": "#RETURN",
+        "status": "Fulfilled",
+        "tracking": "1ZK9H4119000965096",
+        "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZK9H4119000965096",
+        "signed": "Yes",
+        "est_date": "——"
+    },
+    {
+        "source": "Stanley1917",
+        "order_id": "#RETURN",
+        "status": "Fulfilled",
+        "tracking": "1ZK9H4119015875567",
+        "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZK9H4119015875567",
+        "signed": "Yes",
+        "est_date": "——"
+    },
+    {
+        "source": "Stanley1918",
+        "order_id": "#RETURN",
+        "status": "Fulfilled",
+        "tracking": "1ZK9H4119000454790",
+        "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZK9H4119000454790",
+        "signed": "Yes",
+        "est_date": "——"
     }
 ]

@@ -1,7 +1,7 @@
 [
     {
         "source": "Stanley1913",
-        "order_id": "",
+        "order_id": "#RETURN",
         "date": "2025-12-29",
         "note": "退货",
         "items": [
@@ -31,7 +31,50 @@
                 "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 30 oz.png"
             }
         ],
-        "shipments": []
+        "shipments": [
+            {
+                "tracking_number": "1ZK9H4119037897734",
+                "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZK9H4119037897734",
+                "status": "Fulfilled",
+                "carrier": "UPS",
+                "signed": "Yes"
+            },
+            {
+                "tracking_number": "1ZK9H4119005604396",
+                "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZK9H4119005604396",
+                "status": "Fulfilled",
+                "carrier": "UPS",
+                "signed": "Yes"
+            },
+            {
+                "tracking_number": "1ZK9H4119003537212",
+                "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZK9H4119003537212",
+                "status": "Fulfilled",
+                "carrier": "UPS",
+                "signed": "Yes"
+            },
+            {
+                "tracking_number": "1ZK9H4119000965096",
+                "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZK9H4119000965096",
+                "status": "Fulfilled",
+                "carrier": "UPS",
+                "signed": "Yes"
+            },
+            {
+                "tracking_number": "1ZK9H4119015875567",
+                "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZK9H4119015875567",
+                "status": "Fulfilled",
+                "carrier": "UPS",
+                "signed": "Yes"
+            },
+            {
+                "tracking_number": "1ZK9H4119000454790",
+                "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZK9H4119000454790",
+                "status": "Fulfilled",
+                "carrier": "UPS",
+                "signed": "Yes"
+            }
+        ]
     },
     {
         "source": "Stanley1913",
