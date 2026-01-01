@@ -189,11 +189,9 @@ tbody tr:nth-of-type(even) {
 }
 
 
-#stats-table th:nth-child(1){
-	text-align: center;
-}
-#stats-table th:nth-child(3){
-	text-align: center;
+#stats-table th:nth-child(1),
+#stats-table th:nth-child(2) {
+    text-align: center;
 }
 
 
