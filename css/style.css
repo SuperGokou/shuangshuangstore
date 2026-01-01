@@ -190,10 +190,8 @@ tbody tr:nth-of-type(even) {
 
 
 /* Target the 2nd column (Recipient) in the Shipping Table */
-#shipping-table th:nth-child(2),
 #shipping-table td:nth-child(2) {
     font-size: 0.85em;  /* Makes font smaller (adjust number as needed) */
-    width: 80px;        /* Optional: Restricts the width if needed */
 }
 
 
