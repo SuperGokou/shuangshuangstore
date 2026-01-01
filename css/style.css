@@ -197,6 +197,10 @@ tbody tr:nth-of-type(even) {
 
 }
 
+#shipping-table {
+	text-align: center; /* Optional: centers the text */
+}
+	
 #shipping-table th:nth-child(4),
 #shipping-table td:nth-child(4) {
     width: 60px; /* You can change this number (e.g., 50px, 80px) */
