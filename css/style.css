@@ -197,8 +197,8 @@ tbody tr:nth-of-type(even) {
 
 }
 
-#shipping-table {
-	text-align: center; /* Optional: centers the text */
+#shipping-table th {
+    text-align: center;
 }
 	
 #shipping-table th:nth-child(4),
