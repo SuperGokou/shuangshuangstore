@@ -195,6 +195,11 @@ tbody tr:nth-of-type(even) {
     width: 80px;        /* Optional: Restricts the width if needed */
 }
 
+#shipping-table th:nth-child(4),
+#shipping-table td:nth-child(4) {
+    width: 60px; /* You can change this number (e.g., 50px, 80px) */
+    text-align: center; /* Optional: centers the text */
+}
 
 /* NEW: Login Button Styling */
 	
