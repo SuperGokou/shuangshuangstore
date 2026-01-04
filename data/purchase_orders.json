@@ -11,7 +11,22 @@
                 "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20 OZ.png"
             }
         ],
-        "shipments": []
+        "shipments": [
+            {
+                "tracking_number": "61290360427621077987",
+                "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427621077987",
+                "status": "Fulfilled",
+                "carrier": "FedEx",
+                "signed": "No"
+            },
+            {
+                "tracking_number": "61290360427621078007",
+                "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427621078007",
+                "status": "Fulfilled",
+                "carrier": "FedEx",
+                "signed": "No"
+            }
+        ]
     },
     {
         "source": "Stanley1913",
@@ -137,6 +152,13 @@
             },
             {
                 "tracking_number": "1ZK9H4119000454790",
+                "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZK9H4119037941711",
+                "status": "Fulfilled",
+                "carrier": "UPS",
+                "signed": "Yes"
+            },
+            {
+                "tracking_number": "1ZK9H4119037941711",
                 "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZK9H4119000454790",
                 "status": "Fulfilled",
                 "carrier": "UPS",
@@ -156,7 +178,22 @@
                 "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20 OZ.png"
             }
         ],
-        "shipments": []
+        "shipments": [
+            {
+                "tracking_number": "61290360427621064130",
+                "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427621064130",
+                "status": "Fulfilled",
+                "carrier": "FedEx",
+                "signed": "No"
+            },
+            {
+                "tracking_number": "61290360427621064161",
+                "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427621064161",
+                "status": "Fulfilled",
+                "carrier": "FedEx",
+                "signed": "No"
+            }
+        ]
     },
     {
         "source": "Stanley1913",
