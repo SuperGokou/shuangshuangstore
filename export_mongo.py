@@ -4,8 +4,8 @@ from bson import ObjectId
 from datetime import datetime, date  # <--- Added this import
 
 # CONFIG
-MONGO_URI = "mongodb+srv://mingxiaharvard_db_user:A9jYurFGiFadX4gJ@clienttracking.d4slkzd.mongodb.net/?appName=clientTracking"
 DB_NAME = "tracking_db"
+MONGO_URI = "mongodb+srv://mingxiaharvard_db_user:A9jYurFGiFadX4gJ@clienttracking.d4slkzd.mongodb.net/?appName=clientTracking"
 
 
 def export_data():
