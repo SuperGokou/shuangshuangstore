@@ -555,7 +555,7 @@
         "tracking": "1ZC6039H0324458254",
         "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0324458254",
         "signed": "No",
-        "est_date": "2026-01-07"
+        "est_date": "——"
     },
     {
         "source": "Stanley1913",
@@ -564,7 +564,7 @@
         "tracking": "1ZC6039H0338061987",
         "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC6039H0338061987",
         "signed": "No",
-        "est_date": "2026-01-09"
+        "est_date": "——"
     },
     {
         "source": "LoveShackFancy",
@@ -573,7 +573,7 @@
         "tracking": "61290360427621064130",
         "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427621064130",
         "signed": "No",
-        "est_date": "2026-01-05"
+        "est_date": "——"
     },
     {
         "source": "LoveShackFancy",
@@ -582,7 +582,7 @@
         "tracking": "61290360427621064161",
         "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427621064161",
         "signed": "No",
-        "est_date": "2026-01-05"
+        "est_date": "——"
     },
     {
         "source": "LoveShackFancy",
@@ -591,7 +591,7 @@
         "tracking": "61290360427621077987",
         "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427621077987",
         "signed": "No",
-        "est_date": "2026-01-07"
+        "est_date": "——"
     },
     {
         "source": "LoveShackFancy",
@@ -600,6 +600,42 @@
         "tracking": "61290360427621078007",
         "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=61290360427621078007",
         "signed": "No",
-        "est_date": "2026-01-07"
+        "est_date": "——"
+    },
+    {
+        "source": "Stanley1913",
+        "order_id": "#12536074",
+        "status": "Unfulfilled",
+        "tracking": "",
+        "tracking_url": "",
+        "signed": "No",
+        "est_date": "——"
+    },
+    {
+        "source": "Stanley1913",
+        "order_id": "#12536087",
+        "status": "Unfulfilled",
+        "tracking": "",
+        "tracking_url": "",
+        "signed": "No",
+        "est_date": "——"
+    },
+    {
+        "source": "Bloomingdales",
+        "order_id": "#769848541",
+        "status": "Fulfilled",
+        "tracking": "1Z5V59V50373215809",
+        "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1Z5V59V50373215809",
+        "signed": "No",
+        "est_date": "2026-01-14"
+    },
+    {
+        "source": "Bloomingdales",
+        "order_id": "#770433987",
+        "status": "Unfulfilled",
+        "tracking": "",
+        "tracking_url": "",
+        "signed": "No",
+        "est_date": "——"
     }
 ]

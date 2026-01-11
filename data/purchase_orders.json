@@ -230,7 +230,15 @@
                 "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler  30 OZ.png"
             }
         ],
-        "shipments": []
+        "shipments": [
+            {
+                "tracking_number": "1Z5V59V50373215809",
+                "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1Z5V59V50373215809",
+                "status": "Fulfilled",
+                "carrier": "UPS",
+                "signed": "No"
+            }
+        ]
     },
     {
         "source": "LoveShackFancy",
