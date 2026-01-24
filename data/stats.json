@@ -44,17 +44,6 @@
         "类型": "product"
     },
     {
-        "产品名称": "白底 40oz",
-        "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler40 oz.png",
-        "已发总数": 12,
-        "带包装": 5,
-        "带包装详情": "储畅言(1), 徐双双(1), 陈文云(1), 陈昕(1), 石如意(1)",
-        "不带包装": 7,
-        "不带包装详情": "夏铭(4), 徐双双(3)",
-        "总库存": 13,
-        "类型": "product"
-    },
-    {
         "产品名称": "蓝底 40oz",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler  40 OZ.png",
         "已发总数": 11,
@@ -63,6 +52,17 @@
         "不带包装": 4,
         "不带包装详情": "徐双双(4)",
         "总库存": 27,
+        "类型": "product"
+    },
+    {
+        "产品名称": "白底 40oz",
+        "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler40 oz.png",
+        "已发总数": 11,
+        "带包装": 4,
+        "带包装详情": "储畅言(1), 徐双双(1), 陈文云(1), 石如意(1)",
+        "不带包装": 7,
+        "不带包装详情": "夏铭(4), 徐双双(3)",
+        "总库存": 13,
         "类型": "product"
     },
     {
