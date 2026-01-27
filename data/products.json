@@ -22,7 +22,7 @@
         "name": "情人节款20oz",
         "image": "img/The Valentine's Day Quencher H2.0 Flowstate Tumbler 20 OZ.png",
         "total_stock": 17,
-        "shipped_cn": 1,
+        "shipped_cn": 7,
         "us_signed": 0,
         "us_unsigned": 17
     },
@@ -31,7 +31,7 @@
         "name": "情人节款30oz",
         "image": "img/The Valentine's Day Quencher H2.0 Flowstate Tumbler 30 OZ.png",
         "total_stock": 11,
-        "shipped_cn": 0,
+        "shipped_cn": 2,
         "us_signed": 0,
         "us_unsigned": 11
     },
@@ -58,7 +58,7 @@
         "name": "情人节款红色30oz",
         "image": "img/The Valentine's Day Quencher H2.0 Flowstate Tumbler 30 OZ Red.png",
         "total_stock": 1,
-        "shipped_cn": 0,
+        "shipped_cn": 1,
         "us_signed": 0,
         "us_unsigned": 1
     },
@@ -76,7 +76,7 @@
         "name": "粉底 20oz",
         "image": "img/ProTour Flip Straw Tumbler oz 20.png",
         "total_stock": 3,
-        "shipped_cn": 0,
+        "shipped_cn": 3,
         "us_signed": 3,
         "us_unsigned": 0
     },
@@ -94,7 +94,7 @@
         "name": "粉底 40oz",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler 40 OZ.png",
         "total_stock": 1,
-        "shipped_cn": 1,
+        "shipped_cn": 2,
         "us_signed": 1,
         "us_unsigned": 0
     },
@@ -112,7 +112,7 @@
         "name": "蓝底 30oz",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler  30 OZ.png",
         "total_stock": 38,
-        "shipped_cn": 33,
+        "shipped_cn": 35,
         "us_signed": 38,
         "us_unsigned": 0
     },
@@ -121,7 +121,7 @@
         "name": "蓝底 40oz",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler  40 OZ.png",
         "total_stock": 27,
-        "shipped_cn": 11,
+        "shipped_cn": 15,
         "us_signed": 15,
         "us_unsigned": 12
     },
@@ -130,7 +130,7 @@
         "name": "白底 20oz",
         "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler 20OZ.png",
         "total_stock": 14,
-        "shipped_cn": 13,
+        "shipped_cn": 14,
         "us_signed": 14,
         "us_unsigned": 0
     },
