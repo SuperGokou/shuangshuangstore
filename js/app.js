@@ -352,7 +352,7 @@ function renderShippingCostChart() {
             <div class="pkg-bar-group">
                 <div class="pkg-bars sc-bars-triple">
                     <div class="pkg-bar sc-bar-cost" style="height:${costPct}%;" title="运费: ${d.cost}"></div>
-                    <div class="pkg-bar sc-bar-deposit" style="height:${depositPct}%;" title="支付: ${d.deposit}"></div>
+                    <div class="pkg-bar sc-bar-deposit" style="height:${depositPct}%;" title="充值: ${d.deposit}"></div>
                     <div class="pkg-bar sc-bar-refund" style="height:${refundPct}%;" title="退款: ${d.refund}"></div>
                 </div>
                 <div class="pkg-bar-label">${d.label}</div>
@@ -363,7 +363,7 @@ function renderShippingCostChart() {
     container.innerHTML = `
         <div class="sc-legend">
             <div class="sc-legend-item"><span class="sc-legend-swatch sc-swatch-cost"></span> 运费</div>
-            <div class="sc-legend-item"><span class="sc-legend-swatch sc-swatch-deposit"></span> 支付</div>
+            <div class="sc-legend-item"><span class="sc-legend-swatch sc-swatch-deposit"></span> 充值</div>
             <div class="sc-legend-item"><span class="sc-legend-swatch sc-swatch-refund"></span> 退款</div>
         </div>
         <div class="pkg-chart-wrapper">
@@ -382,21 +382,21 @@ function renderShippingCostChart() {
             <div class="sc-summary-col">
                 <div class="sc-summary-title">本月统计</div>
                 <div class="sc-summary-row"><span class="sc-summary-label">运费：</span>${thisMonth.cost.toFixed(1)}</div>
-                <div class="sc-summary-row"><span class="sc-summary-label">支付：</span>${thisMonth.deposit.toFixed(1)}</div>
+                <div class="sc-summary-row"><span class="sc-summary-label">充值：</span>${thisMonth.deposit.toFixed(1)}</div>
                 <div class="sc-summary-row"><span class="sc-summary-label">退款：</span>${thisMonth.refund.toFixed(1)}</div>
                 <div class="sc-summary-row"><span class="sc-summary-label">重量：</span>${thisMonth.weight.toFixed(1)} KG</div>
             </div>
             <div class="sc-summary-col">
                 <div class="sc-summary-title">上月统计</div>
                 <div class="sc-summary-row"><span class="sc-summary-label">运费：</span>${lastMonth.cost.toFixed(1)}</div>
-                <div class="sc-summary-row"><span class="sc-summary-label">支付：</span>${lastMonth.deposit.toFixed(1)}</div>
+                <div class="sc-summary-row"><span class="sc-summary-label">充值：</span>${lastMonth.deposit.toFixed(1)}</div>
                 <div class="sc-summary-row"><span class="sc-summary-label">退款：</span>${lastMonth.refund.toFixed(1)}</div>
                 <div class="sc-summary-row"><span class="sc-summary-label">重量：</span>${lastMonth.weight.toFixed(1)} KG</div>
             </div>
             <div class="sc-summary-col">
                 <div class="sc-summary-title">近六个月合计</div>
                 <div class="sc-summary-row"><span class="sc-summary-label">运费：</span>${totalCost.toFixed(1)}</div>
-                <div class="sc-summary-row"><span class="sc-summary-label">支付：</span>${totalDeposit.toFixed(1)}</div>
+                <div class="sc-summary-row"><span class="sc-summary-label">充值：</span>${totalDeposit.toFixed(1)}</div>
                 <div class="sc-summary-row"><span class="sc-summary-label">退款：</span>${totalRefund.toFixed(1)}</div>
                 <div class="sc-summary-row"><span class="sc-summary-label">重量：</span>${totalWeight.toFixed(1)} KG</div>
             </div>

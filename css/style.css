@@ -1691,7 +1691,7 @@ a:hover { color: #1d4ed8; text-decoration: underline; }
     align-items: flex-end;
     gap: 3px;
     width: 100%;
-    height: 100%;
+    flex: 1;
     justify-content: center;
 }
 
