@@ -1,24 +1,40 @@
-/* --- style.css --- */
+/* --- style.css — Tech/Cyberpunk Dark Theme --- */
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: #0a0e1a; }
+::-webkit-scrollbar-thumb { background: rgba(0, 240, 255, 0.3); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(0, 240, 255, 0.5); }
 
 /* 1. General Page Styling */
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: #f4f6f8;
+    background-color: #0a0e1a;
     margin: 0;
     padding: 20px 10px;
-    color: #333;
+    color: #e2e8f0;
+    background-image:
+        linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    min-height: 100vh;
 }
 
 h1 {
     text-align: center;
-    color: #2c3e50;
     margin-bottom: 5px;
     font-size: 1.5rem;
+    background: linear-gradient(90deg, #00f0ff, #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: none;
+    filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.4));
 }
 
 .subtitle {
     text-align: center;
-    color: #666;
+    color: #94a3b8;
     margin-bottom: 20px;
     font-size: 0.8rem;
     display: flex;
@@ -29,50 +45,49 @@ h1 {
 /* 2. CENTERED One-Line Gallery */
 .gallery-scroll {
     display: flex;
-    overflow-x: auto;      
+    overflow-x: auto;
     gap: 15px;
-    padding: 10px 0 25px 0; /* Vertical padding */
+    padding: 10px 0 25px 0;
     width: 100%;
-    max-width: 1200px;      /* Restricts width so it looks centered */
-    margin: 0 auto;         /* Centers the container itself */
-    
+    max-width: 1200px;
+    margin: 0 auto;
     scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch; 
+    -webkit-overflow-scrolling: touch;
 }
 
-/* 3. Card Styling (Small & Centered) */
+/* 3. Card Styling */
 .card {
-    flex: 0 0 160px;       /* Fixed width */
-    background: white;
+    flex: 0 0 160px;
+    background: rgba(17, 24, 39, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.06);
-    transition: transform 0.2s ease;
+    border: 1px solid rgba(0, 240, 255, 0.15);
+    transition: transform 0.2s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     display: flex;
     flex-direction: column;
 }
 
-/* --- THE CENTERING TRICK --- */
-/* This pushes items to the center if there are few, but allows scrolling if there are many */
 .gallery-scroll::before,
 .gallery-scroll::after {
     content: '';
     margin: auto;
 }
-/* --------------------------- */
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.2), 0 0 40px rgba(0, 240, 255, 0.05);
+    border-color: rgba(0, 240, 255, 0.4);
 }
 
 /* 4. Image Container */
 .image-wrapper {
     position: relative;
     width: 100%;
-    padding-top: 100%; 
-    background-color: #f9f9f9;
-    border-bottom: 1px solid #eee;
+    padding-top: 100%;
+    background-color: rgba(15, 20, 35, 0.9);
+    border-bottom: 1px solid rgba(0, 240, 255, 0.1);
 }
 
 .image-wrapper img {
@@ -96,7 +111,7 @@ h3 {
     font-size: 0.8rem;
     margin: 0 0 8px 0;
     line-height: 1.3;
-    color: #2c3e50;
+    color: #e2e8f0;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -105,172 +120,183 @@ h3 {
 
 /* Inventory Data Table Styling */
 .stock-data {
-    background-color: #f8f9fa;
+    background-color: rgba(15, 20, 35, 0.6);
     border-radius: 4px;
     padding: 6px;
     font-size: 0.7rem;
-    color: #555;
+    font-family: 'Courier New', Courier, monospace;
+    color: #94a3b8;
     display: grid;
-    grid-template-columns: 1fr auto; 
+    grid-template-columns: 1fr auto;
     gap: 2px;
 }
 
 .stock-row { display: contents; }
-.stock-label { font-weight: 600; }
+.stock-label { font-weight: 600; color: #94a3b8; }
 .stock-value { text-align: right; }
 
-/* Live Indicator */
+/* Live Indicator — Cyan pulse */
 .live-dot {
     height: 10px; width: 10px;
-    background-color: #2ecc71;
+    background-color: #00f0ff;
     border-radius: 50%;
     display: inline-block;
     margin-right: 6px;
-    box-shadow: 0 0 0 0 rgba(46, 204, 113, 1);
-    animation: pulse-green 2s infinite;
+    box-shadow: 0 0 0 0 rgba(0, 240, 255, 1);
+    animation: pulse-cyan 2s infinite;
 }
 
-@keyframes pulse-green {
-    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7); }
-    70% { transform: scale(1); box-shadow: 0 0 0 4px rgba(46, 204, 113, 0); }
-    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(46, 204, 113, 0); }
+@keyframes pulse-cyan {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 240, 255, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(0, 240, 255, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 240, 255, 0); }
 }
 
-/* SECTIONS (Orders & Shipping) */
+/* SECTIONS */
 .orders-section {
     max-width: 1200px;
-    margin: 30px auto; 
+    margin: 30px auto;
     padding: 0 10px;
 }
 
 .orders-section h2 {
     text-align: left;
-    color: #2c3e50;
     margin-bottom: 15px;
     font-size: 1.1rem;
-    border-left: 4px solid #3498db;
+    border-left: 4px solid #00f0ff;
     padding-left: 10px;
+    background: linear-gradient(90deg, #00f0ff, #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 6px rgba(0, 240, 255, 0.3));
 }
 
 .table-wrapper {
-    overflow-x: auto; 
+    overflow-x: auto;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    border: 1px solid #eee;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.05);
+    border: 1px solid rgba(0, 240, 255, 0.15);
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    background: white;
+    background: rgba(17, 24, 39, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     font-size: 0.8rem;
     min-width: 600px;
 }
 
 thead {
-    background-color: #f8f9fa;
-    color: #333;
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.1), rgba(168, 85, 247, 0.1));
+    color: #00f0ff;
 }
 
 th, td {
     padding: 10px 12px;
     text-align: left;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid rgba(0, 240, 255, 0.08);
+}
+
+th {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
 }
 
 tbody tr:nth-of-type(even) {
-    background-color: #fafafa;
+    background-color: rgba(0, 240, 255, 0.02);
+}
+
+tbody tr:hover {
+    background-color: rgba(0, 240, 255, 0.06);
 }
 
 .tracking-code {
     font-family: 'Courier New', Courier, monospace;
-    color: #555;
+    color: #00f0ff;
     font-weight: 600;
 }
 
-
-#stats-table th:nth-child(1){
+#stats-table th:nth-child(1) {
     text-align: center;
 }
 
-
-/* Target the 2nd column (Recipient) in the Shipping Table */
 #shipping-table td:nth-child(2) {
-    font-size: 0.85em;  /* Makes font smaller (adjust number as needed) */
-    width: 80px;        /* Optional: Restricts the width if needed */
-	text-align: center; /* Optional: centers the text */
-
+    font-size: 0.85em;
+    width: 80px;
+    text-align: center;
 }
 
 #shipping-table th {
     text-align: center;
 }
-	
+
 #shipping-table th:nth-child(4),
 #shipping-table td:nth-child(4) {
-    width: 60px; /* You can change this number (e.g., 50px, 80px) */
-    text-align: center; /* Optional: centers the text */
+    width: 60px;
+    text-align: center;
 }
 
-/* NEW: Login Button Styling */
-	
+/* --- HEADER LAYOUT --- */
+.header-wrapper {
+    position: relative;
+    max-width: 1200px;
+    margin: 30px auto 10px;
+    padding: 0 10px;
+    text-align: center;
+}
 
-/* --- NEW HEADER LAYOUT --- */
-        .header-wrapper {
-            position: relative; /* Makes it the reference point for the button */
-            max-width: 1200px;  /* Matches your tables */
-            margin: 30px auto 10px; /* Centers the wrapper */
-            padding: 0 10px;
-            text-align: center; /* Keeps the H1 centered */
-        }
+h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
 
-        h1 {
-            color: #2c3e50;
-            margin: 0;
-            font-size: 1.5rem;
-        }
+/* Login Button */
+.login-btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    text-decoration: none;
+    background: linear-gradient(135deg, #00f0ff, #a855f7);
+    color: #0a0e1a;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+    transition: box-shadow 0.3s, transform 0.2s;
+}
+.login-btn:hover {
+    box-shadow: 0 0 25px rgba(0, 240, 255, 0.5), 0 0 50px rgba(168, 85, 247, 0.2);
+}
 
-        /* Button Positioning */
-        .login-btn {
-            position: absolute; /* Floats freely inside the wrapper */
-            right: 10px;        /* Sticks to the right edge */
-            top: 50%;           /* Moves down to the middle */
-            transform: translateY(-50%); /* Perfectly centers it vertically */
-            
-            /* Button Style */
-            text-decoration: none;
-            background-color: #3498db;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 0.9rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: background 0.2s;
-        }
-        .login-btn:hover { background-color: #2980b9; }
+@media (max-width: 600px) {
+    .header-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .login-btn {
+        position: static;
+        transform: none;
+        align-self: center;
+    }
+}
 
-        /* Mobile: Stack them so they don't overlap */
-        @media (max-width: 600px) {
-            .header-wrapper {
-                display: flex;
-                flex-direction: column; /* Stack items */
-                gap: 10px;
-            }
-            .login-btn {
-                position: static; /* Disable floating */
-                transform: none;
-                align-self: center; /* Center the button */
-            }
-        }
-		
-		
-/* --- Clients Form Styling --- */
+/* --- Client Form Styling --- */
 .client-form {
-    background: white;
+    background: rgba(17, 24, 39, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    border: 1px solid rgba(0, 240, 255, 0.15);
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.05);
 }
 
 .form-group {
@@ -281,34 +307,44 @@ tbody tr:nth-of-type(even) {
     display: block;
     font-weight: bold;
     margin-bottom: 5px;
-    color: #2c3e50;
+    color: #00f0ff;
 }
 
-.form-group input, 
+.form-group input,
 .form-group textarea {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid rgba(0, 240, 255, 0.2);
     border-radius: 5px;
     font-size: 14px;
-    box-sizing: border-box; /* Ensures padding doesn't break width */
+    box-sizing: border-box;
+    background: rgba(10, 14, 26, 0.8);
+    color: #e2e8f0;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #00f0ff;
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
 }
 
 .submit-btn {
     width: 100%;
     padding: 12px;
-    background-color: #27ae60;
-    color: white;
+    background: linear-gradient(135deg, #00f0ff, #a855f7);
+    color: #0a0e1a;
     border: none;
     border-radius: 5px;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: box-shadow 0.3s;
 }
 
 .submit-btn:hover {
-    background-color: #219150;
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.4), 0 0 40px rgba(168, 85, 247, 0.2);
 }
 
 /* Alerts */
@@ -318,8 +354,8 @@ tbody tr:nth-of-type(even) {
     border-radius: 5px;
     text-align: center;
 }
-.alert.success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
-.alert.error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+.alert.success { background-color: rgba(34, 197, 94, 0.15); color: #22c55e; border: 1px solid rgba(34, 197, 94, 0.3); }
+.alert.error { background-color: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); }
 
 /* Nav Styling */
 .top-nav {
@@ -332,52 +368,58 @@ tbody tr:nth-of-type(even) {
 
 .nav-link {
     text-decoration: none;
-    color: #666;
+    color: #94a3b8;
     font-weight: bold;
     padding: 8px;
+    transition: color 0.2s;
 }
 
-.login-btn {
-    text-decoration: none;
-    background-color: #3498db;
-    color: white;
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-weight: bold;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+.nav-link:hover {
+    color: #00f0ff;
 }
-.login-btn:hover { background-color: #2980b9; }
 
+/* Status Badge */
 .status-badge {
     display: inline-block;
     padding: 4px 10px;
-    border-radius: 20px;       /* This creates the round pill shape */
-    background-color: #d1e7dd; /* Light Green background */
-    color: #0f5132;            /* Dark Green text */
+    border-radius: 20px;
+    background-color: rgba(0, 240, 255, 0.1);
+    color: #00f0ff;
     font-size: 0.85em;
     font-weight: bold;
-    white-space: nowrap;       /* Prevents text from breaking */
+    white-space: nowrap;
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    text-shadow: 0 0 6px rgba(0, 240, 255, 0.3);
 }
 
 /* Scrollable Table Wrapper */
 .scroll-table-wrapper {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    border: 1px solid #eee;
+    border: 1px solid rgba(0, 240, 255, 0.15);
     border-radius: 8px;
     margin-bottom: 20px;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.05);
 }
 
-/* Force table to be wide enough to trigger scroll */
 .scroll-table-wrapper table {
-    width: 100%; 
-    min-width: 800px; /* Force a minimum width to ensure scrolling on small screens */
+    width: 100%;
+    min-width: 800px;
     border-collapse: collapse;
 }
 
-/* IMPORTANT: Prevent text from wrapping so columns stay wide */
-.scroll-table-wrapper td, 
+.scroll-table-wrapper td,
 .scroll-table-wrapper th {
-    white-space: nowrap; 
+    white-space: nowrap;
     padding: 12px;
+}
+
+/* Links */
+a {
+    color: #00f0ff;
+    transition: color 0.2s, text-shadow 0.2s;
+}
+a:hover {
+    color: #a855f7;
+    text-shadow: 0 0 8px rgba(168, 85, 247, 0.4);
 }

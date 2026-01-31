@@ -16,7 +16,7 @@
     
     <div class="subtitle">
         <span class="live-dot"></span> Live Stock Status
-        <span id="last-updated" style="font-size:0.8em; color:#888; margin-left:10px;"></span>
+        <span id="last-updated" style="font-size:0.8em; color:#64748b; margin-left:10px;"></span>
     </div>    
     
     <div id="inventory-container" class="gallery-scroll">
@@ -129,12 +129,12 @@
                                  onerror="this.src='https://via.placeholder.com/50?text=?'">
                         </div>
                     </td>
-                    <td style="font-weight:bold; color:#2c3e50;">${item['产品名称']}</td>
-                    <td style="font-size:1.1em; font-weight:bold;">${item['已发总数']}</td>
-                    <td style="font-weight:bold; color:#27ae60; text-align:center;">${item['带包装']}</td>
-                    <td style="font-size:0.85em; color:#666; max-width:150px;">${item['带包装详情']}</td>
-                    <td style="font-weight:bold; color:#c0392b; text-align:center;">${item['不带包装']}</td>
-                    <td style="font-size:0.85em; color:#666; max-width:150px;">${item['不带包装详情']}</td>
+                    <td style="font-weight:bold; color:#e2e8f0;">${item['产品名称']}</td>
+                    <td style="font-size:1.1em; font-weight:bold; color:#00f0ff;">${item['已发总数']}</td>
+                    <td style="font-weight:bold; color:#22c55e; text-align:center;">${item['带包装']}</td>
+                    <td style="font-size:0.85em; color:#94a3b8; max-width:150px;">${item['带包装详情']}</td>
+                    <td style="font-weight:bold; color:#ef4444; text-align:center;">${item['不带包装']}</td>
+                    <td style="font-size:0.85em; color:#94a3b8; max-width:150px;">${item['不带包装详情']}</td>
                     <td style="font-weight:bold;">${item['总库存']}</td>
                 `;
                 tbody.appendChild(row);
@@ -166,10 +166,10 @@
                     <div class="info">
                         <h3 style="text-align: center;">${product.name}</h3>
                         <div class="stock-data">
-                            <div class="stock-row"><span class="stock-label">✅ 美国签收:</span><span class="stock-value" style="color:#27ae60;">${usSigned}</span></div>
-                            <div class="stock-row"><span class="stock-label">⏳ 美国未签:</span><span class="stock-value" style="color:#e67e22;">${usUnsigned}</span></div>
-                            <div class="stock-row"><span class="stock-label">🚚 发往中国:</span><span class="stock-value">${shippedCn}</span></div>
-                            <div style="border-top: 1px solid #ddd; margin-top:2px; padding-top:2px;" class="stock-row">
+                            <div class="stock-row"><span class="stock-label">✅ 美国签收:</span><span class="stock-value" style="color:#22c55e;">${usSigned}</span></div>
+                            <div class="stock-row"><span class="stock-label">⏳ 美国未签:</span><span class="stock-value" style="color:#f59e0b;">${usUnsigned}</span></div>
+                            <div class="stock-row"><span class="stock-label">🚚 发往中国:</span><span class="stock-value" style="color:#00f0ff;">${shippedCn}</span></div>
+                            <div style="border-top: 1px solid rgba(0,240,255,0.15); margin-top:2px; padding-top:2px;" class="stock-row">
                                 <span class="stock-label">📦 商品总数:</span><span class="stock-value"><strong>${totalStock}</strong></span>
                             </div>
                         </div>
@@ -198,7 +198,7 @@
                 const weight = item.weight || item['实际重量'] || '——';
                 let trackingDisplay = item.tracking_number;
                 if (item.tracking_url) {
-                    trackingDisplay = `<a href="${item.tracking_url}" target="_blank" style="text-decoration:none; color:#3498db; border-bottom:1px dotted #3498db;">${item.tracking_number}</a>`;
+                    trackingDisplay = `<a href="${item.tracking_url}" target="_blank" style="text-decoration:none; color:#00f0ff; border-bottom:1px dotted rgba(0,240,255,0.4);">${item.tracking_number}</a>`;
                 }
                 
                 // Address Truncation
@@ -218,11 +218,11 @@
                 row.innerHTML = `
                     <td class="tracking-code">${trackingDisplay}</td>
                     <td>${item.customer_name || item.recipient}</td>
-                    <td style="color:#2980b9;">${details}</td>
+                    <td style="color:#a855f7;">${details}</td>
                     <td>${weight}</td>
                     <td><span class="status-badge" title="${fullStatus}">${displayStatus}</span></td>
                     <td>${item.phone}</td>
-                    <td style="font-size:0.8em; color:#666;" title="${fullAddress}">${displayAddress}</td>
+                    <td style="font-size:0.8em; color:#94a3b8;" title="${fullAddress}">${displayAddress}</td>
                 `;
                 tbody.appendChild(row);
             });
@@ -242,22 +242,22 @@
                 const row = document.createElement('tr');
                 let badgeStyle = 'padding: 4px 8px; border-radius: 12px; font-size: 0.85em; font-weight: bold; display: inline-block;';
                 if (order.status === 'Fulfilled' || order.status === 'Shipped') {
-                    badgeStyle += 'background-color: #d4edda; color: #155724;'; 
+                    badgeStyle += 'background-color: rgba(34,197,94,0.15); color: #22c55e; border:1px solid rgba(34,197,94,0.3);';
                 } else if (order.status === 'Partial') {
-                    badgeStyle += 'background-color: #cce5ff; color: #004085;'; 
+                    badgeStyle += 'background-color: rgba(0,240,255,0.1); color: #00f0ff; border:1px solid rgba(0,240,255,0.2);';
                 } else {
-                    badgeStyle += 'background-color: #fff3cd; color: #856404;';
+                    badgeStyle += 'background-color: rgba(245,158,11,0.15); color: #f59e0b; border:1px solid rgba(245,158,11,0.3);';
                 }
                 
                 let signedText = order.signed;
-                let signedColor = 'color:#27ae60;'; 
+                let signedColor = 'color:#22c55e;';
                 if (String(signedText).includes('No') || String(signedText).includes('否')) {
-                    signedColor = 'color:#c0392b; font-weight:bold;';
+                    signedColor = 'color:#ef4444; font-weight:bold;';
                 }
 
                 let trackingDisplay = order.tracking;
                 if (order.tracking_url && order.tracking !== '——' && order.tracking !== '-') {
-                    trackingDisplay = `<a href="${order.tracking_url}" target="_blank" style="text-decoration:none; color:#3498db; border-bottom:1px dotted #3498db;">${order.tracking}</a>`;
+                    trackingDisplay = `<a href="${order.tracking_url}" target="_blank" style="text-decoration:none; color:#00f0ff; border-bottom:1px dotted rgba(0,240,255,0.4);">${order.tracking}</a>`;
                 }
 
                 row.innerHTML = `
@@ -316,14 +316,14 @@
                     order.items.forEach(item => {
                         const safeImg = encodeURI(item.image || '');
                         itemsHtml += `
-                            <div style="display:flex; align-items:center; gap:10px; border-bottom:1px dashed #eee; padding-bottom:4px;">
+                            <div style="display:flex; align-items:center; gap:10px; border-bottom:1px dashed rgba(0,240,255,0.1); padding-bottom:4px;">
                                 <div style="width:40px; height:40px; flex-shrink:0;">
                                     <img src="${safeImg}" alt="img" style="width:100%; height:100%; object-fit:contain; border-radius:4px;"
                                          onerror="this.src='https://via.placeholder.com/40?text=?'">
                                 </div>
                                 <div style="font-size:0.9em; line-height:1.2; white-space: normal;">
-                                    <div style="font-weight:bold; color:#2c3e50;">${item.product}</div>
-                                    <div style="color:#7f8c8d;">Qty: <span style="color:#27ae60; font-weight:bold;">${item.qty}</span></div>
+                                    <div style="font-weight:bold; color:#e2e8f0;">${item.product}</div>
+                                    <div style="color:#94a3b8;">Qty: <span style="color:#22c55e; font-weight:bold;">${item.qty}</span></div>
                                 </div>
                             </div>
                         `;
@@ -332,7 +332,7 @@
                 itemsHtml += '</div>';
 
                 // 2. Tracking HTML (Database Linked Checkbox)
-                let trackingHtml = '<span style="color:#ccc;">-</span>';
+                let trackingHtml = '<span style="color:#64748b;">-</span>';
                 if (order.shipments && order.shipments.length > 0) {
                     trackingHtml = order.shipments.map((s, shipmentIndex) => {
                         const fullNum = s.tracking_number;
@@ -351,15 +351,15 @@
                         return `
                         <div style="margin-bottom:6px; display:flex; align-items:center; gap:8px;">
                             <input type="checkbox" 
-                                   style="cursor:pointer; accent-color: #27ae60; width:16px; height:16px;" 
+                                   style="cursor:pointer; accent-color: #00f0ff; width:16px; height:16px;" 
                                    ${checkedAttr}
                                    onchange="toggleSignStatus(${orderIndex}, ${shipmentIndex}, this.checked)"
                                    title="Mark as signed">
                             
-                            <span style="font-size:0.8em; color:#999; font-weight:bold;">${s.carrier}:</span>
-                            
+                            <span style="font-size:0.8em; color:#94a3b8; font-weight:bold;">${s.carrier}:</span>
+
                             <a href="${s.tracking_url}" target="_blank" title="${fullNum}"
-                               style="color:#3498db; text-decoration:none; border-bottom:1px dotted #3498db; font-family:monospace; font-size:1.1em;">
+                               style="color:#00f0ff; text-decoration:none; border-bottom:1px dotted rgba(0,240,255,0.4); font-family:monospace; font-size:1.1em;">
                                 ${fullNum}
                             </a>
                         </div>`;
@@ -367,21 +367,21 @@
                 }
 
                 // 3. Note Styling
-                let noteStyle = 'font-weight:bold; color:#e67e22;'; 
+                let noteStyle = 'font-weight:bold; color:#f59e0b;';
                 const noteText = order.note || '';
                 if (noteText.includes('已发货') && noteText.includes('已签收')) {
-                    noteStyle = 'font-weight:bold; color:#27ae60;'; 
+                    noteStyle = 'font-weight:bold; color:#22c55e;';
                 } else if (noteText.includes('已发货') && noteText.includes('未签收')) {
-                    noteStyle = 'font-weight:bold; color:#2980b9;'; 
+                    noteStyle = 'font-weight:bold; color:#00f0ff;';
                 }else if(noteText.includes('退货')){
-					noteStyle = 'font-weight:bold; color:#27ae60;';
+					noteStyle = 'font-weight:bold; color:#22c55e;';
 				}
 
                 row.innerHTML = `
-                    <td style="font-size:0.9em; color:#666;">${order.date}</td>
+                    <td style="font-size:0.9em; color:#94a3b8;">${order.date}</td>
                     <td>
                         <div style="font-weight:bold;">${order.source}</div>
-                        <div style="font-size:0.8em; color:#999;">${order.order_id}</div>
+                        <div style="font-size:0.8em; color:#64748b;">${order.order_id}</div>
                     </td>
                     <td style="white-space: normal; min-width: 300px;">${itemsHtml}</td>
                     <td>${trackingHtml}</td>
