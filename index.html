@@ -31,6 +31,10 @@
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
                 Shipments
             </a>
+            <a href="#" class="nav-item" data-page="stats">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                Shipment Stats
+            </a>
             <a href="#" class="nav-item" data-page="analytics">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
                 Analytics
@@ -195,7 +199,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="metric-card">
+                    <div class="metric-card clickable" onclick="filterInventoryByStatus('low')">
                         <div class="metric-header">
                             <div>
                                 <div class="metric-title">Low Stock Items</div>
@@ -206,7 +210,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="metric-card">
+                    <div class="metric-card clickable" onclick="filterInventoryByStatus('out')">
                         <div class="metric-header">
                             <div>
                                 <div class="metric-title">Out of Stock</div>
@@ -290,32 +294,6 @@
                     </div>
                 </div>
 
-                <!-- Stats Table -->
-                <div class="content-card">
-                    <div class="card-header">
-                        <div>
-                            <h2 class="card-title"><span class="section-tag">Stats</span> 产品发货统计</h2>
-                            <p class="card-desc">Shipment statistics by product</p>
-                        </div>
-                    </div>
-                    <div class="table-wrapper">
-                        <table id="inv-stats-table">
-                            <thead>
-                                <tr>
-                                    <th class="col-thumb">图片</th>
-                                    <th>产品名称</th>
-                                    <th>已发总数</th>
-                                    <th>带包装 (Qty)</th>
-                                    <th>明细 (Details)</th>
-                                    <th>不带包装 (Qty)</th>
-                                    <th>明细 (Details)</th>
-                                    <th>总库存</th>
-                                </tr>
-                            </thead>
-                            <tbody id="inv-stats-body"></tbody>
-                        </table>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -510,6 +488,42 @@
                                 </tr>
                             </thead>
                             <tbody id="shipping-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== PAGE: SHIPMENT STATS ==================== -->
+        <div class="page hidden" id="page-stats">
+            <div class="page-content">
+                <div class="page-header">
+                    <h1 class="page-title">产品发货统计</h1>
+                    <p class="page-desc">Shipment statistics by product</p>
+                </div>
+
+                <div class="content-card">
+                    <div class="card-header">
+                        <div>
+                            <h2 class="card-title"><span class="section-tag">Stats</span> 产品发货统计</h2>
+                            <p class="card-desc">Shipment statistics by product</p>
+                        </div>
+                    </div>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="col-thumb">图片</th>
+                                    <th>产品名称</th>
+                                    <th>已发总数</th>
+                                    <th>带包装 (Qty)</th>
+                                    <th>明细 (Details)</th>
+                                    <th>不带包装 (Qty)</th>
+                                    <th>明细 (Details)</th>
+                                    <th>总库存</th>
+                                </tr>
+                            </thead>
+                            <tbody id="stats-body"></tbody>
                         </table>
                     </div>
                 </div>

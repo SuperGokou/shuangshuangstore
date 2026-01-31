@@ -72,6 +72,7 @@ Promise.all([
     renderInventoryPage();
     renderPurchasePage();
     renderShippingPage();
+    renderStatsTable('stats-body', allStats);
     renderAnalyticsPage();
 }).catch(err => console.error("Data load error:", err));
 
@@ -441,8 +442,34 @@ function getFilteredProducts() {
     return filtered;
 }
 
+let inventoryStatusFilter = null;
+
+function filterInventoryByStatus(status) {
+    // Toggle: click again to clear
+    if (inventoryStatusFilter === status) {
+        inventoryStatusFilter = null;
+    } else {
+        inventoryStatusFilter = status;
+    }
+    // Update active state on cards
+    document.querySelectorAll('#page-inventory .metric-card').forEach(card => {
+        card.classList.remove('active');
+    });
+    if (inventoryStatusFilter) {
+        const idx = inventoryStatusFilter === 'low' ? 1 : 2;
+        document.querySelectorAll('#page-inventory .metric-card')[idx]?.classList.add('active');
+    }
+    filterInventory();
+}
+
 function filterInventory() {
-    renderInventoryViews(getFilteredProducts());
+    let products = getFilteredProducts();
+    if (inventoryStatusFilter === 'low') {
+        products = products.filter(p => (p.total_stock || 0) > 0 && (p.total_stock || 0) < 5);
+    } else if (inventoryStatusFilter === 'out') {
+        products = products.filter(p => (p.total_stock || 0) === 0);
+    }
+    renderInventoryViews(products);
 }
 
 function renderInventoryPage() {
@@ -460,7 +487,6 @@ function renderInventoryPage() {
     document.getElementById('inv-metric-total').textContent = totalStock.toLocaleString();
 
     renderInventoryViews(allProducts);
-    renderStatsTable('inv-stats-body', allStats);
 }
 
 function renderInventoryViews(products) {
