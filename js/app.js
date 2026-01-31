@@ -718,7 +718,7 @@ function exportPurchaseOrders() {
 let shipmentStatusFilter = null;
 
 function isDelivered(status) {
-    return status.includes('已派送') || status.includes('已签收') || status.includes('已放在');
+    return status.includes('已派送') || status.includes('已签收') || status.includes('已放在') || status.includes('丰巢取出') || status.includes('派送至');
 }
 
 function renderShippingPage() {
