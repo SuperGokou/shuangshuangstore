@@ -82,6 +82,13 @@ const filterLabels = {
     total_stock: 'Total Stock (商品总数)'
 };
 
+const filterTitles = {
+    us_signed: { tag: 'US Signed', title: '美国签收产品', desc: 'Products with US signed inventory' },
+    us_unsigned: { tag: 'US Unsigned', title: '美国未签产品', desc: 'Products with unsigned US inventory' },
+    shipped_cn: { tag: 'In Transit', title: '发往中国产品', desc: 'Products shipped to China' },
+    total_stock: { tag: 'Total', title: '所有库存产品', desc: 'All products with stock' }
+};
+
 function toggleDashboardFilter(key) {
     if (dashboardFilter === key) {
         dashboardFilter = null;
@@ -101,7 +108,84 @@ function toggleDashboardFilter(key) {
     } else {
         infoEl.classList.add('hidden');
     }
-    renderDashboardGallery();
+    updateDashboardMainCard();
+}
+
+function updateDashboardMainCard() {
+    const ordersView = document.getElementById('dashboard-orders-view');
+    const productsView = document.getElementById('dashboard-products-view');
+    const titleEl = document.getElementById('dashboard-main-title');
+    const descEl = document.getElementById('dashboard-main-desc');
+
+    if (!dashboardFilter) {
+        // Show orders
+        ordersView.style.display = '';
+        productsView.style.display = 'none';
+        titleEl.innerHTML = '<span class="section-tag">Orders</span> 采购订单追踪';
+        descEl.textContent = 'Incoming orders tracking';
+    } else {
+        // Show filtered products
+        ordersView.style.display = 'none';
+        productsView.style.display = '';
+        const info = filterTitles[dashboardFilter];
+        titleEl.innerHTML = `<span class="section-tag">${info.tag}</span> ${info.title}`;
+        descEl.textContent = info.desc;
+        renderFilteredProducts();
+    }
+}
+
+function renderFilteredProducts() {
+    const thead = document.getElementById('filtered-products-thead');
+    const tbody = document.getElementById('filtered-products-body');
+    const products = allProducts.filter(p => (p[dashboardFilter] || 0) > 0);
+
+    // Column config per filter
+    const valueLabel = {
+        us_signed: '签收数量',
+        us_unsigned: '未签数量',
+        shipped_cn: '发货数量',
+        total_stock: '库存总数'
+    };
+
+    thead.innerHTML = `<tr>
+        <th class="col-thumb-lg">图片</th>
+        <th>产品名称 (Product)</th>
+        <th>${valueLabel[dashboardFilter]}</th>
+        <th>美国签收</th>
+        <th>美国未签</th>
+        <th>发往中国</th>
+        <th>总库存</th>
+    </tr>`;
+
+    tbody.innerHTML = '';
+    if (products.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="7" class="text-center">No matching products.</td></tr>';
+        return;
+    }
+
+    // Sort by the filtered value descending
+    products.sort((a, b) => (b[dashboardFilter] || 0) - (a[dashboardFilter] || 0));
+
+    products.forEach(product => {
+        const row = document.createElement('tr');
+        const safeImg = encodeURI(product.image || '');
+        const val = product[dashboardFilter] || 0;
+        row.innerHTML = `
+            <td>
+                <div class="image-wrapper thumb-cell-48">
+                    <img src="${safeImg}" alt="${product.name}"
+                         onerror="this.src='https://via.placeholder.com/48?text=?'">
+                </div>
+            </td>
+            <td class="cell-bold">${product.name}</td>
+            <td class="cell-filter-value">${val}</td>
+            <td class="cell-green">${product.us_signed || 0}</td>
+            <td class="cell-amber">${product.us_unsigned || 0}</td>
+            <td>${product.shipped_cn || 0}</td>
+            <td class="cell-total">${product.total_stock || 0}</td>
+        `;
+        tbody.appendChild(row);
+    });
 }
 
 // ========== DASHBOARD ==========
@@ -120,59 +204,7 @@ function renderDashboard() {
     document.getElementById('metric-total-stock').textContent = totalStock.toLocaleString();
 
     renderOrdersTable();
-    renderPackagingChart();
-}
-
-function renderDashboardGallery() {
-    const container = document.getElementById('inventory-container');
-    container.innerHTML = '';
-
-    let products = allProducts;
-    if (dashboardFilter) {
-        products = allProducts.filter(p => (p[dashboardFilter] || 0) > 0);
-    }
-
-    if (products.length === 0) {
-        container.innerHTML = '<p class="loading-text">No products match this filter.</p>';
-        return;
-    }
-
-    products.forEach(product => {
-        const usSigned = product.us_signed || 0;
-        const usUnsigned = product.us_unsigned || 0;
-        const shippedCn = product.shipped_cn || 0;
-        const stock = product.total_stock || 0;
-
-        const card = document.createElement('div');
-        card.className = 'card';
-        const safeImagePath = encodeURI(product.image);
-
-        // Highlight the active filter value
-        const highlightField = dashboardFilter;
-        const signedHighlight = highlightField === 'us_signed' ? ' stock-value-highlight' : '';
-        const unsignedHighlight = highlightField === 'us_unsigned' ? ' stock-value-highlight' : '';
-        const cnHighlight = highlightField === 'shipped_cn' ? ' stock-value-highlight' : '';
-        const totalHighlight = highlightField === 'total_stock' ? ' stock-value-highlight' : '';
-
-        card.innerHTML = `
-            <div class="image-wrapper">
-                <img src="${safeImagePath}" alt="${product.name}" loading="lazy"
-                     onerror="this.src='https://via.placeholder.com/300?text=No+Image'">
-            </div>
-            <div class="info">
-                <h3 class="text-center">${product.name}</h3>
-                <div class="stock-data">
-                    <div class="stock-row"><span class="stock-label">美国签收:</span><span class="stock-value stock-value-green${signedHighlight}">${usSigned}</span></div>
-                    <div class="stock-row"><span class="stock-label">美国未签:</span><span class="stock-value stock-value-amber${unsignedHighlight}">${usUnsigned}</span></div>
-                    <div class="stock-row"><span class="stock-label">发往中国:</span><span class="stock-value${cnHighlight}">${shippedCn}</span></div>
-                    <div class="stock-row stock-row-total">
-                        <span class="stock-label">商品总数:</span><span class="stock-value${totalHighlight}"><strong>${stock}</strong></span>
-                    </div>
-                </div>
-            </div>
-        `;
-        container.appendChild(card);
-    });
+    renderShippingCostChart();
 }
 
 function renderStatsTable(tbodyId, stats) {
@@ -240,22 +272,35 @@ function renderOrdersTable() {
     });
 }
 
-// ========== PACKAGING VARIANTS CHART ==========
-function renderPackagingChart() {
-    const container = document.getElementById('packaging-chart');
+// ========== SHIPPING COST CHART ==========
+function renderShippingCostChart() {
+    const container = document.getElementById('shipping-cost-chart');
+    const summaryEl = document.getElementById('shipping-cost-summary');
     if (!container) return;
 
-    // Filter to products only (exclude accessories) and those with shipment data
-    const items = allStats.filter(s => s['类型'] !== 'accessory' && (s['已发总数'] || 0) > 0);
-    if (items.length === 0) {
-        container.innerHTML = '<p class="no-data">No data</p>';
-        return;
-    }
+    // 6 months of data: Aug(8月) → Jan(1月)
+    const data = [
+        { label: '8月',  cost: 0,    deposit: 0,    refund: 0, weight: 0     },
+        { label: '9月',  cost: 0,    deposit: 0,    refund: 0, weight: 0     },
+        { label: '10月', cost: 0,    deposit: 0,    refund: 0, weight: 0     },
+        { label: '11月', cost: 0,    deposit: 100,  refund: 0, weight: 0     },
+        { label: '12月', cost: 1083, deposit: 1100, refund: 0, weight: 94.14 },
+        { label: '1月',  cost: 692,  deposit: 600,  refund: 0, weight: 0     }
+    ];
 
-    const maxVal = Math.max(...items.map(s => s['已发总数'] || 0), 1);
-    // Round up to a nice ceiling
-    const ceil = Math.ceil(maxVal / 100) * 100 || maxVal;
-    const gridLines = 5;
+    const thisMonth = data[data.length - 1];
+    const lastMonth = data[data.length - 2];
+    const totalCost = data.reduce((s, d) => s + d.cost, 0);
+    const totalDeposit = data.reduce((s, d) => s + d.deposit, 0);
+    const totalRefund = data.reduce((s, d) => s + d.refund, 0);
+    const totalWeight = data.reduce((s, d) => s + d.weight, 0);
+    const walletBalance = totalDeposit - totalCost + totalRefund;
+
+    // Chart
+    const allVals = data.flatMap(d => [d.cost, d.deposit, d.refund]);
+    const maxVal = Math.max(...allVals, 1);
+    const ceil = Math.ceil(maxVal / 500) * 500 || 500;
+    const gridLines = 3;
 
     let gridHtml = '';
     for (let i = gridLines; i >= 0; i--) {
@@ -265,26 +310,29 @@ function renderPackagingChart() {
     }
 
     let barsHtml = '';
-    items.forEach(item => {
-        const withPkg = item['带包装'] || 0;
-        const withoutPkg = item['不带包装'] || 0;
-        const total = item['已发总数'] || 0;
-        const withPct = (withPkg / ceil) * 100;
-        const withoutPct = (withoutPkg / ceil) * 100;
-        const shortName = item['产品名称'].length > 8 ? item['产品名称'].substring(0, 8) + '…' : item['产品名称'];
+    data.forEach(d => {
+        const costPct = (d.cost / ceil) * 100;
+        const depositPct = (d.deposit / ceil) * 100;
+        const refundPct = (d.refund / ceil) * 100;
 
         barsHtml += `
             <div class="pkg-bar-group">
-                <div class="pkg-bars">
-                    <div class="pkg-bar pkg-bar-with" style="height:${withPct}%;" title="带包装: ${withPkg}"></div>
-                    <div class="pkg-bar pkg-bar-without" style="height:${withoutPct}%;" title="不带包装: ${withoutPkg}"></div>
+                <div class="pkg-bars sc-bars-triple">
+                    <div class="pkg-bar sc-bar-cost" style="height:${costPct}%;" title="运费: ${d.cost}"></div>
+                    <div class="pkg-bar sc-bar-deposit" style="height:${depositPct}%;" title="支付: ${d.deposit}"></div>
+                    <div class="pkg-bar sc-bar-refund" style="height:${refundPct}%;" title="退款: ${d.refund}"></div>
                 </div>
-                <div class="pkg-bar-label" title="${item['产品名称']}">${shortName}</div>
+                <div class="pkg-bar-label">${d.label}</div>
             </div>
         `;
     });
 
     container.innerHTML = `
+        <div class="sc-legend">
+            <div class="sc-legend-item"><span class="sc-legend-swatch sc-swatch-cost"></span> 运费</div>
+            <div class="sc-legend-item"><span class="sc-legend-swatch sc-swatch-deposit"></span> 支付</div>
+            <div class="sc-legend-item"><span class="sc-legend-swatch sc-swatch-refund"></span> 退款</div>
+        </div>
         <div class="pkg-chart-wrapper">
             <div class="pkg-chart-area">
                 ${gridHtml}
@@ -293,11 +341,38 @@ function renderPackagingChart() {
                 </div>
             </div>
         </div>
-        <div class="pkg-legend">
-            <div class="pkg-legend-item"><span class="pkg-legend-dot pkg-color-with"></span> 带包装 (With Packaging)</div>
-            <div class="pkg-legend-item"><span class="pkg-legend-dot pkg-color-without"></span> 不带包装 (Without Packaging)</div>
-        </div>
     `;
+
+    // Summary grid below chart
+    if (summaryEl) {
+        summaryEl.innerHTML = `
+            <div class="sc-summary-col">
+                <div class="sc-summary-title">本月统计</div>
+                <div class="sc-summary-row"><span class="sc-summary-label">运费：</span>${thisMonth.cost.toFixed(1)}</div>
+                <div class="sc-summary-row"><span class="sc-summary-label">支付：</span>${thisMonth.deposit.toFixed(1)}</div>
+                <div class="sc-summary-row"><span class="sc-summary-label">退款：</span>${thisMonth.refund.toFixed(1)}</div>
+                <div class="sc-summary-row"><span class="sc-summary-label">重量：</span>${thisMonth.weight.toFixed(1)} KG</div>
+            </div>
+            <div class="sc-summary-col">
+                <div class="sc-summary-title">上月统计</div>
+                <div class="sc-summary-row"><span class="sc-summary-label">运费：</span>${lastMonth.cost.toFixed(1)}</div>
+                <div class="sc-summary-row"><span class="sc-summary-label">支付：</span>${lastMonth.deposit.toFixed(1)}</div>
+                <div class="sc-summary-row"><span class="sc-summary-label">退款：</span>${lastMonth.refund.toFixed(1)}</div>
+                <div class="sc-summary-row"><span class="sc-summary-label">重量：</span>${lastMonth.weight.toFixed(1)} KG</div>
+            </div>
+            <div class="sc-summary-col">
+                <div class="sc-summary-title">近六个月合计</div>
+                <div class="sc-summary-row"><span class="sc-summary-label">运费：</span>${totalCost.toFixed(1)}</div>
+                <div class="sc-summary-row"><span class="sc-summary-label">支付：</span>${totalDeposit.toFixed(1)}</div>
+                <div class="sc-summary-row"><span class="sc-summary-label">退款：</span>${totalRefund.toFixed(1)}</div>
+                <div class="sc-summary-row"><span class="sc-summary-label">重量：</span>${totalWeight.toFixed(1)} KG</div>
+            </div>
+            <div class="sc-summary-col">
+                <div class="sc-summary-title">钱包</div>
+                <div class="sc-wallet-balance">${walletBalance.toFixed(2)} USD ▸</div>
+            </div>
+        `;
+    }
 }
 
 // ========== INVENTORY PAGE ==========

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>觉觉在北美 — Inventory Manager</title>
+    <title>觉觉在北美</title>
     <link rel="icon" href="img/icon.png" type="image/png">
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -12,8 +12,7 @@
     <!-- Sidebar -->
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-brand">
-            <div class="brand-title">觉觉在北美 <span class="brand-handle">(amtfmz)</span></div>
-            <div class="brand-subtitle">Inventory Manager</div>
+            <div class="brand-title">觉觉在北美 <span class="brand-handle">amtfmz</span></div>
         </div>
         <nav class="sidebar-nav">
             <a href="#" class="nav-item active" data-page="dashboard">
@@ -129,40 +128,49 @@
                 </div>
                 <div id="dashboard-filter-info" class="dashboard-filter-info hidden"></div>
 
-                <!-- Orders -->
-                <div class="content-card">
-                    <div class="card-header">
+                <!-- Orders / Filtered Products -->
+                <div class="content-card" id="dashboard-main-card">
+                    <div class="card-header" id="dashboard-main-header">
                         <div>
-                            <h2 class="card-title"><span class="section-tag">Orders</span> 采购订单追踪</h2>
-                            <p class="card-desc">Incoming orders tracking</p>
+                            <h2 class="card-title" id="dashboard-main-title"><span class="section-tag">Orders</span> 采购订单追踪</h2>
+                            <p class="card-desc" id="dashboard-main-desc">Incoming orders tracking</p>
                         </div>
                     </div>
-                    <div class="table-wrapper dashboard-orders-scroll">
-                        <table id="order-table">
-                            <thead>
-                                <tr>
-                                    <th>来源 (Source)</th>
-                                    <th>订单号 (Order #)</th>
-                                    <th>状态</th>
-                                    <th>快递单号</th>
-                                    <th>签收</th>
-                                    <th>预计 (Est. Date)</th>
-                                </tr>
-                            </thead>
-                            <tbody id="order-body"></tbody>
-                        </table>
+                    <div id="dashboard-main-body">
+                        <div class="table-wrapper dashboard-orders-scroll" id="dashboard-orders-view">
+                            <table id="order-table">
+                                <thead>
+                                    <tr>
+                                        <th>来源 (Source)</th>
+                                        <th>订单号 (Order #)</th>
+                                        <th>状态</th>
+                                        <th>快递单号</th>
+                                        <th>签收</th>
+                                        <th>预计 (Est. Date)</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="order-body"></tbody>
+                            </table>
+                        </div>
+                        <div class="table-wrapper dashboard-orders-scroll" id="dashboard-products-view" style="display:none;">
+                            <table id="filtered-products-table">
+                                <thead id="filtered-products-thead"></thead>
+                                <tbody id="filtered-products-body"></tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Packaging Variants -->
+                <!-- Shipping Cost -->
                 <div class="content-card">
                     <div class="card-header">
                         <div>
-                            <h2 class="card-title">Packaging Variants</h2>
-                            <p class="card-desc">Shipment statistics by package type per product</p>
+                            <h2 class="card-title">近期财务统计</h2>
+                            <p class="card-desc">Recent financial statistics</p>
                         </div>
                     </div>
-                    <div class="chart-container" id="packaging-chart"></div>
+                    <div class="chart-container" id="shipping-cost-chart"></div>
+                    <div class="sc-summary" id="shipping-cost-summary"></div>
                 </div>
             </div>
         </div>
