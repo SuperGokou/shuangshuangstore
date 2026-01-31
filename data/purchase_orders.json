@@ -1,9 +1,9 @@
 [
     {
         "source": "Bloomingdales",
-        "order_id": "#RETURN",
+        "order_id": "#RETURN_1",
         "date": "2026-01-30",
-        "note": "Gokou-已发货and未签收",
+        "note": "退货",
         "items": [
             {
                 "product": "蓝底 30oz",
@@ -11,7 +11,15 @@
                 "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler  30 OZ.png"
             }
         ],
-        "shipments": []
+        "shipments": [
+            {
+                "tracking_number": "1ZA6A5769052326406",
+                "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZA6A5769052326406",
+                "status": "Fulfilled",
+                "carrier": "UPS",
+                "signed": "Yes"
+            }
+        ]
     },
     {
         "source": "LoveShackFancy",
@@ -746,7 +754,7 @@
     },
     {
         "source": "Stanley1913",
-        "order_id": "#RETURN",
+        "order_id": "#RETURN_0",
         "date": "2025-12-29",
         "note": "退货",
         "items": [
@@ -781,7 +789,57 @@
                 "image": "img/Stanley 1913 x LoveShackFancy Holiday Reserve All Day Wine Set.png"
             }
         ],
-        "shipments": []
+        "shipments": [
+            {
+                "tracking_number": "1ZK9H4119037897734",
+                "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZK9H4119037897734",
+                "status": "Fulfilled",
+                "carrier": "UPS",
+                "signed": "Yes"
+            },
+            {
+                "tracking_number": "1ZK9H4119005604396",
+                "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZK9H4119005604396",
+                "status": "Fulfilled",
+                "carrier": "UPS",
+                "signed": "Yes"
+            },
+            {
+                "tracking_number": "1ZK9H4119003537212",
+                "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZK9H4119003537212",
+                "status": "Fulfilled",
+                "carrier": "UPS",
+                "signed": "Yes"
+            },
+            {
+                "tracking_number": "1ZK9H4119000965096",
+                "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZK9H4119000965096",
+                "status": "Fulfilled",
+                "carrier": "UPS",
+                "signed": "Yes"
+            },
+            {
+                "tracking_number": "1ZK9H4119015875567",
+                "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZK9H4119015875567",
+                "status": "Fulfilled",
+                "carrier": "UPS",
+                "signed": "Yes"
+            },
+            {
+                "tracking_number": "1ZK9H4119000454790",
+                "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZK9H4119037941711",
+                "status": "Fulfilled",
+                "carrier": "UPS",
+                "signed": "Yes"
+            },
+            {
+                "tracking_number": "1ZK9H4119037941711",
+                "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZK9H4119000454790",
+                "status": "Fulfilled",
+                "carrier": "UPS",
+                "signed": "Yes"
+            }
+        ]
     },
     {
         "source": "Bloomingdales",
