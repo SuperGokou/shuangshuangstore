@@ -509,9 +509,9 @@ def init_db():
             "recipient": raw_name,
             "details": item['details'],
             "weight": item['weight'],
-            "fee": item['fee'],
+            "fee": item.get('fee', 0),
             "status": item['status'],
-            "date": item['date'],
+            "date": item.get('date', ''),
             "carrier": "JunAn Express",
             "address": item['address'],  # Store specific address for this shipment history
             "note": item.get('note', '')

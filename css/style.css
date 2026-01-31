@@ -1671,7 +1671,7 @@ a:hover { color: #1d4ed8; text-decoration: underline; }
     right: 0;
     top: 0;
     display: flex;
-    align-items: flex-end;
+    align-items: stretch;
     justify-content: space-around;
     padding: 0 12px;
     gap: 4px;

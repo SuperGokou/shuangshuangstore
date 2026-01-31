@@ -50,6 +50,7 @@ let allStats = [];
 let allOrders = [];
 let allShipping = [];
 let purchaseOrders = [];
+let financeData = [];
 
 // ========== FETCH ALL DATA ==========
 Promise.all([
@@ -57,13 +58,15 @@ Promise.all([
     fetch('data/stats.json').then(r => r.ok ? r.json() : []),
     fetch('data/orders.json').then(r => r.ok ? r.json() : []),
     fetch('data/shipping.json').then(r => r.ok ? r.json() : []),
-    fetch('data/purchase_orders.json').then(r => r.ok ? r.json() : [])
-]).then(([products, stats, orders, shipping, purchases]) => {
+    fetch('data/purchase_orders.json').then(r => r.ok ? r.json() : []),
+    fetch('data/finance.json').then(r => r.ok ? r.json() : [])
+]).then(([products, stats, orders, shipping, purchases, finance]) => {
     allProducts = products;
     allStats = stats;
     allOrders = orders;
     allShipping = shipping;
     purchaseOrders = purchases;
+    financeData = finance;
 
     renderDashboard();
     renderInventoryPage();
@@ -278,9 +281,15 @@ function renderShippingCostChart() {
     const summaryEl = document.getElementById('shipping-cost-summary');
     if (!container) return;
 
-    // Manual deposit/refund records (not per-shipment, keyed by "YYYY-MM")
-    const deposits = { '2024-11': 100, '2024-12': 1100, '2025-01': 600 };
+    // Build deposit/refund lookup from finance.json
+    const deposits = {};
     const refunds = {};
+    financeData.forEach(f => {
+        if (f.month) {
+            deposits[f.month] = (deposits[f.month] || 0) + (parseFloat(f.deposit) || 0);
+            refunds[f.month] = (refunds[f.month] || 0) + (parseFloat(f.refund) || 0);
+        }
+    });
 
     // Aggregate cost & weight from allShipping by month
     const monthlyAgg = {};

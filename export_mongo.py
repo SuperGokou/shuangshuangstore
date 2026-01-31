@@ -10,7 +10,7 @@ MONGO_URI = "mongodb+srv://mingxiaharvard_db_user:A9jYurFGiFadX4gJ@clienttrackin
 
 def export_data():
     try:
-        client = MongoClient(MONGO_URI)
+        client = MongoClient(MONGO_URI, tlsAllowInvalidCertificates=True)
         db = client[DB_NAME]
         print("✅ Connected to MongoDB")
     except Exception as e:
