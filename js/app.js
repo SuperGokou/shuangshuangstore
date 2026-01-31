@@ -715,6 +715,12 @@ function exportPurchaseOrders() {
 }
 
 // ========== SHIPPING PAGE ==========
+let shipmentStatusFilter = null;
+
+function isDelivered(status) {
+    return status.includes('已派送') || status.includes('已签收') || status.includes('已放在');
+}
+
 function renderShippingPage() {
     const tbody = document.getElementById('shipping-body');
     if (allShipping.length === 0) {
@@ -723,14 +729,34 @@ function renderShippingPage() {
     }
 
     let totalWeight = 0;
-    const recipients = new Set();
+    let deliveredCount = 0;
+    let transitCount = 0;
 
+    // Count metrics
     allShipping.forEach(item => {
         const w = parseFloat(item.weight || item['实际重量'] || 0);
         totalWeight += isNaN(w) ? 0 : w;
-        recipients.add(item.customer_name || item.recipient || '');
+        if (isDelivered(item.status || '')) deliveredCount++;
+        else transitCount++;
+    });
 
-        const row = document.createElement('tr');
+    document.getElementById('sh-metric-total').textContent = allShipping.length.toLocaleString();
+    document.getElementById('sh-metric-delivered').textContent = deliveredCount.toLocaleString();
+    document.getElementById('sh-metric-transit').textContent = transitCount.toLocaleString();
+    document.getElementById('sh-metric-weight').textContent = totalWeight.toFixed(1);
+
+    // Filter
+    let filtered = allShipping;
+    if (shipmentStatusFilter === 'delivered') {
+        filtered = allShipping.filter(s => isDelivered(s.status || ''));
+    } else if (shipmentStatusFilter === 'transit') {
+        filtered = allShipping.filter(s => !isDelivered(s.status || ''));
+    }
+    const query = (document.getElementById('sh-search')?.value || '').toLowerCase();
+
+    // Render rows
+    tbody.innerHTML = '';
+    filtered.forEach(item => {
         const details = item.details || item['内件明细'] || '——';
         const weight = item.weight || item['实际重量'] || '——';
         let trackingDisplay = item.tracking_number;
@@ -748,12 +774,10 @@ function renderShippingPage() {
             displayStatus = fullStatus.substring(0, 16) + '...';
         }
         let statusClass = 'badge-pending';
-        const sl = fullStatus.toLowerCase();
-        if (sl.includes('deliver') || sl.includes('签收')) statusClass = 'badge-delivered';
-        else if (sl.includes('transit') || sl.includes('运输')) statusClass = 'badge-transit';
-        else if (sl.includes('delay')) statusClass = 'badge-delayed';
-        else if (sl.includes('process')) statusClass = 'badge-processing';
+        if (isDelivered(fullStatus)) statusClass = 'badge-delivered';
+        else if (fullStatus.includes('运输') || fullStatus.includes('transit')) statusClass = 'badge-transit';
 
+        const row = document.createElement('tr');
         row.innerHTML = `
             <td class="tracking-code">${trackingDisplay}</td>
             <td>${item.customer_name || item.recipient}</td>
@@ -763,22 +787,29 @@ function renderShippingPage() {
             <td>${item.phone}</td>
             <td class="cell-address" title="${fullAddress}">${displayAddress}</td>
         `;
+        if (query && !row.textContent.toLowerCase().includes(query)) {
+            row.style.display = 'none';
+        }
         tbody.appendChild(row);
     });
+}
 
-    document.getElementById('sh-metric-total').textContent = allShipping.length.toLocaleString();
-    document.getElementById('sh-metric-recipients').textContent = recipients.size.toLocaleString();
-    document.getElementById('sh-metric-weight').textContent = totalWeight.toFixed(1);
-    const avg = allShipping.length > 0 ? (totalWeight / allShipping.length) : 0;
-    document.getElementById('sh-metric-avg').textContent = avg.toFixed(1);
+function filterShipmentsByStatus(status) {
+    if (shipmentStatusFilter === status) {
+        shipmentStatusFilter = null;
+    } else {
+        shipmentStatusFilter = status;
+    }
+    document.querySelectorAll('#page-shipping .metric-card').forEach(card => card.classList.remove('active'));
+    if (shipmentStatusFilter) {
+        const idx = shipmentStatusFilter === 'delivered' ? 1 : 2;
+        document.querySelectorAll('#page-shipping .metric-card')[idx]?.classList.add('active');
+    }
+    renderShippingPage();
 }
 
 function filterShipments() {
-    const query = (document.getElementById('sh-search')?.value || '').toLowerCase();
-    const rows = document.querySelectorAll('#shipping-body tr');
-    rows.forEach(row => {
-        row.style.display = !query || row.textContent.toLowerCase().includes(query) ? '' : 'none';
-    });
+    renderShippingPage();
 }
 
 function exportShipments() {
