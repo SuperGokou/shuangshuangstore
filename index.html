@@ -46,7 +46,6 @@
 
     <!-- Main content -->
     <div class="main-content">
-        <!-- Top header bar (Figma Header.tsx) -->
         <header class="top-bar">
             <div class="top-bar-left">
                 <div class="search-box">
@@ -78,9 +77,8 @@
         <!-- ==================== PAGE: DASHBOARD ==================== -->
         <div class="page" id="page-dashboard">
             <div class="page-content">
-                <!-- Metric cards (Figma MetricCard.tsx style) -->
                 <div class="metrics-row" id="metrics-row">
-                    <div class="metric-card">
+                    <div class="metric-card clickable" data-filter="us_signed" onclick="toggleDashboardFilter('us_signed')">
                         <div class="metric-header">
                             <div>
                                 <div class="metric-title">US Signed</div>
@@ -92,7 +90,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="metric-card">
+                    <div class="metric-card clickable" data-filter="us_unsigned" onclick="toggleDashboardFilter('us_unsigned')">
                         <div class="metric-header">
                             <div>
                                 <div class="metric-title">US Unsigned</div>
@@ -104,7 +102,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="metric-card">
+                    <div class="metric-card clickable" data-filter="shipped_cn" onclick="toggleDashboardFilter('shipped_cn')">
                         <div class="metric-header">
                             <div>
                                 <div class="metric-title">In Transit to China</div>
@@ -116,7 +114,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="metric-card">
+                    <div class="metric-card clickable" data-filter="total_stock" onclick="toggleDashboardFilter('total_stock')">
                         <div class="metric-header">
                             <div>
                                 <div class="metric-title">Total Stock</div>
@@ -129,46 +127,7 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Product Gallery -->
-                <div class="content-card">
-                    <div class="card-header">
-                        <div>
-                            <h2 class="card-title">Product Inventory</h2>
-                            <p class="card-desc">Live stock status for all products</p>
-                        </div>
-                    </div>
-                    <div id="inventory-container" class="gallery-scroll">
-                        <p style="text-align:center; width:100%; color:#94a3b8;">Loading products...</p>
-                    </div>
-                </div>
-
-                <!-- Stats -->
-                <div class="content-card">
-                    <div class="card-header">
-                        <div>
-                            <h2 class="card-title"><span class="section-tag">Stats</span> 产品发货统计</h2>
-                            <p class="card-desc">Shipment statistics by product</p>
-                        </div>
-                    </div>
-                    <div class="table-wrapper">
-                        <table id="stats-table">
-                            <thead>
-                                <tr>
-                                    <th style="width: 50px;">图片</th>
-                                    <th>产品名称</th>
-                                    <th>已发总数</th>
-                                    <th>带包装 (Qty)</th>
-                                    <th>明细 (Details)</th>
-                                    <th>不带包装 (Qty)</th>
-                                    <th>明细 (Details)</th>
-                                    <th>总库存</th>
-                                </tr>
-                            </thead>
-                            <tbody id="stats-body"></tbody>
-                        </table>
-                    </div>
-                </div>
+                <div id="dashboard-filter-info" class="dashboard-filter-info hidden"></div>
 
                 <!-- Orders -->
                 <div class="content-card">
@@ -178,7 +137,7 @@
                             <p class="card-desc">Incoming orders tracking</p>
                         </div>
                     </div>
-                    <div class="table-wrapper">
+                    <div class="table-wrapper dashboard-orders-scroll">
                         <table id="order-table">
                             <thead>
                                 <tr>
@@ -194,6 +153,17 @@
                         </table>
                     </div>
                 </div>
+
+                <!-- Packaging Variants -->
+                <div class="content-card">
+                    <div class="card-header">
+                        <div>
+                            <h2 class="card-title">Packaging Variants</h2>
+                            <p class="card-desc">Shipment statistics by package type per product</p>
+                        </div>
+                    </div>
+                    <div class="chart-container" id="packaging-chart"></div>
+                </div>
             </div>
         </div>
 
@@ -205,7 +175,6 @@
                     <p class="page-desc">Monitor stock levels across all warehouses</p>
                 </div>
 
-                <!-- Inventory metric cards -->
                 <div class="metrics-row">
                     <div class="metric-card">
                         <div class="metric-header">
@@ -255,8 +224,8 @@
 
                 <!-- Inventory Table Card with Toolbar -->
                 <div class="content-card">
-                    <div class="card-header" style="flex-direction:column; align-items:stretch; gap:16px;">
-                        <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                    <div class="card-header card-header-stacked">
+                        <div class="card-header-row">
                             <div>
                                 <h2 class="card-title">Inventory Items</h2>
                                 <p class="card-desc"><span id="inv-count-info">— products</span></p>
@@ -274,7 +243,7 @@
                             </div>
                         </div>
                         <div class="card-toolbar">
-                            <div class="search-box" style="flex:1;">
+                            <div class="search-box search-box-full">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
                                 <input type="text" placeholder="Search by name..." id="inv-search" oninput="filterInventory()">
                             </div>
@@ -296,7 +265,7 @@
                             <table id="inventory-table">
                                 <thead>
                                     <tr>
-                                        <th style="width:60px;">Image</th>
+                                        <th class="col-thumb-lg">Image</th>
                                         <th>Product Name</th>
                                         <th>US Signed</th>
                                         <th>US Unsigned</th>
@@ -325,7 +294,7 @@
                         <table id="inv-stats-table">
                             <thead>
                                 <tr>
-                                    <th style="width: 50px;">图片</th>
+                                    <th class="col-thumb">图片</th>
                                     <th>产品名称</th>
                                     <th>已发总数</th>
                                     <th>带包装 (Qty)</th>
@@ -350,7 +319,6 @@
                     <p class="page-desc">Manage and track all purchase orders</p>
                 </div>
 
-                <!-- 5 metric cards (Figma PurchaseOrdersPage) -->
                 <div class="metrics-row metrics-row-5">
                     <div class="metric-card">
                         <div class="metric-header">
@@ -431,11 +399,11 @@
                         <table id="purchase-table">
                             <thead>
                                 <tr>
-                                    <th style="min-width: 100px;">日期 (Date)</th>
-                                    <th style="min-width: 120px;">来源 (Source)</th>
-                                    <th style="min-width: 300px;">产品明细 (Items)</th>
-                                    <th style="min-width: 180px;">快递单号 (Tracking)</th>
-                                    <th style="min-width: 120px;">备注 (Note)</th>
+                                    <th class="col-date">日期 (Date)</th>
+                                    <th class="col-source">来源 (Source)</th>
+                                    <th class="col-items">产品明细 (Items)</th>
+                                    <th class="col-tracking">快递单号 (Tracking)</th>
+                                    <th class="col-note">备注 (Note)</th>
                                 </tr>
                             </thead>
                             <tbody id="purchase-body"></tbody>
@@ -453,7 +421,6 @@
                     <p class="page-desc">Track and manage all shipments</p>
                 </div>
 
-                <!-- 4 metric cards (Figma ShipmentsPage) -->
                 <div class="metrics-row">
                     <div class="metric-card">
                         <div class="metric-header">
@@ -549,7 +516,6 @@
                     <p class="page-desc">Business intelligence and performance metrics</p>
                 </div>
 
-                <!-- KPI Cards with trend arrows (Figma AnalyticsPage) -->
                 <div class="metrics-row" id="analytics-kpi-row">
                     <div class="kpi-card">
                         <div class="kpi-top">
@@ -605,7 +571,6 @@
                     </div>
                 </div>
 
-                <!-- Charts Row (Figma: 2fr 1fr) -->
                 <div class="charts-row">
                     <div class="content-card chart-card">
                         <div class="card-header">
@@ -631,7 +596,6 @@
                     </div>
                 </div>
 
-                <!-- Shipment Volume -->
                 <div class="charts-row charts-row-2col">
                     <div class="content-card">
                         <div class="card-header">
@@ -643,7 +607,6 @@
                         <div class="chart-container" id="shipment-bar-chart"></div>
                     </div>
 
-                    <!-- Source Performance -->
                     <div class="content-card">
                         <div class="card-header">
                             <div>
@@ -663,692 +626,7 @@
     <!-- Sidebar overlay for mobile -->
     <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
-    <script>
-    // ========== NAVIGATION ==========
-    const navItems = document.querySelectorAll('.nav-item[data-page]');
-    const pages = document.querySelectorAll('.page');
-    const hamburgerBtn = document.getElementById('hamburger');
-    const sidebarEl = document.getElementById('sidebar');
-    const overlayEl = document.getElementById('sidebar-overlay');
-
-    function navigateTo(pageId) {
-        pages.forEach(p => p.classList.add('hidden'));
-        navItems.forEach(n => n.classList.remove('active'));
-        const target = document.getElementById('page-' + pageId);
-        if (target) target.classList.remove('hidden');
-        const navEl = document.querySelector(`.nav-item[data-page="${pageId}"]`);
-        if (navEl) navEl.classList.add('active');
-        sidebarEl.classList.remove('open');
-        overlayEl.classList.remove('open');
-        window.scrollTo(0, 0);
-    }
-
-    navItems.forEach(item => {
-        item.addEventListener('click', (e) => {
-            e.preventDefault();
-            navigateTo(item.dataset.page);
-        });
-    });
-
-    hamburgerBtn.addEventListener('click', () => {
-        sidebarEl.classList.toggle('open');
-        overlayEl.classList.toggle('open');
-    });
-    overlayEl.addEventListener('click', () => {
-        sidebarEl.classList.remove('open');
-        overlayEl.classList.remove('open');
-    });
-
-    // ========== INVENTORY VIEW MODE ==========
-    let currentView = 'table';
-    function setInventoryView(mode) {
-        currentView = mode;
-        document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
-        document.querySelector(`.view-btn[data-view="${mode}"]`).classList.add('active');
-        document.getElementById('inv-table-view').style.display = mode === 'table' ? '' : 'none';
-        document.getElementById('inv-grid-view').style.display = mode === 'grid' ? '' : 'none';
-        document.getElementById('inv-list-view').style.display = mode === 'list' ? '' : 'none';
-    }
-
-    // ========== DATA STORE ==========
-    let allProducts = [];
-    let allStats = [];
-    let allOrders = [];
-    let allShipping = [];
-    let purchaseOrders = [];
-
-    // ========== FETCH ALL DATA ==========
-    Promise.all([
-        fetch('data/products.json').then(r => r.ok ? r.json() : []),
-        fetch('data/stats.json').then(r => r.ok ? r.json() : []),
-        fetch('data/orders.json').then(r => r.ok ? r.json() : []),
-        fetch('data/shipping.json').then(r => r.ok ? r.json() : []),
-        fetch('data/purchase_orders.json').then(r => r.ok ? r.json() : [])
-    ]).then(([products, stats, orders, shipping, purchases]) => {
-        allProducts = products;
-        allStats = stats;
-        allOrders = orders;
-        allShipping = shipping;
-        purchaseOrders = purchases;
-
-        renderDashboard();
-        renderInventoryPage();
-        renderPurchasePage();
-        renderShippingPage();
-        renderAnalyticsPage();
-    }).catch(err => console.error("Data load error:", err));
-
-    // ========== DASHBOARD ==========
-    function renderDashboard() {
-        let totalSigned = 0, totalUnsigned = 0, totalShippedCn = 0, totalStock = 0;
-        const container = document.getElementById('inventory-container');
-        container.innerHTML = '';
-
-        allProducts.forEach(product => {
-            const usSigned = product.us_signed || 0;
-            const usUnsigned = product.us_unsigned || 0;
-            const shippedCn = product.shipped_cn || 0;
-            const stock = product.total_stock || 0;
-            totalSigned += usSigned;
-            totalUnsigned += usUnsigned;
-            totalShippedCn += shippedCn;
-            totalStock += stock;
-
-            const card = document.createElement('div');
-            card.className = 'card';
-            const safeImagePath = encodeURI(product.image);
-            card.innerHTML = `
-                <div class="image-wrapper">
-                    <img src="${safeImagePath}" alt="${product.name}" loading="lazy"
-                         onerror="this.src='https://via.placeholder.com/300?text=No+Image'">
-                </div>
-                <div class="info">
-                    <h3 style="text-align:center;">${product.name}</h3>
-                    <div class="stock-data">
-                        <div class="stock-row"><span class="stock-label">美国签收:</span><span class="stock-value" style="color:#10b981;">${usSigned}</span></div>
-                        <div class="stock-row"><span class="stock-label">美国未签:</span><span class="stock-value" style="color:#f59e0b;">${usUnsigned}</span></div>
-                        <div class="stock-row"><span class="stock-label">发往中国:</span><span class="stock-value">${shippedCn}</span></div>
-                        <div style="border-top:1px solid #e2e8f0; margin-top:2px; padding-top:2px;" class="stock-row">
-                            <span class="stock-label">商品总数:</span><span class="stock-value"><strong>${stock}</strong></span>
-                        </div>
-                    </div>
-                </div>
-            `;
-            container.appendChild(card);
-        });
-
-        document.getElementById('metric-us-signed').textContent = totalSigned.toLocaleString();
-        document.getElementById('metric-us-unsigned').textContent = totalUnsigned.toLocaleString();
-        document.getElementById('metric-shipped-cn').textContent = totalShippedCn.toLocaleString();
-        document.getElementById('metric-total-stock').textContent = totalStock.toLocaleString();
-
-        renderStatsTable('stats-body', allStats);
-        renderOrdersTable();
-    }
-
-    function renderStatsTable(tbodyId, stats) {
-        const tbody = document.getElementById(tbodyId);
-        if (stats.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="8">No stats available</td></tr>';
-            return;
-        }
-        stats.forEach(item => {
-            const row = document.createElement('tr');
-            const safeImg = encodeURI(item.image || '');
-            row.innerHTML = `
-                <td>
-                    <div class="image-wrapper" style="width: 50px; height: 50px; padding-top:0;">
-                        <img src="${safeImg}" alt="img" style="position:static; width:100%; height:100%; object-fit:contain; padding:2px;"
-                             onerror="this.src='https://via.placeholder.com/50?text=?'">
-                    </div>
-                </td>
-                <td style="font-weight:600; color:#0f172a;">${item['产品名称']}</td>
-                <td style="font-size:1.05em; font-weight:700;">${item['已发总数']}</td>
-                <td style="font-weight:600; color:#10b981; text-align:center;">${item['带包装']}</td>
-                <td style="font-size:0.82em; color:#64748b; max-width:150px;">${item['带包装详情']}</td>
-                <td style="font-weight:600; color:#ef4444; text-align:center;">${item['不带包装']}</td>
-                <td style="font-size:0.82em; color:#64748b; max-width:150px;">${item['不带包装详情']}</td>
-                <td style="font-weight:700;">${item['总库存']}</td>
-            `;
-            tbody.appendChild(row);
-        });
-    }
-
-    function renderOrdersTable() {
-        const tbody = document.getElementById('order-body');
-        if (allOrders.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="6" style="text-align:center">No orders found.</td></tr>';
-            return;
-        }
-        allOrders.forEach(order => {
-            const row = document.createElement('tr');
-            const statusMap = {
-                'Fulfilled': 'badge-fulfilled', 'Shipped': 'badge-fulfilled',
-                'Partial': 'badge-partial', 'In Transit': 'badge-transit',
-                'Pending': 'badge-pending'
-            };
-            const badgeClass = statusMap[order.status] || 'badge-pending';
-            let signedText = order.signed;
-            let signedColor = 'color:#10b981;';
-            if (String(signedText).includes('No') || String(signedText).includes('否')) {
-                signedColor = 'color:#ef4444; font-weight:600;';
-            }
-            let trackingDisplay = order.tracking;
-            if (order.tracking_url && order.tracking !== '——' && order.tracking !== '-') {
-                trackingDisplay = `<a href="${order.tracking_url}" target="_blank">${order.tracking}</a>`;
-            }
-            // Source dot
-            const sourceDotClass = order.source.toLowerCase().includes('stanley') ? 'stanley' :
-                                   order.source.toLowerCase().includes('love') ? 'loveshack' : 'default';
-            row.innerHTML = `
-                <td><span class="source-dot ${sourceDotClass}"></span>${order.source}</td>
-                <td>${order.order_id}</td>
-                <td><span class="badge ${badgeClass}">${order.status}</span></td>
-                <td class="tracking-code">${trackingDisplay}</td>
-                <td style="${signedColor}">${signedText}</td>
-                <td>${order.est_date || '——'}</td>
-            `;
-            tbody.appendChild(row);
-        });
-    }
-
-    // ========== INVENTORY PAGE ==========
-    function getInventoryStatus(product) {
-        const stock = product.total_stock || 0;
-        const unsigned = product.us_unsigned || 0;
-        if (stock === 0) return { label: 'Out of Stock', class: 'badge-out-of-stock' };
-        if (stock < 5) return { label: 'Low Stock', class: 'badge-low-stock' };
-        if (unsigned > 0) return { label: 'In Transit', class: 'badge-transit' };
-        return { label: 'In Stock', class: 'badge-in-stock' };
-    }
-
-    function getFilteredProducts() {
-        const query = (document.getElementById('inv-search')?.value || '').toLowerCase();
-        const sortBy = document.getElementById('inv-sort')?.value || 'name';
-
-        let filtered = allProducts.filter(p =>
-            !query || p.name.toLowerCase().includes(query)
-        );
-
-        filtered.sort((a, b) => {
-            switch (sortBy) {
-                case 'total-desc': return (b.total_stock || 0) - (a.total_stock || 0);
-                case 'total-asc': return (a.total_stock || 0) - (b.total_stock || 0);
-                case 'signed-desc': return (b.us_signed || 0) - (a.us_signed || 0);
-                case 'status':
-                    const sa = getInventoryStatus(a).label;
-                    const sb = getInventoryStatus(b).label;
-                    return sa.localeCompare(sb);
-                default: return a.name.localeCompare(b.name);
-            }
-        });
-        return filtered;
-    }
-
-    function filterInventory() {
-        renderInventoryViews(getFilteredProducts());
-    }
-
-    function renderInventoryPage() {
-        let totalStock = 0, lowStock = 0, outOfStock = 0;
-        allProducts.forEach(p => {
-            const stock = p.total_stock || 0;
-            totalStock += stock;
-            if (stock === 0) outOfStock++;
-            else if (stock < 5) lowStock++;
-        });
-
-        document.getElementById('inv-metric-skus').textContent = allProducts.length;
-        document.getElementById('inv-metric-low').textContent = lowStock;
-        document.getElementById('inv-metric-out').textContent = outOfStock;
-        document.getElementById('inv-metric-total').textContent = totalStock.toLocaleString();
-
-        renderInventoryViews(allProducts);
-        renderStatsTable('inv-stats-body', allStats);
-    }
-
-    function renderInventoryViews(products) {
-        document.getElementById('inv-count-info').textContent =
-            `${products.length} of ${allProducts.length} products`;
-
-        // Table view
-        const tbody = document.getElementById('inventory-body');
-        tbody.innerHTML = '';
-        products.forEach(product => {
-            const usSigned = product.us_signed || 0;
-            const usUnsigned = product.us_unsigned || 0;
-            const shippedCn = product.shipped_cn || 0;
-            const stock = product.total_stock || 0;
-            const safeImg = encodeURI(product.image || '');
-            const status = getInventoryStatus(product);
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>
-                    <div class="image-wrapper" style="width:48px; height:48px; padding-top:0;">
-                        <img src="${safeImg}" alt="${product.name}" style="position:static; width:100%; height:100%; object-fit:contain; padding:2px;"
-                             onerror="this.src='https://via.placeholder.com/48?text=?'">
-                    </div>
-                </td>
-                <td style="font-weight:600; color:#0f172a;">${product.name}</td>
-                <td style="color:#10b981; font-weight:600;">${usSigned}</td>
-                <td style="color:#f59e0b; font-weight:600;">${usUnsigned}</td>
-                <td>${shippedCn}</td>
-                <td style="font-weight:700;">${stock}</td>
-                <td><span class="badge ${status.class}">${status.label}</span></td>
-            `;
-            tbody.appendChild(row);
-        });
-
-        // Grid view
-        const gridContainer = document.getElementById('inv-grid-view');
-        gridContainer.innerHTML = '';
-        products.forEach(product => {
-            const safeImg = encodeURI(product.image || '');
-            const status = getInventoryStatus(product);
-            gridContainer.innerHTML += `
-                <div class="grid-card">
-                    <img class="grid-card-img" src="${safeImg}" alt="${product.name}"
-                         onerror="this.src='https://via.placeholder.com/240?text=No+Image'">
-                    <div class="grid-card-body">
-                        <div class="grid-card-name">${product.name}</div>
-                        <div class="grid-card-stats">
-                            <span>US Signed: <strong>${product.us_signed || 0}</strong></span>
-                            <span>US Unsigned: <strong>${product.us_unsigned || 0}</strong></span>
-                            <span>In Transit: <strong>${product.shipped_cn || 0}</strong></span>
-                            <span>Total: <strong>${product.total_stock || 0}</strong></span>
-                        </div>
-                        <div class="grid-card-footer">
-                            <span class="badge ${status.class}">${status.label}</span>
-                        </div>
-                    </div>
-                </div>
-            `;
-        });
-
-        // List view
-        const listContainer = document.getElementById('inv-list-view');
-        listContainer.innerHTML = '';
-        products.forEach(product => {
-            const safeImg = encodeURI(product.image || '');
-            const status = getInventoryStatus(product);
-            listContainer.innerHTML += `
-                <div class="list-item">
-                    <img class="list-item-img" src="${safeImg}" alt="${product.name}"
-                         onerror="this.src='https://via.placeholder.com/64?text=?'">
-                    <div class="list-item-info">
-                        <div class="list-item-name">${product.name}</div>
-                        <div class="list-item-meta">
-                            <span>US Signed: <strong>${product.us_signed || 0}</strong></span>
-                            <span>US Unsigned: <strong>${product.us_unsigned || 0}</strong></span>
-                            <span>In Transit: <strong>${product.shipped_cn || 0}</strong></span>
-                            <span>Total: <strong>${product.total_stock || 0}</strong></span>
-                        </div>
-                    </div>
-                    <span class="badge ${status.class}">${status.label}</span>
-                </div>
-            `;
-        });
-    }
-
-    function exportInventory() {
-        alert('Export ' + allProducts.length + ' items to CSV');
-    }
-
-    // ========== PURCHASE ORDERS PAGE ==========
-    function toggleSignStatus(orderIndex, shipmentIndex, isChecked) {
-        const order = purchaseOrders[orderIndex];
-        if (!order || !order.shipments) return;
-        const shipment = order.shipments[shipmentIndex];
-        shipment.local_signed = isChecked ? 'Yes' : 'No';
-        const uniqueKey = `${order.order_id}_${shipment.tracking_number}`;
-        const savedState = JSON.parse(localStorage.getItem('purchase_signed_state') || '{}');
-        if (isChecked) savedState[uniqueKey] = 'Yes';
-        else delete savedState[uniqueKey];
-        localStorage.setItem('purchase_signed_state', JSON.stringify(savedState));
-    }
-    window.toggleSignStatus = toggleSignStatus;
-
-    function renderPurchasePage() {
-        const savedState = JSON.parse(localStorage.getItem('purchase_signed_state') || '{}');
-        const tbody = document.getElementById('purchase-body');
-        tbody.innerHTML = '';
-
-        if (purchaseOrders.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="5" style="text-align:center">No purchase history found.</td></tr>';
-            return;
-        }
-
-        let totalItems = 0, totalShipments = 0, totalSigned = 0;
-        const sources = new Set();
-
-        purchaseOrders.forEach((order, orderIndex) => {
-            sources.add(order.source);
-            if (order.items) order.items.forEach(i => { totalItems += Math.abs(i.qty || 0); });
-            if (order.shipments) {
-                totalShipments += order.shipments.length;
-                order.shipments.forEach(s => {
-                    const uniqueKey = `${order.order_id}_${s.tracking_number}`;
-                    const isSigned = savedState[uniqueKey] === 'Yes' || s.signed === 'Yes' || s.signed === '是';
-                    if (isSigned) totalSigned++;
-                });
-            }
-
-            const row = document.createElement('tr');
-            const sourceDotClass = order.source.toLowerCase().includes('stanley') ? 'stanley' :
-                                   order.source.toLowerCase().includes('love') ? 'loveshack' : 'default';
-
-            let itemsHtml = '<div style="display:flex; flex-direction:column; gap:6px;">';
-            if (order.items && order.items.length > 0) {
-                order.items.forEach(item => {
-                    const safeImg = encodeURI(item.image || '');
-                    itemsHtml += `
-                        <div style="display:flex; align-items:center; gap:8px; border-bottom:1px solid #f1f5f9; padding-bottom:4px;">
-                            <div style="width:36px; height:36px; flex-shrink:0; background:#fff;">
-                                <img src="${safeImg}" alt="img" style="width:100%; height:100%; object-fit:contain;"
-                                     onerror="this.src='https://via.placeholder.com/40?text=?'">
-                            </div>
-                            <div style="font-size:0.85em; line-height:1.3; white-space:normal;">
-                                <div style="font-weight:600; color:#0f172a;">${item.product}</div>
-                                <div style="color:#64748b;">Qty: <span style="color:#10b981; font-weight:600;">${item.qty}</span></div>
-                            </div>
-                        </div>
-                    `;
-                });
-            }
-            itemsHtml += '</div>';
-
-            let trackingHtml = '<span style="color:#94a3b8;">-</span>';
-            if (order.shipments && order.shipments.length > 0) {
-                trackingHtml = order.shipments.map((s, shipmentIndex) => {
-                    const fullNum = s.tracking_number;
-                    const uniqueKey = `${order.order_id}_${fullNum}`;
-                    let isSigned = false;
-                    if (savedState[uniqueKey]) {
-                        isSigned = savedState[uniqueKey] === 'Yes';
-                    } else {
-                        isSigned = s.signed === 'Yes' || s.signed === '是';
-                    }
-                    const checkedAttr = isSigned ? 'checked' : '';
-                    return `
-                    <div style="margin-bottom:5px; display:flex; align-items:center; gap:6px;">
-                        <input type="checkbox"
-                               style="cursor:pointer; accent-color:#1e3a8a; width:14px; height:14px;"
-                               ${checkedAttr}
-                               onchange="toggleSignStatus(${orderIndex}, ${shipmentIndex}, this.checked)"
-                               title="Mark as signed">
-                        <span style="font-size:0.75em; color:#64748b; font-weight:600;">${s.carrier}:</span>
-                        <a href="${s.tracking_url}" target="_blank" title="${fullNum}"
-                           style="font-family:'SF Mono','Cascadia Code','Courier New',monospace; font-size:0.85em;">
-                            ${fullNum}
-                        </a>
-                    </div>`;
-                }).join('');
-            }
-
-            let noteStyle = 'font-weight:600; color:#f59e0b;';
-            const noteText = order.note || '';
-            if (noteText.includes('已发货') && noteText.includes('已签收')) {
-                noteStyle = 'font-weight:600; color:#10b981;';
-            } else if (noteText.includes('已发货') && noteText.includes('未签收')) {
-                noteStyle = 'font-weight:600; color:#3b82f6;';
-            } else if (noteText.includes('退货')) {
-                noteStyle = 'font-weight:600; color:#10b981;';
-            }
-
-            row.innerHTML = `
-                <td style="font-size:0.85em; color:#64748b;">${order.date}</td>
-                <td>
-                    <div style="display:flex; align-items:center; gap:8px;">
-                        <span class="source-dot ${sourceDotClass}"></span>
-                        <div>
-                            <div style="font-weight:600;">${order.source}</div>
-                            <div style="font-size:0.78em; color:#94a3b8;">${order.order_id}</div>
-                        </div>
-                    </div>
-                </td>
-                <td style="white-space:normal; min-width:300px;">${itemsHtml}</td>
-                <td>${trackingHtml}</td>
-                <td style="${noteStyle}">${order.note || '-'}</td>
-            `;
-            tbody.appendChild(row);
-        });
-
-        document.getElementById('po-metric-orders').textContent = purchaseOrders.length.toLocaleString();
-        document.getElementById('po-metric-items').textContent = totalItems.toLocaleString();
-        document.getElementById('po-metric-sources').textContent = sources.size.toLocaleString();
-        document.getElementById('po-metric-shipments').textContent = totalShipments.toLocaleString();
-        document.getElementById('po-metric-signed').textContent = totalSigned.toLocaleString();
-    }
-
-    function filterPurchaseOrders() {
-        const query = (document.getElementById('po-search')?.value || '').toLowerCase();
-        const rows = document.querySelectorAll('#purchase-body tr');
-        rows.forEach(row => {
-            row.style.display = !query || row.textContent.toLowerCase().includes(query) ? '' : 'none';
-        });
-    }
-
-    function exportPurchaseOrders() {
-        alert('Export ' + purchaseOrders.length + ' purchase orders to CSV');
-    }
-
-    // ========== SHIPPING PAGE ==========
-    function renderShippingPage() {
-        const tbody = document.getElementById('shipping-body');
-        if (allShipping.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="7" style="text-align:center">No shipping data found.</td></tr>';
-            return;
-        }
-
-        let totalWeight = 0;
-        const recipients = new Set();
-
-        allShipping.forEach(item => {
-            const w = parseFloat(item.weight || item['实际重量'] || 0);
-            totalWeight += isNaN(w) ? 0 : w;
-            recipients.add(item.customer_name || item.recipient || '');
-
-            const row = document.createElement('tr');
-            const details = item.details || item['内件明细'] || '——';
-            const weight = item.weight || item['实际重量'] || '——';
-            let trackingDisplay = item.tracking_number;
-            if (item.tracking_url) {
-                trackingDisplay = `<a href="${item.tracking_url}" target="_blank">${item.tracking_number}</a>`;
-            }
-            let fullAddress = item.address || '';
-            let displayAddress = fullAddress;
-            if (fullAddress.length > 25) {
-                displayAddress = fullAddress.substring(0, 9) + "......" + fullAddress.substring(fullAddress.length - 9);
-            }
-            let fullStatus = item.status || 'Checking...';
-            let displayStatus = fullStatus;
-            if (fullStatus.length > 16) {
-                displayStatus = fullStatus.substring(0, 16) + '...';
-            }
-            // Status badge class
-            let statusClass = 'badge-pending';
-            const sl = fullStatus.toLowerCase();
-            if (sl.includes('deliver') || sl.includes('签收')) statusClass = 'badge-delivered';
-            else if (sl.includes('transit') || sl.includes('运输')) statusClass = 'badge-transit';
-            else if (sl.includes('delay')) statusClass = 'badge-delayed';
-            else if (sl.includes('process')) statusClass = 'badge-processing';
-
-            row.innerHTML = `
-                <td class="tracking-code">${trackingDisplay}</td>
-                <td>${item.customer_name || item.recipient}</td>
-                <td style="color:#475569;">${details}</td>
-                <td>${weight}</td>
-                <td><span class="badge ${statusClass}" title="${fullStatus}">${displayStatus}</span></td>
-                <td>${item.phone}</td>
-                <td style="font-size:0.8em; color:#64748b;" title="${fullAddress}">${displayAddress}</td>
-            `;
-            tbody.appendChild(row);
-        });
-
-        document.getElementById('sh-metric-total').textContent = allShipping.length.toLocaleString();
-        document.getElementById('sh-metric-recipients').textContent = recipients.size.toLocaleString();
-        document.getElementById('sh-metric-weight').textContent = totalWeight.toFixed(1);
-        const avg = allShipping.length > 0 ? (totalWeight / allShipping.length) : 0;
-        document.getElementById('sh-metric-avg').textContent = avg.toFixed(1);
-    }
-
-    function filterShipments() {
-        const query = (document.getElementById('sh-search')?.value || '').toLowerCase();
-        const rows = document.querySelectorAll('#shipping-body tr');
-        rows.forEach(row => {
-            row.style.display = !query || row.textContent.toLowerCase().includes(query) ? '' : 'none';
-        });
-    }
-
-    function exportShipments() {
-        alert('Export ' + allShipping.length + ' shipments to CSV');
-    }
-
-    // ========== ANALYTICS PAGE ==========
-    function renderAnalyticsPage() {
-        let totalShipped = 0, totalStockAll = 0;
-        allStats.forEach(s => {
-            totalShipped += (s['已发总数'] || 0);
-            totalStockAll += (s['总库存'] || 0);
-        });
-
-        const totalOrders = allOrders.length + purchaseOrders.length;
-        const avgPerOrder = totalOrders > 0 ? (totalShipped / totalOrders).toFixed(1) : '0';
-        const turnover = totalStockAll > 0 ? (totalShipped / totalStockAll).toFixed(1) + 'x' : '0x';
-
-        document.getElementById('an-metric-shipped').textContent = totalShipped.toLocaleString();
-        document.getElementById('an-metric-orders').textContent = totalOrders.toLocaleString();
-        document.getElementById('an-metric-avg').textContent = avgPerOrder;
-        document.getElementById('an-metric-turnover').textContent = turnover;
-
-        // Compute trend percentages
-        const trendShipped = totalShipped > 0 ? '+' + ((totalShipped / Math.max(totalStockAll, 1)) * 12).toFixed(1) + '%' : '—';
-        const trendOrders = totalOrders > 0 ? '+' + ((totalOrders / Math.max(totalOrders - 2, 1)) * 8).toFixed(1) + '%' : '—';
-        const trendAvg = '-2.1%';
-        const trendTurnover = '+' + (parseFloat(turnover) > 0 ? '15.3' : '0') + '%';
-
-        document.querySelector('#an-trend-shipped span').textContent = trendShipped;
-        document.querySelector('#an-trend-orders span').textContent = trendOrders;
-        document.querySelector('#an-trend-avg span').textContent = trendAvg;
-        document.querySelector('#an-trend-turnover span').textContent = trendTurnover;
-
-        // Bar Chart: Stock by Product
-        renderBarChart('bar-chart', allProducts.map(p => ({
-            label: p.name,
-            value: p.total_stock || 0
-        })), '#1e3a8a');
-
-        // Pie Chart: Category Distribution
-        let pieSigned = 0, pieUnsigned = 0, pieCn = 0;
-        allProducts.forEach(p => {
-            pieSigned += (p.us_signed || 0);
-            pieUnsigned += (p.us_unsigned || 0);
-            pieCn += (p.shipped_cn || 0);
-        });
-        renderPieChart([
-            { label: 'US Signed (美国签收)', value: pieSigned, color: '#1e3a8a' },
-            { label: 'US Unsigned (美国未签)', value: pieUnsigned, color: '#3b82f6' },
-            { label: 'Shipped to CN (发往中国)', value: pieCn, color: '#60a5fa' }
-        ]);
-
-        // Shipment bar chart
-        renderBarChart('shipment-bar-chart', allStats.map(s => ({
-            label: s['产品名称'],
-            value: s['已发总数'] || 0
-        })), '#1e3a8a');
-
-        renderSourcePerformance();
-    }
-
-    function renderBarChart(containerId, data, color) {
-        const container = document.getElementById(containerId);
-        if (!data.length) { container.innerHTML = '<p style="color:#94a3b8; text-align:center;">No data</p>'; return; }
-
-        const maxVal = Math.max(...data.map(d => d.value), 1);
-        let html = '<div class="bar-chart">';
-        data.forEach(d => {
-            const pct = (d.value / maxVal) * 100;
-            const shortLabel = d.label.length > 10 ? d.label.substring(0, 10) + '…' : d.label;
-            html += `
-                <div class="bar-row">
-                    <div class="bar-label" title="${d.label}">${shortLabel}</div>
-                    <div class="bar-track">
-                        <div class="bar-fill" style="width:${pct}%; background:${color};"></div>
-                    </div>
-                    <div class="bar-value">${d.value}</div>
-                </div>
-            `;
-        });
-        html += '</div>';
-        container.innerHTML = html;
-    }
-
-    function renderPieChart(data) {
-        const total = data.reduce((sum, d) => sum + d.value, 0);
-        if (total === 0) return;
-
-        let gradParts = [];
-        let cumulative = 0;
-        data.forEach(d => {
-            const start = (cumulative / total) * 360;
-            cumulative += d.value;
-            const end = (cumulative / total) * 360;
-            gradParts.push(`${d.color} ${start}deg ${end}deg`);
-        });
-
-        const pieEl = document.getElementById('pie-chart');
-        pieEl.style.background = `conic-gradient(${gradParts.join(', ')})`;
-
-        const legendEl = document.getElementById('pie-legend');
-        legendEl.innerHTML = data.map(d => {
-            const pct = ((d.value / total) * 100).toFixed(0);
-            return `<div class="legend-item">
-                <span class="legend-dot" style="background:${d.color};"></span>
-                <span>${d.label} <strong>${pct}%</strong></span>
-            </div>`;
-        }).join('');
-    }
-
-    function renderSourcePerformance() {
-        const sourceMap = {};
-        allOrders.forEach(o => {
-            if (!sourceMap[o.source]) sourceMap[o.source] = { orders: 0, items: 0 };
-            sourceMap[o.source].orders++;
-        });
-
-        purchaseOrders.forEach(o => {
-            if (!sourceMap[o.source]) sourceMap[o.source] = { orders: 0, items: 0 };
-            sourceMap[o.source].orders++;
-            if (o.items) o.items.forEach(i => { sourceMap[o.source].items += Math.abs(i.qty || 0); });
-        });
-
-        const container = document.getElementById('source-performance');
-        let html = '';
-        Object.entries(sourceMap).forEach(([source, data]) => {
-            const dotColor = source.toLowerCase().includes('stanley') ? '#1e3a8a' :
-                             source.toLowerCase().includes('love') ? '#ec4899' : '#6366f1';
-            html += `
-                <div class="source-card">
-                    <div class="source-card-header">
-                        <div class="source-avatar" style="background:${dotColor};"></div>
-                        <div class="source-name">${source}</div>
-                    </div>
-                    <div class="source-stats">
-                        <div>
-                            <div class="source-stat-label">Orders</div>
-                            <div class="source-stat-value">${data.orders}</div>
-                        </div>
-                        <div>
-                            <div class="source-stat-label">Items</div>
-                            <div class="source-stat-value">${data.items.toLocaleString()}</div>
-                        </div>
-                    </div>
-                </div>
-            `;
-        });
-        container.innerHTML = html;
-    }
-    </script>
+    <script src="js/app.js"></script>
 
 </body>
 </html>
