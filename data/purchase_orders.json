@@ -11,64 +11,7 @@
                 "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® ProTour Flip Straw Tumbler  30 OZ.png"
             }
         ],
-        "shipments": [
-            {
-                "tracking_number": "1ZK9H4119037897734",
-                "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZK9H4119037897734",
-                "status": "Fulfilled",
-                "carrier": "UPS",
-                "signed": "Yes"
-            },
-            {
-                "tracking_number": "1ZK9H4119005604396",
-                "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZK9H4119005604396",
-                "status": "Fulfilled",
-                "carrier": "UPS",
-                "signed": "Yes"
-            },
-            {
-                "tracking_number": "1ZK9H4119003537212",
-                "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZK9H4119003537212",
-                "status": "Fulfilled",
-                "carrier": "UPS",
-                "signed": "Yes"
-            },
-            {
-                "tracking_number": "1ZK9H4119000965096",
-                "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZK9H4119000965096",
-                "status": "Fulfilled",
-                "carrier": "UPS",
-                "signed": "Yes"
-            },
-            {
-                "tracking_number": "1ZK9H4119015875567",
-                "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZK9H4119015875567",
-                "status": "Fulfilled",
-                "carrier": "UPS",
-                "signed": "Yes"
-            },
-            {
-                "tracking_number": "1ZK9H4119000454790",
-                "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZK9H4119037941711",
-                "status": "Fulfilled",
-                "carrier": "UPS",
-                "signed": "Yes"
-            },
-            {
-                "tracking_number": "1ZK9H4119037941711",
-                "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZK9H4119000454790",
-                "status": "Fulfilled",
-                "carrier": "UPS",
-                "signed": "Yes"
-            },
-            {
-                "tracking_number": "1ZA6A5769052326406",
-                "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZA6A5769052326406",
-                "status": "Fulfilled",
-                "carrier": "UPS",
-                "signed": "No"
-            }
-        ]
+        "shipments": []
     },
     {
         "source": "LoveShackFancy",
@@ -263,7 +206,15 @@
                 "image": "img/Stanley 1913 x LoveShackFancy Holiday Quencher® H2.0 FlowState™ Tumbler 30 OZ.png"
             }
         ],
-        "shipments": []
+        "shipments": [
+            {
+                "tracking_number": "1ZH4D9750335382174 ",
+                "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZH4D9750335382174 ",
+                "status": "Fulfilled",
+                "carrier": "UPS",
+                "signed": "Yes"
+            }
+        ]
     },
     {
         "source": "Bloomingdales",
@@ -293,21 +244,21 @@
                 "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1Z6WX5660367400736",
                 "status": "Fulfilled",
                 "carrier": "UPS",
-                "signed": "No"
+                "signed": "Yes"
             },
             {
                 "tracking_number": "1Z5V59V50373750570",
                 "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1Z5V59V50373750570",
                 "status": "Fulfilled",
                 "carrier": "UPS",
-                "signed": "No"
+                "signed": "Yes"
             },
             {
                 "tracking_number": "1Z1750YA1208915316",
                 "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1Z1750YA1208915316",
                 "status": "Fulfilled",
                 "carrier": "UPS",
-                "signed": "No"
+                "signed": "Yes"
             }
         ]
     },
@@ -329,7 +280,7 @@
                 "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZC1F5450312767515",
                 "status": "Fulfilled",
                 "carrier": "UPS",
-                "signed": "No"
+                "signed": "Yes"
             }
         ]
     },
@@ -830,64 +781,7 @@
                 "image": "img/Stanley 1913 x LoveShackFancy Holiday Reserve All Day Wine Set.png"
             }
         ],
-        "shipments": [
-            {
-                "tracking_number": "1ZK9H4119037897734",
-                "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZK9H4119037897734",
-                "status": "Fulfilled",
-                "carrier": "UPS",
-                "signed": "Yes"
-            },
-            {
-                "tracking_number": "1ZK9H4119005604396",
-                "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZK9H4119005604396",
-                "status": "Fulfilled",
-                "carrier": "UPS",
-                "signed": "Yes"
-            },
-            {
-                "tracking_number": "1ZK9H4119003537212",
-                "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZK9H4119003537212",
-                "status": "Fulfilled",
-                "carrier": "UPS",
-                "signed": "Yes"
-            },
-            {
-                "tracking_number": "1ZK9H4119000965096",
-                "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZK9H4119000965096",
-                "status": "Fulfilled",
-                "carrier": "UPS",
-                "signed": "Yes"
-            },
-            {
-                "tracking_number": "1ZK9H4119015875567",
-                "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZK9H4119015875567",
-                "status": "Fulfilled",
-                "carrier": "UPS",
-                "signed": "Yes"
-            },
-            {
-                "tracking_number": "1ZK9H4119000454790",
-                "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZK9H4119037941711",
-                "status": "Fulfilled",
-                "carrier": "UPS",
-                "signed": "Yes"
-            },
-            {
-                "tracking_number": "1ZK9H4119037941711",
-                "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZK9H4119000454790",
-                "status": "Fulfilled",
-                "carrier": "UPS",
-                "signed": "Yes"
-            },
-            {
-                "tracking_number": "1ZA6A5769052326406",
-                "tracking_url": "https://www.ups.com/track?track=yes&trackNums=1ZA6A5769052326406",
-                "status": "Fulfilled",
-                "carrier": "UPS",
-                "signed": "No"
-            }
-        ]
+        "shipments": []
     },
     {
         "source": "Bloomingdales",
