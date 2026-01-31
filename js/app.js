@@ -103,7 +103,7 @@ function toggleDashboardFilter(key) {
     const infoEl = document.getElementById('dashboard-filter-info');
     if (dashboardFilter) {
         const filtered = allProducts.filter(p => (p[dashboardFilter] || 0) > 0);
-        infoEl.innerHTML = `Showing <strong>${filtered.length}</strong> products with ${filterLabels[dashboardFilter]} > 0 <span class="dashboard-filter-clear" onclick="toggleDashboardFilter('${dashboardFilter}')">&times; Clear</span>`;
+        infoEl.innerHTML = `Showing <strong>${filtered.length}</strong> products with ${filterLabels[dashboardFilter]} <span class="dashboard-filter-clear" onclick="toggleDashboardFilter('${dashboardFilter}')">&times; Clear</span>`;
         infoEl.classList.remove('hidden');
     } else {
         infoEl.classList.add('hidden');
@@ -278,15 +278,39 @@ function renderShippingCostChart() {
     const summaryEl = document.getElementById('shipping-cost-summary');
     if (!container) return;
 
-    // 6 months of data: Aug(8月) → Jan(1月)
-    const data = [
-        { label: '8月',  cost: 0,    deposit: 0,    refund: 0, weight: 0     },
-        { label: '9月',  cost: 0,    deposit: 0,    refund: 0, weight: 0     },
-        { label: '10月', cost: 0,    deposit: 0,    refund: 0, weight: 0     },
-        { label: '11月', cost: 0,    deposit: 100,  refund: 0, weight: 0     },
-        { label: '12月', cost: 1083, deposit: 1100, refund: 0, weight: 94.14 },
-        { label: '1月',  cost: 692,  deposit: 600,  refund: 0, weight: 0     }
-    ];
+    // Manual deposit/refund records (not per-shipment, keyed by "YYYY-MM")
+    const deposits = { '2024-11': 100, '2024-12': 1100, '2025-01': 600 };
+    const refunds = {};
+
+    // Aggregate cost & weight from allShipping by month
+    const monthlyAgg = {};
+    allShipping.forEach(s => {
+        if (!s.date || !s.fee) return;
+        // Support date formats: "YYYY-MM-DD", "MM/DD/YYYY", "YYYY/MM/DD", etc.
+        const d = new Date(s.date);
+        if (isNaN(d.getTime())) return;
+        const key = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0');
+        if (!monthlyAgg[key]) monthlyAgg[key] = { cost: 0, weight: 0 };
+        monthlyAgg[key].cost += parseFloat(s.fee) || 0;
+        monthlyAgg[key].weight += parseFloat(s.weight) || 0;
+    });
+
+    // Build last 6 months ending at current month
+    const now = new Date();
+    const data = [];
+    const monthNames = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
+    for (let i = 5; i >= 0; i--) {
+        const m = new Date(now.getFullYear(), now.getMonth() - i, 1);
+        const key = m.getFullYear() + '-' + String(m.getMonth() + 1).padStart(2, '0');
+        const agg = monthlyAgg[key] || { cost: 0, weight: 0 };
+        data.push({
+            label: monthNames[m.getMonth()],
+            cost: Math.round(agg.cost * 100) / 100,
+            deposit: deposits[key] || 0,
+            refund: refunds[key] || 0,
+            weight: Math.round(agg.weight * 100) / 100
+        });
+    }
 
     const thisMonth = data[data.length - 1];
     const lastMonth = data[data.length - 2];

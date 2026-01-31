@@ -1,6 +1,20 @@
 # 觉觉在北美 — Shuangshuang Store
 
-Inventory and order management dashboard for a cross-border e-commerce business, coordinating product stock between the US and China.
+## About
+
+Shuangshuang Store (觉觉在北美) is a web-based inventory management system for a cross-border e-commerce business that collects limited-edition and collectible cups and drinkware in the United States — including brands like Stanley, LoveShackFancy collaborations, and other hard-to-find releases — and ships them to buyers who want them but can't easily purchase from the original retailers.
+
+The business sources products from multiple US retailers, consolidates them domestically, and forwards shipments internationally via JunAn Express (君安快递). Managing this workflow involves tracking products through several stages: purchasing from US retailers, confirming delivery in the US (signed/unsigned), consolidating orders, and shipping packages to their final destination.
+
+This dashboard provides a single interface to:
+
+- **Monitor stock** across all stages — how many units have been signed for in the US, how many are awaiting signature, and how many have been shipped to China
+- **Track purchases** from multiple suppliers with per-item details, images, tracking numbers from FedEx/UPS, and delivery confirmation checkboxes
+- **Manage shipments** through JunAn Express with real-time tracking status, recipient details, weight, and addresses
+- **Analyze business performance** with charts showing stock distribution, shipment volume by product, source supplier comparisons, and inventory turnover metrics
+- **Track shipping finances** with a monthly cost/deposit/refund breakdown and wallet balance
+
+Data is stored in MongoDB and automatically exported to static JSON files every 2 hours via GitHub Actions, keeping the dashboard up to date without manual intervention.
 
 ## Features
 
