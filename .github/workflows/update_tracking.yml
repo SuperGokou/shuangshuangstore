@@ -26,6 +26,9 @@ jobs:
 
       # Step 1: Get fresh data from MongoDB
       - name: Export from MongoDB
+        env:
+          MONGO_URI: ${{ secrets.MONGO_URI }}
+          MONGO_DB_NAME: ${{ secrets.MONGO_DB_NAME }}
         run: |
           python export_mongo.py
 

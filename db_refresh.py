@@ -3,8 +3,9 @@ from bson.objectid import ObjectId
 import re
 import sys
 import io
+import os
 import pandas as pd
-import ast  # Add this at the top
+import ast
 from collections import defaultdict
 
 # Fix emoji output on Windows consoles with GBK encoding
@@ -13,8 +14,18 @@ if sys.stdout.encoding and sys.stdout.encoding.lower() in ('gbk', 'gb2312', 'gb1
     sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
 
 # --- CONFIGURATION ---
-MONGO_URI = "mongodb+srv://mingxiaharvard_db_user:A9jYurFGiFadX4gJ@clienttracking.d4slkzd.mongodb.net/?appName=clientTracking"
-DB_NAME = "tracking_db"
+# Load .env file if present (for local development)
+_env_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '.env')
+if os.path.exists(_env_path):
+    with open(_env_path) as _f:
+        for _line in _f:
+            _line = _line.strip()
+            if _line and not _line.startswith('#') and '=' in _line:
+                _k, _v = _line.split('=', 1)
+                os.environ.setdefault(_k.strip(), _v.strip())
+
+MONGO_URI = os.environ.get("MONGO_URI", "")
+DB_NAME = os.environ.get("MONGO_DB_NAME", "tracking_db")
 
 
 # .fillna("") converts empty cells (floats) to empty strings (""), preventing the crash
@@ -60,7 +71,6 @@ for order in purchase_orders_data:
 
         # Normalize names to match products_data keys
         if p_name == "Flip Straw Tumbler 30 OZ Rose Quartz": p_name = "The IceFlow™ Flip Straw Tumbler 30 OZ Rose Quartz"
-        # if p_name == "The IceFlow™ Flip Straw Tumbler 30oz Frost": p_name = "The IceFlow™ Flip Straw Tumbler 30 OZ Frost"
 
         # Initialize if not exists
         if p_name not in stock_counts:

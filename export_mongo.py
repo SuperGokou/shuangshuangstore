@@ -1,11 +1,22 @@
 import json
+import os
 from pymongo import MongoClient
 from bson import ObjectId
-from datetime import datetime, date  # <--- Added this import
+from datetime import datetime, date
 
 # CONFIG
-DB_NAME = "tracking_db"
-MONGO_URI = "mongodb+srv://mingxiaharvard_db_user:A9jYurFGiFadX4gJ@clienttracking.d4slkzd.mongodb.net/?appName=clientTracking"
+# Load .env file if present (for local development)
+_env_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '.env')
+if os.path.exists(_env_path):
+    with open(_env_path) as _f:
+        for _line in _f:
+            _line = _line.strip()
+            if _line and not _line.startswith('#') and '=' in _line:
+                _k, _v = _line.split('=', 1)
+                os.environ.setdefault(_k.strip(), _v.strip())
+
+MONGO_URI = os.environ.get("MONGO_URI", "")
+DB_NAME = os.environ.get("MONGO_DB_NAME", "tracking_db")
 
 
 def export_data():

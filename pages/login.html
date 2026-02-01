@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Login - 管理员登陆</title>
     
-    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     
     <style>
         /* Specific styles for the Login Box to center it nicely */
@@ -81,22 +81,24 @@
     </div>
 
 <script>
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
             e.preventDefault(); // Stop page from reloading
             
             // Get the values typed by the user
             const name = document.getElementById('username').value;
             const pass = document.getElementById('password').value;
 
-            // Check against your specific credentials
-            if(name === 'shuangshuang' && pass === 'Xmz131366') {
-                // Success! Go to Clients Page
+            // Hash-based credential check (not plaintext)
+            async function sha256(str) {
+                const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+                return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+            }
+            const hash = await sha256(name + ':' + pass);
+            // Pre-computed hash of valid credentials
+            if (hash === '85d022ef157434fce2840359e71fa9eb27dc2be7b236bb4be83ba9bfc19ac40b') {
                 window.location.href = 'clients.html';
             } else {
-                // Failure
                 alert("❌ Incorrect Username or Password.\n(用户名或密码错误)");
-                
-                // Optional: Clear the password field
                 document.getElementById('password').value = '';
             }
         });
