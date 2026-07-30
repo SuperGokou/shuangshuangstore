@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import json
 import hashlib
+import base64
 import os
 import re
 import sys
@@ -105,8 +106,36 @@ def truthy(value: str | None, default: bool = False) -> bool:
     return value.strip().lower() in {"1", "true", "yes", "y", "on"}
 
 
+def install_session_from_env(session_path: Path) -> bool:
+    """Materialize a Playwright storage_state JSON from GitHub Actions secrets."""
+    raw_session = os.environ.get("JUNANEX_SESSION_JSON", "").strip()
+    encoded_session = os.environ.get("JUNANEX_SESSION_JSON_B64", "").strip()
+
+    if encoded_session:
+        try:
+            raw_session = base64.b64decode(encoded_session).decode("utf-8")
+        except Exception as exc:
+            raise RuntimeError("JUNANEX_SESSION_JSON_B64 is not valid base64 JSON.") from exc
+
+    if not raw_session:
+        return False
+
+    try:
+        json.loads(raw_session)
+    except json.JSONDecodeError as exc:
+        raise RuntimeError("JUNANEX_SESSION_JSON is not valid Playwright storage_state JSON.") from exc
+
+    session_path.parent.mkdir(parents=True, exist_ok=True)
+    session_path.write_text(raw_session, encoding="utf-8")
+    print(f"Loaded JunAn session from environment: {session_path.relative_to(ROOT)}")
+    return True
+
+
 def load_settings() -> Settings:
     load_dotenv(ROOT / ".env")
+    session_path = ROOT / os.environ.get("JUNANEX_SESSION_PATH", ".junanex/session.json")
+    install_session_from_env(session_path)
+
     email = first_env("JUNANEX_EMAIL", "JUNAN_EMAIL", "JUNANEX_USER", "JUNANEX_USERNAME", "EMAIL", "LOGIN_EMAIL")
     password = first_env("JUNANEX_PASSWORD", "JUNAN_PASSWORD", "PASSWORD", "LOGIN_PASSWORD")
     if not email or not password:
@@ -114,15 +143,14 @@ def load_settings() -> Settings:
         email = email or plain_email
         password = password or plain_password
 
-    if not email or not password:
+    if (not email or not password) and not session_path.exists():
         print(
-            "ERROR: Put JUNANEX_EMAIL and JUNANEX_PASSWORD in .env, "
-            "or use two plain lines: email on line 1 and password on line 2.",
+            "ERROR: Put JUNANEX_EMAIL and JUNANEX_PASSWORD in .env, use two plain lines, "
+            "or provide JUNANEX_SESSION_JSON_B64/JUNANEX_SESSION_JSON in CI.",
             file=sys.stderr,
         )
         sys.exit(2)
 
-    session_path = ROOT / os.environ.get("JUNANEX_SESSION_PATH", ".junanex/session.json")
     output_path = ROOT / os.environ.get("JUNANEX_OUTPUT_PATH", "data/junanex-orders.json")
     headless = truthy(os.environ.get("JUNANEX_HEADLESS"), default=session_path.exists())
 
@@ -147,9 +175,13 @@ def ensure_logged_in(context: BrowserContext, page: Page, settings: Settings) ->
 
     if settings.headless:
         raise RuntimeError(
-            "JunAn session expired or not created. Set JUNANEX_HEADLESS=false, run again, "
-            "type the CAPTCHA in the opened browser, and click 登录."
+            "JunAn session expired or not created. For local refresh, set JUNANEX_HEADLESS=false, "
+            "run again, type the CAPTCHA, and click 登录. For GitHub Actions, update "
+            "the JUNANEX_SESSION_JSON_B64 secret with a fresh .junanex/session.json."
         )
+
+    if not settings.email or not settings.password:
+        raise RuntimeError("Email/password are required for interactive CAPTCHA login.")
 
     print("JunAn requires CAPTCHA. I filled email/password; please enter CAPTCHA and click 登录.")
     page.goto(LOGIN_URL, wait_until="domcontentloaded", timeout=60_000)
@@ -629,6 +661,13 @@ def cleanup_contact_value(value: str) -> str:
     return re.sub(r"\s+", " ", value or "").strip(" ：:-")
 
 
+def display_path(path: Path) -> str:
+    try:
+        return str(path.relative_to(ROOT))
+    except ValueError:
+        return str(path)
+
+
 def find_full_tracking_url(row: dict[str, Any]) -> str:
     actions = collect_actions(row)
     for action in actions:
@@ -847,7 +886,7 @@ def main() -> None:
             orders = scrape_orders(page, settings)
             settings.output_path.write_text(json.dumps(build_output(orders), ensure_ascii=False, indent=2), encoding="utf-8")
             context.storage_state(path=str(settings.session_path))
-            print(f"Wrote {len(orders)} orders to {settings.output_path.relative_to(ROOT)}")
+            print(f"Wrote {len(orders)} orders to {display_path(settings.output_path)}")
         finally:
             context.close()
             browser.close()
