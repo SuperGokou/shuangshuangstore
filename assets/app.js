@@ -16,6 +16,18 @@ const viewTitles = {
   attention: '需要处理',
 };
 
+const actionTextPatterns = [
+  '复制物流信息网址',
+  '完整物流信息',
+  '确认客户已收货',
+  '有身份证号',
+  '有身份证图片',
+];
+
+const deliveredPatterns = ['客户已收货', '已派送', '已签收', '签收成功', '派送成功'];
+const attentionPatterns = ['异常', '失败', '退回', '问题'];
+const junkTrackingPatterns = ['君安相伴', '运单追踪', '追踪运单号', '芝加哥电话', '波特兰电话'];
+
 document.addEventListener('DOMContentLoaded', () => {
   bindControls();
   loadData();
@@ -96,7 +108,7 @@ function renderTimestamp() {
 function renderTable() {
   const rows = filteredOrders();
   setText('panel-title', viewTitles[state.activeView] || '全部包裹');
-  setText('panel-summary', `${rows.length} shown · ${state.orders.length} total · ${state.source?.source || 'local JSON'}`);
+  setText('panel-summary', `${rows.length} 条显示 · 共 ${state.orders.length} 条 · ${state.source?.source || 'local JSON'}`);
 
   const tbody = document.getElementById('orders-body');
   tbody.innerHTML = '';
@@ -108,12 +120,15 @@ function renderTable() {
   rows.forEach((order) => {
     const tr = document.createElement('tr');
     const stage = stageOf(order);
-    const statusType = classify(order);
-    const timeline = renderTimeline(order.tracking_history || order.detail_events || []);
+    const trackingEvents = normalizeTrackingEvents(order.tracking_history || order.detail_events || []);
+    const statusType = classify(order, trackingEvents);
+    const latest = latestLogistics(order, trackingEvents);
+    const timeline = renderTimeline(trackingEvents.slice(1));
     const trackingUrl = order.tracking_page_url || order.detail_url || order.tracking_url || '';
     const copyUrl = order.copy_logistics_url || trackingUrl;
     const recipientPhone = firstValue(order, ['recipient_phone', 'phone', 'mobile', 'telephone']);
     const recipientAddress = firstValue(order, ['recipient_address', 'address', 'shipping_address', 'delivery_address']);
+    tr.className = `order-row ${statusType}`;
 
     tr.innerHTML = `
       <td>
@@ -131,7 +146,8 @@ function renderTable() {
       </td>
       <td class="status-text">
         <span class="pill ${statusType}">${statusText(statusType)}</span>
-        <div class="latest-line">${escapeHtml(order.latest_status || order.order_status || '-')}</div>
+        <div class="latest-line">${escapeHtml(latest.status)}</div>
+        ${latest.time ? `<time class="latest-time">${escapeHtml(latest.time)}</time>` : ''}
         ${timeline}
       </td>
       <td class="items">
@@ -163,7 +179,7 @@ function renderTable() {
 }
 
 function renderTimeline(events) {
-  const cleanEvents = events.filter((event) => event && (event.status || event.text)).slice(0, 3);
+  const cleanEvents = normalizeTrackingEvents(events).slice(0, 3);
   if (!cleanEvents.length) return '<div class="timeline"><div><p>暂无完整物流明细，运行抓取器后会从 tracking 页补齐。</p></div></div>';
   return `
     <div class="timeline">
@@ -185,9 +201,10 @@ function filteredOrders() {
 }
 
 function matchesStage(order, wanted) {
-  if (wanted === 'attention') return classify(order) === 'attention';
-  if (wanted === 'delivered') return classify(order) === 'delivered';
-  if (wanted === 'departed') return stageOf(order) === 'departed' || classify(order) === 'departed';
+  const statusType = classify(order);
+  if (wanted === 'attention') return statusType === 'attention';
+  if (wanted === 'delivered') return statusType === 'delivered';
+  if (wanted === 'departed') return stageOf(order) === 'departed' || statusType === 'departed';
   if (wanted === 'processing') return stageOf(order) === 'processing';
   if (wanted === 'not_submitted') return stageOf(order) === 'not_submitted';
   return true;
@@ -212,11 +229,11 @@ function stageOf(order) {
   return 'not_submitted';
 }
 
-function classify(order) {
-  const text = searchableText(order);
+function classify(order, trackingEvents = normalizeTrackingEvents(order.tracking_history || order.detail_events || [])) {
+  const text = statusSearchText(order, trackingEvents);
   if (!order.tracking_page_url && !order.detail_url && !order.tracking_url) return 'attention';
-  if (text.includes('异常') || text.includes('失败') || text.includes('退回') || text.includes('问题')) return 'attention';
-  if (text.includes('客户已收货') || text.includes('已派送') || text.includes('已签收') || text.includes('派送成功')) return 'delivered';
+  if (includesAny(text, attentionPatterns)) return 'attention';
+  if (includesAny(text, deliveredPatterns)) return 'delivered';
   if (stageOf(order) === 'departed') return 'departed';
   if (stageOf(order) === 'processing') return 'processing';
   return 'not_submitted';
@@ -259,8 +276,71 @@ function searchableText(order) {
     order.item_summary,
     order.items_detail,
     order.domestic_tracking,
-    order.raw_text,
+    stripActionText(order.raw_text),
+    ...(order.tracking_history || []).map((event) => stripActionText(event?.status || event?.text || '')),
   ].join(' ').toLowerCase();
+}
+
+function statusSearchText(order, trackingEvents) {
+  return [
+    order.order_status,
+    order.latest_status,
+    ...trackingEvents.map((event) => `${event.time || ''} ${event.status || ''}`),
+  ].map(stripActionText).join(' ').toLowerCase();
+}
+
+function stripActionText(value) {
+  let text = String(value ?? '').replace(/\s+/g, ' ').trim();
+  actionTextPatterns.forEach((phrase) => {
+    text = text.split(phrase).join(' ');
+  });
+  return text.replace(/\s+/g, ' ').trim();
+}
+
+function includesAny(text, patterns) {
+  return patterns.some((pattern) => text.includes(pattern.toLowerCase()));
+}
+
+function normalizeTrackingEvents(events) {
+  const seen = new Set();
+  return (events || [])
+    .map((event) => ({
+      time: String(event?.time || '').trim(),
+      status: stripActionText(event?.status || event?.text || ''),
+    }))
+    .filter((event) => event.status && event.status.length <= 180)
+    .filter((event) => !junkTrackingPatterns.some((pattern) => event.status.includes(pattern)))
+    .sort((a, b) => eventTimeValue(b.time) - eventTimeValue(a.time))
+    .filter((event) => {
+      const key = `${event.time}|${event.status}`;
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+}
+
+function latestLogistics(order, trackingEvents) {
+  const latestEvent = trackingEvents[0];
+  if (latestEvent?.status) {
+    return { status: latestEvent.status, time: latestEvent.time || '' };
+  }
+
+  const fallback = stripActionText(order.latest_status || order.order_status || '');
+  return {
+    status: fallback || '-',
+    time: order.latest_time || '',
+  };
+}
+
+function eventTimeValue(value) {
+  if (!value) return 0;
+  const normalized = String(value)
+    .replace(/年|\/|月/g, '-')
+    .replace(/日/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+  const timestamp = Date.parse(normalized.replace(/-/g, '/'));
+  return Number.isNaN(timestamp) ? 0 : timestamp;
 }
 
 function firstValue(source, fields) {

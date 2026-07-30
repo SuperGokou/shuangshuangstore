@@ -764,7 +764,7 @@ def scrape_tracking_page(page: Page, url: str) -> dict[str, Any]:
         """
     )
     events = parse_tracking_events(snapshot.get("items", []) + snapshot.get("rows", []) + snapshot.get("text", "").split("  "))
-    latest = events[0] if events else {}
+    latest = latest_tracking_event(events)
     return {
         "detail_url": snapshot.get("url", url),
         "latest_status": latest.get("status", ""),
@@ -789,11 +789,48 @@ def parse_tracking_events(chunks: list[str]) -> list[dict[str, str]]:
                 continue
             time_text = ""
             status = text
+        status = clean_tracking_status(status)
+        if is_junk_tracking_status(status):
+            continue
         key = f"{time_text}|{status}"
         if status and key not in seen:
             events.append({"time": time_text, "status": status})
             seen.add(key)
+    events.sort(key=lambda event: tracking_time_value(event.get("time", "")), reverse=True)
     return events[:12]
+
+
+def latest_tracking_event(events: list[dict[str, str]]) -> dict[str, str]:
+    if not events:
+        return {}
+    return max(events, key=lambda event: tracking_time_value(event.get("time", "")))
+
+
+def clean_tracking_status(value: str) -> str:
+    text = strip_action_text(value)
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def is_junk_tracking_status(value: str) -> bool:
+    if not value:
+        return True
+    if len(value) > 180:
+        return True
+    junk_markers = ["君安相伴", "运单追踪", "追踪运单号", "芝加哥电话", "波特兰电话", "中国直拨美国电话"]
+    return any(marker in value for marker in junk_markers)
+
+
+def tracking_time_value(value: str) -> float:
+    text = re.sub(r"\s+", " ", value or "").strip()
+    if not text:
+        return 0
+    normalized = text.replace("年", "-").replace("月", "-").replace("日", "").replace("/", "-")
+    for fmt in ("%Y-%m-%d %H:%M:%S", "%Y-%m-%d %H:%M", "%Y-%m-%d"):
+        try:
+            return datetime.strptime(normalized, fmt).timestamp()
+        except ValueError:
+            continue
+    return 0
 
 
 def dedupe_orders(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
