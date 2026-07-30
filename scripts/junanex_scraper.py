@@ -57,6 +57,7 @@ LOCAL_ORDER_RE = re.compile(r"\bZC\d{8,}[A-Z]{1,4}\b", re.I)
 DOMESTIC_TRACKING_RE = re.compile(r"\b(?:SF|YT|YTO|STO|ZTO|JD|EMS)\d{8,}\b", re.I)
 DATE_RE = re.compile(r"(20\d{2}[-/年]\d{1,2}[-/月]\d{1,2}(?:日)?(?:\s+\d{1,2}:\d{2}(?::\d{2})?)?)")
 PHONE_RE = re.compile(r"(?<!\d)(?:\+?86[-\s]?)?1[3-9]\d{9}(?!\d)|(?<!\d)(?:\d{3,4}[-\s]?)?\d{7,8}(?:[-\s]\d{1,6})?(?!\d)")
+MASKED_PHONE_RE = re.compile(r"\*{3,}\d{3,4}")
 
 
 @dataclass(frozen=True)
@@ -521,11 +522,13 @@ def scrape_order_detail_page(page: Page, url: str) -> dict[str, Any]:
 
     pairs = snapshot.get("pairs", [])
     text = snapshot.get("text", "")
+    address_value = first_pair_value(pairs, ["收货地址", "详细地址", "地址", "address"]) or text
+    recipient_segment = recipient_segment_from_text(address_value)
     return {
         "order_detail_url": snapshot.get("url", url),
         "recipient_name": first_pair_value(pairs, ["收件人", "收货人", "姓名", "name"]) or extract_recipient_name(text),
-        "recipient_phone": first_pair_value(pairs, ["电话", "手机", "联系电话", "mobile", "phone", "tel"]) or extract_phone(text),
-        "recipient_address": first_pair_value(pairs, ["收货地址", "详细地址", "地址", "address"]) or extract_address(text),
+        "recipient_phone": extract_recipient_phone(recipient_segment) or first_pair_value(pairs, ["电话", "手机", "联系电话", "mobile", "phone", "tel"]) or extract_phone(text),
+        "recipient_address": extract_recipient_address(address_value) or extract_address(text),
     }
 
 
@@ -548,7 +551,19 @@ def extract_phone(text: str) -> str:
     return cleanup_contact_value(match.group(0))
 
 
+def extract_recipient_phone(text: str) -> str:
+    segment = recipient_segment_from_text(text)
+    masked = MASKED_PHONE_RE.search(segment)
+    if masked:
+        return cleanup_contact_value(masked.group(0))
+    return extract_phone(segment)
+
+
 def extract_address(text: str) -> str:
+    recipient_address = extract_recipient_address(text)
+    if recipient_address:
+        return recipient_address
+
     value = extract_labeled_value(text, ["收货地址", "详细地址", "地址", "Address"])
     if value:
         return cleanup_contact_value(value)
@@ -559,6 +574,26 @@ def extract_address(text: str) -> str:
             if not LOCAL_ORDER_RE.search(candidate) and not DOMESTIC_TRACKING_RE.search(candidate):
                 return candidate
     return ""
+
+
+def extract_recipient_address(text: str) -> str:
+    segment = recipient_segment_from_text(text)
+    if not segment:
+        return ""
+    segment = re.sub(r"^(收货地址|详细地址|地址)\s*[:：]?\s*", "", segment, flags=re.I)
+    segment = MASKED_PHONE_RE.sub("", segment)
+    segment = PHONE_RE.sub("", segment)
+    return cleanup_contact_value(segment.strip("，,"))
+
+
+def recipient_segment_from_text(text: str) -> str:
+    clean_text = cleanup_contact_value(text)
+    if not clean_text:
+        return ""
+    marker_match = re.search(r"收货地址\s*[:：]?\s*", clean_text)
+    if marker_match:
+        return clean_text[marker_match.end():].strip()
+    return clean_text
 
 
 def extract_labeled_value(text: str, labels: list[str]) -> str:

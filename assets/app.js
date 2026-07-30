@@ -1,5 +1,4 @@
 const DATA_URL = 'data/junanex-orders.json';
-const SAMPLE_URL = 'data/junanex-orders.sample.json';
 
 let state = {
   source: null,
@@ -56,13 +55,17 @@ function bindControls() {
 async function loadData() {
   try {
     const response = await fetch(DATA_URL, { cache: 'no-store' });
-    if (!response.ok) throw new Error('No generated data');
+    if (!response.ok) throw new Error('No real generated data');
     state.source = await response.json();
-    document.getElementById('sample-warning').hidden = true;
+    document.getElementById('data-warning').hidden = true;
   } catch (error) {
-    const response = await fetch(SAMPLE_URL, { cache: 'no-store' });
-    state.source = await response.json();
-    document.getElementById('sample-warning').hidden = false;
+    state.source = {
+      generated_at: null,
+      source: 'junanex',
+      orders: [],
+      error: error.message,
+    };
+    document.getElementById('data-warning').hidden = false;
   }
 
   state.orders = Array.isArray(state.source.orders) ? state.source.orders : [];
@@ -86,7 +89,7 @@ function renderMetrics() {
 function renderTimestamp() {
   const raw = state.source?.generated_at;
   const date = raw ? new Date(raw) : null;
-  const text = date && !Number.isNaN(date.valueOf()) ? date.toLocaleString() : '示例数据';
+  const text = date && !Number.isNaN(date.valueOf()) ? date.toLocaleString() : '未生成数据';
   setText('last-sync', text);
 }
 

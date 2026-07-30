@@ -73,10 +73,10 @@
       </button>
     </section>
 
-    <section class="data-warning" id="sample-warning" hidden>
+    <section class="data-warning" id="data-warning" hidden>
       <div>
-        <strong>当前显示示例数据。</strong>
-        <span>填好 `.env` 后运行抓取脚本，会生成本地真实数据 `data/junanex-orders.json`。</span>
+        <strong>未找到真实订单数据。</strong>
+        <span>运行抓取脚本后会生成 `data/junanex-orders.json`，面板只读取这份真实数据。</span>
       </div>
       <code>python -m playwright install chromium && python scripts/junanex_scraper.py</code>
     </section>
