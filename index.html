@@ -1,653 +1,141 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>觉觉在北美</title>
-    <link rel="icon" href="img/icon.png" type="image/png">
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>君安包裹追踪面板</title>
+  <link rel="icon" href="img/icon.png" type="image/png">
+  <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
-
-    <!-- Sidebar -->
-    <aside class="sidebar" id="sidebar">
-        <div class="sidebar-brand">
-            <div class="brand-title">觉觉在北美 <span class="brand-handle">amtfmz</span></div>
-        </div>
-        <nav class="sidebar-nav">
-            <a href="#" class="nav-item active" data-page="dashboard">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-                Dashboard
-            </a>
-            <a href="#" class="nav-item" data-page="inventory">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
-                Inventory
-            </a>
-            <a href="#" class="nav-item" data-page="purchase">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-                Purchase Orders
-            </a>
-            <a href="#" class="nav-item" data-page="shipping">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-                Shipments
-            </a>
-            <a href="#" class="nav-item" data-page="stats">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
-                Shipment Stats
-            </a>
-            <a href="#" class="nav-item" data-page="analytics">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-                Analytics
-            </a>
-        </nav>
-    </aside>
-
-    <!-- Mobile hamburger -->
-    <button class="hamburger" id="hamburger" aria-label="Toggle sidebar">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-    </button>
-
-    <!-- Main content -->
-    <div class="main-content">
-        <header class="top-bar">
-            <div class="top-bar-left">
-                <div class="search-box">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                    <input type="text" placeholder="Search..." id="search-input">
-                </div>
-            </div>
-            <div class="top-bar-right">
-                <div class="update-badge">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
-                    <span class="update-badge-text">Last Updated: <span id="last-updated">2m ago</span></span>
-                </div>
-                <button class="notification-btn">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-                    <span class="notification-dot"></span>
-                </button>
-                <div class="user-area">
-                    <div class="user-avatar">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                    </div>
-                    <div class="user-info">
-                        <div class="user-name">Admin User</div>
-                        <a href="pages/login.html" class="user-login">登陆 / Login</a>
-                    </div>
-                </div>
-            </div>
-        </header>
-
-        <!-- ==================== PAGE: DASHBOARD ==================== -->
-        <div class="page" id="page-dashboard">
-            <div class="page-content">
-                <div class="metrics-row" id="metrics-row">
-                    <div class="metric-card clickable" data-filter="us_signed" onclick="toggleDashboardFilter('us_signed')">
-                        <div class="metric-header">
-                            <div>
-                                <div class="metric-title">US Signed</div>
-                                <div class="metric-value" id="metric-us-signed">—</div>
-                                <div class="metric-trend">美国签收</div>
-                            </div>
-                            <div class="metric-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="metric-card clickable" data-filter="us_unsigned" onclick="toggleDashboardFilter('us_unsigned')">
-                        <div class="metric-header">
-                            <div>
-                                <div class="metric-title">US Unsigned</div>
-                                <div class="metric-value" id="metric-us-unsigned">—</div>
-                                <div class="metric-trend">美国未签</div>
-                            </div>
-                            <div class="metric-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="metric-card clickable" data-filter="shipped_cn" onclick="toggleDashboardFilter('shipped_cn')">
-                        <div class="metric-header">
-                            <div>
-                                <div class="metric-title">In Transit to China</div>
-                                <div class="metric-value" id="metric-shipped-cn">—</div>
-                                <div class="metric-trend">发往中国</div>
-                            </div>
-                            <div class="metric-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="metric-card clickable" data-filter="total_stock" onclick="toggleDashboardFilter('total_stock')">
-                        <div class="metric-header">
-                            <div>
-                                <div class="metric-title">Total Stock</div>
-                                <div class="metric-value" id="metric-total-stock">—</div>
-                                <div class="metric-trend">商品总数</div>
-                            </div>
-                            <div class="metric-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="dashboard-filter-info" class="dashboard-filter-info hidden"></div>
-
-                <!-- Orders / Filtered Products -->
-                <div class="content-card" id="dashboard-main-card">
-                    <div class="card-header" id="dashboard-main-header">
-                        <div>
-                            <h2 class="card-title" id="dashboard-main-title"><span class="section-tag">Orders</span> 采购订单追踪</h2>
-                            <p class="card-desc" id="dashboard-main-desc">Incoming orders tracking</p>
-                        </div>
-                    </div>
-                    <div id="dashboard-main-body">
-                        <div class="table-wrapper dashboard-orders-scroll" id="dashboard-orders-view">
-                            <table id="order-table">
-                                <thead>
-                                    <tr>
-                                        <th>来源 (Source)</th>
-                                        <th>订单号 (Order #)</th>
-                                        <th>状态</th>
-                                        <th>快递单号</th>
-                                        <th>签收</th>
-                                        <th>预计 (Est. Date)</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="order-body"></tbody>
-                            </table>
-                        </div>
-                        <div class="table-wrapper dashboard-orders-scroll" id="dashboard-products-view" style="display:none;">
-                            <table id="filtered-products-table">
-                                <thead id="filtered-products-thead"></thead>
-                                <tbody id="filtered-products-body"></tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Shipping Cost -->
-                <div class="content-card">
-                    <div class="card-header">
-                        <div>
-                            <h2 class="card-title">运费统计</h2>
-                            <p class="card-desc">Recent Shipment statistics</p>
-                        </div>
-                    </div>
-                    <div class="chart-container" id="shipping-cost-chart"></div>
-                    <div class="sc-summary" id="shipping-cost-summary"></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ==================== PAGE: INVENTORY ==================== -->
-        <div class="page hidden" id="page-inventory">
-            <div class="page-content">
-                <div class="page-heading">
-                    <h1 class="page-title">Inventory Management</h1>
-                    <p class="page-desc">Monitor stock levels across all warehouses</p>
-                </div>
-
-                <div class="metrics-row">
-                    <div class="metric-card">
-                        <div class="metric-header">
-                            <div>
-                                <div class="metric-title">Total SKUs</div>
-                                <div class="metric-value" id="inv-metric-skus">—</div>
-                            </div>
-                            <div class="metric-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="metric-card clickable" onclick="filterInventoryByStatus('low')">
-                        <div class="metric-header">
-                            <div>
-                                <div class="metric-title">Low Stock Items</div>
-                                <div class="metric-value text-amber" id="inv-metric-low">—</div>
-                            </div>
-                            <div class="metric-icon icon-partial">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="metric-card clickable" onclick="filterInventoryByStatus('out')">
-                        <div class="metric-header">
-                            <div>
-                                <div class="metric-title">Out of Stock</div>
-                                <div class="metric-value text-red" id="inv-metric-out">—</div>
-                            </div>
-                            <div class="metric-icon icon-delayed">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="metric-card">
-                        <div class="metric-header">
-                            <div>
-                                <div class="metric-title">Total Stock</div>
-                                <div class="metric-value" id="inv-metric-total">—</div>
-                            </div>
-                            <div class="metric-icon icon-fulfilled">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Inventory Table Card with Toolbar -->
-                <div class="content-card">
-                    <div class="card-header card-header-stacked">
-                        <div class="card-header-row">
-                            <div>
-                                <h2 class="card-title">Inventory Items</h2>
-                                <p class="card-desc"><span id="inv-count-info">— products</span></p>
-                            </div>
-                            <div class="view-toggle">
-                                <button class="view-btn active" data-view="table" onclick="setInventoryView('table')">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
-                                </button>
-                                <button class="view-btn" data-view="grid" onclick="setInventoryView('grid')">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-                                </button>
-                                <button class="view-btn" data-view="list" onclick="setInventoryView('list')">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/></svg>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="card-toolbar">
-                            <div class="search-box search-box-full">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                                <input type="text" placeholder="Search by name..." id="inv-search" oninput="filterInventory()">
-                            </div>
-                            <select class="sort-select" id="inv-sort" onchange="filterInventory()">
-                                <option value="name">Sort by Name</option>
-                                <option value="total-desc">Total (High→Low)</option>
-                                <option value="total-asc">Total (Low→High)</option>
-                                <option value="signed-desc">US Signed (High→Low)</option>
-                                <option value="status">Status</option>
-                            </select>
-                            <button class="toolbar-btn primary" onclick="exportInventory()">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                                Export All
-                            </button>
-                        </div>
-                    </div>
-                    <div id="inventory-view-container">
-                        <div class="table-wrapper" id="inv-table-view">
-                            <table id="inventory-table">
-                                <thead>
-                                    <tr>
-                                        <th class="col-thumb-lg">Image</th>
-                                        <th>Product Name</th>
-                                        <th>US Signed</th>
-                                        <th>US Unsigned</th>
-                                        <th>Shipped to CN</th>
-                                        <th>Total Stock</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="inventory-body"></tbody>
-                            </table>
-                        </div>
-                        <div id="inv-grid-view" class="inventory-grid" style="display:none;"></div>
-                        <div id="inv-list-view" class="inventory-list" style="display:none;"></div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- ==================== PAGE: PURCHASE ORDERS ==================== -->
-        <div class="page hidden" id="page-purchase">
-            <div class="page-content">
-                <div class="page-heading">
-                    <h1 class="page-title">Purchase Orders</h1>
-                    <p class="page-desc">Manage and track all purchase orders</p>
-                </div>
-
-                <div class="metrics-row metrics-row-5">
-                    <div class="metric-card">
-                        <div class="metric-header">
-                            <div>
-                                <div class="metric-title">Total Orders</div>
-                                <div class="metric-value" id="po-metric-orders">—</div>
-                            </div>
-                            <div class="metric-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="metric-card">
-                        <div class="metric-header">
-                            <div>
-                                <div class="metric-title">Total Items</div>
-                                <div class="metric-value text-green" id="po-metric-items">—</div>
-                            </div>
-                            <div class="metric-icon icon-fulfilled">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="metric-card">
-                        <div class="metric-header">
-                            <div>
-                                <div class="metric-title">Sources</div>
-                                <div class="metric-value text-blue" id="po-metric-sources">—</div>
-                            </div>
-                            <div class="metric-icon icon-transit">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="metric-card">
-                        <div class="metric-header">
-                            <div>
-                                <div class="metric-title">Shipments</div>
-                                <div class="metric-value text-amber" id="po-metric-shipments">—</div>
-                            </div>
-                            <div class="metric-icon icon-partial">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="metric-card">
-                        <div class="metric-header">
-                            <div>
-                                <div class="metric-title">Signed</div>
-                                <div class="metric-value text-muted" id="po-metric-signed">—</div>
-                            </div>
-                            <div class="metric-icon icon-pending">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Purchase orders table card with toolbar -->
-                <div class="content-card">
-                    <div class="card-header">
-                        <div>
-                            <h2 class="card-title">All Purchase Orders</h2>
-                            <p class="card-desc">Complete order history and tracking</p>
-                        </div>
-                        <div class="card-toolbar">
-                            <div class="search-box">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                                <input type="text" placeholder="Search orders..." id="po-search" oninput="filterPurchaseOrders()">
-                            </div>
-                            <button class="toolbar-btn primary" onclick="exportPurchaseOrders()">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                                Export
-                            </button>
-                        </div>
-                    </div>
-                    <div class="scroll-table-wrapper">
-                        <table id="purchase-table">
-                            <thead>
-                                <tr>
-                                    <th class="col-date">日期 (Date)</th>
-                                    <th class="col-source">来源 (Source)</th>
-                                    <th class="col-items">产品明细 (Items)</th>
-                                    <th class="col-tracking">快递单号 (Tracking)</th>
-                                    <th class="col-note">备注 (Note)</th>
-                                </tr>
-                            </thead>
-                            <tbody id="purchase-body"></tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ==================== PAGE: SHIPMENTS ==================== -->
-        <div class="page hidden" id="page-shipping">
-            <div class="page-content">
-                <div class="page-heading">
-                    <h1 class="page-title">Shipments</h1>
-                    <p class="page-desc">Track and manage all shipments</p>
-                </div>
-
-                <div class="metrics-row">
-                    <div class="metric-card">
-                        <div class="metric-header">
-                            <div>
-                                <div class="metric-title">Total Shipments</div>
-                                <div class="metric-value" id="sh-metric-total">—</div>
-                            </div>
-                            <div class="metric-icon icon-transit">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="metric-card clickable" onclick="filterShipmentsByStatus('delivered')">
-                        <div class="metric-header">
-                            <div>
-                                <div class="metric-title">已签收 (Delivered)</div>
-                                <div class="metric-value text-green" id="sh-metric-delivered">—</div>
-                            </div>
-                            <div class="metric-icon icon-fulfilled">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="metric-card clickable" onclick="filterShipmentsByStatus('transit')">
-                        <div class="metric-header">
-                            <div>
-                                <div class="metric-title">在途中 (In Transit)</div>
-                                <div class="metric-value text-amber" id="sh-metric-transit">—</div>
-                            </div>
-                            <div class="metric-icon icon-transit">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="metric-card">
-                        <div class="metric-header">
-                            <div>
-                                <div class="metric-title">Total Weight</div>
-                                <div class="metric-value" id="sh-metric-weight">—</div>
-                                <div class="metric-trend">lbs</div>
-                            </div>
-                            <div class="metric-icon icon-partial">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Shipments table card with toolbar -->
-                <div class="content-card">
-                    <div class="card-header">
-                        <div>
-                            <h2 class="card-title">Active Shipments</h2>
-                            <p class="card-desc">Real-time tracking and status updates</p>
-                        </div>
-                        <div class="card-toolbar">
-                            <div class="search-box">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                                <input type="text" placeholder="Search tracking number..." id="sh-search" oninput="filterShipments()">
-                            </div>
-                            <button class="toolbar-btn primary" onclick="exportShipments()">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                                Export
-                            </button>
-                        </div>
-                    </div>
-                    <div class="table-wrapper">
-                        <table id="shipping-table">
-                            <thead>
-                                <tr>
-                                    <th>运单号</th>
-                                    <th>收件人</th>
-                                    <th>内件明细</th>
-                                    <th>重量(lbs)</th>
-                                    <th>状态</th>
-                                    <th>电话</th>
-                                    <th>地址</th>
-                                </tr>
-                            </thead>
-                            <tbody id="shipping-body"></tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ==================== PAGE: SHIPMENT STATS ==================== -->
-        <div class="page hidden" id="page-stats">
-            <div class="page-content">
-                <div class="page-header">
-                    <h1 class="page-title">产品发货统计</h1>
-                    <p class="page-desc">Shipment statistics by product</p>
-                </div>
-
-                <div class="content-card">
-                    <div class="card-header">
-                        <div>
-                            <h2 class="card-title"><span class="section-tag">Stats</span> 产品发货统计</h2>
-                            <p class="card-desc">Shipment statistics by product</p>
-                        </div>
-                    </div>
-                    <div class="table-wrapper">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th class="col-thumb">图片</th>
-                                    <th>产品名称</th>
-                                    <th>已发总数</th>
-                                    <th>带包装 (Qty)</th>
-                                    <th>明细 (Details)</th>
-                                    <th>不带包装 (Qty)</th>
-                                    <th>明细 (Details)</th>
-                                    <th>总库存</th>
-                                </tr>
-                            </thead>
-                            <tbody id="stats-body"></tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ==================== PAGE: ANALYTICS ==================== -->
-        <div class="page hidden" id="page-analytics">
-            <div class="page-content">
-                <div class="page-heading">
-                    <h1 class="page-title">Analytics</h1>
-                    <p class="page-desc">Business intelligence and performance metrics</p>
-                </div>
-
-                <div class="metrics-row" id="analytics-kpi-row">
-                    <div class="kpi-card">
-                        <div class="kpi-top">
-                            <div class="kpi-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-                            </div>
-                            <div class="kpi-trend up" id="an-trend-shipped">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-                                <span>—</span>
-                            </div>
-                        </div>
-                        <div class="kpi-title">Total Items Shipped</div>
-                        <div class="kpi-value" id="an-metric-shipped">—</div>
-                    </div>
-                    <div class="kpi-card">
-                        <div class="kpi-top">
-                            <div class="kpi-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-                            </div>
-                            <div class="kpi-trend up" id="an-trend-orders">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-                                <span>—</span>
-                            </div>
-                        </div>
-                        <div class="kpi-title">Orders (Total)</div>
-                        <div class="kpi-value" id="an-metric-orders">—</div>
-                    </div>
-                    <div class="kpi-card">
-                        <div class="kpi-top">
-                            <div class="kpi-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
-                            </div>
-                            <div class="kpi-trend down" id="an-trend-avg">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/><polyline points="17 18 23 18 23 12"/></svg>
-                                <span>—</span>
-                            </div>
-                        </div>
-                        <div class="kpi-title">Avg Items/Order</div>
-                        <div class="kpi-value" id="an-metric-avg">—</div>
-                    </div>
-                    <div class="kpi-card">
-                        <div class="kpi-top">
-                            <div class="kpi-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-                            </div>
-                            <div class="kpi-trend up" id="an-trend-turnover">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-                                <span>—</span>
-                            </div>
-                        </div>
-                        <div class="kpi-title">Inventory Turnover</div>
-                        <div class="kpi-value" id="an-metric-turnover">—</div>
-                    </div>
-                </div>
-
-                <div class="charts-row">
-                    <div class="content-card chart-card">
-                        <div class="card-header">
-                            <div>
-                                <h2 class="card-title">Stock by Product</h2>
-                                <p class="card-desc">Total stock levels per product</p>
-                            </div>
-                        </div>
-                        <div class="chart-container" id="bar-chart"></div>
-                    </div>
-
-                    <div class="content-card chart-card">
-                        <div class="card-header">
-                            <div>
-                                <h2 class="card-title">Category Distribution</h2>
-                                <p class="card-desc">Stock distribution by status</p>
-                            </div>
-                        </div>
-                        <div class="chart-container pie-container">
-                            <div class="pie-chart" id="pie-chart"></div>
-                            <div class="pie-legend" id="pie-legend"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="charts-row charts-row-2col">
-                    <div class="content-card">
-                        <div class="card-header">
-                            <div>
-                                <h2 class="card-title">Shipment Volume by Product</h2>
-                                <p class="card-desc">已发总数 — items shipped per product</p>
-                            </div>
-                        </div>
-                        <div class="chart-container" id="shipment-bar-chart"></div>
-                    </div>
-
-                    <div class="content-card">
-                        <div class="card-header">
-                            <div>
-                                <h2 class="card-title">Source Performance</h2>
-                                <p class="card-desc">Supplier comparison metrics</p>
-                            </div>
-                        </div>
-                        <div id="source-performance" class="source-perf-grid"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="footer-spacer"></div>
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">SS</div>
+      <div>
+        <strong>Shuangshuang Store</strong>
+        <span>JunAn Logistics Panel</span>
+      </div>
     </div>
+    <nav class="nav">
+      <button class="nav-item active" data-view="overview" type="button">总览</button>
+      <button class="nav-item" data-view="not_submitted" type="button">未发往库房</button>
+      <button class="nav-item" data-view="processing" type="button">库房处理中</button>
+      <button class="nav-item" data-view="departed" type="button">已运往中国</button>
+      <button class="nav-item" data-view="attention" type="button">需要处理</button>
+    </nav>
+    <div class="sidebar-note">
+      <span>数据刷新</span>
+      <code>python scripts/junanex_scraper.py</code>
+    </div>
+  </aside>
 
-    <!-- Sidebar overlay for mobile -->
-    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+  <main class="app">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">JunAn Express</p>
+        <h1>包裹追踪面板</h1>
+        <p class="subtitle">自动汇总本地发货单、未发出、已发出和完整物流页面。</p>
+      </div>
+      <div class="topbar-actions">
+        <div class="sync-status">
+          <span>Last sync</span>
+          <strong id="last-sync">读取中</strong>
+        </div>
+        <a class="ghost-link" href="https://www.junanex.com/orders/departed" target="_blank" rel="noreferrer">打开君安</a>
+      </div>
+    </header>
 
-    <script src="js/app.js"></script>
+    <section class="metric-grid" aria-label="Shipment metrics">
+      <button class="metric-card active" data-filter="overview" type="button">
+        <span>全部发货单</span>
+        <strong id="metric-total">0</strong>
+        <small>All local orders</small>
+      </button>
+      <button class="metric-card" data-filter="not_submitted" type="button">
+        <span>未发往库房</span>
+        <strong id="metric-not-submitted">0</strong>
+        <small>Waiting to submit</small>
+      </button>
+      <button class="metric-card" data-filter="processing" type="button">
+        <span>库房处理中</span>
+        <strong id="metric-processing">0</strong>
+        <small>Warehouse processing</small>
+      </button>
+      <button class="metric-card" data-filter="departed" type="button">
+        <span>已运往中国</span>
+        <strong id="metric-departed">0</strong>
+        <small>Departed to China</small>
+      </button>
+      <button class="metric-card danger" data-filter="attention" type="button">
+        <span>需要处理</span>
+        <strong id="metric-attention">0</strong>
+        <small>Missing tracking / exception</small>
+      </button>
+    </section>
 
+    <section class="data-warning" id="sample-warning" hidden>
+      <div>
+        <strong>当前显示示例数据。</strong>
+        <span>填好 `.env` 后运行抓取脚本，会生成本地真实数据 `data/junanex-orders.json`。</span>
+      </div>
+      <code>python -m playwright install chromium && python scripts/junanex_scraper.py</code>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header">
+        <div>
+          <h2 id="panel-title">全部包裹</h2>
+          <p id="panel-summary">正在加载订单。</p>
+        </div>
+        <div class="filters">
+          <label class="search">
+            <span>搜索</span>
+            <input id="search-input" type="search" placeholder="发货单号、收件人、电话、地址、顺丰号、状态、内件">
+          </label>
+          <label>
+            <span>物流状态</span>
+            <select id="status-filter">
+              <option value="all">全部状态</option>
+              <option value="not_submitted">未发往库房</option>
+              <option value="processing">库房处理中</option>
+              <option value="departed">运输中</option>
+              <option value="delivered">客户已收货</option>
+              <option value="attention">需要处理</option>
+            </select>
+          </label>
+          <button class="primary-btn" id="download-json" type="button">导出 JSON</button>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>本地发货单号</th>
+              <th>收件人 / 电话 / 地址</th>
+              <th>最新物流</th>
+              <th>内件明细</th>
+              <th>重量 / 扣费</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody id="orders-body"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <template id="empty-template">
+    <tr>
+      <td colspan="6">
+        <div class="empty-state">
+          <strong>没有匹配的包裹</strong>
+          <span>换一个筛选条件，或者重新运行抓取脚本。</span>
+        </div>
+      </td>
+    </tr>
+  </template>
+
+  <script src="assets/app.js"></script>
 </body>
 </html>

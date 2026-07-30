@@ -1,0 +1,116 @@
+{
+  "generated_at": "2026-07-29T00:00:00+00:00",
+  "source": "junanex-sample",
+  "source_pages": [
+    {
+      "key": "not_submitted",
+      "label": "未发往库房",
+      "url": "https://www.junanex.com/orders"
+    },
+    {
+      "key": "processing",
+      "label": "库房处理中",
+      "url": "https://www.junanex.com/orders/processing"
+    },
+    {
+      "key": "departed",
+      "label": "已运往中国",
+      "url": "https://www.junanex.com/orders/departed"
+    }
+  ],
+  "summary": {
+    "total": 3,
+    "not_submitted": 1,
+    "processing": 1,
+    "departed": 1,
+    "with_tracking_page": 2,
+    "with_tracking_history": 1
+  },
+  "orders": [
+    {
+      "id": "not_submitted-ZC000000001FA",
+      "source": "junanex",
+      "source_category": "not_submitted",
+      "page_label": "未发往库房",
+      "categories": ["not_submitted"],
+      "page_labels": ["未发往库房"],
+      "source_url": "https://www.junanex.com/orders",
+      "local_order_number": "ZC000000001FA",
+      "recipient_summary": "夏名 浙江",
+      "recipient_name": "夏名 浙江",
+      "recipient_region": "",
+      "recipient_phone": "13800000001",
+      "recipient_address": "浙江省杭州市西湖区示例路 88 号 1201 室",
+      "has_id_number": true,
+      "has_id_image": true,
+      "order_status": "等待提交到库房",
+      "latest_status": "等待提交到库房",
+      "item_summary": "客户发货单号: 杯子",
+      "items_detail": "客户发货单号: 杯子 2 杯子 USD20.0",
+      "actual_weight": "",
+      "billing_weight": "",
+      "total_fee": "",
+      "raw_text": "示例未发往库房订单"
+    },
+    {
+      "id": "processing-ZC000000002FA",
+      "source": "junanex",
+      "source_category": "processing",
+      "page_label": "库房处理中",
+      "categories": ["processing"],
+      "page_labels": ["库房处理中"],
+      "source_url": "https://www.junanex.com/orders/processing",
+      "local_order_number": "ZC000000002FA",
+      "recipient_summary": "陈俊颖 河北",
+      "recipient_name": "陈俊颖 河北",
+      "recipient_phone": "13800000002",
+      "recipient_address": "河北省石家庄市长安区示例街 66 号",
+      "has_id_number": true,
+      "has_id_image": true,
+      "order_status": "库房处理中",
+      "latest_status": "库房处理中，等待运往中国",
+      "item_summary": "客户发货单号: 保温杯",
+      "items_detail": "客户发货单号: 保温杯 1 保温杯 USD78.0",
+      "actual_weight": "2.96",
+      "billing_weight": "3.0",
+      "total_fee": "12.0",
+      "tracking_page_url": "https://www.junanex.com/tracking/sample-processing"
+    },
+    {
+      "id": "departed-ZC428875919FA",
+      "source": "junanex",
+      "source_category": "departed",
+      "page_label": "已运往中国",
+      "categories": ["departed"],
+      "page_labels": ["已运往中国"],
+      "source_url": "https://www.junanex.com/orders/departed",
+      "local_order_number": "ZC428875919FA",
+      "recipient_summary": "夏名 浙江",
+      "recipient_name": "夏名 浙江",
+      "recipient_phone": "13800000001",
+      "recipient_address": "浙江省杭州市西湖区示例路 88 号 1201 室",
+      "has_id_number": true,
+      "has_id_image": true,
+      "order_status": "运往中国时间: 2026-07-28 #1 运往中国",
+      "latest_status": "运往中国时间: 2026-07-28 #1 运往中国",
+      "latest_time": "2026-07-28",
+      "domestic_tracking": "",
+      "item_summary": "客户发货单号: 杯子",
+      "items_detail": "客户发货单号: 杯子 4 杯子 USD20.0",
+      "actual_weight": "8.05",
+      "billing_weight": "8.0",
+      "total_fee": "32.0",
+      "tracking_page_url": "https://www.junanex.com/tracking/sample-departed",
+      "tracking_history": [
+        {
+          "time": "2026-07-28",
+          "status": "包裹已运往中国"
+        },
+        {
+          "time": "2026-07-27",
+          "status": "君安库房已扫描入库"
+        }
+      ]
+    }
+  ]
+}

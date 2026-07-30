@@ -1,6 +1,10 @@
 .claude/
 .env
 .env.*
+!.env.example
+.junanex/
+data/junanex-orders.json
+qa-screenshots/
 .venv/
 .idea/
 __pycache__/
